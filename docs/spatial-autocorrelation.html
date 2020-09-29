@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Spatial autocorrelation | GEOG0114 Principles of Spatial Analysis</title>
+  <meta name="description" content="The GEOG114 Principles of Spatial Analysis hadnbook." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Spatial autocorrelation | GEOG0114 Principles of Spatial Analysis" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://jtvandijk.github.io/GEOG0114/" />
+  
+  <meta property="og:description" content="The GEOG114 Principles of Spatial Analysis hadnbook." />
+  <meta name="github-repo" content="jtvandijk/GEOG0114" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Spatial autocorrelation | GEOG0114 Principles of Spatial Analysis" />
+  
+  <meta name="twitter:description" content="The GEOG114 Principles of Spatial Analysis hadnbook." />
+  
+
+<meta name="author" content="Justin van Dijk and Joanna Wilkin" />
+
+
+<meta name="date" content="2020-09-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="spatial-properties-and-relationships.html"/>
+<link rel="next" href="exploratory-data-analysis.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="assets/custom.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo">
+<a href="https://www.ucl.ac.uk/module-catalogue/modules/principles-of-spatial-analysis-GEOG0114"><img src="images/ucl_geography_logo.png">
+</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a></li>
+<li class="chapter" data-level="1" data-path="spatial-analysis-for-data-science.html"><a href="spatial-analysis-for-data-science.html"><i class="fa fa-check"></i><b>1</b> Spatial analysis for data science</a></li>
+<li class="chapter" data-level="2" data-path="geographical-representation.html"><a href="geographical-representation.html"><i class="fa fa-check"></i><b>2</b> Geographical representation</a></li>
+<li class="chapter" data-level="3" data-path="spatial-properties-and-relationships.html"><a href="spatial-properties-and-relationships.html"><i class="fa fa-check"></i><b>3</b> Spatial properties and relationships</a></li>
+<li class="chapter" data-level="4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Spatial autocorrelation</a></li>
+<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
+<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a></li>
+<li class="chapter" data-level="7" data-path="geostatistics.html"><a href="geostatistics.html"><i class="fa fa-check"></i><b>7</b> Geostatistics</a></li>
+<li class="chapter" data-level="8" data-path="cluster-analysis.html"><a href="cluster-analysis.html"><i class="fa fa-check"></i><b>8</b> Cluster analysis</a></li>
+<li class="chapter" data-level="9" data-path="bayesian-modelling.html"><a href="bayesian-modelling.html"><i class="fa fa-check"></i><b>9</b> Bayesian modelling</a></li>
+<li class="chapter" data-level="10" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>10</b> Reproducible research</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GEOG0114 Principles of Spatial Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="spatial-autocorrelation" class="section level1">
+<h1><span class="header-section-number">4</span> Spatial autocorrelation</h1>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="spatial-properties-and-relationships.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exploratory-data-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-week04.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["GEOG0114.pdf", "GEOG0114.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
