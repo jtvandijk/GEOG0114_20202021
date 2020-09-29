@@ -1,5 +1,5 @@
 --- 
-title: "GEOG0114 Principles of Spatial Analysis"
+title: "GEOG0114: Principles of Spatial Analysis"
 author: Justin van Dijk and Joanna Wilkin
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -9,15 +9,15 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: "jtvandijk/GEOG0114"
-description: "The GEOG114 Principles of Spatial Analysis hadnbook."
+description: "GEOG114: Principles of Spatial Analysis handbook."
 url: 'https\://jtvandijk.github.io/GEOG0114/'
 ---
 
 # Welcome {-}
-Welcome to Principles of Spatial Analysis, one of the four core modules for the MSc in Geographic and Social Data Science.
+Welcome to **Principles of Spatial Analysis**, one of the four core modules for the MSc in Geographic and Social Data Science.
 
 This module provides an introduction into the theory, methods and tools of spatial analysis essential for your career as a Data Scientist.
-This module has been designed in conjunction with your module on Geographic Information Systems (GIS) and Science (GIScience) from CASA to provide you with an extensive introduction into GIScience, spatial analysis and their associated tools. It has a specific focus on the principles, properties and parameters that are part of spatial analysis and how to understand and apply these effectively within geographic and data science-oriented research.
+This module has been designed in conjunction with your module on [Geographic Information Systems (GIS) and Science (GIScience)](https://www.ucl.ac.uk/module-catalogue/modules/geographic-information-systems-and-science-CASA0005) from CASA to provide you with an extensive introduction into GIScience, spatial analysis and their associated tools. It has a specific focus on the principles, properties and parameters that are part of spatial analysis and how to understand and apply these effectively within geographic and data science-oriented research.
 
-The first half of the module provides detailed introductions into spatial concepts such as scale and geography, spatial dependency and autocorrelation, and spatial heterogeneity and spatial regression models. The second half then focuses on the applications of spatial analysis within current data science research, including cluster analysis and bayesian modelling.
+The first half of the module provides detailed introductions into spatial concepts such as scale and geography, spatial dependency and autocorrelation, and spatial heterogeneity and spatial regression models. The second half then focuses on the applications of spatial analysis within current data science research, including cluster analysis and Bayesian modelling.
 
