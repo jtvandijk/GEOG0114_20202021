@@ -15,6 +15,10 @@
   height: auto !important;
 }
 
+.summary {
+  font-size: 120% !important;
+}
+
 /*--- toc elements ---*/
 .book .book-summary ul.summary li a,
 .book .book-summary ul.summary li span {
