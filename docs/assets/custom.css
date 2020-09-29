@@ -1,0 +1,36 @@
+/*--- toc logo ---*/
+
+.toc-logo {
+  width: 150px !important;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+
+.toc-logo img {
+  max-width: 100%;
+}
+
+.summary > li:first-child {
+  height: auto !important;
+}
+
+/*--- toc elements ---*/
+.book .book-summary ul.summary li a,
+.book .book-summary ul.summary li span {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.book .book-summary ul.summary li.active>a {
+  color: #41ae76 !important;
+  border-left: solid 4px;
+  border-color: #006d2c;
+  padding-left: 11px !important;
+}
+
+.summary a:hover {
+  color: #238b45 !important;
+}

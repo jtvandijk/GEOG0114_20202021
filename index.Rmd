@@ -1,6 +1,6 @@
 --- 
 title: "GEOG0114 Principles of Spatial Analysis"
-author: Justin van Dijk^[Department of Geography, University College London] and Joanna Wilkin^[Department of Geography, University College London]
+author: Justin van Dijk and Joanna Wilkin
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -12,27 +12,12 @@ github-repo: "jtvandijk/GEOG0114"
 description: "The GEOG114 Principles of Spatial Analysis hadnbook."
 url: 'https\://jtvandijk.github.io/GEOG0114/'
 ---
-<!-- cover-image: general_images/image.png -->
 
-# Prerequisites
+# Welcome {-}
+Welcome to Principles of Spatial Analysis, one of the four core modules for the MSc in Geographic and Social Data Science.
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
+This module provides an introduction into the theory, methods and tools of spatial analysis essential for your career as a Data Scientist.
+This module has been designed in conjunction with your module on Geographic Information Systems (GIS) and Science (GIScience) from CASA to provide you with an extensive introduction into GIScience, spatial analysis and their associated tools. It has a specific focus on the principles, properties and parameters that are part of spatial analysis and how to understand and apply these effectively within geographic and data science-oriented research.
 
-The **bookdown** package can be installed from CRAN or Github:
+The first half of the module provides detailed introductions into spatial concepts such as scale and geography, spatial dependency and autocorrelation, and spatial heterogeneity and spatial regression models. The second half then focuses on the applications of spatial analysis within current data science research, including cluster analysis and bayesian modelling.
 
-```{r eval=FALSE}
-install.packages("bookdown")
-# or the development version
-# devtools::install_github("rstudio/bookdown")
-```
-
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
-
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
