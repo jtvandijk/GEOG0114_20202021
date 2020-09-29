@@ -3,13 +3,13 @@
 ## Useful additional resources {-}
 Besides the mandatory and recommended reading for this course, there are some additional resources that are worth checking out:
 
-1. The command line. [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/): MIT's introduction course on mastering the command line.
+1. MIT's introduction course on mastering the command line: [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) 
 
-2. Some more command line. [explainshell.com](https://www.explainshell.com/); for when you cannot figure it out with MIT's introduction.
+2. A useful tool to unpack command line instructions: [explainshell.com](https://www.explainshell.com/)
 
-3. Regular expressions. [regexr.com](https://regexr.com/5d21d); an online tool to develop and check your regular expressions.
+3. Online resource to develop and check your regular expressions: [regexr.com](https://regexr.com/5d21d)
 
-4. Mapmaking. [colorbrewer 2.0](https://colorbrewer2.org); an online tool to select colour palettes for your maps and visualisations.
+4. Selecting colour palettes for your map making and data visualisation: [colorbrewer 2.0](https://colorbrewer2.org)
 
 ## Noticed a mistake? {-}
 Please let us know through the GitHub issues tab or contact us directly over e-mail and we'll look into it.
