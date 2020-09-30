@@ -1,7 +1,7 @@
 /*--- toc logo ---*/
 
 .toc-logo {
-  width: 150px !important;
+  width: 250px !important;
   object-fit: contain;
   margin: 0 auto;
   display: block;
@@ -29,12 +29,8 @@
 }
 
 .book .book-summary ul.summary li.active>a {
-  color: #41ae76 !important;
+  color: #000 !important;
   border-left: solid 4px;
-  border-color: #006d2c;
+  border-color: #000;
   padding-left: 11px !important;
-}
-
-.summary a:hover {
-  color: #238b45 !important;
 }

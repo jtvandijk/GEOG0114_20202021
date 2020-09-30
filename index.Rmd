@@ -14,6 +14,11 @@ url: 'https\://jtvandijk.github.io/GEOG0114/'
 ---
 
 # Welcome {-}
+```{r echo=FALSE, out.width = "80%", fig.align='center', cache=TRUE}
+knitr::include_graphics('images/general/data_science_welcome.jpg') 
+```
+<br />
+
 Welcome to **Principles of Spatial Analysis**, one of the four core modules for the MSc in Geographic and Social Data Science here at [UCL Geography](https://www.geog.ucl.ac.uk/).
 
 This module provides an introduction into the theory, methods and tools of spatial analysis essential for your career as a Data Scientist.
