@@ -1,1 +1,8 @@
 # Spatial analysis for data science
+
+The first week of PSA will introduce how geography and Geographical Information Science (GIScience) fits within the wider data science discipline and why there is a need to specialise in spatial and social analysis for data science. 
+
+To provide this understanding, you will first work your way through a short document written specifically for this week to provide an extensive overview to why a geographical understanding to data science is critical to accurate and valid data analysis. 
+Next, through a recorded lecture, you'll be given a short introduction to Geographical Information Systems (GIS) tools for spatial data science and an explanation to how these tools have changed over the last decade, including a shift from traditional GIS software towards programming-based analysis in research applications. 
+
+We’ll then show you examples of different types of GIS software through a recorded tutorial. To gain a practical basic understanding of the differences across these software, including their ease of use, the recorded tutorial will show you the steps and processing to create a simple choropleth map of population and population density in London. This week plays a formative role in providing everyone with baseline from which to not only pursue this module, but the other technical modules on the MSc. 

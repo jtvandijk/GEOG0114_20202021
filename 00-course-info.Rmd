@@ -1,5 +1,31 @@
 # Course information {-}
 
+## Overview {-}
+| Week          | Date          | Topic |
+| :------ |:-----|:--------------|
+| 1             | 05/10/2020    | Spatial analysis for data science |
+| 2             | 12/10/2020    | Representation, scale and geography in spatial analysis |
+| 3             | 19/10/2020    | Spatial properties, relationships and operations |
+| 4             | 26/10/2020    | Spatial dependence, spatial autocorrelation and defining neighbours |
+| 5             | 02/11/2020    | Exploratory Spatial Data Analysis and regression |
+| *reading week*  | *reading week*  | *reading week* |
+| 6             | 16/11/2020    | Mapping clusters with point pattern analysis |
+| 7             | 23/11/2020    | Geostatistics, interpolation and raster analysis |
+| 8             | 30/11/2020    | DBScan and cluster analysis for urban applications |
+| 9             | 09/12/2020    | An introduction to Bayesian Modelling for geographical applications |
+| 10            | 04/12/2020    | Creating reproducible research and module recap |
+
+## Learning objectives {-}
+By the end of the module, you should:
+
+- have a good understanding of the principles underlying the analysis of spatial data in general and spatial statistics in particular;
+-	be able to use GIS software and tools for generating and visualising summary statistics;
+-	be able to examine, analyse and simulate a range of spatial patterns and processes;
+-	be able to use geostatistical tools to analyze and interpolate spatial patterns;
+-	appreciate the many different sources of uncertainty in spatial data and spatial processing and how to address such issues in analysis and research;
+-	be able to master the key concepts in network analysis with a focus on social and spatial networks (now in Intro to Data Science and Advanced Data Science modules);
+-	be able to explain several novel applications of spatial analysis techniques within geographic and social data science applications.
+
 ## Useful additional resources {-}
 Besides the mandatory and recommended reading for this course, there are some additional resources that are worth checking out:
 

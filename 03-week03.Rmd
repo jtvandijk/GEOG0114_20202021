@@ -1,1 +1,6 @@
 # Spatial properties and relationships
+
+Understanding spatial properties, relationships and how they are used within spatial operations are the building blocks to spatial data processing and analysis. First, we highlight different ways of conceptualizing key spatial properties, such as distance, and the impact this may have on measurement. Then we look at the core terminology used to define spatial relationships and their mathematical calculation. We then focus on their application within spatial operations, and how they can be used for the selection, subset and validation of data.
+
+The practical utilizes these concepts to investigate the accessibility of greenspace for schools across London. Recent research (Bijnens et al, 2020) has shown that children brought up in proximity to greenspace have a higher IQ and fewer behavioral problems, irrespective of socio-economic background. Here we will look to understand whether there are geographical patterns to schools that have high versus low access of greenspace and where a lack of greenspace needs to be addressed. In addition to using several of the spatial operations highlighted during the lecture, during the practical you will also learn about Ordnance Survey Open Data how to use an API service to geocode addresses, and how to use a common GIS method known as “Point in Polygon”.
+

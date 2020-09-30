@@ -1,1 +1,7 @@
 # Exploratory data analysis
+
+This week, we focus on the second of the two key properties of spatial data: spatial heterogeneity. With the underlying process (or processes) that govern a spatial variable likely to vary across space, a single global relationship for an entire region of study may not adequately model the process that governs outcomes in any given location of the study region. As a result, multiple methods have been developed to incorporate ‘space’ into traditional regression models, including spatial lag models, spatial error models and Geographical Weighted Regression. 
+
+This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, first looking at the concept of Exploratory Spatial Data Analysis (ESDA) and how to understand data distributions, descriptive statistics, transformations as well as check for outliers and trends. We then look at the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships. 
+
+The practical component utilizes this workflow to analyse potential factors that may contribute to our crime rate in London, using previous literature to identify variables for inclusion in our analysis. We conduct an ESDA of these variables, followed by statistical and spatial regression analysis to determine whether our variables adhere to previous literature and do contribute to crime in our area of study.
