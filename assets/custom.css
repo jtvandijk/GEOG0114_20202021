@@ -10,27 +10,3 @@
 .toc-logo img {
   max-width: 100%;
 }
-
-.summary > li:first-child {
-  height: auto !important;
-}
-
-.summary {
-  font-size: 120% !important;
-}
-
-/*--- toc elements ---*/
-.book .book-summary ul.summary li a,
-.book .book-summary ul.summary li span {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.book .book-summary ul.summary li.active>a {
-  color: #000 !important;
-  border-left: solid 4px;
-  border-color: #000;
-  padding-left: 11px !important;
-}
