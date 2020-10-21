@@ -1,7 +1,7 @@
 # Course information {-}
 
 ## Module structure {-}
-This module consists of ten self-led workshops, ten interactive seminar discussions and ten help sessions. Each week, we'll provide an online workshop, provided as a worksheet with videos and instructions to complete the practical component of the workshop. All online classes will be held on the PSA 'team'.
+This module consists of ten self-led workshops, ten interactive seminar discussions and ten help sessions. Each week, we'll provide an online workshop, provided as a worksheet with videos and instructions to complete the practical component of the workshop. All online classes will be held on the Principles of Spatial Analysis 'team'.
 
 In addition, each week will have its own reading list or additional 'recommended' (optional, not required!) online tutorials we know of that you might want to also complete.
 

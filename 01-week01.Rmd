@@ -7,4 +7,4 @@ Next, through a recorded lecture, you'll be given a short introduction to Geogra
 
 We’ll then show you examples of different types of GIS software through a recorded tutorial. To gain a practical basic understanding of the differences across these software, including their ease of use, the recorded tutorial will show you the steps and processing to create a simple choropleth map of population and population density in London. This week plays a formative role in providing everyone with baseline from which to not only pursue this module, but the other technical modules on the MSc. 
 
-**This week's content is [available on Moodle](https://moodle.ucl.ac.uk/).**
+<center>**This week's content is [available on Moodle](https://moodle.ucl.ac.uk/).**</center>
