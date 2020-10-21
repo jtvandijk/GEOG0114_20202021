@@ -6,8 +6,8 @@ This week provides the building blocks to conducting a statistical and spatial i
 
 The practical component utilizes this workflow to analyse potential factors that may contribute to our crime rate in London, using previous literature to identify variables for inclusion in our analysis. We conduct an ESDA of these variables, followed by statistical and spatial regression analysis to determine whether our variables adhere to previous literature and do contribute to crime in our area of study.
 
-```{r}
+```{r fig.cap = "Caption Test"}
 library(vembedr)
 embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
 ```
-
+If the embedded video does not work, please watch it directly on the [Microsoft Stream](https://web.microsoftstream.com/video/52d0ac98-563e-46ac-b86b-efe5524d37bf) platform.
