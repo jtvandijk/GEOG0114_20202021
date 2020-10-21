@@ -56,6 +56,3 @@ Besides the mandatory and recommended reading for this course, there are some ad
 3. Online resource to develop and check your regular expressions: [regexr.com](https://regexr.com/5d21d)
 
 4. Selecting colour palettes for your map making and data visualisation: [colorbrewer 2.0](https://colorbrewer2.org)
-
-## Noticed a mistake? {-}
-Please let us know through the GitHub issues tab or contact us directly over e-mail and we'll look into it.

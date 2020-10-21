@@ -1,6 +1,6 @@
 --- 
 title: "GEOG0114: Principles of Spatial Analysis"
-author: Justin van Dijk and Joanna Wilkin
+author: Justin van Dijk^[Department of Geography, https://www.mappingdutchman.com/] and Joanna Wilkin^[Department of Geography, https://www.geog.ucl.ac.uk/people/academic-staff/joanna-wilkin]
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -12,8 +12,9 @@ url: 'https\://jtvandijk.github.io/GEOG0114/'
 ---
 
 # Welcome {-}
-```{r echo=FALSE, out.width = "80%", fig.align='center', cache=TRUE}
-knitr::include_graphics('images/general/data_science_welcome.jpg') 
+
+```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
+knitr::include_graphics('images/general/data_science_welcome_sm.jpg') 
 ```
 <br />
 
@@ -22,5 +23,17 @@ Welcome to **Principles of Spatial Analysis**, one of the four core modules for 
 This module provides an introduction into the theory, methods and tools of spatial analysis essential for your career as a Data Scientist.
 This module has been designed in conjunction with your module on [Geographic Information Systems (GIS) and Science (GIScience)](https://www.ucl.ac.uk/module-catalogue/modules/geographic-information-systems-and-science-CASA0005) from CASA to provide you with an extensive introduction into GIScience, spatial analysis and their associated tools. It has a specific focus on the principles, properties and parameters that are part of spatial analysis and how to understand and apply these effectively within geographic and data science-oriented research.
 
-The first half of the module provides detailed introductions into spatial concepts such as scale and geography, spatial dependency and autocorrelation, and spatial heterogeneity and spatial regression models. The second half then focuses on the applications of spatial analysis within current data science research, including cluster analysis and Bayesian modelling.
+The first half of the module provides detailed introductions into spatial concepts such as scale and geography, 
+spatial dependency and autocorrelation, and spatial heterogeneity and spatial regression models. The second half then focuses 
+on the applications of spatial analysis within current data science research, including cluster analysis and Bayesian modelling.
+
+## Key details {-}
+Dr Jo Wilkin will be taking **Week 1-4, 9,10** of the module. You can contact her at <nobr>**j.wilkin[at] ucl.ac.uk**</nobr> or, for online office hours, you can book a half hour slot with Jo [using MS Bookings](https://outlook.office365.com/owa/calendar/JoWilkinBookableOfficeHours@ucl.ac.uk/bookings/).
+
+Dr Justin van Dijk will be taking **Week 5-8** of the module. You can contact him at <nobr>**j.t.vandijk [at] ucl.ac.uk**</nobr> or, for online office hours, you can book a half hour slot with Justin [using MS Bookings](https://outlook.office365.com/owa/calendar/JustinvanDijkBookableOfficeHours@ucl.ac.uk/bookings/s/z5HqD80lWU-RMPggKx0acQ2).
+
+The module is further supported by two Postgraduate Teaching Assistants: Alfie Long and Jakub Wyszomierski.
+
+## Noticed a mistake in this resource? {-}
+Please let us know through the GitHub issues tab, MS Teams, or by e-mail! 
 

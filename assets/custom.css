@@ -10,3 +10,11 @@
 .toc-logo img {
   max-width: 100%;
 }
+
+.summary > li:first-child {
+  height: auto !important;
+}
+
+.summary {
+  font-size: 110% !important;
+}
