@@ -8,5 +8,5 @@ The practical utilises these concepts to investigate the accessibility of greens
 
 For the practical, we provide an introduction to the research problem and outline how we devise a research methodology to be able to investigate our research questions. We then look at the required processing steps to create the final dataset that can be used in our analysis. This is followed by a short demo in which Jo will demonstrate the analysis visually in QGIS. We then ask you to recreate the analysis by creating a script in R-Studio (code provided) - this will allow you to replicate the analysis for other cities within the U.K, or even further afield if you can extract the same data. Finally, in preparation for this week's seminar, we ask you to watch a five minute video from a local news channel in Jo's hometown - ready to discuss as a possible research task in Friday's seminar.
 
-**This week's content is [availble on Moodle](https://moodle.ucl.ac.uk/).**
+**This week's content is [available on Moodle](https://moodle.ucl.ac.uk/).**
 

@@ -8,6 +8,6 @@ The practical component utilizes this workflow to analyse potential factors that
 
 ```{r}
 library(vembedr)
-embed_msstream("066e322f-d507-4f4f-a300-5cff2406f54c")
+embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
 ```
 
