@@ -6,3 +6,4 @@ This week provides you with a general introduction to Bayesian modelling for geo
 
 The practical component looks at R-INLA package and how it can be used within health modelling. 
 
+<center>**This week's content will be made [available on Moodle](https://moodle.ucl.ac.uk/) on 09/12.**</center>

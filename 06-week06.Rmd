@@ -6,3 +6,9 @@ This week, we focus on point pattern analysis, whilst next week we will look at 
 
 To put these measures and methods into action, our practical component looks to test the hypothesis that “the majority of bicycle theft in London occurs with walking distance of a train or tube station”, by assessing clusters and hotspots of bike theft in relation to a transportation locations.
 
+<center>**This week's content will be made available on 16/10.**</center>
+
+## Introduction
+
+## Feedback
+Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).

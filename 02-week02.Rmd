@@ -1,10 +1,12 @@
 # Geographical representation
 
+## Introduction
 The first part of this week will look at spatial representation data models, i.e. how we transform geographic features and phenomena into geographic data for use within GIS. We will then explore the role of scale and geography within spatial analysis and provide you with a critical understanding of how both can impact and effect the analysis of data, particularly when looking at ‘event’ type data, i.e. the occurrence of a specific phenomenon over space. 
 
 We will then introduce you to the role and usage of administrative geographies and discuss how they are subject to the Modifiable Area Unit Problem as well as its the consequences, including ecological fallacies. We will then discuss methods to account for these issues, including population standardization, as well as highlight alternative methods for representing data beyond traditional choropleth maps. The interactive lecture will also introduce the role of projections and what considerations you should make when choosing the projection for your analysis; projections are further discussed in Week 3 of CASA0005. 
 
 The practical component of the week puts these issues into practice with an analysis of crime data from the UK and its various administrative geographies, as well as voting patterns in the USA. The practical component also introduces the two types of data joining primarily used in spatial analysis: attribute and spatial joins.
 
+## Content
 <center>**This week's content is [available on Moodle](https://moodle.ucl.ac.uk/).**</center>
 

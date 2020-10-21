@@ -87,13 +87,33 @@
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#useful-additional-resources"><i class="fa fa-check"></i>Useful additional resources</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="spatial-analysis-for-data-science.html"><a href="spatial-analysis-for-data-science.html"><i class="fa fa-check"></i><b>1</b> Spatial analysis for data science</a></li>
-<li class="chapter" data-level="2" data-path="geographical-representation.html"><a href="geographical-representation.html"><i class="fa fa-check"></i><b>2</b> Geographical representation</a></li>
+<li class="chapter" data-level="2" data-path="geographical-representation.html"><a href="geographical-representation.html"><i class="fa fa-check"></i><b>2</b> Geographical representation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="geographical-representation.html"><a href="geographical-representation.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="geographical-representation.html"><a href="geographical-representation.html#content"><i class="fa fa-check"></i><b>2.2</b> Content</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="spatial-properties-and-relationships.html"><a href="spatial-properties-and-relationships.html"><i class="fa fa-check"></i><b>3</b> Spatial properties and relationships</a></li>
 <li class="chapter" data-level="4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Spatial autocorrelation</a></li>
-<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a></li>
-<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a></li>
-<li class="chapter" data-level="7" data-path="geostatistics.html"><a href="geostatistics.html"><i class="fa fa-check"></i><b>7</b> Geostatistics</a></li>
-<li class="chapter" data-level="8" data-path="cluster-analysis.html"><a href="cluster-analysis.html"><i class="fa fa-check"></i><b>8</b> Cluster analysis</a></li>
+<li class="chapter" data-level="5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="geographical-representation.html"><a href="geographical-representation.html#introduction"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#feedback"><i class="fa fa-check"></i><b>5.2</b> Feedback</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="geographical-representation.html"><a href="geographical-representation.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#feedback"><i class="fa fa-check"></i><b>6.2</b> Feedback</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="geostatistics.html"><a href="geostatistics.html"><i class="fa fa-check"></i><b>7</b> Geostatistics</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="geographical-representation.html"><a href="geographical-representation.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#feedback"><i class="fa fa-check"></i><b>7.2</b> Feedback</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="cluster-analysis.html"><a href="cluster-analysis.html"><i class="fa fa-check"></i><b>8</b> Cluster analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="geographical-representation.html"><a href="geographical-representation.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#feedback"><i class="fa fa-check"></i><b>8.2</b> Feedback</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="bayesian-modelling.html"><a href="bayesian-modelling.html"><i class="fa fa-check"></i><b>9</b> Bayesian modelling</a></li>
 <li class="chapter" data-level="10" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>10</b> Reproducible research</a></li>
 </ul>
@@ -118,7 +138,17 @@
 <p>DBScan is a density-based clustering algorithm that is commonly used in data mining and machine learning. Across a set of points, DBSCAN will group together points that are close to each other based on a distance measurement and a minimum number of points. It also marks as outliers the points that are in low-density regions. The algorithm can be used to find associations and structures in data that are hard to find through visual observation alone, but that can be relevant and useful to find patterns and predict trends. Whilst the algorithm is nearly 25 years old, it still is incredibly relevant to many applications within data science today, including within spatial analysis. Novel use of the algorithm has seen researchers detect and delineate urban areas from building footprint data. This use presents significant opportunities for those working to provide spatial data within countries where until recently, significant reference data did not exist.</p>
 <p>To understand this potential application, we look at the issues of data scarcity and sparsity within LICs and MICs, which do not currently have extensive mapping data or national mapping agencies to provide this data. We look at current initiatives to address this data dearth, with a specific focus on those working on the automated extraction of building footprints from satellite imagery using machine learning.</p>
 <p>Within the practical component, we look to deploy a simple version of DBScan on building data subset from the Tanzanian building dataset created by Microsoft. We attempt to detect and delineate our own urban areas within the dataset and discuss the advantages of novel changes made by those working with the algorithm for this specific purpose.</p>
+<center>
+<strong>This week’s content will be made available on 30/10.</strong>
+</center>
+<div id="introduction" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Introduction</h2>
+</div>
+<div id="feedback" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Feedback</h2>
+<p>Please take a moment to give us some <a href="https://forms.gle/BYbZySVSHeoUEkJh9">feedback on this week’s content</a>.</p>
 
+</div>
 </div>
             </section>
 

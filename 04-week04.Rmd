@@ -6,3 +6,4 @@ This week looks at spatial dependence and autocorrelation in detail, focusing on
 
 We put these learnings into practice through an analysis of spatial dependence of our areal crime data from Week 2, experimenting with the deployment of different neighbours and the impact of their analyses.
 
+<center>**This week's content will be made available on 26/10.**</center>
