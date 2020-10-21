@@ -1,6 +1,11 @@
 # Course information {-}
 
-## Overview {-}
+## Module structure {-}
+This module consists of ten self-led workshops, ten interactive seminar discussions and ten help sessions. Each week, we'll provide an online workshop, provided as a worksheet with videos and instructions to complete the practical component of the workshop. All online classes will be held on the PSA 'team'.
+
+In addition, each week will have its own reading list or additional 'recommended' (optional, not required!) online tutorials we know of that you might want to also complete.
+
+## Weekly topics {-}
 | Week          | Date          | Topic |
 | :------ |:-----|:--------------|
 | 1             | 05/10/2020    | Spatial analysis for data science |
@@ -12,7 +17,7 @@
 | 6             | 16/11/2020    | Mapping clusters with point pattern analysis |
 | 7             | 23/11/2020    | Geostatistics, interpolation and raster analysis |
 | 8             | 30/11/2020    | DBScan and cluster analysis for urban applications |
-| 9             | 09/12/2020    | An introduction to Bayesian Modelling for geographical applications |
+| 9             | 09/12/2020    | *To be confirmed * |
 | 10            | 04/12/2020    | Creating reproducible research and module recap |
 
 ## Learning objectives {-}
@@ -25,6 +30,21 @@ By the end of the module, you should:
 -	appreciate the many different sources of uncertainty in spatial data and spatial processing and how to address such issues in analysis and research;
 -	be able to master the key concepts in network analysis with a focus on social and spatial networks (now in Intro to Data Science and Advanced Data Science modules);
 -	be able to explain several novel applications of spatial analysis techniques within geographic and social data science applications.
+
+## Reading list {-}
+We link to books and resources throughout each practical. The [full reading list for the course](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is provided on the UCL library reading list page for the course. Alternatively, you can always easily find the link to the Reading List in the top right of any Moodle page for our module, under "Library Resources". 
+
+This Reading List will be updated on a weekly basis, in preparation for the week to come, so you may see some weeks without reading for now. But please check back at the **start of each week** as the lecture, seminar and/or workshop material is released for that week to check for new readings. All reading for that week will be provided by the time your learning materials are released - so you will not need to check the reading list for updates as the week progresses.
+
+## Module assessment details {-}
+
+The assessment for Principles of Spatial Analysis is set across two pieces of separate coursework, weighted at 50% each. 
+
+1) The first piece of coursework will involve the completion of a spatial analysis project, based on the theory, concepts and application learnt during the module. A 1,500 word report will be submitted, alongside the code used within the project, which describes the analysis undertaken and the results of the analysis. Further guidance will be provided in Week 5 of the module.
+
+2) The second piece of coursework will be a written (1,500 word) review on a current data science application that uses spatial analysis as its core methodology. The application can be drawn from the lecture material, particularly during Weeks 8 and 9, or one of your own choice. Further guidance will be provided in Week 9 of the module.
+
+Guidance for both pieces will be uploaded to this section of the Moodle, once provided.
 
 ## Useful additional resources {-}
 Besides the mandatory and recommended reading for this course, there are some additional resources that are worth checking out:

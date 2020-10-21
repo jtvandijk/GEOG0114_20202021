@@ -5,8 +5,6 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-bibliography: [book.bib, packages.bib]
-biblio-style: apalike
 link-citations: yes
 github-repo: "jtvandijk/GEOG0114"
 description: "GEOG114: Principles of Spatial Analysis handbook."

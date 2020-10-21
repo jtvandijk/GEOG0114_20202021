@@ -24,7 +24,7 @@
 <meta name="author" content="Justin van Dijk and Joanna Wilkin" />
 
 
-<meta name="date" content="2020-09-30" />
+<meta name="date" content="2020-10-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="exploratory-data-analysis.html"/>
 <link rel="next" href="geostatistics.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -72,9 +73,13 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
-<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a><ul>
-<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#overview"><i class="fa fa-check"></i>Overview</a></li>
+<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a>
+<ul>
+<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#module-structure"><i class="fa fa-check"></i>Module structure</a></li>
+<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#weekly-topics"><i class="fa fa-check"></i>Weekly topics</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
+<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#reading-list"><i class="fa fa-check"></i>Reading list</a></li>
+<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#module-assessment-details"><i class="fa fa-check"></i>Module assessment details</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#useful-additional-resources"><i class="fa fa-check"></i>Useful additional resources</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#noticed-a-mistake"><i class="fa fa-check"></i>Noticed a mistake?</a></li>
 </ul></li>
@@ -105,7 +110,7 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="point-pattern-analysis" class="section level1">
+<div id="point-pattern-analysis" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Point pattern analysis</h1>
 <p>In our previous practicals, we have aggregated our event data into areal units, primarily using administrative geographies, to enable its easy comparison with other datasets provided at the same spatial scale, such as the census data used in the previous week, as well as to conduct spatial autocorrelation tests. However, when locations are precisely known, spatial point data can be used with a variety of spatial analytic techniques that go beyond the methods typically applied to areal data. The set of methods unique to point data are often referred to as point pattern analysis and geostatistics.</p>
 <p>This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look first at basic forms of point pattern analysis, including mean centers and the standard deviational ellipse, and then more powerful analysis methods, including kernel density estimation and Ripley’s K function. These latter functions help determine and/or show whether points have a random, dispersed or clustered distribution pattern at a certain scale.</p>

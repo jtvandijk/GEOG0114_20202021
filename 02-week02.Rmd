@@ -6,3 +6,5 @@ We will then introduce you to the role and usage of administrative geographies a
 
 The practical component of the week puts these issues into practice with an analysis of crime data from the UK and its various administrative geographies, as well as voting patterns in the USA. The practical component also introduces the two types of data joining primarily used in spatial analysis: attribute and spatial joins.
 
+**This week's content is availble on Moodle.**
+
