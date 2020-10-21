@@ -1,5 +1,6 @@
 # Spatial analysis for data science
 
+## Session outline
 The first week of PSA will introduce how geography and Geographical Information Science (GIScience) fits within the wider data science discipline and why there is a need to specialise in spatial and social analysis for data science. 
 
 To provide this understanding, you will first work your way through a short document written specifically for this week to provide an extensive overview to why a geographical understanding to data science is critical to accurate and valid data analysis. 
