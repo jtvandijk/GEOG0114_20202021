@@ -11,14 +11,13 @@ description: "GEOG114: Principles of Spatial Analysis handbook."
 url: 'https\://jtvandijk.github.io/GEOG0114/'
 ---
 
-# Principles of Spatial Analysis {-}
+# Welcome {-}
 
 ```{r echo=FALSE, out.width = "100%", fig.align='center', cache=TRUE,}
 knitr::include_graphics('images/general/data_science_welcome_sm.jpg') 
 ```
 <br />
 
-## Welcome {-}
 Welcome to **Principles of Spatial Analysis**, one of the four core modules for the MSc in Geographic and Social Data Science here at [UCL Geography](https://www.geog.ucl.ac.uk/).
 
 This module provides an introduction into the theory, methods and tools of spatial analysis essential for your career as a Data Scientist.
