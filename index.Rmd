@@ -29,12 +29,12 @@ spatial dependency and autocorrelation, and spatial heterogeneity and spatial re
 on the applications of spatial analysis within current data science research, including cluster analysis and Bayesian modelling.
 
 ## Get in touch {-}
-Dr Jo Wilkin will be taking **Week 1-4, 9,10** of the module. You can contact her at <nobr>**j.wilkin [at] ucl.ac.uk**</nobr> or, for online office hours, you can book a half hour slot with Jo [using MS Bookings](https://outlook.office365.com/owa/calendar/JoWilkinBookableOfficeHours@ucl.ac.uk/bookings/).
+Dr Jo Wilkin will be taking **Week 1-4**, **9**, and **10** of the module. You can contact her at <nobr>**j.wilkin [at] ucl.ac.uk**</nobr> or, for online office hours, you can book a half hour slot with Jo [using MS Bookings](https://outlook.office365.com/owa/calendar/JoWilkinBookableOfficeHours@ucl.ac.uk/bookings/).
 
 Dr Justin van Dijk will be taking **Week 5-8** of the module. You can contact him at <nobr>**j.t.vandijk [at] ucl.ac.uk**</nobr> or, for online office hours, you can book a half hour slot with Justin [using MS Bookings](https://outlook.office365.com/owa/calendar/JustinvanDijkBookableOfficeHours@ucl.ac.uk/bookings/s/z5HqD80lWU-RMPggKx0acQ2).
 
 The module is further supported by two Postgraduate Teaching Assistants: Alfie Long and Jakub Wyszomierski.
 
 ## Noticed a mistake in this resource? {-}
-Please let us know through the GitHub issues tab, MS Teams, or by e-mail! 
+Please let us know through the GitHub issues tab, send us a message over MS Teams, or contact us by e-mail.
 

@@ -1,0 +1,460 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={GEOG0114: Principles of Spatial Analysis},
+  pdfauthor={Justin van Dijk and Joanna Wilkin},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\title{GEOG0114: Principles of Spatial Analysis}
+\author{Justin van Dijk\footnote{Department of Geography, \url{https://www.mappingdutchman.com/}} and Joanna Wilkin\footnote{Department of Geography, \url{https://www.geog.ucl.ac.uk/people/academic-staff/joanna-wilkin}}}
+\date{2020-10-23}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{principles-of-spatial-analysis}{%
+\chapter*{Principles of Spatial Analysis}\label{principles-of-spatial-analysis}}
+\addcontentsline{toc}{chapter}{Principles of Spatial Analysis}
+
+\begin{center}\includegraphics[width=1\linewidth]{images/general/data_science_welcome_sm} \end{center}
+
+\hypertarget{welcome}{%
+\section*{Welcome}\label{welcome}}
+\addcontentsline{toc}{section}{Welcome}
+
+Welcome to \textbf{Principles of Spatial Analysis}, one of the four core modules for the MSc in Geographic and Social Data Science here at \href{https://www.geog.ucl.ac.uk/}{UCL Geography}.
+
+This module provides an introduction into the theory, methods and tools of spatial analysis essential for your career as a Data Scientist.
+This module has been designed in conjunction with your module on \href{https://www.ucl.ac.uk/module-catalogue/modules/geographic-information-systems-and-science-CASA0005}{Geographic Information Systems (GIS) and Science (GIScience)} from CASA to provide you with an extensive introduction into GIScience, spatial analysis and their associated tools. It has a specific focus on the principles, properties and parameters that are part of spatial analysis and how to understand and apply these effectively within geographic and data science-oriented research.
+
+The first half of the module provides detailed introductions into spatial concepts such as scale and geography,
+spatial dependency and autocorrelation, and spatial heterogeneity and spatial regression models. The second half then focuses
+on the applications of spatial analysis within current data science research, including cluster analysis and Bayesian modelling.
+
+\hypertarget{get-in-touch}{%
+\section*{Get in touch}\label{get-in-touch}}
+\addcontentsline{toc}{section}{Get in touch}
+
+Dr Jo Wilkin will be taking \textbf{Week 1-4}, \textbf{9}, and \textbf{10} of the module. You can contact her at \textbf{j.wilkin {[}at{]} ucl.ac.uk} or, for online office hours, you can book a half hour slot with Jo \href{https://outlook.office365.com/owa/calendar/JoWilkinBookableOfficeHours@ucl.ac.uk/bookings/}{using MS Bookings}.
+
+Dr Justin van Dijk will be taking \textbf{Week 5-8} of the module. You can contact him at \textbf{j.t.vandijk {[}at{]} ucl.ac.uk} or, for online office hours, you can book a half hour slot with Justin \href{https://outlook.office365.com/owa/calendar/JustinvanDijkBookableOfficeHours@ucl.ac.uk/bookings/s/z5HqD80lWU-RMPggKx0acQ2}{using MS Bookings}.
+
+The module is further supported by two Postgraduate Teaching Assistants: Alfie Long and Jakub Wyszomierski.
+
+\hypertarget{noticed-a-mistake-in-this-resource}{%
+\section*{Noticed a mistake in this resource?}\label{noticed-a-mistake-in-this-resource}}
+\addcontentsline{toc}{section}{Noticed a mistake in this resource?}
+
+Please let us know through the GitHub issues tab, send us a message over MS Teams, or contact us by e-mail.
+
+\hypertarget{course-information}{%
+\chapter*{Course information}\label{course-information}}
+\addcontentsline{toc}{chapter}{Course information}
+
+\hypertarget{module-structure}{%
+\section*{Module structure}\label{module-structure}}
+\addcontentsline{toc}{section}{Module structure}
+
+This module consists of ten self-led workshops, ten interactive seminar discussions and ten help sessions. Each week, we'll provide an online workshop, provided as a worksheet with videos and instructions to complete the practical component of the workshop. All online classes will be held on the Principles of Spatial Analysis `team'.
+
+In addition, each week will have its own reading list or additional `recommended' (optional, not required!) online tutorials we know of that you might want to also complete.
+
+\hypertarget{weekly-topics}{%
+\section*{Weekly topics}\label{weekly-topics}}
+\addcontentsline{toc}{section}{Weekly topics}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.23\columnwidth}\raggedright
+Week\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\raggedright
+Date\strut
+\end{minipage} & \begin{minipage}[b]{0.49\columnwidth}\raggedright
+Topic\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+05/10/2020\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+Spatial analysis for data science\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+12/10/2020\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+Representation, scale and geography in spatial analysis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+19/10/2020\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+Spatial properties, relationships and operations\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+26/10/2020\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+Spatial dependence, spatial autocorrelation and defining neighbours\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+02/11/2020\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+Exploratory Spatial Data Analysis and regression\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+\emph{reading week}\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+\emph{reading week}\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+\emph{reading week}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+16/11/2020\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+Mapping clusters with point pattern analysis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+7\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+23/11/2020\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+Geostatistics, interpolation and raster analysis\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+30/11/2020\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+DBScan and cluster analysis for urban applications\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+9\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+09/12/2020\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+\emph{To be confirmed }\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright
+10\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\raggedright
+04/12/2020\strut
+\end{minipage} & \begin{minipage}[t]{0.49\columnwidth}\raggedright
+Creating reproducible research and module recap\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{learning-objectives}{%
+\section*{Learning objectives}\label{learning-objectives}}
+\addcontentsline{toc}{section}{Learning objectives}
+
+By the end of the module, you should:
+
+\begin{itemize}
+\tightlist
+\item
+  have a good understanding of the principles underlying the analysis of spatial data in general and spatial statistics in particular;
+\item
+  be able to use GIS software and tools for generating and visualising summary statistics;
+\item
+  be able to examine, analyse and simulate a range of spatial patterns and processes;
+\item
+  be able to use geostatistical tools to analyze and interpolate spatial patterns;
+\item
+  appreciate the many different sources of uncertainty in spatial data and spatial processing and how to address such issues in analysis and research;
+\item
+  be able to master the key concepts in network analysis with a focus on social and spatial networks (now in Intro to Data Science and Advanced Data Science modules);
+\item
+  be able to explain several novel applications of spatial analysis techniques within geographic and social data science applications.
+\end{itemize}
+
+\hypertarget{reading-list}{%
+\section*{Reading list}\label{reading-list}}
+\addcontentsline{toc}{section}{Reading list}
+
+We link to books and resources throughout each practical. The \href{https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb\&login=1}{full reading list for the course} is provided on the UCL library reading list page for the course. Alternatively, you can always easily find the link to the Reading List in the top right of any Moodle page for our module, under ``Library Resources''.
+
+This Reading List will be updated on a weekly basis, in preparation for the week to come, so you may see some weeks without reading for now. But please check back at the \textbf{start of each week} as the lecture, seminar and/or workshop material is released for that week to check for new readings. All reading for that week will be provided by the time your learning materials are released - so you will not need to check the reading list for updates as the week progresses.
+
+\hypertarget{module-assessment-details}{%
+\section*{Module assessment details}\label{module-assessment-details}}
+\addcontentsline{toc}{section}{Module assessment details}
+
+The assessment for Principles of Spatial Analysis is set across two pieces of separate coursework, weighted at 50\% each.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  The first piece of coursework will involve the completion of a spatial analysis project, based on the theory, concepts and application learnt during the module. A 1,500 word report will be submitted, alongside the code used within the project, which describes the analysis undertaken and the results of the analysis. Further guidance will be provided in Week 5 of the module.
+\item
+  The second piece of coursework will be a written (1,500 word) review on a current data science application that uses spatial analysis as its core methodology. The application can be drawn from the lecture material, particularly during Weeks 8 and 9, or one of your own choice. Further guidance will be provided in Week 9 of the module.
+\end{enumerate}
+
+Guidance for both pieces will be uploaded to this section of the Moodle, once provided.
+
+\hypertarget{useful-additional-resources}{%
+\section*{Useful additional resources}\label{useful-additional-resources}}
+\addcontentsline{toc}{section}{Useful additional resources}
+
+Besides the mandatory and recommended reading for this course, there are some additional resources that are worth checking out:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  MIT's introduction course on mastering the command line: \href{https://missing.csail.mit.edu/}{The Missing Semester of Your CS Education}
+\item
+  A useful tool to unpack command line instructions: \href{https://www.explainshell.com/}{explainshell.com}
+\item
+  Online resource to develop and check your regular expressions: \href{https://regexr.com/5d21d}{regexr.com}
+\item
+  Selecting colour palettes for your map making and data visualisation: \href{https://colorbrewer2.org}{colorbrewer 2.0}
+\end{enumerate}
+
+\hypertarget{spatial-analysis-for-data-science}{%
+\chapter{Spatial analysis for data science}\label{spatial-analysis-for-data-science}}
+
+\hypertarget{session-outline}{%
+\section{Session outline}\label{session-outline}}
+
+The first week of PSA will introduce how geography and Geographical Information Science (GIScience) fits within the wider data science discipline and why there is a need to specialise in spatial and social analysis for data science.
+
+To provide this understanding, you will first work your way through a short document written specifically for this week to provide an extensive overview to why a geographical understanding to data science is critical to accurate and valid data analysis.
+Next, through a recorded lecture, you'll be given a short introduction to Geographical Information Systems (GIS) tools for spatial data science and an explanation to how these tools have changed over the last decade, including a shift from traditional GIS software towards programming-based analysis in research applications.
+
+We'll then show you examples of different types of GIS software through a recorded tutorial. To gain a practical basic understanding of the differences across these software, including their ease of use, the recorded tutorial will show you the steps and processing to create a simple choropleth map of population and population density in London. This week plays a formative role in providing everyone with baseline from which to not only pursue this module, but the other technical modules on the MSc.
+
+\textbf{This week's content is \href{https://moodle.ucl.ac.uk/}{available on Moodle}.}
+
+\hypertarget{geographical-representation}{%
+\chapter{Geographical representation}\label{geographical-representation}}
+
+\hypertarget{session-outline}{%
+\section{Session outline}\label{session-outline}}
+
+The first part of this week will look at spatial representation data models, i.e.~how we transform geographic features and phenomena into geographic data for use within GIS. We will then explore the role of scale and geography within spatial analysis and provide you with a critical understanding of how both can impact and effect the analysis of data, particularly when looking at `event' type data, i.e.~the occurrence of a specific phenomenon over space.
+
+We will then introduce you to the role and usage of administrative geographies and discuss how they are subject to the Modifiable Area Unit Problem as well as its the consequences, including ecological fallacies. We will then discuss methods to account for these issues, including population standardization, as well as highlight alternative methods for representing data beyond traditional choropleth maps. The interactive lecture will also introduce the role of projections and what considerations you should make when choosing the projection for your analysis; projections are further discussed in Week 3 of CASA0005.
+
+The practical component of the week puts these issues into practice with an analysis of crime data from the UK and its various administrative geographies, as well as voting patterns in the USA. The practical component also introduces the two types of data joining primarily used in spatial analysis: attribute and spatial joins.
+
+\textbf{This week's content is \href{https://moodle.ucl.ac.uk/}{available on Moodle}.}
+
+\hypertarget{spatial-properties-and-relationships}{%
+\chapter{Spatial properties and relationships}\label{spatial-properties-and-relationships}}
+
+\hypertarget{session-outline}{%
+\section{Session outline}\label{session-outline}}
+
+Understanding spatial properties, relationships and how they are used within spatial operations are the building blocks to spatial data processing and analysis. This week, we look to provide you with a thorough introduction into using spatial operations (and the properties and relationships associated with them) through an introductory lecture, a research-based analysis (with demo and practical) and then a research task which we will look at during this week's seminar.
+
+Within the lecture, we will highlight the different ways of conceptualizing key spatial properties, such as distance, and the impact this may have on measurement. We then focus on their application within spatial operations, and how they can be used for the selection, subset and validation of data. We then look at the core terminology used to define spatial relationships and how they can be used to process datasets, using the operations previously mentioned.
+
+The practical utilises these concepts to investigate the accessibility of greenspace for schools across London. Recent research (Bijnens et al, 2020) has shown that children brought up in proximity to greenspace have a higher IQ and fewer behavioral problems, irrespective of socio-economic background. Here we will look to understand whether there are geographical patterns to schools that have high versus low access of greenspace and where a lack of greenspace needs to be addressed.
+
+For the practical, we provide an introduction to the research problem and outline how we devise a research methodology to be able to investigate our research questions. We then look at the required processing steps to create the final dataset that can be used in our analysis. This is followed by a short demo in which Jo will demonstrate the analysis visually in QGIS. We then ask you to recreate the analysis by creating a script in R-Studio (code provided) - this will allow you to replicate the analysis for other cities within the U.K, or even further afield if you can extract the same data. Finally, in preparation for this week's seminar, we ask you to watch a five minute video from a local news channel in Jo's hometown - ready to discuss as a possible research task in Friday's seminar.
+
+\textbf{This week's content is \href{https://moodle.ucl.ac.uk/}{available on Moodle}.}
+
+\hypertarget{spatial-autocorrelation}{%
+\chapter{Spatial autocorrelation}\label{spatial-autocorrelation}}
+
+\hypertarget{session-outline}{%
+\section{Session outline}\label{session-outline}}
+
+This week, we focus on the first of two key properties of spatial data: spatial dependence. Spatial dependence is the idea, as introduced in the first week via Tobler's Law (1970), that the observed value of a variable in one location is often dependent (to some degree) on the observed value of the same value in a nearby location. For spatial analysis, this dependence can be assessed and measured statistically by considering the level of spatial autocorrelation between values of a specific variable, observed in either different locations or between pairs of variables observed at the same location. Spatial autocorrelation occurs when these values are not independent of one another and instead cluster together across geographic space. A critical first step of spatial autocorrelation is to define the criteria under which a spatial unit (e.g.~an areal or point unit) can be understood as a ``neighbor'' to another unit. As highlighted in the previous week, spatial properties can often take on several meanings, and as a result, have an impact on the validity and accuracy of spatial analysis. This multiplicity also can be applied to the concept of spatial neighbours which can be defined through adjacency, contiguity or distance-based measures. As the specification of these criteria can impact the results, the definition followed therefore need to be grounded in particular theory that aims to represent the process and variable investigated.
+
+This week looks at spatial dependence and autocorrelation in detail, focusing on the different methods of assessment. As part of this, we look at the multiple methods to defining spatial neighbours and their suitability of use across different spatial phenomena -- and how this approach is used to generate spatial weights for use within these spatial autocorrelation methods as well as their potential to generate spatially-explicit variables.
+
+We put these learnings into practice through an analysis of spatial dependence of our areal crime data from Week 2, experimenting with the deployment of different neighbours and the impact of their analyses.
+
+\textbf{This week's content will be made available on 26/10.}
+
+\hypertarget{exploratory-data-analysis}{%
+\chapter{Exploratory data analysis}\label{exploratory-data-analysis}}
+
+\hypertarget{session-outline}{%
+\section{Session outline}\label{session-outline}}
+
+This week, we focus on the second of the two key properties of spatial data: spatial heterogeneity. With the underlying process (or processes) that govern a spatial variable likely to vary across space, a single global relationship for an entire region of study may not adequately model the process that governs outcomes in any given location of the study region. As a result, multiple methods have been developed to incorporate `space' into traditional regression models, including spatial lag models, spatial error models, and Geographical Weighted Regression.
+
+This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, first looking at the concept of Exploratory Spatial Data Analysis (ESDA) and how to understand data distributions, descriptive statistics, transformations as well as check for outliers and trends. We then look at the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships.
+
+In this week's session we will explore potential factors that may contribute to our crime rate in London, using previous literature to identify variables for inclusion in our analysis. We conduct an ESDA of these variables, followed by statistical and spatial regression analysis to determine whether our variables adhere to previous literature and do contribute to crime in our area of study.
+
+\textbf{This week's content will be made available on 02/11.}
+
+\hypertarget{feedback}{%
+\section{Feedback}\label{feedback}}
+
+Please take a moment to give us some \href{https://forms.gle/BYbZySVSHeoUEkJh9}{feedback on this week's content}.
+
+\hypertarget{point-pattern-analysis}{%
+\chapter{Point pattern analysis}\label{point-pattern-analysis}}
+
+\hypertarget{session-outline}{%
+\section{Session outline}\label{session-outline}}
+
+In our previous practicals, we have aggregated our event data into areal units, primarily using administrative geographies, to enable its easy comparison with other datasets provided at the same spatial scale, such as the census data used in the previous week, as well as to conduct spatial autocorrelation tests. However, when locations are precisely known, spatial point data can be used with a variety of spatial analytic techniques that go beyond the methods typically applied to areal data. The set of methods unique to point data are often referred to as point pattern analysis and geostatistics.
+
+This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look first at basic forms of point pattern analysis, including mean centers and the standard deviational ellipse, and then more powerful analysis methods, including kernel density estimation and Ripley's K function. These latter functions help determine and/or show whether points have a random, dispersed or clustered distribution pattern at a certain scale.
+
+To put these measures and methods into action, our practical component looks to test the hypothesis that ``the majority of bicycle theft in London occurs with walking distance of a train or tube station'', by assessing clusters and hotspots of bike theft in relation to a transportation locations.
+
+\textbf{This week's content will be made available on 16/10.}
+
+\hypertarget{feedback}{%
+\section{Feedback}\label{feedback}}
+
+Please take a moment to give us some \href{https://forms.gle/BYbZySVSHeoUEkJh9}{feedback on this week's content}.
+
+\hypertarget{geostatistics}{%
+\chapter{Geostatistics}\label{geostatistics}}
+
+\hypertarget{session-outline}{%
+\section{Session outline}\label{session-outline}}
+
+Following on from Week 3 and in conjunction with this week in your CASA005 module, we will also be focusing on rasters, exploring further the creation and application of rasters from vector datasets using geostatistics. During the lecture, we will provide a more in-depth and detailed explanation behind the geostatistics methods of interpolation, looking at various deterministic and geostatistical techniques. We then introduce methods to using vector datasets with rasters, utilizing a GIS method known as zonal statistics.
+
+Following on from Week 3's practical, we look to study further the role of greenspace quality in relation to schools and how this varies across different geographies. This week, we look at greenspace quality from a personal health perspective, analyzing air quality across our greenspaces. By analyzing the air quality of greenspace, we can provide a more detailed understanding to how ``accessible'' the greenspaces are to the surrounding schools.
+
+\textbf{This week's content will be made available on 23/11.}
+
+\hypertarget{feedback}{%
+\section{Feedback}\label{feedback}}
+
+Please take a moment to give us some \href{https://forms.gle/BYbZySVSHeoUEkJh9}{feedback on this week's content}.
+
+\hypertarget{cluster-analysis}{%
+\chapter{Cluster analysis}\label{cluster-analysis}}
+
+\hypertarget{session-outline}{%
+\section{Session outline}\label{session-outline}}
+
+DBScan is a density-based clustering algorithm that is commonly used in data mining and machine learning. Across a set of points, DBSCAN will group together points that are close to each other based on a distance measurement and a minimum number of points. It also marks as outliers the points that are in low-density regions. The algorithm can be used to find associations and structures in data that are hard to find through visual observation alone, but that can be relevant and useful to find patterns and predict trends. Whilst the algorithm is nearly 25 years old, it still is incredibly relevant to many applications within data science today, including within spatial analysis. Novel use of the algorithm has seen researchers detect and delineate urban areas from building footprint data. This use presents significant opportunities for those working to provide spatial data within countries where until recently, significant reference data did not exist.
+
+To understand this potential application, we look at the issues of data scarcity and sparsity within LICs and MICs, which do not currently have extensive mapping data or national mapping agencies to provide this data. We look at current initiatives to address this data dearth, with a specific focus on those working on the automated extraction of building footprints from satellite imagery using machine learning.
+
+Within the practical component, we look to deploy a simple version of DBScan on building data subset from the Tanzanian building dataset created by Microsoft. We attempt to detect and delineate our own urban areas within the dataset and discuss the advantages of novel changes made by those working with the algorithm for this specific purpose.
+
+\textbf{This week's content will be made available on 30/10.}
+
+\hypertarget{feedback}{%
+\section{Feedback}\label{feedback}}
+
+Please take a moment to give us some \href{https://forms.gle/BYbZySVSHeoUEkJh9}{feedback on this week's content}.
+
+\hypertarget{bayesian-modelling}{%
+\chapter{Bayesian modelling}\label{bayesian-modelling}}
+
+\hypertarget{session-outline}{%
+\section{Session outline}\label{session-outline}}
+
+Bayesian methodology is an approach to statistical inference that has existed for a long time. However, its applications have been limited until recent advancements in computation and simulation methods has made its deployment and use within big datasets viable. The concept underlying Bayesian spatial modeling is Bayes' theorem, which considers both the distributions of the data and the unknown coefficient estimates (LeSage and Pace, 2009). Bayesian spatial modeling embraces most, if not all, spatial models in the literature, such as the spatial lag model, the spatial error model, and geographically weighted regression discussed in Week 5. As a result, recent decades have experienced a rapid growth in the application of Bayesian spatial modeling to epidemiology, demography, and environmental health research, in addition to other geography-related disciplines. Bayesian modelling has been used to estimate population distributions, disease spread and air pollution.
+
+This week provides you with a general introduction to Bayesian modelling for geographical applications, with a focus on understanding the overall methodology as well as selection of variables for use within the model.
+
+The practical component looks at R-INLA package and how it can be used within health modelling.
+
+\textbf{This week's content will be made \href{https://moodle.ucl.ac.uk/}{available on Moodle} on 09/12.}
+
+\hypertarget{reproducible-research}{%
+\chapter{Reproducible research}\label{reproducible-research}}
+
+\hypertarget{session-outline}{%
+\section{Session outline}\label{session-outline}}
+
+In our final week of PSA, we will recap the main principles of spatial analysis that you have learnt over the last nine weeks. We will then look to tidy one of our projects from the previous week to use it within CodeOcean, an online platform that hosts code and data to create ``reproducible runs'' and ``capsules'' of research projects. The platform (alongside others!) enables you to create an anonymized version of your project, ready for its submission to journals as part of their increasing requirement to pass reproducibility and openness tests, e.g.~the International Journal of Geographic Information Science. The live session of this week will be extended to present the two pieces of coursework you will assessed on as part of this module, as well as to answer any questions you may have on these assessments.
+
+\textbf{This week's content will be made \href{https://moodle.ucl.ac.uk/}{available on Moodle} on 09/12.}
+
+\end{document}
