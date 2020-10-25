@@ -254,7 +254,7 @@ camden_oas$sqrt_n_thefts <- sqrt(camden_oas$n_thefts)
 tm_shape(camden_oas) +
   tm_fill(col="sqrt_n_thefts")
 
-# there a much more nuanced picture
+# there: a much more nuanced picture
 
 ```
 
