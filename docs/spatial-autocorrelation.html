@@ -582,7 +582,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The “lag” just refers to the fact you are comparing one observation against another, this can be used between timed observations. In this case, the “lag” we are looking at is between neighbours.</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="co"># create a spatial lag variable and save it to a new column</span></a>
 <a class="sourceLine" id="cb57-2" data-line-number="2">camden_oas_sp<span class="op">$</span>lag_scale_n_thefts &lt;-<span class="st"> </span><span class="kw">lag.listw</span>(nb_weights_list, camden_oas_sp<span class="op">$</span>scale_n_thefts)</a></code></pre></div>
-<p>Now we have used sp for all it is worth it’s time to head back to the safety of sf!</p>
+<p>Now we have used sp for all it is worth it’s time to head back to the safety of <code>sf()</code>!</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="co"># convert to sf</span></a>
 <a class="sourceLine" id="cb58-2" data-line-number="2">camden_oas_moran_stats &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(camden_oas_sp)</a></code></pre></div>
 <p>To make a human readable version of the map we will generate some labels for our findings from the Local Moran’s I stats.</p>
@@ -633,7 +633,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To do this plot we will need to use the plotting package <code>ggplot2</code>.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
 <p>Let’s make the scatterplot using the scaled number of thefts for the areas in the x axis and their spatially lagged results in the y axis.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="co">#Plot the results without the satistical significance</span></a>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="co"># plot the results without the satistical significance</span></a>
 <a class="sourceLine" id="cb61-2" data-line-number="2"><span class="kw">ggplot</span>(camden_oas_moran_stats, <span class="kw">aes</span>(<span class="dt">x =</span> scale_n_thefts, </a>
 <a class="sourceLine" id="cb61-3" data-line-number="3">                                   <span class="dt">y =</span> lag_scale_n_thefts, </a>
 <a class="sourceLine" id="cb61-4" data-line-number="4">                                   <span class="dt">color =</span> quad_non_sig)) <span class="op">+</span></a>
@@ -644,7 +644,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb61-9" data-line-number="9"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour=</span><span class="st">&quot;Relative to neighbours&quot;</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb61-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/04-v-plotting-quadrants-scatter-1.png" width="672" /></p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co">#Plot the results nnw with the satistical significance</span></a>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co"># plot the results nnw with the satistical significance</span></a>
 <a class="sourceLine" id="cb62-2" data-line-number="2"><span class="kw">ggplot</span>(camden_oas_moran_stats, <span class="kw">aes</span>(<span class="dt">x =</span> scale_n_thefts, </a>
 <a class="sourceLine" id="cb62-3" data-line-number="3">                                   <span class="dt">y =</span> lag_scale_n_thefts, </a>
 <a class="sourceLine" id="cb62-4" data-line-number="4">                                   <span class="dt">color =</span> quad_sig)) <span class="op">+</span></a>

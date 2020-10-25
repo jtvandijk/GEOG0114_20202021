@@ -486,7 +486,7 @@ camden_oas_sp$lag_scale_n_thefts <- lag.listw(nb_weights_list, camden_oas_sp$sca
 
 ```
 
-Now we have used sp for all it is worth it's time to head back to the safety of sf!
+Now we have used sp for all it is worth it's time to head back to the safety of `sf()`!
 
 ``` {r 04-s-back-to-sf}
 
@@ -562,7 +562,7 @@ Let's make the scatterplot using the scaled number of thefts for the areas in th
 
 ``` {r 04-v-plotting-quadrants-scatter}
 
-#Plot the results without the satistical significance
+# plot the results without the satistical significance
 ggplot(camden_oas_moran_stats, aes(x = scale_n_thefts, 
                                    y = lag_scale_n_thefts, 
                                    color = quad_non_sig)) +
@@ -573,7 +573,7 @@ ggplot(camden_oas_moran_stats, aes(x = scale_n_thefts,
   labs(colour="Relative to neighbours") +
   geom_point()
 
-#Plot the results nnw with the satistical significance
+# plot the results nnw with the satistical significance
 ggplot(camden_oas_moran_stats, aes(x = scale_n_thefts, 
                                    y = lag_scale_n_thefts, 
                                    color = quad_sig)) +
