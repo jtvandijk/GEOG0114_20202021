@@ -1,5 +1,7 @@
 # Spatial autocorrelation
 
+![Spatial distribution of qualitative data taken from Rcolorbrewer website [here](https://colorbrewer2.org/#type=qualitative&scheme=Set2&n=3).](images/week04/04_a_spatial_auto_correlation_map.png)
+
 This week, we focus on the first of two key properties of spatial data: spatial dependence. Spatial dependence is the idea, as introduced in the first week via Tobler’s Law (1970), that the observed value of a variable in one location is often dependent (to some degree) on the observed value of the same value in a nearby location. For spatial analysis, this dependence can be assessed and measured statistically by considering the level of spatial autocorrelation between values of a specific variable, observed in either different locations or between pairs of variables observed at the same location. Spatial autocorrelation occurs when these values are not independent of one another and instead cluster together across geographic space. A critical first step of spatial autocorrelation is to define the criteria under which a spatial unit (e.g. an areal or point unit) can be understood as a "neighbor" to another unit. As highlighted in the previous week, spatial properties can often take on several meanings, and as a result, have an impact on the validity and accuracy of spatial analysis. This multiplicity also can be applied to the concept of spatial neighbours which can be defined through adjacency, contiguity or distance-based measures. As the specification of these criteria can impact the results, the definition followed therefore need to be grounded in particular theory that aims to represent the process and variable investigated. 
 
 This week looks at spatial dependence and autocorrelation in detail, focusing on the different methods of assessment. As part of this, we look at the multiple methods to defining spatial neighbours and their suitability of use across different spatial phenomena – and how this approach is used to generate spatial weights for use within these spatial autocorrelation methods as well as their potential to generate spatially-explicit variables. 
@@ -38,13 +40,53 @@ library(tmap)
 
 ```
 
+Download the data and put it in a folder we can find. We will use the same structure as the data directory from the previous week. If you are using the same directory for this weeks work then you can put these files in the same directories. If not make new ones with names that work. Alternatively you can make your own structure and use that. 
+
+To follow along with the code as it is and not edit the file paths there should be a folder called "raw/" in your project working directory, if not best to make one. Inside this create a folder called "crime". You can download the crime data we will be working with from [here](https://julie.geog.ucl.ac.uk/~aclong/psa-course-data/raw/crime/2019_camden_theft_from_person.csv) and put it in the crime folder. 
+
+Inside the "raw" directory there should be a directory called "administrative_boundaries". In here make a folder called "camden_oas_2011/". You can download the shape data we will be using from [here](https://julie.geog.ucl.ac.uk/~aclong/psa-course-data/raw/administrative_boundaries/camden_oas_2011/).
+
+To check that you have all the files you need have a look at what's in these directories. We can create variables that hold a text version of the filepath, you can edit these to contain the filepath of your own copy of the data.
+
+``` {r 04-aa-listing-files}
+
+#make the filepath objects
+shapefile_dir_path <- "raw/administrative_boundaries/camden_oas_2011/"
+
+crime_data_dir_path <- "raw/crime/"
+
+#we can use list.files() with the direcotry names to find their contents
+
+#check for the files within these folders
+list.files(shapefile_dir_path)
+
+list.files(crime_data_dir_path)
+
+#then we can assign the filenames to variables as well.
+
+shapefile_name <- "OAs_camden_2011.shp"
+
+crimedata_filename <- "2019_camden_theft_from_person.csv"
+
+#you can use paste0() to add these together as complete filepaths
+paste0(shapefile_dir_path, shapefile_name)
+paste0(crime_data_dir_path, crimedata_filename)
+
+```
+
+Now we know the data is there we can load and plot the shape data.
+
 Plot the output areas of the borough Camden.
 
 ``` {r 04-b-plotting-camden-OAs}
 
 # first read in the data
-camden_oas <- st_read("raw/administrative_boundaries/camden_oas_2011/OAs_camden_2011.shp", 
-                      crs=27700)
+camden_oas <- st_read(paste0(shapefile_dir_path, shapefile_name), 
+                      #the filename of the shapefile
+                      crs=27700
+                      #the projection information of the shape
+                      #as we know it is in BNG
+                      )
 
 # plot it to have a look
 plot(st_geometry(camden_oas))
@@ -246,6 +288,9 @@ tm_shape(camden_oas) +
   tm_fill(col="n_thefts")
 
 # you can see our map is massively skewed by central london
+# meaning that the results in central london (the south of camden) 
+# are so much larger than those in the north that it makes it harder
+# to see the smaller differences between other areas
 # try taking the square root of the number of thefts
 # (there are 0s in data so log would return some negatives)
 camden_oas$sqrt_n_thefts <- sqrt(camden_oas$n_thefts)
@@ -357,7 +402,7 @@ sum(camden_oas_nb_mat[1,])
 
 ```
 
-Now the sum of one row instead of being the total number of neighbours for that OA instead adds up to 1. This is important for the calculation of Moran's I.
+Now the sum of one row instead of being the total number of neighbours for that OA instead adds up to 1. This is important for the calculation of Moran's I, as the metric is designed to return a values between -1 and 1. If the neghbour relations are not limited to add up to one the value for Moran's I can exceed -1 and 1, and it loses meaning when compared against other cases.
 
 Now we need to calculate a separate weights list object to use for the Moran's I calculation.
 
@@ -460,54 +505,105 @@ I the text label, the first term describes the area being focused on and the sec
 
 # run all of these through to assign variables
 
+# for the statistical significance version assign a level 
+# of statistical significance for the p value, column 5 of the local moran model
+sig_level <- 0.1
+
 # version with significance value
 camden_oas_moran_stats$quad_sig <- ifelse(camden_oas_moran_stats$scale_n_thefts > 0 & 
-                                          camden_oas_moran_stats$scale_n_thefts > 0 & 
-                                          local_moran_camden_oa_theft[,5] <=0.05, 
+                                          camden_oas_moran_stats$lag_scale_n_thefts > 0 & 
+                                          local_moran_camden_oa_theft[,5] <= sig_level, 
                                           "high-high", 
                                    ifelse(camden_oas_moran_stats$scale_n_thefts <= 0 & 
-                                          camden_oas_moran_stats$scale_n_thefts <= 0 & 
-                                          local_moran_camden_oa_theft[,5] <= 0.05, 
+                                          camden_oas_moran_stats$lag_scale_n_thefts <= 0 & 
+                                          local_moran_camden_oa_theft[,5] <= sig_level, 
                                           "low-low", 
                                    ifelse(camden_oas_moran_stats$scale_n_thefts > 0 & 
-                                          camden_oas_moran_stats$scale_n_thefts <= 0 & 
-                                          local_moran_camden_oa_theft[,5] <= 0.05, 
+                                          camden_oas_moran_stats$lag_scale_n_thefts <= 0 & 
+                                          local_moran_camden_oa_theft[,5] <= sig_level, 
                                           "high-low", 
                                    ifelse(camden_oas_moran_stats$scale_n_thefts <= 0 & 
-                                          camden_oas_moran_stats$scale_n_thefts > 0 & 
-                                          local_moran_camden_oa_theft[,5] <= 0.05, 
+                                          camden_oas_moran_stats$lag_scale_n_thefts > 0 & 
+                                          local_moran_camden_oa_theft[,5] <= sig_level, 
                                           "low-high",
-                                   ifelse(local_moran_camden_oa_theft[,5] > 0.05, 
+                                   ifelse(local_moran_camden_oa_theft[,5] > sig_level, 
                                           "not-significant", 
                                           "not-significant")))))
 
 # version without significance check
 camden_oas_moran_stats$quad_non_sig <- ifelse(camden_oas_moran_stats$scale_n_thefts > 0 & 
-                                              camden_oas_moran_stats$scale_n_thefts > 0, 
+                                              camden_oas_moran_stats$lag_scale_n_thefts > 0, 
                                               "high-high", 
                                        ifelse(camden_oas_moran_stats$scale_n_thefts <= 0 & 
-                                              camden_oas_moran_stats$scale_n_thefts <= 0, 
+                                              camden_oas_moran_stats$lag_scale_n_thefts <= 0, 
                                               "low-low", 
                                        ifelse(camden_oas_moran_stats$scale_n_thefts > 0 & 
-                                              camden_oas_moran_stats$scale_n_thefts <= 0, 
+                                              camden_oas_moran_stats$lag_scale_n_thefts <= 0, 
                                               "high-low", 
                                        ifelse(camden_oas_moran_stats$scale_n_thefts <= 0 & 
-                                              camden_oas_moran_stats$scale_n_thefts > 0,
+                                              camden_oas_moran_stats$lag_scale_n_thefts > 0,
                                               "low-high",NA))))
 
 ```
 
-Now that that horrible looking conditional over we can map the results!
+Now that the horrible looking conditional is finished we can see what we did.
 
-``` {r 04-s-mapping-local-moran}
+To understand how this is working we can look at the data non-spatially. As we recentred the data, our axes should split the data neatly into their different area vs spatial lag relationship categories.
 
-# map it!
-tm_shape(camden_oas_moran_stats) +
-  tm_fill(col = "quad_non_sig")
+To do this plot we will need to use the plotting package `ggplot2`.
+
+``` {r 04-t-ggplot-loading}
+
+library(ggplot2)
 
 ```
 
-As our data are so spatially clustered we can't see any outlier places. This suggests that the pattern of theft from persons is not highly concentrated in very small areas or particular Output Areas, and instead is spread on a larger scale than we have used here.
+Let's make the scatterplot using the scaled number of thefts for the areas in the x axis and their spatially lagged results in the y axis.
+
+``` {r 04-v-plotting-quadrants-scatter}
+
+#Plot the results without the satistical significance
+ggplot(camden_oas_moran_stats, aes(x = scale_n_thefts, 
+                                   y = lag_scale_n_thefts, 
+                                   color = quad_non_sig)) +
+  geom_vline(xintercept = 0) + # plot vertical line
+  geom_hline(yintercept = 0) + # plot horizontal line
+  xlab("Scaled Thefts (n)") +
+  ylab("Lagged Scaled Thefts (n)") +
+  labs(colour="Relative to neighbours") +
+  geom_point()
+
+#Plot the results nnw with the satistical significance
+ggplot(camden_oas_moran_stats, aes(x = scale_n_thefts, 
+                                   y = lag_scale_n_thefts, 
+                                   color = quad_sig)) +
+  geom_vline(xintercept = 0) + # plot vertical line
+  geom_hline(yintercept = 0) + # plot horizontal line
+  xlab("Scaled Thefts (n)") +
+  ylab("Lagged Scaled Thefts (n)") +
+  labs(colour="Relative to neighbours") +
+  geom_point()
+
+```
+
+Now let's see how they are arranged spatially.
+
+``` {r 04-s-mapping-local-moran}
+
+# map all of the results here
+tm_shape(camden_oas_moran_stats) +
+  tm_fill(col = "quad_non_sig")
+
+# map only the statistically significant results here
+tm_shape(camden_oas_moran_stats) +
+  tm_fill(col = "quad_sig")
+
+
+```
+
+As our data are so spatially clustered we can't see any outlier places (once we have ignored the non-significant results. This suggests that the pattern of theft from persons is not highly concentrated in very small areas or particular Output Areas, and instead is spread on a larger scale than we have used here.
 
 To go further than we have today it would be possibe to run the exact same code but using a larger scale, perhaps LSOA, or Ward, and compare how this changes the Moran's I statistics globally and locally.
+
+Or, to gain statistical significance in looking at the difference between areas getting more data perhaps over a longer timescale, where there are less areas with 0 thefts.
 
