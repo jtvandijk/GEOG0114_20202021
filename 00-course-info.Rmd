@@ -12,7 +12,7 @@ In addition, each week will have its own reading list or additional 'recommended
 | 2             | 12/10/2020    | Representation, scale and geography in spatial analysis |
 | 3             | 19/10/2020    | Spatial properties, relationships and operations |
 | 4             | 26/10/2020    | Spatial dependence, spatial autocorrelation and defining neighbours |
-| 5             | 02/11/2020    | Exploratory Spatial Data Analysis and regression |
+| 5             | 02/11/2020    | Exploratory Spatial Data Analysis |
 | *reading week*  | *reading week*  | *reading week* |
 | 6             | 16/11/2020    | Mapping clusters with point pattern analysis |
 | 7             | 23/11/2020    | Geostatistics, interpolation and raster analysis |
@@ -44,7 +44,7 @@ The assessment for Principles of Spatial Analysis is set across two pieces of se
 
 2) The second piece of coursework will be a written (1,500 word) review on a current data science application that uses spatial analysis as its core methodology. The application can be drawn from the lecture material, particularly during Weeks 8 and 9, or one of your own choice. Further guidance will be provided in Week 9 of the module.
 
-Guidance for both pieces will be uploaded to this section of the Moodle, once provided.
+Guidance for both pieces will be uploaded to Moodle, once provided.
 
 ## Useful additional resources {-}
 Besides the mandatory and recommended reading for this course, there are some additional resources that are worth checking out:
