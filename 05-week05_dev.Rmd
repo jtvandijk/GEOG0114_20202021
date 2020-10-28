@@ -1,21 +1,30 @@
-# Exploratory (spatial) data analysis
+# Exploratory spatial data analysis
 
+## Introduction {#introduction_w05}
 This week, we focus on the second of the two key properties of spatial data: spatial heterogeneity. With the underlying process (or processes) that govern a spatial variable likely to vary across space, a single global relationship for an entire region of study may not adequately model the process that governs outcomes in any given location of the study region. As a result, multiple methods have been developed to incorporate ‘space’ into traditional regression models, including spatial lag models, spatial error models, and Geographical Weighted Regression. 
 
-This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, first looking at the concepts of **tidy data** and  **Exploratory Spatial Data Analysis (ESDA)**. We then look at the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships. 
+This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, first looking at the concepts of **tidy data** and **Exploratory Spatial Data Analysis (ESDA)**. We then look at the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships. 
 
 In this week's session we will explore potential factors that may contribute to our crime rate in London, using previous literature to identify variables for inclusion in our analysis. We conduct an ESDA of these variables, followed by statistical and spatial regression analysis to determine whether our variables adhere to previous literature and do contribute to crime in our area of study. 
 
-This week is structured by **three** short lecture videos, **two** [assignments](#assignment_w05) that you need to do in preparation for Friday's seminar, and practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is provided on the UCL library reading list page for the course.  
+This week is structured by **three** short lecture videos, **two** [assignments](#assignment_w05) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is availble on the UCL library reading list page for the course.
+
+### Video: Overview {#overview_w05}
+```{r 05-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+# embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
+```
+[[Lecture slides]]() [[Watch on MS stream]]()
+
 
 ## Tidy data
-Over the past weeks a lot of information has come your way, diving deep into the world of Spatial Data Science. However, whilst you are slowly becoming proficient in using R and Python to solve complex (spatial) problems, it is now a good moment to start thinking about data themselves and how they are organised. This is crucial for when you are moving on to working on your own projects where you have to source data yourselves: the vast majority of the data you will find in the public domain (or private domain for that matter) will be **dirty data**. With dirty data we mean data that needs some form of pre-processing, cleaning, and linkage before you can use it for your analysis. Exploratory (Spatial) Data Analysis very much starts with your data preparation. 
+Over the past weeks a lot of information has come your way, diving deep into the world of Spatial Data Science. However, whilst you are slowly becoming proficient in using R and Python to solve complex (spatial) problems, it is now a good moment to start thinking about data themselves and how they are organised. This is crucial for when you are moving on to working on your own projects where you have to source data yourselves: the vast majority of the data you will find in the public domain (or private domain for that matter) will be **dirty data**. With dirty data we mean data that needs some form of pre-processing, cleaning, and linkage before you can use it for your analysis. Exploratory Spatial Data Analysis very much starts with your data preparation. 
 
 In the following, you will learn a consistent way to structure your data in R: **tidy data**. Tidy data, as formalised by [R Wizard Hadley Wickham](http://hadley.nz/) in his contribution to the [Journal of Statistical Software](http://www.jstatsoft.org/v59/i10/paper) is not only very much at the core of the `tidyverse()` R package, but also of general importance when organising your data. In the words, of [the Wizard](https://r4ds.had.co.nz/tidy-data.html):
 
 > Once you have tidy data and the tidy tools provided by packages in the tidyverse, you will spend much less time munging data from one representation to another, allowing you to spend more time on the analytic questions at hand.
 
-### Short lecture: Tidy data
+### Video: Tidy data
 ```{r 05-short-lecture-tidy-data, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
 # embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
@@ -66,10 +75,10 @@ None of these representations are wrong per se, however, not are equally easy to
 knitr::include_graphics('images/week05/05_a_tidy_data.png')
 ```
 
-### Creating tidy data
+### Example: Creating tidy data
 Now we know what consitute tidy data, we can put this into practice with an example using some data from the [Office for National Statistics](https://www.ons.gov.uk/). Let's say we need to analyse some data on the ethnic background of the UK population, for instance, because we want to get some insights into the relationship between [COVID-19 and ethnic background](https://www.theguardian.com/world/2020/oct/09/bame-groups-hit-hard-again-covid-second-wave-grips-uk-nations). Our assignment is to calculate the relative proportions of each ethnic group within the administrative geography of the [Middle layer Super Output Area (MSOA)](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates). In order to do this, we have been given a file that contains data on ethnicity by age group at the MSOA-level of every person in the 2011 UK Census who is 16 year or older. Download the file to your own computer and [set up your data directory](spatial-autocorrelation.html#setting-up-the-environment) in the same fashion as you did last week. 
 
-&nbsp;<center>**You can download the file [here](https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/eth_pop_2011/msoa_eth2011_ew_16plus.csv).** </center>&nbsp;
+&nbsp;<center>**You can download the file [here](https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/eth_pop_2011/msoa_eth2011_ew_16plus.zip).** </center>&nbsp;
 
 We start by making sure our `tidyverse()` is loaded into R and using the `read_csv()` function to read our `.csv` file.
 
@@ -208,7 +217,7 @@ We are now really getting somewhere, although in order for our data to be tidy e
 # pivot table and aggregate values
 df_clean <- pivot_wider(df_reformatted,names_from=group,values_from=count,values_fn=sum)
 
-# reorder columns alphabetically and rename column names
+# rename columns
 names(df_clean) <- c('msoa11cd','white_british','white_irish','white_traveller','white_other','mixed_white_black_caribbean',
                      'mixed_white_black_african','mixed_white_asian','mixed_other','asian_indian','asian_pakistani',
                      'asian_bangladeshi','asian_chinese','asian_other','black_african','black_caribbean','black_other',
@@ -241,14 +250,16 @@ Further to calculating the proportions of the population belonging to each of th
 &nbsp;
 <center>**You can download the shapefile with the administrative boundaries [here](https://github.com/jtvandijk/GEOG0114/tree/master/raw/administrative_boundaries/uk_lad_2020/LADs_uk_2020.zip).**
 
-**You can download the `.csv` file with the population data [here](https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/mye_pop_2019/mye_pop_2019.csv).**
+**You can download the `.csv` file with the population data [here](https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/mye_pop_2019/mye_pop_2019.zip).**
 </center>
 &nbsp;
 
-## Exploratory (spatial) data analysis in R
+## Exploratory spatial data analysis in R
 Exploratory spatial data analysis (ESDA) is the extension of exploratory data analysis (EDA) to the spatial realm. EDA is a collection of descriptive techniques used to detect patterns, identiy outliers, and form hypotheses from the data. An EDA typically involves descriptive statistics and data visualisation. Exploratory techniques generally stay 'close' to the original data.
 
-### Short lecture: Exploratory (spatial) data analysis
+### Example: Exploring our dataset
+
+### Video: Exploratory spatial data analysis
 ```{r echo=FALSE}
 library(vembedr)
 # embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
@@ -256,7 +267,7 @@ library(vembedr)
 [[Lecture slides]]() [[Watch on MS stream]]()
 
 ## Spatial heterogeneity
-### Short lecture: Spatial heterogeneity
+### Video: Spatial heterogeneity
 ```{r echo=FALSE}
 library(vembedr)
 # embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
