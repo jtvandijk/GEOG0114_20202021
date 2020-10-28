@@ -8,5 +8,5 @@ Within the practical component, we look to deploy a simple version of DBScan on 
 
 <center>**This week's content will be made available on 30/10.**</center>
 
-## Feedback
+## Feedback {#feedback_w08}
 Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).

@@ -8,5 +8,5 @@ To put these measures and methods into action, our practical component looks to 
 
 <center>**This week's content will be made available on 16/10.**</center>
 
-## Feedback
+## Feedback {#feedback_w06}
 Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).
