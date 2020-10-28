@@ -245,7 +245,7 @@ Further to calculating the proportions of the population belonging to each of th
 </center>
 &nbsp;
 
-## Exploratory (spatial) data analysis in 
+## Exploratory (spatial) data analysis in R
 Exploratory spatial data analysis (ESDA) is the extension of exploratory data analysis (EDA) to the spatial realm. EDA is a collection of descriptive techniques used to detect patterns, identiy outliers, and form hypotheses from the data. An EDA typically involves descriptive statistics and data visualisation. Exploratory techniques generally stay 'close' to the original data.
 
 ### Short lecture: Exploratory (spatial) data analysis

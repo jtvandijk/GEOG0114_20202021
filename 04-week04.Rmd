@@ -177,7 +177,7 @@ We create functions that check whether any polygons share boundaries or overlap 
 
 The different cases of these are known as queen, and rook. These describe the relations in a similar way to the possible chess board movements of these pieces. 
 
-``` {r 04-e-shared-boundary-neighbour-function-creation, echo=FALSE}
+``` {r 04-e-shared-boundary-neighbour-function-creation}
 
 # for rook case
 st_rook = function(a, b = a) st_relate(a, b, pattern = "F***1****")

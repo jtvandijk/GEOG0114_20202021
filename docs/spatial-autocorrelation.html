@@ -176,7 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#creating-tidy-data"><i class="fa fa-check"></i><b>5.1.3</b> Creating tidy data</a></li>
 <li class="chapter" data-level="5.1.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#assignment_w05"><i class="fa fa-check"></i><b>5.1.4</b> Assignments</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in"><i class="fa fa-check"></i><b>5.2</b> Exploratory (spatial) data analysis in</a>
+<li class="chapter" data-level="5.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r"><i class="fa fa-check"></i><b>5.2</b> Exploratory (spatial) data analysis in R</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#short-lecture-exploratory-spatial-data-analysis"><i class="fa fa-check"></i><b>5.2.1</b> Short lecture: Exploratory (spatial) data analysis</a></li>
 </ul></li>
@@ -364,47 +364,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>I’ve actually taken this bit of code from an issue raised in the Git repository of the sf package. You can look at it <a href="https://github.com/r-spatial/sf/issues/234#issuecomment-299013710">here</a>.</p>
 <p>We create functions that check whether any polygons share boundaries or overlap one another, and then also check by how much. These new functions are based on the <code>st_relate()</code> function.</p>
 <p>The different cases of these are known as queen, and rook. These describe the relations in a similar way to the possible chess board movements of these pieces.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="spatial-autocorrelation.html#cb21-1" aria-hidden="true"></a><span class="co"># for rook case</span></span>
+<span id="cb21-2"><a href="spatial-autocorrelation.html#cb21-2" aria-hidden="true"></a>st_rook =<span class="st"> </span><span class="cf">function</span>(a, <span class="dt">b =</span> a) <span class="kw">st_relate</span>(a, b, <span class="dt">pattern =</span> <span class="st">&quot;F***1****&quot;</span>)</span>
+<span id="cb21-3"><a href="spatial-autocorrelation.html#cb21-3" aria-hidden="true"></a></span>
+<span id="cb21-4"><a href="spatial-autocorrelation.html#cb21-4" aria-hidden="true"></a><span class="co"># for queen case</span></span>
+<span id="cb21-5"><a href="spatial-autocorrelation.html#cb21-5" aria-hidden="true"></a>st_queen &lt;-<span class="st"> </span><span class="cf">function</span>(a, <span class="dt">b =</span> a) <span class="kw">st_relate</span>(a, b, <span class="dt">pattern =</span> <span class="st">&quot;F***T****&quot;</span>)</span>
+<span id="cb21-6"><a href="spatial-autocorrelation.html#cb21-6" aria-hidden="true"></a></span>
+<span id="cb21-7"><a href="spatial-autocorrelation.html#cb21-7" aria-hidden="true"></a><span class="co"># these methods are now in the documetation for st_relate()</span></span>
+<span id="cb21-8"><a href="spatial-autocorrelation.html#cb21-8" aria-hidden="true"></a><span class="co"># have a look in the examples at the bottom of the documentation</span></span>
+<span id="cb21-9"><a href="spatial-autocorrelation.html#cb21-9" aria-hidden="true"></a><span class="co"># st_relate()</span></span></code></pre></div>
 <p>Now that we’ve created the functions lets try them out.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="spatial-autocorrelation.html#cb21-1" aria-hidden="true"></a><span class="co"># let&#39;s use the same example oa as previously</span></span>
-<span id="cb21-2"><a href="spatial-autocorrelation.html#cb21-2" aria-hidden="true"></a><span class="co"># you can check that it exists and if not assign the variable again</span></span>
-<span id="cb21-3"><a href="spatial-autocorrelation.html#cb21-3" aria-hidden="true"></a><span class="cf">if</span>(<span class="kw">exists</span>(<span class="st">&quot;chosen_oa&quot;</span>)<span class="op">==</span><span class="ot">TRUE</span>)</span>
-<span id="cb21-4"><a href="spatial-autocorrelation.html#cb21-4" aria-hidden="true"></a>  {</span>
-<span id="cb21-5"><a href="spatial-autocorrelation.html#cb21-5" aria-hidden="true"></a>  </span>
-<span id="cb21-6"><a href="spatial-autocorrelation.html#cb21-6" aria-hidden="true"></a>  <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;You have already selected &quot;</span>,chosen_oa))</span>
-<span id="cb21-7"><a href="spatial-autocorrelation.html#cb21-7" aria-hidden="true"></a></span>
-<span id="cb21-8"><a href="spatial-autocorrelation.html#cb21-8" aria-hidden="true"></a>  }<span class="cf">else</span>{</span>
-<span id="cb21-9"><a href="spatial-autocorrelation.html#cb21-9" aria-hidden="true"></a>  chosen_oa &lt;-<span class="st"> &quot;E00004174&quot;</span></span>
-<span id="cb21-10"><a href="spatial-autocorrelation.html#cb21-10" aria-hidden="true"></a>  </span>
-<span id="cb21-11"><a href="spatial-autocorrelation.html#cb21-11" aria-hidden="true"></a>  <span class="kw">print</span>(<span class="st">&quot;You have not yet assigned the variable chosen_oa in this session. You have now been assigned E00004174, home of the main UCL campus and birthplace of Alfie Long (statue forthcoming).&quot;</span>)</span>
-<span id="cb21-12"><a href="spatial-autocorrelation.html#cb21-12" aria-hidden="true"></a>  </span>
-<span id="cb21-13"><a href="spatial-autocorrelation.html#cb21-13" aria-hidden="true"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="spatial-autocorrelation.html#cb22-1" aria-hidden="true"></a><span class="co"># let&#39;s use the same example oa as previously</span></span>
+<span id="cb22-2"><a href="spatial-autocorrelation.html#cb22-2" aria-hidden="true"></a><span class="co"># you can check that it exists and if not assign the variable again</span></span>
+<span id="cb22-3"><a href="spatial-autocorrelation.html#cb22-3" aria-hidden="true"></a><span class="cf">if</span>(<span class="kw">exists</span>(<span class="st">&quot;chosen_oa&quot;</span>)<span class="op">==</span><span class="ot">TRUE</span>)</span>
+<span id="cb22-4"><a href="spatial-autocorrelation.html#cb22-4" aria-hidden="true"></a>  {</span>
+<span id="cb22-5"><a href="spatial-autocorrelation.html#cb22-5" aria-hidden="true"></a>  </span>
+<span id="cb22-6"><a href="spatial-autocorrelation.html#cb22-6" aria-hidden="true"></a>  <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;You have already selected &quot;</span>,chosen_oa))</span>
+<span id="cb22-7"><a href="spatial-autocorrelation.html#cb22-7" aria-hidden="true"></a></span>
+<span id="cb22-8"><a href="spatial-autocorrelation.html#cb22-8" aria-hidden="true"></a>  }<span class="cf">else</span>{</span>
+<span id="cb22-9"><a href="spatial-autocorrelation.html#cb22-9" aria-hidden="true"></a>  chosen_oa &lt;-<span class="st"> &quot;E00004174&quot;</span></span>
+<span id="cb22-10"><a href="spatial-autocorrelation.html#cb22-10" aria-hidden="true"></a>  </span>
+<span id="cb22-11"><a href="spatial-autocorrelation.html#cb22-11" aria-hidden="true"></a>  <span class="kw">print</span>(<span class="st">&quot;You have not yet assigned the variable chosen_oa in this session. You have now been assigned E00004174, home of the main UCL campus and birthplace of Alfie Long (statue forthcoming).&quot;</span>)</span>
+<span id="cb22-12"><a href="spatial-autocorrelation.html#cb22-12" aria-hidden="true"></a>  </span>
+<span id="cb22-13"><a href="spatial-autocorrelation.html#cb22-13" aria-hidden="true"></a>  }</span></code></pre></div>
 <pre><code>## [1] &quot;You have already selected E00004174&quot;</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="spatial-autocorrelation.html#cb23-1" aria-hidden="true"></a><span class="co"># the neighbourhood assigning works in a very similar way to the way st_nn() works</span></span>
-<span id="cb23-2"><a href="spatial-autocorrelation.html#cb23-2" aria-hidden="true"></a><span class="co"># this way we will return a sparse list for the row numbers that are neighbours </span></span>
-<span id="cb23-3"><a href="spatial-autocorrelation.html#cb23-3" aria-hidden="true"></a><span class="co"># and use that to subset the oa shapefile</span></span>
-<span id="cb23-4"><a href="spatial-autocorrelation.html#cb23-4" aria-hidden="true"></a>chosen_oa_neighbours &lt;-<span class="st"> </span><span class="kw">st_rook</span>(<span class="kw">st_geometry</span>(camden_oas[camden_oas<span class="op">$</span>OA11CD<span class="op">==</span>chosen_oa,]), </span>
-<span id="cb23-5"><a href="spatial-autocorrelation.html#cb23-5" aria-hidden="true"></a>                                <span class="kw">st_geometry</span>(camden_oas))</span>
-<span id="cb23-6"><a href="spatial-autocorrelation.html#cb23-6" aria-hidden="true"></a></span>
-<span id="cb23-7"><a href="spatial-autocorrelation.html#cb23-7" aria-hidden="true"></a><span class="co"># get the names of neighbours</span></span>
-<span id="cb23-8"><a href="spatial-autocorrelation.html#cb23-8" aria-hidden="true"></a><span class="co"># get the names (codes) of these neighbours</span></span>
-<span id="cb23-9"><a href="spatial-autocorrelation.html#cb23-9" aria-hidden="true"></a>neighbour_names &lt;-<span class="st"> </span>camden_oas[chosen_oa_neighbours[[<span class="dv">1</span>]],]</span>
-<span id="cb23-10"><a href="spatial-autocorrelation.html#cb23-10" aria-hidden="true"></a>neighbour_names &lt;-<span class="st"> </span>neighbour_names<span class="op">$</span>OA11CD</span>
-<span id="cb23-11"><a href="spatial-autocorrelation.html#cb23-11" aria-hidden="true"></a></span>
-<span id="cb23-12"><a href="spatial-autocorrelation.html#cb23-12" aria-hidden="true"></a><span class="co"># plot the borough OA outlines in black with </span></span>
-<span id="cb23-13"><a href="spatial-autocorrelation.html#cb23-13" aria-hidden="true"></a><span class="co"># the chosen oa filled in red and </span></span>
-<span id="cb23-14"><a href="spatial-autocorrelation.html#cb23-14" aria-hidden="true"></a><span class="co"># the neighbours in green</span></span>
-<span id="cb23-15"><a href="spatial-autocorrelation.html#cb23-15" aria-hidden="true"></a></span>
-<span id="cb23-16"><a href="spatial-autocorrelation.html#cb23-16" aria-hidden="true"></a><span class="kw">tm_shape</span>(camden_oas) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb23-17"><a href="spatial-autocorrelation.html#cb23-17" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_borders</span>() <span class="op">+</span></span>
-<span id="cb23-18"><a href="spatial-autocorrelation.html#cb23-18" aria-hidden="true"></a><span class="st">  </span><span class="co"># highlight only the neighbours</span></span>
-<span id="cb23-19"><a href="spatial-autocorrelation.html#cb23-19" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(camden_oas[camden_oas<span class="op">$</span>OA11CD <span class="op">%in%</span><span class="st"> </span>neighbour_names,]) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb23-20"><a href="spatial-autocorrelation.html#cb23-20" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col =</span> <span class="st">&quot;green&quot;</span>) <span class="op">+</span></span>
-<span id="cb23-21"><a href="spatial-autocorrelation.html#cb23-21" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(camden_oas[camden_oas<span class="op">$</span>OA11CD<span class="op">==</span>chosen_oa,]) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb23-22"><a href="spatial-autocorrelation.html#cb23-22" aria-hidden="true"></a><span class="st">  </span><span class="co"># highlight only the chosen OA</span></span>
-<span id="cb23-23"><a href="spatial-autocorrelation.html#cb23-23" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
-<span id="cb23-24"><a href="spatial-autocorrelation.html#cb23-24" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(camden_oas) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb23-25"><a href="spatial-autocorrelation.html#cb23-25" aria-hidden="true"></a><span class="st">  </span><span class="co"># overlay the borders</span></span>
-<span id="cb23-26"><a href="spatial-autocorrelation.html#cb23-26" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_borders</span>(<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="spatial-autocorrelation.html#cb24-1" aria-hidden="true"></a><span class="co"># the neighbourhood assigning works in a very similar way to the way st_nn() works</span></span>
+<span id="cb24-2"><a href="spatial-autocorrelation.html#cb24-2" aria-hidden="true"></a><span class="co"># this way we will return a sparse list for the row numbers that are neighbours </span></span>
+<span id="cb24-3"><a href="spatial-autocorrelation.html#cb24-3" aria-hidden="true"></a><span class="co"># and use that to subset the oa shapefile</span></span>
+<span id="cb24-4"><a href="spatial-autocorrelation.html#cb24-4" aria-hidden="true"></a>chosen_oa_neighbours &lt;-<span class="st"> </span><span class="kw">st_rook</span>(<span class="kw">st_geometry</span>(camden_oas[camden_oas<span class="op">$</span>OA11CD<span class="op">==</span>chosen_oa,]), </span>
+<span id="cb24-5"><a href="spatial-autocorrelation.html#cb24-5" aria-hidden="true"></a>                                <span class="kw">st_geometry</span>(camden_oas))</span>
+<span id="cb24-6"><a href="spatial-autocorrelation.html#cb24-6" aria-hidden="true"></a></span>
+<span id="cb24-7"><a href="spatial-autocorrelation.html#cb24-7" aria-hidden="true"></a><span class="co"># get the names of neighbours</span></span>
+<span id="cb24-8"><a href="spatial-autocorrelation.html#cb24-8" aria-hidden="true"></a><span class="co"># get the names (codes) of these neighbours</span></span>
+<span id="cb24-9"><a href="spatial-autocorrelation.html#cb24-9" aria-hidden="true"></a>neighbour_names &lt;-<span class="st"> </span>camden_oas[chosen_oa_neighbours[[<span class="dv">1</span>]],]</span>
+<span id="cb24-10"><a href="spatial-autocorrelation.html#cb24-10" aria-hidden="true"></a>neighbour_names &lt;-<span class="st"> </span>neighbour_names<span class="op">$</span>OA11CD</span>
+<span id="cb24-11"><a href="spatial-autocorrelation.html#cb24-11" aria-hidden="true"></a></span>
+<span id="cb24-12"><a href="spatial-autocorrelation.html#cb24-12" aria-hidden="true"></a><span class="co"># plot the borough OA outlines in black with </span></span>
+<span id="cb24-13"><a href="spatial-autocorrelation.html#cb24-13" aria-hidden="true"></a><span class="co"># the chosen oa filled in red and </span></span>
+<span id="cb24-14"><a href="spatial-autocorrelation.html#cb24-14" aria-hidden="true"></a><span class="co"># the neighbours in green</span></span>
+<span id="cb24-15"><a href="spatial-autocorrelation.html#cb24-15" aria-hidden="true"></a></span>
+<span id="cb24-16"><a href="spatial-autocorrelation.html#cb24-16" aria-hidden="true"></a><span class="kw">tm_shape</span>(camden_oas) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb24-17"><a href="spatial-autocorrelation.html#cb24-17" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_borders</span>() <span class="op">+</span></span>
+<span id="cb24-18"><a href="spatial-autocorrelation.html#cb24-18" aria-hidden="true"></a><span class="st">  </span><span class="co"># highlight only the neighbours</span></span>
+<span id="cb24-19"><a href="spatial-autocorrelation.html#cb24-19" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(camden_oas[camden_oas<span class="op">$</span>OA11CD <span class="op">%in%</span><span class="st"> </span>neighbour_names,]) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb24-20"><a href="spatial-autocorrelation.html#cb24-20" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col =</span> <span class="st">&quot;green&quot;</span>) <span class="op">+</span></span>
+<span id="cb24-21"><a href="spatial-autocorrelation.html#cb24-21" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(camden_oas[camden_oas<span class="op">$</span>OA11CD<span class="op">==</span>chosen_oa,]) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb24-22"><a href="spatial-autocorrelation.html#cb24-22" aria-hidden="true"></a><span class="st">  </span><span class="co"># highlight only the chosen OA</span></span>
+<span id="cb24-23"><a href="spatial-autocorrelation.html#cb24-23" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb24-24"><a href="spatial-autocorrelation.html#cb24-24" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(camden_oas) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb24-25"><a href="spatial-autocorrelation.html#cb24-25" aria-hidden="true"></a><span class="st">  </span><span class="co"># overlay the borders</span></span>
+<span id="cb24-26"><a href="spatial-autocorrelation.html#cb24-26" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_borders</span>(<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/04-f-shared-boundary-neighbour-example-1.png" width="672" /></p>
 <p>Because the tolerance of the shared boundaries in the st_rook pattern and the st_queen pattern in the example I have chosen they both assign the same neighbours. This is true for many non-square polygons as the difference is often given as whether two shapes share one or more points. Therefore the difference can have more to do with the resolution and alignment of your polygons than the actual spatial properties they represent.</p>
 <p>They can and do find different neighbours in other situations. Follow the grid example in the <code>st_relate()</code> documentation if you want to see it working.</p>
@@ -422,100 +431,100 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="our-property-is-theft." class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Our property is theft.</h3>
 <p>We’ll be using personal theft data from around camden. Our neighbourhood analysis of spatial autocorrelation should allow us to quantify the pattern of distribution of reported theft from persons in Camden in 2019.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="spatial-autocorrelation.html#cb24-1" aria-hidden="true"></a><span class="co"># read in the data</span></span>
-<span id="cb24-2"><a href="spatial-autocorrelation.html#cb24-2" aria-hidden="true"></a>camden_theft &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;raw/crime/2019_camden_theft_from_person.csv&quot;</span>)</span>
-<span id="cb24-3"><a href="spatial-autocorrelation.html#cb24-3" aria-hidden="true"></a></span>
-<span id="cb24-4"><a href="spatial-autocorrelation.html#cb24-4" aria-hidden="true"></a><span class="co"># this is a csv, and the coordinates are in columns called &quot;X&quot; and &quot;Y&quot;</span></span>
-<span id="cb24-5"><a href="spatial-autocorrelation.html#cb24-5" aria-hidden="true"></a><span class="co"># you can convert this into an sf object quite easily</span></span>
-<span id="cb24-6"><a href="spatial-autocorrelation.html#cb24-6" aria-hidden="true"></a>camden_theft &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(camden_theft, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>),</span>
-<span id="cb24-7"><a href="spatial-autocorrelation.html#cb24-7" aria-hidden="true"></a>                         <span class="dt">crs =</span> <span class="dv">27700</span>)</span>
-<span id="cb24-8"><a href="spatial-autocorrelation.html#cb24-8" aria-hidden="true"></a></span>
-<span id="cb24-9"><a href="spatial-autocorrelation.html#cb24-9" aria-hidden="true"></a><span class="co"># have a look at these points</span></span>
-<span id="cb24-10"><a href="spatial-autocorrelation.html#cb24-10" aria-hidden="true"></a><span class="kw">plot</span>(camden_theft)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="spatial-autocorrelation.html#cb25-1" aria-hidden="true"></a><span class="co"># read in the data</span></span>
+<span id="cb25-2"><a href="spatial-autocorrelation.html#cb25-2" aria-hidden="true"></a>camden_theft &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;raw/crime/2019_camden_theft_from_person.csv&quot;</span>)</span>
+<span id="cb25-3"><a href="spatial-autocorrelation.html#cb25-3" aria-hidden="true"></a></span>
+<span id="cb25-4"><a href="spatial-autocorrelation.html#cb25-4" aria-hidden="true"></a><span class="co"># this is a csv, and the coordinates are in columns called &quot;X&quot; and &quot;Y&quot;</span></span>
+<span id="cb25-5"><a href="spatial-autocorrelation.html#cb25-5" aria-hidden="true"></a><span class="co"># you can convert this into an sf object quite easily</span></span>
+<span id="cb25-6"><a href="spatial-autocorrelation.html#cb25-6" aria-hidden="true"></a>camden_theft &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(camden_theft, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;Y&quot;</span>),</span>
+<span id="cb25-7"><a href="spatial-autocorrelation.html#cb25-7" aria-hidden="true"></a>                         <span class="dt">crs =</span> <span class="dv">27700</span>)</span>
+<span id="cb25-8"><a href="spatial-autocorrelation.html#cb25-8" aria-hidden="true"></a></span>
+<span id="cb25-9"><a href="spatial-autocorrelation.html#cb25-9" aria-hidden="true"></a><span class="co"># have a look at these points</span></span>
+<span id="cb25-10"><a href="spatial-autocorrelation.html#cb25-10" aria-hidden="true"></a><span class="kw">plot</span>(camden_theft)</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/04-g-loading-in-crime-data-1.png" width="672" /></p>
 <p>This is point data, but we are interested in the polygons and how this data relates to the administrative boundaries it is within.</p>
 <p>Let’s count the number of thefts in each OA. This is a spatial operation that is often called “point in polygon”. As we are just counting the number of occurences in each polygon it is quite easy. In the future you may often want to aggregate over points for an area, or in reverse assign values from the polygon to the points.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="spatial-autocorrelation.html#cb25-1" aria-hidden="true"></a><span class="co"># this code counts the lengths (number) of points that intersect each polygon</span></span>
-<span id="cb25-2"><a href="spatial-autocorrelation.html#cb25-2" aria-hidden="true"></a><span class="co"># let&#39;s add a new column to our OA sf object called n_thefts to store this</span></span>
-<span id="cb25-3"><a href="spatial-autocorrelation.html#cb25-3" aria-hidden="true"></a>camden_oas<span class="op">$</span>n_thefts &lt;-<span class="st"> </span><span class="kw">lengths</span>(<span class="kw">st_intersects</span>(camden_oas, camden_theft))</span>
-<span id="cb25-4"><a href="spatial-autocorrelation.html#cb25-4" aria-hidden="true"></a></span>
-<span id="cb25-5"><a href="spatial-autocorrelation.html#cb25-5" aria-hidden="true"></a><span class="co"># plot a quick map of it</span></span>
-<span id="cb25-6"><a href="spatial-autocorrelation.html#cb25-6" aria-hidden="true"></a><span class="kw">tm_shape</span>(camden_oas) <span class="op">+</span></span>
-<span id="cb25-7"><a href="spatial-autocorrelation.html#cb25-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&quot;n_thefts&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="spatial-autocorrelation.html#cb26-1" aria-hidden="true"></a><span class="co"># this code counts the lengths (number) of points that intersect each polygon</span></span>
+<span id="cb26-2"><a href="spatial-autocorrelation.html#cb26-2" aria-hidden="true"></a><span class="co"># let&#39;s add a new column to our OA sf object called n_thefts to store this</span></span>
+<span id="cb26-3"><a href="spatial-autocorrelation.html#cb26-3" aria-hidden="true"></a>camden_oas<span class="op">$</span>n_thefts &lt;-<span class="st"> </span><span class="kw">lengths</span>(<span class="kw">st_intersects</span>(camden_oas, camden_theft))</span>
+<span id="cb26-4"><a href="spatial-autocorrelation.html#cb26-4" aria-hidden="true"></a></span>
+<span id="cb26-5"><a href="spatial-autocorrelation.html#cb26-5" aria-hidden="true"></a><span class="co"># plot a quick map of it</span></span>
+<span id="cb26-6"><a href="spatial-autocorrelation.html#cb26-6" aria-hidden="true"></a><span class="kw">tm_shape</span>(camden_oas) <span class="op">+</span></span>
+<span id="cb26-7"><a href="spatial-autocorrelation.html#cb26-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&quot;n_thefts&quot;</span>)</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/04-h-point-in-polygon-1.png" width="672" /></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="spatial-autocorrelation.html#cb26-1" aria-hidden="true"></a><span class="co"># you can see our map is massively skewed by central london</span></span>
-<span id="cb26-2"><a href="spatial-autocorrelation.html#cb26-2" aria-hidden="true"></a><span class="co"># meaning that the results in central london (the south of camden) </span></span>
-<span id="cb26-3"><a href="spatial-autocorrelation.html#cb26-3" aria-hidden="true"></a><span class="co"># are so much larger than those in the north that it makes it harder</span></span>
-<span id="cb26-4"><a href="spatial-autocorrelation.html#cb26-4" aria-hidden="true"></a><span class="co"># to see the smaller differences between other areas</span></span>
-<span id="cb26-5"><a href="spatial-autocorrelation.html#cb26-5" aria-hidden="true"></a><span class="co"># try taking the square root of the number of thefts</span></span>
-<span id="cb26-6"><a href="spatial-autocorrelation.html#cb26-6" aria-hidden="true"></a><span class="co"># (there are 0s in data so log would return some negatives)</span></span>
-<span id="cb26-7"><a href="spatial-autocorrelation.html#cb26-7" aria-hidden="true"></a>camden_oas<span class="op">$</span>sqrt_n_thefts &lt;-<span class="st"> </span><span class="kw">sqrt</span>(camden_oas<span class="op">$</span>n_thefts)</span>
-<span id="cb26-8"><a href="spatial-autocorrelation.html#cb26-8" aria-hidden="true"></a></span>
-<span id="cb26-9"><a href="spatial-autocorrelation.html#cb26-9" aria-hidden="true"></a><span class="co"># plot a quick map of it</span></span>
-<span id="cb26-10"><a href="spatial-autocorrelation.html#cb26-10" aria-hidden="true"></a><span class="kw">tm_shape</span>(camden_oas) <span class="op">+</span></span>
-<span id="cb26-11"><a href="spatial-autocorrelation.html#cb26-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&quot;sqrt_n_thefts&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="spatial-autocorrelation.html#cb27-1" aria-hidden="true"></a><span class="co"># you can see our map is massively skewed by central london</span></span>
+<span id="cb27-2"><a href="spatial-autocorrelation.html#cb27-2" aria-hidden="true"></a><span class="co"># meaning that the results in central london (the south of camden) </span></span>
+<span id="cb27-3"><a href="spatial-autocorrelation.html#cb27-3" aria-hidden="true"></a><span class="co"># are so much larger than those in the north that it makes it harder</span></span>
+<span id="cb27-4"><a href="spatial-autocorrelation.html#cb27-4" aria-hidden="true"></a><span class="co"># to see the smaller differences between other areas</span></span>
+<span id="cb27-5"><a href="spatial-autocorrelation.html#cb27-5" aria-hidden="true"></a><span class="co"># try taking the square root of the number of thefts</span></span>
+<span id="cb27-6"><a href="spatial-autocorrelation.html#cb27-6" aria-hidden="true"></a><span class="co"># (there are 0s in data so log would return some negatives)</span></span>
+<span id="cb27-7"><a href="spatial-autocorrelation.html#cb27-7" aria-hidden="true"></a>camden_oas<span class="op">$</span>sqrt_n_thefts &lt;-<span class="st"> </span><span class="kw">sqrt</span>(camden_oas<span class="op">$</span>n_thefts)</span>
+<span id="cb27-8"><a href="spatial-autocorrelation.html#cb27-8" aria-hidden="true"></a></span>
+<span id="cb27-9"><a href="spatial-autocorrelation.html#cb27-9" aria-hidden="true"></a><span class="co"># plot a quick map of it</span></span>
+<span id="cb27-10"><a href="spatial-autocorrelation.html#cb27-10" aria-hidden="true"></a><span class="kw">tm_shape</span>(camden_oas) <span class="op">+</span></span>
+<span id="cb27-11"><a href="spatial-autocorrelation.html#cb27-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&quot;sqrt_n_thefts&quot;</span>)</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/04-h-point-in-polygon-2.png" width="672" /></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="spatial-autocorrelation.html#cb27-1" aria-hidden="true"></a><span class="co"># there: a much more nuanced picture</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="spatial-autocorrelation.html#cb28-1" aria-hidden="true"></a><span class="co"># there: a much more nuanced picture</span></span></code></pre></div>
 </div>
 <div id="global-morans-i" class="section level3" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Global Moran’s I</h3>
 <p>With a global Moran’s I we can test how “random” the spatial distribution of these values is. Global Moran’s I is a metric between -1 and 1. -1 is a completely even spatial distribution of values, 0 is a “random” distribution, and 1 is a “non-random” distribution of clearly defined clusters.</p>
 <p>To calculate the global Moran’s I you need an adjacency matrix that contains the information of whether or not an OA is next to another, for an even more nuanced view you can include distance, or a distance weighting in the matrix rather than just the TRUE or FALSE, to take into account the strength of the nieghbourhoodness.</p>
 <p>I will revisit the neighbourhood calculation used earlier then develop it from a one to all to an all to all computation.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="spatial-autocorrelation.html#cb28-1" aria-hidden="true"></a><span class="co"># here is the previous way of calculating neighbourhoodness for our chosen OA</span></span>
-<span id="cb28-2"><a href="spatial-autocorrelation.html#cb28-2" aria-hidden="true"></a><span class="co"># but now we will add an extra argument that states we want a non-sparse adjacency matrix returned</span></span>
-<span id="cb28-3"><a href="spatial-autocorrelation.html#cb28-3" aria-hidden="true"></a></span>
-<span id="cb28-4"><a href="spatial-autocorrelation.html#cb28-4" aria-hidden="true"></a><span class="co"># find only nearest neighbours to our chosen output area centroid, find all within 500 meters</span></span>
-<span id="cb28-5"><a href="spatial-autocorrelation.html#cb28-5" aria-hidden="true"></a><span class="co"># select only the the centroid of our chosen output area and all other areas (with st_centroid)</span></span>
-<span id="cb28-6"><a href="spatial-autocorrelation.html#cb28-6" aria-hidden="true"></a><span class="co"># we set the maximum number of neighbours we want to find to &quot;50&quot; (with parameter k)</span></span>
-<span id="cb28-7"><a href="spatial-autocorrelation.html#cb28-7" aria-hidden="true"></a><span class="co"># we set the maximum distance of calling an OA centroid a neigbour to &quot;500&quot; (with parameter maxdist)</span></span>
-<span id="cb28-8"><a href="spatial-autocorrelation.html#cb28-8" aria-hidden="true"></a><span class="co"># we return a non-sparse matrix that tells us whether each OA is a neighbour or not (with parameter sparse)</span></span>
-<span id="cb28-9"><a href="spatial-autocorrelation.html#cb28-9" aria-hidden="true"></a>chosen_oa_neighbours &lt;-<span class="st"> </span><span class="kw">st_nn</span>(<span class="kw">st_geometry</span>(<span class="kw">st_centroid</span>(camden_oas[camden_oas<span class="op">$</span>OA11CD<span class="op">==</span>chosen_oa,])), </span>
-<span id="cb28-10"><a href="spatial-autocorrelation.html#cb28-10" aria-hidden="true"></a>                              <span class="kw">st_geometry</span>(<span class="kw">st_centroid</span>(camden_oas)),</span>
-<span id="cb28-11"><a href="spatial-autocorrelation.html#cb28-11" aria-hidden="true"></a>                              <span class="dt">sparse =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb28-12"><a href="spatial-autocorrelation.html#cb28-12" aria-hidden="true"></a>                              <span class="dt">k=</span><span class="dv">50</span>,</span>
-<span id="cb28-13"><a href="spatial-autocorrelation.html#cb28-13" aria-hidden="true"></a>                              <span class="dt">maxdist =</span> <span class="dv">500</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="spatial-autocorrelation.html#cb29-1" aria-hidden="true"></a><span class="co"># here is the previous way of calculating neighbourhoodness for our chosen OA</span></span>
+<span id="cb29-2"><a href="spatial-autocorrelation.html#cb29-2" aria-hidden="true"></a><span class="co"># but now we will add an extra argument that states we want a non-sparse adjacency matrix returned</span></span>
+<span id="cb29-3"><a href="spatial-autocorrelation.html#cb29-3" aria-hidden="true"></a></span>
+<span id="cb29-4"><a href="spatial-autocorrelation.html#cb29-4" aria-hidden="true"></a><span class="co"># find only nearest neighbours to our chosen output area centroid, find all within 500 meters</span></span>
+<span id="cb29-5"><a href="spatial-autocorrelation.html#cb29-5" aria-hidden="true"></a><span class="co"># select only the the centroid of our chosen output area and all other areas (with st_centroid)</span></span>
+<span id="cb29-6"><a href="spatial-autocorrelation.html#cb29-6" aria-hidden="true"></a><span class="co"># we set the maximum number of neighbours we want to find to &quot;50&quot; (with parameter k)</span></span>
+<span id="cb29-7"><a href="spatial-autocorrelation.html#cb29-7" aria-hidden="true"></a><span class="co"># we set the maximum distance of calling an OA centroid a neigbour to &quot;500&quot; (with parameter maxdist)</span></span>
+<span id="cb29-8"><a href="spatial-autocorrelation.html#cb29-8" aria-hidden="true"></a><span class="co"># we return a non-sparse matrix that tells us whether each OA is a neighbour or not (with parameter sparse)</span></span>
+<span id="cb29-9"><a href="spatial-autocorrelation.html#cb29-9" aria-hidden="true"></a>chosen_oa_neighbours &lt;-<span class="st"> </span><span class="kw">st_nn</span>(<span class="kw">st_geometry</span>(<span class="kw">st_centroid</span>(camden_oas[camden_oas<span class="op">$</span>OA11CD<span class="op">==</span>chosen_oa,])), </span>
+<span id="cb29-10"><a href="spatial-autocorrelation.html#cb29-10" aria-hidden="true"></a>                              <span class="kw">st_geometry</span>(<span class="kw">st_centroid</span>(camden_oas)),</span>
+<span id="cb29-11"><a href="spatial-autocorrelation.html#cb29-11" aria-hidden="true"></a>                              <span class="dt">sparse =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb29-12"><a href="spatial-autocorrelation.html#cb29-12" aria-hidden="true"></a>                              <span class="dt">k=</span><span class="dv">50</span>,</span>
+<span id="cb29-13"><a href="spatial-autocorrelation.html#cb29-13" aria-hidden="true"></a>                              <span class="dt">maxdist =</span> <span class="dv">500</span>) </span></code></pre></div>
 <pre><code>## projected points</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="spatial-autocorrelation.html#cb30-1" aria-hidden="true"></a><span class="co"># check the object type</span></span>
-<span id="cb30-2"><a href="spatial-autocorrelation.html#cb30-2" aria-hidden="true"></a><span class="kw">class</span>(chosen_oa_neighbours)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="spatial-autocorrelation.html#cb31-1" aria-hidden="true"></a><span class="co"># check the object type</span></span>
+<span id="cb31-2"><a href="spatial-autocorrelation.html#cb31-2" aria-hidden="true"></a><span class="kw">class</span>(chosen_oa_neighbours)</span></code></pre></div>
 <pre><code>## [1] &quot;matrix&quot;</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="spatial-autocorrelation.html#cb32-1" aria-hidden="true"></a><span class="co"># this single row matrix contains a true or false for each OA in the OA sf object indicating whether it is true or false</span></span>
-<span id="cb32-2"><a href="spatial-autocorrelation.html#cb32-2" aria-hidden="true"></a><span class="co"># if you sum() it it counts the number of TRUEs in it</span></span>
-<span id="cb32-3"><a href="spatial-autocorrelation.html#cb32-3" aria-hidden="true"></a><span class="kw">sum</span>(chosen_oa_neighbours)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="spatial-autocorrelation.html#cb33-1" aria-hidden="true"></a><span class="co"># this single row matrix contains a true or false for each OA in the OA sf object indicating whether it is true or false</span></span>
+<span id="cb33-2"><a href="spatial-autocorrelation.html#cb33-2" aria-hidden="true"></a><span class="co"># if you sum() it it counts the number of TRUEs in it</span></span>
+<span id="cb33-3"><a href="spatial-autocorrelation.html#cb33-3" aria-hidden="true"></a><span class="kw">sum</span>(chosen_oa_neighbours)</span></code></pre></div>
 <pre><code>## [1] 21</code></pre>
 <p>Because of the way Moran’s I functions in R it is necessary to use <code>sp()</code> and <code>spdep()</code>.</p>
 <p>So load them in.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="spatial-autocorrelation.html#cb34-1" aria-hidden="true"></a><span class="co"># for doing spatial operations (now mostly superseded by sf)</span></span>
-<span id="cb34-2"><a href="spatial-autocorrelation.html#cb34-2" aria-hidden="true"></a><span class="kw">library</span>(sp)</span>
-<span id="cb34-3"><a href="spatial-autocorrelation.html#cb34-3" aria-hidden="true"></a></span>
-<span id="cb34-4"><a href="spatial-autocorrelation.html#cb34-4" aria-hidden="true"></a><span class="co"># for our neighbourhood and Moran&#39;s I analysis</span></span>
-<span id="cb34-5"><a href="spatial-autocorrelation.html#cb34-5" aria-hidden="true"></a><span class="kw">library</span>(spdep)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="spatial-autocorrelation.html#cb35-1" aria-hidden="true"></a><span class="co"># for doing spatial operations (now mostly superseded by sf)</span></span>
+<span id="cb35-2"><a href="spatial-autocorrelation.html#cb35-2" aria-hidden="true"></a><span class="kw">library</span>(sp)</span>
+<span id="cb35-3"><a href="spatial-autocorrelation.html#cb35-3" aria-hidden="true"></a></span>
+<span id="cb35-4"><a href="spatial-autocorrelation.html#cb35-4" aria-hidden="true"></a><span class="co"># for our neighbourhood and Moran&#39;s I analysis</span></span>
+<span id="cb35-5"><a href="spatial-autocorrelation.html#cb35-5" aria-hidden="true"></a><span class="kw">library</span>(spdep)</span></code></pre></div>
 <pre><code>## Loading required package: spData</code></pre>
 <pre><code>## To access larger datasets in this package, install the spDataLarge
 ## package with: `install.packages(&#39;spDataLarge&#39;,
 ## repos=&#39;https://nowosad.github.io/drat/&#39;, type=&#39;source&#39;)`</code></pre>
 <p>As you will see these methods and functions have quite esoteric and complicated syntax.</p>
 <p>Some of the operations they will do will be similar to the examples shown earlier, but the way they assign and store variables makes it much quicker to run complex spatial operations.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="spatial-autocorrelation.html#cb37-1" aria-hidden="true"></a><span class="co"># check the current class</span></span>
-<span id="cb37-2"><a href="spatial-autocorrelation.html#cb37-2" aria-hidden="true"></a><span class="kw">class</span>(camden_oas)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="spatial-autocorrelation.html#cb38-1" aria-hidden="true"></a><span class="co"># check the current class</span></span>
+<span id="cb38-2"><a href="spatial-autocorrelation.html#cb38-2" aria-hidden="true"></a><span class="kw">class</span>(camden_oas)</span></code></pre></div>
 <pre><code>## [1] &quot;sf&quot;         &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="spatial-autocorrelation.html#cb39-1" aria-hidden="true"></a><span class="co"># convert it to sp</span></span>
-<span id="cb39-2"><a href="spatial-autocorrelation.html#cb39-2" aria-hidden="true"></a>camden_oas_sp &lt;-<span class="st"> </span><span class="kw">as_Spatial</span>(camden_oas, <span class="dt">IDs=</span>camden_oas<span class="op">$</span>OA11CD)</span>
-<span id="cb39-3"><a href="spatial-autocorrelation.html#cb39-3" aria-hidden="true"></a></span>
-<span id="cb39-4"><a href="spatial-autocorrelation.html#cb39-4" aria-hidden="true"></a><span class="co"># check the class of the new object</span></span>
-<span id="cb39-5"><a href="spatial-autocorrelation.html#cb39-5" aria-hidden="true"></a><span class="kw">class</span>(camden_oas_sp)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="spatial-autocorrelation.html#cb40-1" aria-hidden="true"></a><span class="co"># convert it to sp</span></span>
+<span id="cb40-2"><a href="spatial-autocorrelation.html#cb40-2" aria-hidden="true"></a>camden_oas_sp &lt;-<span class="st"> </span><span class="kw">as_Spatial</span>(camden_oas, <span class="dt">IDs=</span>camden_oas<span class="op">$</span>OA11CD)</span>
+<span id="cb40-3"><a href="spatial-autocorrelation.html#cb40-3" aria-hidden="true"></a></span>
+<span id="cb40-4"><a href="spatial-autocorrelation.html#cb40-4" aria-hidden="true"></a><span class="co"># check the class of the new object</span></span>
+<span id="cb40-5"><a href="spatial-autocorrelation.html#cb40-5" aria-hidden="true"></a><span class="kw">class</span>(camden_oas_sp)</span></code></pre></div>
 <pre><code>## [1] &quot;SpatialPolygonsDataFrame&quot;
 ## attr(,&quot;package&quot;)
 ## [1] &quot;sp&quot;</code></pre>
 <p>Now we can make the esoteric and timesaving “nb” object!</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="spatial-autocorrelation.html#cb41-1" aria-hidden="true"></a><span class="co"># make the nb</span></span>
-<span id="cb41-2"><a href="spatial-autocorrelation.html#cb41-2" aria-hidden="true"></a>camden_oas_nb &lt;-<span class="st"> </span><span class="kw">poly2nb</span>(camden_oas_sp, <span class="dt">row.names=</span>camden_oas_sp<span class="op">$</span>OA11CD)</span>
-<span id="cb41-3"><a href="spatial-autocorrelation.html#cb41-3" aria-hidden="true"></a></span>
-<span id="cb41-4"><a href="spatial-autocorrelation.html#cb41-4" aria-hidden="true"></a><span class="co"># what kind of object is it?</span></span>
-<span id="cb41-5"><a href="spatial-autocorrelation.html#cb41-5" aria-hidden="true"></a><span class="kw">class</span>(camden_oas_nb)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="spatial-autocorrelation.html#cb42-1" aria-hidden="true"></a><span class="co"># make the nb</span></span>
+<span id="cb42-2"><a href="spatial-autocorrelation.html#cb42-2" aria-hidden="true"></a>camden_oas_nb &lt;-<span class="st"> </span><span class="kw">poly2nb</span>(camden_oas_sp, <span class="dt">row.names=</span>camden_oas_sp<span class="op">$</span>OA11CD)</span>
+<span id="cb42-3"><a href="spatial-autocorrelation.html#cb42-3" aria-hidden="true"></a></span>
+<span id="cb42-4"><a href="spatial-autocorrelation.html#cb42-4" aria-hidden="true"></a><span class="co"># what kind of object is it?</span></span>
+<span id="cb42-5"><a href="spatial-autocorrelation.html#cb42-5" aria-hidden="true"></a><span class="kw">class</span>(camden_oas_nb)</span></code></pre></div>
 <pre><code>## [1] &quot;nb&quot;</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="spatial-autocorrelation.html#cb43-1" aria-hidden="true"></a><span class="co"># have a look inside</span></span>
-<span id="cb43-2"><a href="spatial-autocorrelation.html#cb43-2" aria-hidden="true"></a><span class="kw">str</span>(camden_oas_nb,<span class="dt">list.len=</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="spatial-autocorrelation.html#cb44-1" aria-hidden="true"></a><span class="co"># have a look inside</span></span>
+<span id="cb44-2"><a href="spatial-autocorrelation.html#cb44-2" aria-hidden="true"></a><span class="kw">str</span>(camden_oas_nb,<span class="dt">list.len=</span><span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## List of 749
 ##  $ : int [1:7] 10 15 215 303 327 375 464
 ##  $ : int [1:5] 19 72 309 365 430
@@ -535,33 +544,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  - attr(*, &quot;sym&quot;)= logi TRUE</code></pre>
 <p>It’s basically the same as the sparse list of neighbours that we created before using <code>st_nn()</code> and <code>st_rook()</code>. Now, however it will work with the <code>spdep()</code> ecosystem of functions.</p>
 <p>If you look at the output you can see that it automatically uses “queen” case.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="spatial-autocorrelation.html#cb45-1" aria-hidden="true"></a><span class="co"># further into the sp rabbit hole we can now create a matrix from this (like the non-sparse output of the st_nn/st_rook processes)</span></span>
-<span id="cb45-2"><a href="spatial-autocorrelation.html#cb45-2" aria-hidden="true"></a>camden_oas_nb_mat &lt;-<span class="st"> </span><span class="kw">nb2mat</span>(camden_oas_nb, <span class="dt">style=</span><span class="st">&#39;B&#39;</span>)</span>
-<span id="cb45-3"><a href="spatial-autocorrelation.html#cb45-3" aria-hidden="true"></a></span>
-<span id="cb45-4"><a href="spatial-autocorrelation.html#cb45-4" aria-hidden="true"></a><span class="co"># check the sum of one columnd</span></span>
-<span id="cb45-5"><a href="spatial-autocorrelation.html#cb45-5" aria-hidden="true"></a><span class="kw">sum</span>(camden_oas_nb_mat[<span class="dv">1</span>,])</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="spatial-autocorrelation.html#cb46-1" aria-hidden="true"></a><span class="co"># further into the sp rabbit hole we can now create a matrix from this (like the non-sparse output of the st_nn/st_rook processes)</span></span>
+<span id="cb46-2"><a href="spatial-autocorrelation.html#cb46-2" aria-hidden="true"></a>camden_oas_nb_mat &lt;-<span class="st"> </span><span class="kw">nb2mat</span>(camden_oas_nb, <span class="dt">style=</span><span class="st">&#39;B&#39;</span>)</span>
+<span id="cb46-3"><a href="spatial-autocorrelation.html#cb46-3" aria-hidden="true"></a></span>
+<span id="cb46-4"><a href="spatial-autocorrelation.html#cb46-4" aria-hidden="true"></a><span class="co"># check the sum of one columnd</span></span>
+<span id="cb46-5"><a href="spatial-autocorrelation.html#cb46-5" aria-hidden="true"></a><span class="kw">sum</span>(camden_oas_nb_mat[<span class="dv">1</span>,])</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="spatial-autocorrelation.html#cb47-1" aria-hidden="true"></a><span class="co"># where nb2mat() extends this is in allowing weighting</span></span>
-<span id="cb47-2"><a href="spatial-autocorrelation.html#cb47-2" aria-hidden="true"></a>camden_oas_nb_mat &lt;-<span class="st"> </span><span class="kw">nb2mat</span>(camden_oas_nb, <span class="dt">style=</span><span class="st">&#39;W&#39;</span>)</span>
-<span id="cb47-3"><a href="spatial-autocorrelation.html#cb47-3" aria-hidden="true"></a></span>
-<span id="cb47-4"><a href="spatial-autocorrelation.html#cb47-4" aria-hidden="true"></a><span class="co"># check the sum of one column</span></span>
-<span id="cb47-5"><a href="spatial-autocorrelation.html#cb47-5" aria-hidden="true"></a><span class="kw">sum</span>(camden_oas_nb_mat[<span class="dv">1</span>,])</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="spatial-autocorrelation.html#cb48-1" aria-hidden="true"></a><span class="co"># where nb2mat() extends this is in allowing weighting</span></span>
+<span id="cb48-2"><a href="spatial-autocorrelation.html#cb48-2" aria-hidden="true"></a>camden_oas_nb_mat &lt;-<span class="st"> </span><span class="kw">nb2mat</span>(camden_oas_nb, <span class="dt">style=</span><span class="st">&#39;W&#39;</span>)</span>
+<span id="cb48-3"><a href="spatial-autocorrelation.html#cb48-3" aria-hidden="true"></a></span>
+<span id="cb48-4"><a href="spatial-autocorrelation.html#cb48-4" aria-hidden="true"></a><span class="co"># check the sum of one column</span></span>
+<span id="cb48-5"><a href="spatial-autocorrelation.html#cb48-5" aria-hidden="true"></a><span class="kw">sum</span>(camden_oas_nb_mat[<span class="dv">1</span>,])</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Now the sum of one row instead of being the total number of neighbours for that OA instead adds up to 1. This is important for the calculation of Moran’s I, as the metric is designed to return a values between -1 and 1. If the neghbour relations are not limited to add up to one the value for Moran’s I can exceed -1 and 1, and it loses meaning when compared against other cases.</p>
 <p>Now we need to calculate a separate weights list object to use for the Moran’s I calculation.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="spatial-autocorrelation.html#cb49-1" aria-hidden="true"></a><span class="co"># create the list weights object</span></span>
-<span id="cb49-2"><a href="spatial-autocorrelation.html#cb49-2" aria-hidden="true"></a>nb_weights_list &lt;-<span class="st"> </span><span class="kw">nb2listw</span>(camden_oas_nb, <span class="dt">style=</span><span class="st">&#39;B&#39;</span>)</span>
-<span id="cb49-3"><a href="spatial-autocorrelation.html#cb49-3" aria-hidden="true"></a></span>
-<span id="cb49-4"><a href="spatial-autocorrelation.html#cb49-4" aria-hidden="true"></a><span class="co"># have a look at the class</span></span>
-<span id="cb49-5"><a href="spatial-autocorrelation.html#cb49-5" aria-hidden="true"></a><span class="kw">class</span>(nb_weights_list)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="spatial-autocorrelation.html#cb50-1" aria-hidden="true"></a><span class="co"># create the list weights object</span></span>
+<span id="cb50-2"><a href="spatial-autocorrelation.html#cb50-2" aria-hidden="true"></a>nb_weights_list &lt;-<span class="st"> </span><span class="kw">nb2listw</span>(camden_oas_nb, <span class="dt">style=</span><span class="st">&#39;B&#39;</span>)</span>
+<span id="cb50-3"><a href="spatial-autocorrelation.html#cb50-3" aria-hidden="true"></a></span>
+<span id="cb50-4"><a href="spatial-autocorrelation.html#cb50-4" aria-hidden="true"></a><span class="co"># have a look at the class</span></span>
+<span id="cb50-5"><a href="spatial-autocorrelation.html#cb50-5" aria-hidden="true"></a><span class="kw">class</span>(nb_weights_list)</span></code></pre></div>
 <pre><code>## [1] &quot;listw&quot; &quot;nb&quot;</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="spatial-autocorrelation.html#cb51-1" aria-hidden="true"></a><span class="co"># so it&#39;s nb AND weights</span></span>
-<span id="cb51-2"><a href="spatial-autocorrelation.html#cb51-2" aria-hidden="true"></a></span>
-<span id="cb51-3"><a href="spatial-autocorrelation.html#cb51-3" aria-hidden="true"></a><span class="co"># now use that to create a quick Moran&#39;s I</span></span>
-<span id="cb51-4"><a href="spatial-autocorrelation.html#cb51-4" aria-hidden="true"></a><span class="kw">moran</span>(camden_oas_sp<span class="op">$</span>n_thefts, </span>
-<span id="cb51-5"><a href="spatial-autocorrelation.html#cb51-5" aria-hidden="true"></a>      nb_weights_list, </span>
-<span id="cb51-6"><a href="spatial-autocorrelation.html#cb51-6" aria-hidden="true"></a>      <span class="dt">n=</span><span class="kw">length</span>(nb_weights_list<span class="op">$</span>neighbours), </span>
-<span id="cb51-7"><a href="spatial-autocorrelation.html#cb51-7" aria-hidden="true"></a>      <span class="dt">S0=</span><span class="kw">Szero</span>(nb_weights_list))</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="spatial-autocorrelation.html#cb52-1" aria-hidden="true"></a><span class="co"># so it&#39;s nb AND weights</span></span>
+<span id="cb52-2"><a href="spatial-autocorrelation.html#cb52-2" aria-hidden="true"></a></span>
+<span id="cb52-3"><a href="spatial-autocorrelation.html#cb52-3" aria-hidden="true"></a><span class="co"># now use that to create a quick Moran&#39;s I</span></span>
+<span id="cb52-4"><a href="spatial-autocorrelation.html#cb52-4" aria-hidden="true"></a><span class="kw">moran</span>(camden_oas_sp<span class="op">$</span>n_thefts, </span>
+<span id="cb52-5"><a href="spatial-autocorrelation.html#cb52-5" aria-hidden="true"></a>      nb_weights_list, </span>
+<span id="cb52-6"><a href="spatial-autocorrelation.html#cb52-6" aria-hidden="true"></a>      <span class="dt">n=</span><span class="kw">length</span>(nb_weights_list<span class="op">$</span>neighbours), </span>
+<span id="cb52-7"><a href="spatial-autocorrelation.html#cb52-7" aria-hidden="true"></a>      <span class="dt">S0=</span><span class="kw">Szero</span>(nb_weights_list))</span></code></pre></div>
 <pre><code>## $I
 ## [1] 0.5543285
 ## 
@@ -570,11 +579,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>On the scale of -1 to 1 where does it sit?</p>
 <p>This is just a quick way to check the score. To do so properly you need to check between a randomly distributed version of the variables, and the variables as they are.</p>
 <p>To do so you need to use the MonteCarlo method where you actually carry this out. You can specify how many times it does this to increase precision.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="spatial-autocorrelation.html#cb53-1" aria-hidden="true"></a><span class="co"># run it 599 times</span></span>
-<span id="cb53-2"><a href="spatial-autocorrelation.html#cb53-2" aria-hidden="true"></a>mc_model &lt;-<span class="st"> </span><span class="kw">moran.mc</span>(camden_oas_sp<span class="op">$</span>n_thefts, nb_weights_list, <span class="dt">nsim=</span><span class="dv">599</span>)</span>
-<span id="cb53-3"><a href="spatial-autocorrelation.html#cb53-3" aria-hidden="true"></a></span>
-<span id="cb53-4"><a href="spatial-autocorrelation.html#cb53-4" aria-hidden="true"></a><span class="co"># what do we get?</span></span>
-<span id="cb53-5"><a href="spatial-autocorrelation.html#cb53-5" aria-hidden="true"></a>mc_model</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="spatial-autocorrelation.html#cb54-1" aria-hidden="true"></a><span class="co"># run it 599 times</span></span>
+<span id="cb54-2"><a href="spatial-autocorrelation.html#cb54-2" aria-hidden="true"></a>mc_model &lt;-<span class="st"> </span><span class="kw">moran.mc</span>(camden_oas_sp<span class="op">$</span>n_thefts, nb_weights_list, <span class="dt">nsim=</span><span class="dv">599</span>)</span>
+<span id="cb54-3"><a href="spatial-autocorrelation.html#cb54-3" aria-hidden="true"></a></span>
+<span id="cb54-4"><a href="spatial-autocorrelation.html#cb54-4" aria-hidden="true"></a><span class="co"># what do we get?</span></span>
+<span id="cb54-5"><a href="spatial-autocorrelation.html#cb54-5" aria-hidden="true"></a>mc_model</span></code></pre></div>
 <pre><code>## 
 ## 	Monte-Carlo simulation of Moran I
 ## 
@@ -590,106 +599,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.2.3</span> Local Moran’s I</h3>
 <p>With a measurement of local spatial autocorrelation we could find hotspots of theft that are surrounded by areas of much lower theft. According to the previous global statistic these are not randomly distributed pockets but would be outliers against the general trend of clusteredness!</p>
 <p>These could be areas that contain very specific locations, where interventions could be made that drastically reduce the rate of crime rather than other areas where there is a high level of ambient crime.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="spatial-autocorrelation.html#cb55-1" aria-hidden="true"></a><span class="co"># you need the nb object and the nb and weights list</span></span>
-<span id="cb55-2"><a href="spatial-autocorrelation.html#cb55-2" aria-hidden="true"></a><span class="co"># make the nb</span></span>
-<span id="cb55-3"><a href="spatial-autocorrelation.html#cb55-3" aria-hidden="true"></a>camden_oas_nb &lt;-<span class="st"> </span><span class="kw">poly2nb</span>(camden_oas_sp, <span class="dt">row.names=</span>camden_oas_sp<span class="op">$</span>OA11CD)</span>
-<span id="cb55-4"><a href="spatial-autocorrelation.html#cb55-4" aria-hidden="true"></a></span>
-<span id="cb55-5"><a href="spatial-autocorrelation.html#cb55-5" aria-hidden="true"></a><span class="co"># create the list weights object</span></span>
-<span id="cb55-6"><a href="spatial-autocorrelation.html#cb55-6" aria-hidden="true"></a><span class="co"># but importantly with the row stadardisation this time</span></span>
-<span id="cb55-7"><a href="spatial-autocorrelation.html#cb55-7" aria-hidden="true"></a>nb_weights_list &lt;-<span class="st"> </span><span class="kw">nb2listw</span>(camden_oas_nb, <span class="dt">style=</span><span class="st">&#39;W&#39;</span>)</span>
-<span id="cb55-8"><a href="spatial-autocorrelation.html#cb55-8" aria-hidden="true"></a></span>
-<span id="cb55-9"><a href="spatial-autocorrelation.html#cb55-9" aria-hidden="true"></a><span class="co"># use the localmoran() function</span></span>
-<span id="cb55-10"><a href="spatial-autocorrelation.html#cb55-10" aria-hidden="true"></a>local_moran_camden_oa_theft &lt;-<span class="st"> </span><span class="kw">localmoran</span>(camden_oas_sp<span class="op">$</span>n_thefts, nb_weights_list)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="spatial-autocorrelation.html#cb56-1" aria-hidden="true"></a><span class="co"># you need the nb object and the nb and weights list</span></span>
+<span id="cb56-2"><a href="spatial-autocorrelation.html#cb56-2" aria-hidden="true"></a><span class="co"># make the nb</span></span>
+<span id="cb56-3"><a href="spatial-autocorrelation.html#cb56-3" aria-hidden="true"></a>camden_oas_nb &lt;-<span class="st"> </span><span class="kw">poly2nb</span>(camden_oas_sp, <span class="dt">row.names=</span>camden_oas_sp<span class="op">$</span>OA11CD)</span>
+<span id="cb56-4"><a href="spatial-autocorrelation.html#cb56-4" aria-hidden="true"></a></span>
+<span id="cb56-5"><a href="spatial-autocorrelation.html#cb56-5" aria-hidden="true"></a><span class="co"># create the list weights object</span></span>
+<span id="cb56-6"><a href="spatial-autocorrelation.html#cb56-6" aria-hidden="true"></a><span class="co"># but importantly with the row stadardisation this time</span></span>
+<span id="cb56-7"><a href="spatial-autocorrelation.html#cb56-7" aria-hidden="true"></a>nb_weights_list &lt;-<span class="st"> </span><span class="kw">nb2listw</span>(camden_oas_nb, <span class="dt">style=</span><span class="st">&#39;W&#39;</span>)</span>
+<span id="cb56-8"><a href="spatial-autocorrelation.html#cb56-8" aria-hidden="true"></a></span>
+<span id="cb56-9"><a href="spatial-autocorrelation.html#cb56-9" aria-hidden="true"></a><span class="co"># use the localmoran() function</span></span>
+<span id="cb56-10"><a href="spatial-autocorrelation.html#cb56-10" aria-hidden="true"></a>local_moran_camden_oa_theft &lt;-<span class="st"> </span><span class="kw">localmoran</span>(camden_oas_sp<span class="op">$</span>n_thefts, nb_weights_list)</span></code></pre></div>
 <p>To properly utilise these local statistics and make in intuitively useful map we need to combine them with our crime count variable.</p>
 <p>Because of the way the new variable will be calculated we need to rescale our variable so that the mean is 0. this means that the lowest values will be -ve and the highest +ve. The distribution and the relationship between the will be preserved though.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="spatial-autocorrelation.html#cb56-1" aria-hidden="true"></a><span class="co"># rescale that variable!</span></span>
-<span id="cb56-2"><a href="spatial-autocorrelation.html#cb56-2" aria-hidden="true"></a>camden_oas_sp<span class="op">$</span>scale_n_thefts &lt;-<span class="st"> </span><span class="kw">scale</span>(camden_oas_sp<span class="op">$</span>n_thefts)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="spatial-autocorrelation.html#cb57-1" aria-hidden="true"></a><span class="co"># rescale that variable!</span></span>
+<span id="cb57-2"><a href="spatial-autocorrelation.html#cb57-2" aria-hidden="true"></a>camden_oas_sp<span class="op">$</span>scale_n_thefts &lt;-<span class="st"> </span><span class="kw">scale</span>(camden_oas_sp<span class="op">$</span>n_thefts)</span></code></pre></div>
 <p>To compare against its neighbours we need to create a new column that carries information about the neighbours.</p>
 <p>This is called a spatial lag function! What fun!</p>
 <p>The “lag” just refers to the fact you are comparing one observation against another, this can be used between timed observations. In this case, the “lag” we are looking at is between neighbours.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="spatial-autocorrelation.html#cb57-1" aria-hidden="true"></a><span class="co"># create a spatial lag variable and save it to a new column</span></span>
-<span id="cb57-2"><a href="spatial-autocorrelation.html#cb57-2" aria-hidden="true"></a>camden_oas_sp<span class="op">$</span>lag_scale_n_thefts &lt;-<span class="st"> </span><span class="kw">lag.listw</span>(nb_weights_list, camden_oas_sp<span class="op">$</span>scale_n_thefts)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="spatial-autocorrelation.html#cb58-1" aria-hidden="true"></a><span class="co"># create a spatial lag variable and save it to a new column</span></span>
+<span id="cb58-2"><a href="spatial-autocorrelation.html#cb58-2" aria-hidden="true"></a>camden_oas_sp<span class="op">$</span>lag_scale_n_thefts &lt;-<span class="st"> </span><span class="kw">lag.listw</span>(nb_weights_list, camden_oas_sp<span class="op">$</span>scale_n_thefts)</span></code></pre></div>
 <p>Now we have used sp for all it is worth it’s time to head back to the safety of <code>sf()</code>!</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="spatial-autocorrelation.html#cb58-1" aria-hidden="true"></a><span class="co"># convert to sf</span></span>
-<span id="cb58-2"><a href="spatial-autocorrelation.html#cb58-2" aria-hidden="true"></a>camden_oas_moran_stats &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(camden_oas_sp)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="spatial-autocorrelation.html#cb59-1" aria-hidden="true"></a><span class="co"># convert to sf</span></span>
+<span id="cb59-2"><a href="spatial-autocorrelation.html#cb59-2" aria-hidden="true"></a>camden_oas_moran_stats &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(camden_oas_sp)</span></code></pre></div>
 <p>To make a human readable version of the map we will generate some labels for our findings from the Local Moran’s I stats.</p>
 <p>This process calculates what the value of each polygon is compared to its neighbours and works out if they are similar or dissimilar and in which way, then gives them a text label to describe the relationship.</p>
 <p>I the text label, the first term describes the area being focused on and the second represents that areas neighbours.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="spatial-autocorrelation.html#cb59-1" aria-hidden="true"></a><span class="co"># run all of these through to assign variables</span></span>
-<span id="cb59-2"><a href="spatial-autocorrelation.html#cb59-2" aria-hidden="true"></a></span>
-<span id="cb59-3"><a href="spatial-autocorrelation.html#cb59-3" aria-hidden="true"></a><span class="co"># for the statistical significance version assign a level </span></span>
-<span id="cb59-4"><a href="spatial-autocorrelation.html#cb59-4" aria-hidden="true"></a><span class="co"># of statistical significance for the p value, column 5 of the local moran model</span></span>
-<span id="cb59-5"><a href="spatial-autocorrelation.html#cb59-5" aria-hidden="true"></a>sig_level &lt;-<span class="st"> </span><span class="fl">0.1</span></span>
-<span id="cb59-6"><a href="spatial-autocorrelation.html#cb59-6" aria-hidden="true"></a></span>
-<span id="cb59-7"><a href="spatial-autocorrelation.html#cb59-7" aria-hidden="true"></a><span class="co"># version with significance value</span></span>
-<span id="cb59-8"><a href="spatial-autocorrelation.html#cb59-8" aria-hidden="true"></a>camden_oas_moran_stats<span class="op">$</span>quad_sig &lt;-<span class="st"> </span><span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-9"><a href="spatial-autocorrelation.html#cb59-9" aria-hidden="true"></a><span class="st">                                          </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-10"><a href="spatial-autocorrelation.html#cb59-10" aria-hidden="true"></a><span class="st">                                          </span>local_moran_camden_oa_theft[,<span class="dv">5</span>] <span class="op">&lt;=</span><span class="st"> </span>sig_level, </span>
-<span id="cb59-11"><a href="spatial-autocorrelation.html#cb59-11" aria-hidden="true"></a>                                          <span class="st">&quot;high-high&quot;</span>, </span>
-<span id="cb59-12"><a href="spatial-autocorrelation.html#cb59-12" aria-hidden="true"></a>                                   <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-13"><a href="spatial-autocorrelation.html#cb59-13" aria-hidden="true"></a><span class="st">                                          </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-14"><a href="spatial-autocorrelation.html#cb59-14" aria-hidden="true"></a><span class="st">                                          </span>local_moran_camden_oa_theft[,<span class="dv">5</span>] <span class="op">&lt;=</span><span class="st"> </span>sig_level, </span>
-<span id="cb59-15"><a href="spatial-autocorrelation.html#cb59-15" aria-hidden="true"></a>                                          <span class="st">&quot;low-low&quot;</span>, </span>
-<span id="cb59-16"><a href="spatial-autocorrelation.html#cb59-16" aria-hidden="true"></a>                                   <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-17"><a href="spatial-autocorrelation.html#cb59-17" aria-hidden="true"></a><span class="st">                                          </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-18"><a href="spatial-autocorrelation.html#cb59-18" aria-hidden="true"></a><span class="st">                                          </span>local_moran_camden_oa_theft[,<span class="dv">5</span>] <span class="op">&lt;=</span><span class="st"> </span>sig_level, </span>
-<span id="cb59-19"><a href="spatial-autocorrelation.html#cb59-19" aria-hidden="true"></a>                                          <span class="st">&quot;high-low&quot;</span>, </span>
-<span id="cb59-20"><a href="spatial-autocorrelation.html#cb59-20" aria-hidden="true"></a>                                   <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-21"><a href="spatial-autocorrelation.html#cb59-21" aria-hidden="true"></a><span class="st">                                          </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-22"><a href="spatial-autocorrelation.html#cb59-22" aria-hidden="true"></a><span class="st">                                          </span>local_moran_camden_oa_theft[,<span class="dv">5</span>] <span class="op">&lt;=</span><span class="st"> </span>sig_level, </span>
-<span id="cb59-23"><a href="spatial-autocorrelation.html#cb59-23" aria-hidden="true"></a>                                          <span class="st">&quot;low-high&quot;</span>,</span>
-<span id="cb59-24"><a href="spatial-autocorrelation.html#cb59-24" aria-hidden="true"></a>                                   <span class="kw">ifelse</span>(local_moran_camden_oa_theft[,<span class="dv">5</span>] <span class="op">&gt;</span><span class="st"> </span>sig_level, </span>
-<span id="cb59-25"><a href="spatial-autocorrelation.html#cb59-25" aria-hidden="true"></a>                                          <span class="st">&quot;not-significant&quot;</span>, </span>
-<span id="cb59-26"><a href="spatial-autocorrelation.html#cb59-26" aria-hidden="true"></a>                                          <span class="st">&quot;not-significant&quot;</span>)))))</span>
-<span id="cb59-27"><a href="spatial-autocorrelation.html#cb59-27" aria-hidden="true"></a></span>
-<span id="cb59-28"><a href="spatial-autocorrelation.html#cb59-28" aria-hidden="true"></a><span class="co"># version without significance check</span></span>
-<span id="cb59-29"><a href="spatial-autocorrelation.html#cb59-29" aria-hidden="true"></a>camden_oas_moran_stats<span class="op">$</span>quad_non_sig &lt;-<span class="st"> </span><span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-30"><a href="spatial-autocorrelation.html#cb59-30" aria-hidden="true"></a><span class="st">                                              </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, </span>
-<span id="cb59-31"><a href="spatial-autocorrelation.html#cb59-31" aria-hidden="true"></a>                                              <span class="st">&quot;high-high&quot;</span>, </span>
-<span id="cb59-32"><a href="spatial-autocorrelation.html#cb59-32" aria-hidden="true"></a>                                       <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-33"><a href="spatial-autocorrelation.html#cb59-33" aria-hidden="true"></a><span class="st">                                              </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span>, </span>
-<span id="cb59-34"><a href="spatial-autocorrelation.html#cb59-34" aria-hidden="true"></a>                                              <span class="st">&quot;low-low&quot;</span>, </span>
-<span id="cb59-35"><a href="spatial-autocorrelation.html#cb59-35" aria-hidden="true"></a>                                       <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-36"><a href="spatial-autocorrelation.html#cb59-36" aria-hidden="true"></a><span class="st">                                              </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span>, </span>
-<span id="cb59-37"><a href="spatial-autocorrelation.html#cb59-37" aria-hidden="true"></a>                                              <span class="st">&quot;high-low&quot;</span>, </span>
-<span id="cb59-38"><a href="spatial-autocorrelation.html#cb59-38" aria-hidden="true"></a>                                       <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb59-39"><a href="spatial-autocorrelation.html#cb59-39" aria-hidden="true"></a><span class="st">                                              </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>,</span>
-<span id="cb59-40"><a href="spatial-autocorrelation.html#cb59-40" aria-hidden="true"></a>                                              <span class="st">&quot;low-high&quot;</span>,<span class="ot">NA</span>))))</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="spatial-autocorrelation.html#cb60-1" aria-hidden="true"></a><span class="co"># run all of these through to assign variables</span></span>
+<span id="cb60-2"><a href="spatial-autocorrelation.html#cb60-2" aria-hidden="true"></a></span>
+<span id="cb60-3"><a href="spatial-autocorrelation.html#cb60-3" aria-hidden="true"></a><span class="co"># for the statistical significance version assign a level </span></span>
+<span id="cb60-4"><a href="spatial-autocorrelation.html#cb60-4" aria-hidden="true"></a><span class="co"># of statistical significance for the p value, column 5 of the local moran model</span></span>
+<span id="cb60-5"><a href="spatial-autocorrelation.html#cb60-5" aria-hidden="true"></a>sig_level &lt;-<span class="st"> </span><span class="fl">0.1</span></span>
+<span id="cb60-6"><a href="spatial-autocorrelation.html#cb60-6" aria-hidden="true"></a></span>
+<span id="cb60-7"><a href="spatial-autocorrelation.html#cb60-7" aria-hidden="true"></a><span class="co"># version with significance value</span></span>
+<span id="cb60-8"><a href="spatial-autocorrelation.html#cb60-8" aria-hidden="true"></a>camden_oas_moran_stats<span class="op">$</span>quad_sig &lt;-<span class="st"> </span><span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-9"><a href="spatial-autocorrelation.html#cb60-9" aria-hidden="true"></a><span class="st">                                          </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-10"><a href="spatial-autocorrelation.html#cb60-10" aria-hidden="true"></a><span class="st">                                          </span>local_moran_camden_oa_theft[,<span class="dv">5</span>] <span class="op">&lt;=</span><span class="st"> </span>sig_level, </span>
+<span id="cb60-11"><a href="spatial-autocorrelation.html#cb60-11" aria-hidden="true"></a>                                          <span class="st">&quot;high-high&quot;</span>, </span>
+<span id="cb60-12"><a href="spatial-autocorrelation.html#cb60-12" aria-hidden="true"></a>                                   <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-13"><a href="spatial-autocorrelation.html#cb60-13" aria-hidden="true"></a><span class="st">                                          </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-14"><a href="spatial-autocorrelation.html#cb60-14" aria-hidden="true"></a><span class="st">                                          </span>local_moran_camden_oa_theft[,<span class="dv">5</span>] <span class="op">&lt;=</span><span class="st"> </span>sig_level, </span>
+<span id="cb60-15"><a href="spatial-autocorrelation.html#cb60-15" aria-hidden="true"></a>                                          <span class="st">&quot;low-low&quot;</span>, </span>
+<span id="cb60-16"><a href="spatial-autocorrelation.html#cb60-16" aria-hidden="true"></a>                                   <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-17"><a href="spatial-autocorrelation.html#cb60-17" aria-hidden="true"></a><span class="st">                                          </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-18"><a href="spatial-autocorrelation.html#cb60-18" aria-hidden="true"></a><span class="st">                                          </span>local_moran_camden_oa_theft[,<span class="dv">5</span>] <span class="op">&lt;=</span><span class="st"> </span>sig_level, </span>
+<span id="cb60-19"><a href="spatial-autocorrelation.html#cb60-19" aria-hidden="true"></a>                                          <span class="st">&quot;high-low&quot;</span>, </span>
+<span id="cb60-20"><a href="spatial-autocorrelation.html#cb60-20" aria-hidden="true"></a>                                   <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-21"><a href="spatial-autocorrelation.html#cb60-21" aria-hidden="true"></a><span class="st">                                          </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-22"><a href="spatial-autocorrelation.html#cb60-22" aria-hidden="true"></a><span class="st">                                          </span>local_moran_camden_oa_theft[,<span class="dv">5</span>] <span class="op">&lt;=</span><span class="st"> </span>sig_level, </span>
+<span id="cb60-23"><a href="spatial-autocorrelation.html#cb60-23" aria-hidden="true"></a>                                          <span class="st">&quot;low-high&quot;</span>,</span>
+<span id="cb60-24"><a href="spatial-autocorrelation.html#cb60-24" aria-hidden="true"></a>                                   <span class="kw">ifelse</span>(local_moran_camden_oa_theft[,<span class="dv">5</span>] <span class="op">&gt;</span><span class="st"> </span>sig_level, </span>
+<span id="cb60-25"><a href="spatial-autocorrelation.html#cb60-25" aria-hidden="true"></a>                                          <span class="st">&quot;not-significant&quot;</span>, </span>
+<span id="cb60-26"><a href="spatial-autocorrelation.html#cb60-26" aria-hidden="true"></a>                                          <span class="st">&quot;not-significant&quot;</span>)))))</span>
+<span id="cb60-27"><a href="spatial-autocorrelation.html#cb60-27" aria-hidden="true"></a></span>
+<span id="cb60-28"><a href="spatial-autocorrelation.html#cb60-28" aria-hidden="true"></a><span class="co"># version without significance check</span></span>
+<span id="cb60-29"><a href="spatial-autocorrelation.html#cb60-29" aria-hidden="true"></a>camden_oas_moran_stats<span class="op">$</span>quad_non_sig &lt;-<span class="st"> </span><span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-30"><a href="spatial-autocorrelation.html#cb60-30" aria-hidden="true"></a><span class="st">                                              </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, </span>
+<span id="cb60-31"><a href="spatial-autocorrelation.html#cb60-31" aria-hidden="true"></a>                                              <span class="st">&quot;high-high&quot;</span>, </span>
+<span id="cb60-32"><a href="spatial-autocorrelation.html#cb60-32" aria-hidden="true"></a>                                       <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-33"><a href="spatial-autocorrelation.html#cb60-33" aria-hidden="true"></a><span class="st">                                              </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span>, </span>
+<span id="cb60-34"><a href="spatial-autocorrelation.html#cb60-34" aria-hidden="true"></a>                                              <span class="st">&quot;low-low&quot;</span>, </span>
+<span id="cb60-35"><a href="spatial-autocorrelation.html#cb60-35" aria-hidden="true"></a>                                       <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-36"><a href="spatial-autocorrelation.html#cb60-36" aria-hidden="true"></a><span class="st">                                              </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span>, </span>
+<span id="cb60-37"><a href="spatial-autocorrelation.html#cb60-37" aria-hidden="true"></a>                                              <span class="st">&quot;high-low&quot;</span>, </span>
+<span id="cb60-38"><a href="spatial-autocorrelation.html#cb60-38" aria-hidden="true"></a>                                       <span class="kw">ifelse</span>(camden_oas_moran_stats<span class="op">$</span>scale_n_thefts <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb60-39"><a href="spatial-autocorrelation.html#cb60-39" aria-hidden="true"></a><span class="st">                                              </span>camden_oas_moran_stats<span class="op">$</span>lag_scale_n_thefts <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>,</span>
+<span id="cb60-40"><a href="spatial-autocorrelation.html#cb60-40" aria-hidden="true"></a>                                              <span class="st">&quot;low-high&quot;</span>,<span class="ot">NA</span>))))</span></code></pre></div>
 <p>Now that the horrible looking conditional is finished we can see what we did.</p>
 <p>To understand how this is working we can look at the data non-spatially. As we recentred the data, our axes should split the data neatly into their different area vs spatial lag relationship categories.</p>
 <p>To do this plot we will need to use the plotting package <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="spatial-autocorrelation.html#cb60-1" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="spatial-autocorrelation.html#cb61-1" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
 <p>Let’s make the scatterplot using the scaled number of thefts for the areas in the x axis and their spatially lagged results in the y axis.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="spatial-autocorrelation.html#cb61-1" aria-hidden="true"></a><span class="co"># plot the results without the satistical significance</span></span>
-<span id="cb61-2"><a href="spatial-autocorrelation.html#cb61-2" aria-hidden="true"></a><span class="kw">ggplot</span>(camden_oas_moran_stats, <span class="kw">aes</span>(<span class="dt">x =</span> scale_n_thefts, </span>
-<span id="cb61-3"><a href="spatial-autocorrelation.html#cb61-3" aria-hidden="true"></a>                                   <span class="dt">y =</span> lag_scale_n_thefts, </span>
-<span id="cb61-4"><a href="spatial-autocorrelation.html#cb61-4" aria-hidden="true"></a>                                   <span class="dt">color =</span> quad_non_sig)) <span class="op">+</span></span>
-<span id="cb61-5"><a href="spatial-autocorrelation.html#cb61-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span><span class="co"># plot vertical line</span></span>
-<span id="cb61-6"><a href="spatial-autocorrelation.html#cb61-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span><span class="co"># plot horizontal line</span></span>
-<span id="cb61-7"><a href="spatial-autocorrelation.html#cb61-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Scaled Thefts (n)&quot;</span>) <span class="op">+</span></span>
-<span id="cb61-8"><a href="spatial-autocorrelation.html#cb61-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Lagged Scaled Thefts (n)&quot;</span>) <span class="op">+</span></span>
-<span id="cb61-9"><a href="spatial-autocorrelation.html#cb61-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour=</span><span class="st">&quot;Relative to neighbours&quot;</span>) <span class="op">+</span></span>
-<span id="cb61-10"><a href="spatial-autocorrelation.html#cb61-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="GEOG0114_files/figure-html/04-v-plotting-quadrants-scatter-1.png" width="672" /></p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="spatial-autocorrelation.html#cb62-1" aria-hidden="true"></a><span class="co"># plot the results nnw with the satistical significance</span></span>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="spatial-autocorrelation.html#cb62-1" aria-hidden="true"></a><span class="co"># plot the results without the satistical significance</span></span>
 <span id="cb62-2"><a href="spatial-autocorrelation.html#cb62-2" aria-hidden="true"></a><span class="kw">ggplot</span>(camden_oas_moran_stats, <span class="kw">aes</span>(<span class="dt">x =</span> scale_n_thefts, </span>
 <span id="cb62-3"><a href="spatial-autocorrelation.html#cb62-3" aria-hidden="true"></a>                                   <span class="dt">y =</span> lag_scale_n_thefts, </span>
-<span id="cb62-4"><a href="spatial-autocorrelation.html#cb62-4" aria-hidden="true"></a>                                   <span class="dt">color =</span> quad_sig)) <span class="op">+</span></span>
+<span id="cb62-4"><a href="spatial-autocorrelation.html#cb62-4" aria-hidden="true"></a>                                   <span class="dt">color =</span> quad_non_sig)) <span class="op">+</span></span>
 <span id="cb62-5"><a href="spatial-autocorrelation.html#cb62-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span><span class="co"># plot vertical line</span></span>
 <span id="cb62-6"><a href="spatial-autocorrelation.html#cb62-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span><span class="co"># plot horizontal line</span></span>
 <span id="cb62-7"><a href="spatial-autocorrelation.html#cb62-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Scaled Thefts (n)&quot;</span>) <span class="op">+</span></span>
 <span id="cb62-8"><a href="spatial-autocorrelation.html#cb62-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Lagged Scaled Thefts (n)&quot;</span>) <span class="op">+</span></span>
 <span id="cb62-9"><a href="spatial-autocorrelation.html#cb62-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour=</span><span class="st">&quot;Relative to neighbours&quot;</span>) <span class="op">+</span></span>
 <span id="cb62-10"><a href="spatial-autocorrelation.html#cb62-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/04-v-plotting-quadrants-scatter-1.png" width="672" /></p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="spatial-autocorrelation.html#cb63-1" aria-hidden="true"></a><span class="co"># plot the results nnw with the satistical significance</span></span>
+<span id="cb63-2"><a href="spatial-autocorrelation.html#cb63-2" aria-hidden="true"></a><span class="kw">ggplot</span>(camden_oas_moran_stats, <span class="kw">aes</span>(<span class="dt">x =</span> scale_n_thefts, </span>
+<span id="cb63-3"><a href="spatial-autocorrelation.html#cb63-3" aria-hidden="true"></a>                                   <span class="dt">y =</span> lag_scale_n_thefts, </span>
+<span id="cb63-4"><a href="spatial-autocorrelation.html#cb63-4" aria-hidden="true"></a>                                   <span class="dt">color =</span> quad_sig)) <span class="op">+</span></span>
+<span id="cb63-5"><a href="spatial-autocorrelation.html#cb63-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span><span class="co"># plot vertical line</span></span>
+<span id="cb63-6"><a href="spatial-autocorrelation.html#cb63-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span><span class="co"># plot horizontal line</span></span>
+<span id="cb63-7"><a href="spatial-autocorrelation.html#cb63-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Scaled Thefts (n)&quot;</span>) <span class="op">+</span></span>
+<span id="cb63-8"><a href="spatial-autocorrelation.html#cb63-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Lagged Scaled Thefts (n)&quot;</span>) <span class="op">+</span></span>
+<span id="cb63-9"><a href="spatial-autocorrelation.html#cb63-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">colour=</span><span class="st">&quot;Relative to neighbours&quot;</span>) <span class="op">+</span></span>
+<span id="cb63-10"><a href="spatial-autocorrelation.html#cb63-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/04-v-plotting-quadrants-scatter-2.png" width="672" /></p>
 <p>Now let’s see how they are arranged spatially.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="spatial-autocorrelation.html#cb63-1" aria-hidden="true"></a><span class="co"># map all of the results here</span></span>
-<span id="cb63-2"><a href="spatial-autocorrelation.html#cb63-2" aria-hidden="true"></a><span class="kw">tm_shape</span>(camden_oas_moran_stats) <span class="op">+</span></span>
-<span id="cb63-3"><a href="spatial-autocorrelation.html#cb63-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col =</span> <span class="st">&quot;quad_non_sig&quot;</span>)</span></code></pre></div>
-<p><img src="GEOG0114_files/figure-html/04-s-mapping-local-moran-1.png" width="672" /></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="spatial-autocorrelation.html#cb64-1" aria-hidden="true"></a><span class="co"># map only the statistically significant results here</span></span>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="spatial-autocorrelation.html#cb64-1" aria-hidden="true"></a><span class="co"># map all of the results here</span></span>
 <span id="cb64-2"><a href="spatial-autocorrelation.html#cb64-2" aria-hidden="true"></a><span class="kw">tm_shape</span>(camden_oas_moran_stats) <span class="op">+</span></span>
-<span id="cb64-3"><a href="spatial-autocorrelation.html#cb64-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col =</span> <span class="st">&quot;quad_sig&quot;</span>)</span></code></pre></div>
+<span id="cb64-3"><a href="spatial-autocorrelation.html#cb64-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col =</span> <span class="st">&quot;quad_non_sig&quot;</span>)</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/04-s-mapping-local-moran-1.png" width="672" /></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="spatial-autocorrelation.html#cb65-1" aria-hidden="true"></a><span class="co"># map only the statistically significant results here</span></span>
+<span id="cb65-2"><a href="spatial-autocorrelation.html#cb65-2" aria-hidden="true"></a><span class="kw">tm_shape</span>(camden_oas_moran_stats) <span class="op">+</span></span>
+<span id="cb65-3"><a href="spatial-autocorrelation.html#cb65-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col =</span> <span class="st">&quot;quad_sig&quot;</span>)</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/04-s-mapping-local-moran-2.png" width="672" /></p>
 <p>As our data are so spatially clustered we can’t see any outlier places (once we have ignored the non-significant results. This suggests that the pattern of theft from persons is not highly concentrated in very small areas or particular Output Areas, and instead is spread on a larger scale than we have used here.</p>
 <p>To go further than we have today it would be possibe to run the exact same code but using a larger scale, perhaps LSOA, or Ward, and compare how this changes the Moran’s I statistics globally and locally.</p>
