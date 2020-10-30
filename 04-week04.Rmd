@@ -54,20 +54,15 @@ To check that you have all the files you need have a look at what's in these dir
 
 # make the filepath objects
 shapefile_dir_path <- "raw/administrative_boundaries/camden_oas_2011/"
-
 crime_data_dir_path <- "raw/crime/"
 
 # we can use list.files() with the direcotry names to find their contents
-
 # check for the files within these folders
 list.files(shapefile_dir_path)
-
 list.files(crime_data_dir_path)
 
 # then we can assign the filenames to variables as well
-
 shapefile_name <- "OAs_camden_2011.shp"
-
 crimedata_filename <- "2019_camden_theft_from_person.csv"
 
 # you can use paste0() to add these together as complete filepaths

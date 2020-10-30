@@ -265,25 +265,22 @@ Figure 4.1: Spatial distribution of qualitative data taken from the <a href="htt
 <p>To check that you have all the files you need have a look at what’s in these directories. We can create variables that hold a text version of the filepath, you can edit these to contain the filepath of your own copy of the data.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="spatial-autocorrelation.html#cb4-1" aria-hidden="true"></a><span class="co"># make the filepath objects</span></span>
 <span id="cb4-2"><a href="spatial-autocorrelation.html#cb4-2" aria-hidden="true"></a>shapefile_dir_path &lt;-<span class="st"> &quot;raw/administrative_boundaries/camden_oas_2011/&quot;</span></span>
-<span id="cb4-3"><a href="spatial-autocorrelation.html#cb4-3" aria-hidden="true"></a></span>
-<span id="cb4-4"><a href="spatial-autocorrelation.html#cb4-4" aria-hidden="true"></a>crime_data_dir_path &lt;-<span class="st"> &quot;raw/crime/&quot;</span></span>
-<span id="cb4-5"><a href="spatial-autocorrelation.html#cb4-5" aria-hidden="true"></a></span>
-<span id="cb4-6"><a href="spatial-autocorrelation.html#cb4-6" aria-hidden="true"></a><span class="co"># we can use list.files() with the direcotry names to find their contents</span></span>
-<span id="cb4-7"><a href="spatial-autocorrelation.html#cb4-7" aria-hidden="true"></a></span>
-<span id="cb4-8"><a href="spatial-autocorrelation.html#cb4-8" aria-hidden="true"></a><span class="co"># check for the files within these folders</span></span>
-<span id="cb4-9"><a href="spatial-autocorrelation.html#cb4-9" aria-hidden="true"></a><span class="kw">list.files</span>(shapefile_dir_path)</span></code></pre></div>
+<span id="cb4-3"><a href="spatial-autocorrelation.html#cb4-3" aria-hidden="true"></a>crime_data_dir_path &lt;-<span class="st"> &quot;raw/crime/&quot;</span></span>
+<span id="cb4-4"><a href="spatial-autocorrelation.html#cb4-4" aria-hidden="true"></a></span>
+<span id="cb4-5"><a href="spatial-autocorrelation.html#cb4-5" aria-hidden="true"></a><span class="co"># we can use list.files() with the direcotry names to find their contents</span></span>
+<span id="cb4-6"><a href="spatial-autocorrelation.html#cb4-6" aria-hidden="true"></a><span class="co"># check for the files within these folders</span></span>
+<span id="cb4-7"><a href="spatial-autocorrelation.html#cb4-7" aria-hidden="true"></a><span class="kw">list.files</span>(shapefile_dir_path)</span></code></pre></div>
 <pre><code>## [1] &quot;OAs_camden_2011.dbf&quot; &quot;OAs_camden_2011.prj&quot; &quot;OAs_camden_2011.shp&quot;
 ## [4] &quot;OAs_camden_2011.shx&quot; &quot;OAs_camden_2011.zip&quot;</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="spatial-autocorrelation.html#cb6-1" aria-hidden="true"></a><span class="kw">list.files</span>(crime_data_dir_path)</span></code></pre></div>
-<pre><code>## [1] &quot;2019_camden_theft_from_person.csv&quot;</code></pre>
+<pre><code>## [1] &quot;2019_camden_theft_from_person.csv&quot; &quot;march2019_london_anti_social.csv&quot; 
+## [3] &quot;march2019_london_anti_social.zip&quot;</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="spatial-autocorrelation.html#cb8-1" aria-hidden="true"></a><span class="co"># then we can assign the filenames to variables as well</span></span>
-<span id="cb8-2"><a href="spatial-autocorrelation.html#cb8-2" aria-hidden="true"></a></span>
-<span id="cb8-3"><a href="spatial-autocorrelation.html#cb8-3" aria-hidden="true"></a>shapefile_name &lt;-<span class="st"> &quot;OAs_camden_2011.shp&quot;</span></span>
+<span id="cb8-2"><a href="spatial-autocorrelation.html#cb8-2" aria-hidden="true"></a>shapefile_name &lt;-<span class="st"> &quot;OAs_camden_2011.shp&quot;</span></span>
+<span id="cb8-3"><a href="spatial-autocorrelation.html#cb8-3" aria-hidden="true"></a>crimedata_filename &lt;-<span class="st"> &quot;2019_camden_theft_from_person.csv&quot;</span></span>
 <span id="cb8-4"><a href="spatial-autocorrelation.html#cb8-4" aria-hidden="true"></a></span>
-<span id="cb8-5"><a href="spatial-autocorrelation.html#cb8-5" aria-hidden="true"></a>crimedata_filename &lt;-<span class="st"> &quot;2019_camden_theft_from_person.csv&quot;</span></span>
-<span id="cb8-6"><a href="spatial-autocorrelation.html#cb8-6" aria-hidden="true"></a></span>
-<span id="cb8-7"><a href="spatial-autocorrelation.html#cb8-7" aria-hidden="true"></a><span class="co"># you can use paste0() to add these together as complete filepaths</span></span>
-<span id="cb8-8"><a href="spatial-autocorrelation.html#cb8-8" aria-hidden="true"></a><span class="kw">paste0</span>(shapefile_dir_path, shapefile_name)</span></code></pre></div>
+<span id="cb8-5"><a href="spatial-autocorrelation.html#cb8-5" aria-hidden="true"></a><span class="co"># you can use paste0() to add these together as complete filepaths</span></span>
+<span id="cb8-6"><a href="spatial-autocorrelation.html#cb8-6" aria-hidden="true"></a><span class="kw">paste0</span>(shapefile_dir_path, shapefile_name)</span></code></pre></div>
 <pre><code>## [1] &quot;raw/administrative_boundaries/camden_oas_2011/OAs_camden_2011.shp&quot;</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="spatial-autocorrelation.html#cb10-1" aria-hidden="true"></a><span class="kw">paste0</span>(crime_data_dir_path, crimedata_filename)</span></code></pre></div>
 <pre><code>## [1] &quot;raw/crime/2019_camden_theft_from_person.csv&quot;</code></pre>

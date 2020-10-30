@@ -229,8 +229,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="introduction_w05" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Introduction</h2>
 <p>This week, we focus on the second of the two key properties of spatial data: spatial heterogeneity. With the underlying process (or processes) that govern a spatial variable likely to vary across space, a single global relationship for an entire region of study may not adequately model the process that governs outcomes in any given location of the study region. As a result, multiple methods have been developed to incorporate ‘space’ into traditional regression models, including spatial lag models, spatial error models, and Geographical Weighted Regression.</p>
-<p>This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, first looking at the concepts of <strong>tidy data</strong> and <strong>Exploratory Spatial Data Analysis (ESDA)</strong>. We then look at the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships.</p>
-<p>In this week’s session we will explore potential factors that may contribute to our crime rate in London, using previous literature to identify variables for inclusion in our analysis. We conduct an ESDA of these variables, followed by statistical and spatial regression analysis to determine whether our variables adhere to previous literature and do contribute to crime in our area of study.</p>
+<p>This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, looking at the concept of <strong>Exploratory Spatial Data Analysis (ESDA)</strong>. We then look at the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships. However, before we move on to ESDA, we will look into some aspects of data prepration, data cleaning, and creating a <strong>tidy dataset</strong>.</p>
+<p>In the first part of this week’s session we will start by creating a <strong>tidy dataset</strong> using some data from the <a href="https://www.ons.gov.uk/census/2011census">UK 2011 Census of Population</a>. In the second part of this week’s session we will explore potential factors that may contribute to the crime rate in London. We conduct an ESDA of these variables, followed by statistical and spatial regression analysis to determine whether our variables contribute to crime in our area of study.</p>
 <p>This week is structured by <strong>three</strong> short lecture videos, <strong>two</strong> <a href="exploratory-spatial-data-analysis.html#assignment_w05">assignments</a> that you need to do in preparation for Friday’s seminar, and the practical material. As always, this <a href="https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&amp;login=1">week’s reading list</a> is availble on the UCL library reading list page for the course.</p>
 <div id="overview_w05" class="section level3" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Video: Overview</h3>
@@ -240,7 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tidy-data" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Tidy data</h2>
 <p>Over the past weeks a lot of information has come your way, diving deep into the world of Spatial Data Science. However, whilst you are slowly becoming proficient in using R and Python to solve complex (spatial) problems, it is now a good moment to start thinking about data themselves and how they are organised. This is crucial for when you are moving on to working on your own projects where you have to source data yourselves: the vast majority of the data you will find in the public domain (or private domain for that matter) will be <strong>dirty data</strong>. With dirty data we mean data that needs some form of pre-processing, cleaning, and linkage before you can use it for your analysis. Exploratory Spatial Data Analysis very much starts with your data preparation.</p>
-<p>In the following, you will learn a consistent way to structure your data in R: <strong>tidy data</strong>. Tidy data, as formalised by <a href="http://hadley.nz/">R Wizard Hadley Wickham</a> in his contribution to the <a href="http://www.jstatsoft.org/v59/i10/paper">Journal of Statistical Software</a> is not only very much at the core of the <code>tidyverse()</code> R package, but also of general importance when organising your data. In the words, of <a href="https://r4ds.had.co.nz/tidy-data.html">the Wizard</a>:</p>
+<p>In the following, you will learn a consistent way to structure your data in R: <strong>tidy data</strong>. Tidy data, as formalised by <a href="http://hadley.nz/">R Wizard Hadley Wickham</a> in his contribution to the <a href="http://www.jstatsoft.org/v59/i10/paper">Journal of Statistical Software</a> is not only very much at the core of the <code>tidyverse</code> R package, but also of general importance when organising your data. In the words, of <a href="https://r4ds.had.co.nz/tidy-data.html">the Wizard</a>:</p>
 <blockquote>
 <p>Once you have tidy data and the tidy tools provided by packages in the tidyverse, you will spend much less time munging data from one representation to another, allowing you to spend more time on the analytic questions at hand.</p>
 </blockquote>
@@ -250,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="what-do-tidy-data-look-like" class="section level3" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> What do tidy data look like?</h3>
-<p>You can represent the same underlying data in multiple ways. The example below, taken from the the <code>tidyverse()</code> package and described in the <a href="https://r4ds.had.co.nz/tidy-data.html">R for Data Science</a> book, shows that the same data can organised in four different ways.</p>
+<p>You can represent the same underlying data in multiple ways. The example below, taken from the the <code>tidyverse</code> package and described in the <a href="https://r4ds.had.co.nz/tidy-data.html">R for Data Science</a> book, shows that the same data can organised in four different ways.</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="exploratory-spatial-data-analysis.html#cb66-1" aria-hidden="true"></a><span class="co"># load the tidyverse </span></span>
 <span id="cb66-2"><a href="exploratory-spatial-data-analysis.html#cb66-2" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>Table <strong>1</strong>:</p>
@@ -320,16 +320,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co.nz/tidy-data.html">Hadley Wickham</a>.
 </p>
 </div>
+<p>Fortunately, there are some functions in the <code>tidyr</code> and <code>dplyr</code> packages, both part of the <code>tidyverse</code> that will help us cleaning and preparing our datasets to create a <strong>tidy dataset</strong>. The most important and useful functions are:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Package</th>
+<th align="left">Function</th>
+<th align="left">Use to</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">dplyr</td>
+<td align="left">select</td>
+<td align="left">select columns</td>
+</tr>
+<tr class="even">
+<td align="left">dplyr</td>
+<td align="left">filter</td>
+<td align="left">select rows</td>
+</tr>
+<tr class="odd">
+<td align="left">dplyr</td>
+<td align="left">mutate</td>
+<td align="left">transform or recode variables</td>
+</tr>
+<tr class="even">
+<td align="left">dplyr</td>
+<td align="left">summarise</td>
+<td align="left">summarise data</td>
+</tr>
+<tr class="odd">
+<td align="left">dplyr</td>
+<td align="left">group by</td>
+<td align="left">group data into subgropus for further processing</td>
+</tr>
+<tr class="even">
+<td align="left">tidyr</td>
+<td align="left">pivot_longer</td>
+<td align="left">convert data from wide format to long format</td>
+</tr>
+<tr class="odd">
+<td align="left">tidyr</td>
+<td align="left">pivot_wider</td>
+<td align="left">convert long format dataset to wide format</td>
+</tr>
+</tbody>
+</table>
+<p>Keep in mind that if you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through <code>?name_of_function</code>, e.g. <code>?pivot_longer</code>. For any mature R package, the documentation contains a list of arguments that the function takes as well as a set of usage examples.</p>
 </div>
 <div id="example-creating-tidy-data" class="section level3" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Example: Creating tidy data</h3>
-<p>Now we know what consitute tidy data, we can put this into practice with an example using some data from the <a href="https://www.ons.gov.uk/">Office for National Statistics</a>. Let’s say we need to analyse some data on the ethnic background of the UK population, for instance, because we want to get some insights into the relationship between <a href="https://www.theguardian.com/world/2020/oct/09/bame-groups-hit-hard-again-covid-second-wave-grips-uk-nations">COVID-19 and ethnic background</a>. Our assignment is to calculate the relative proportions of each ethnic group within the administrative geography of the <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates">Middle layer Super Output Area (MSOA)</a>. In order to do this, we have been given a file that contains data on ethnicity by age group at the MSOA-level of every person in the 2011 UK Census who is 16 year or older. Download the file to your own computer and <a href="spatial-autocorrelation.html#setting-up-the-environment">set up your data directory</a> in the same fashion as you did last week.</p>
- 
-<center>
-<strong>You can download the file <a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/eth_pop_2011/msoa_eth2011_ew_16plus.zip">here</a>.</strong>
-</center>
-<p> </p>
-<p>We start by making sure our <code>tidyverse()</code> is loaded into R and using the <code>read_csv()</code> function to read our <code>.csv</code> file.</p>
+<p>Now we know what consitute <strong>tidy data</strong>, we can put this into practice with an example using some data from the <a href="https://www.ons.gov.uk/">Office for National Statistics</a>. Let’s say we are asked by our boss to analyse some data on the ethnic background of the UK population, for instance, because we want to get some insights into the relationship between <a href="https://www.theguardian.com/world/2020/oct/09/bame-groups-hit-hard-again-covid-second-wave-grips-uk-nations">COVID-19 and ethnic background</a>. Our assignment is to calculate the relative proportions of each ethnic group within the administrative geography of the <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates">Middle layer Super Output Area (MSOA)</a>. In order to do this, we have been given a file that contains data on ethnicity by age group at the MSOA-level of every person in the 2011 UK Census who is 16 year or older. Download the file to your own computer and <a href="spatial-autocorrelation.html#setting-up-the-environment">set up your data directory</a> in the same fashion as you did last week.</p>
+<div id="file-download" class="section level4 unnumbered">
+<h4>File download</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">File</th>
+<th align="left">Type</th>
+<th align="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Etnicity by age group 2011 Census of Population</td>
+<td align="left"><code>zip</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/eth_pop_2011/msoa_eth2011_ew_16plus.zip">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p>We start by making sure our <code>tidyverse</code> is loaded into R and using the <code>read_csv()</code> function to read our <code>.csv</code> file.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="exploratory-spatial-data-analysis.html#cb77-1" aria-hidden="true"></a><span class="co"># load the tidyverse </span></span>
 <span id="cb77-2"><a href="exploratory-spatial-data-analysis.html#cb77-2" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
 <span id="cb77-3"><a href="exploratory-spatial-data-analysis.html#cb77-3" aria-hidden="true"></a></span>
@@ -395,8 +456,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## [29] &quot;Sex: All persons; Age: Age 18 to 19; Ethnic Group: White: Irish; measures: Value&quot;                                          
 ## [30] &quot;Sex: All persons; Age: Age 18 to 19; Ethnic Group: White: Gypsy or Irish Traveller; measures: Value&quot;                       
 ##  [ reached getOption(&quot;max.print&quot;) -- omitted 355 entries ]</code></pre>
-<p>The column names are all awfully long and it looks like that the data have been split out into age groups. Further to this, the data contain within group total counts: <em>all categories</em>, <em>white total</em>, <em>mixed/multiple ethnic group total</em>, and so on. You can also try using <code>View(df)</code> to browse through the dataset to get a better idea of what is happening.</p>
-<p>Although the data is messy and we will need to reorganise our data set, it does look there is some form of structure present that we can exploit: the various columns are repeated for each for the different age groups. This means that we can go through the data frame in steps of equal size to select the data we want: starting from column 2 (column 1 only contains the reference to the adminsitrative geography) we want to select all 24 columns of data for that particular age group. We create a <code>for</code> loop that does exactly that:</p>
+<p>The column names are all awfully long and it looks like that the data have been split out into age groups. Further to this, the data contain within group total counts: <em>all categories</em>, <em>white total</em>, <em>mixed/multiple ethnic group total</em>, and so on. You can also try using <code>View(df)</code> or use any other form of spreadsheet software (e.g. Microsoft Excel) to <strong>browse</strong> through the dataset to get a better idea of what is happening and get a better idea of the structure of the data.</p>
+<p>Although the data is messy and we will need to reorganise our data set, it does look there is some form of structure present that we can exploit: the various columns with population counts for each ethnic group are repeated for each of the different age groups. This means that we can go through the data frame in steps of equal size to select the data we want: starting from column 2 (column 1 only contains the reference to the adminsitrative geography) we want to select all 24 columns of data for that particular age group. We can create a <code>for</code> loop that does exactly that:</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="exploratory-spatial-data-analysis.html#cb85-1" aria-hidden="true"></a><span class="co"># loop through the columns of our data set</span></span>
 <span id="cb85-2"><a href="exploratory-spatial-data-analysis.html#cb85-2" aria-hidden="true"></a><span class="cf">for</span> (column <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">2</span>,<span class="kw">ncol</span>(df),<span class="dv">24</span>)) {</span>
 <span id="cb85-3"><a href="exploratory-spatial-data-analysis.html#cb85-3" aria-hidden="true"></a>    </span>
@@ -542,10 +603,11 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <span id="cb97-15"><a href="exploratory-spatial-data-analysis.html#cb97-15" aria-hidden="true"></a>}</span>
 <span id="cb97-16"><a href="exploratory-spatial-data-analysis.html#cb97-16" aria-hidden="true"></a></span>
 <span id="cb97-17"><a href="exploratory-spatial-data-analysis.html#cb97-17" aria-hidden="true"></a><span class="co"># paste all elements from the list underneath one another</span></span>
-<span id="cb97-18"><a href="exploratory-spatial-data-analysis.html#cb97-18" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(<span class="kw">do.call</span>(rbind,df_lst))</span>
-<span id="cb97-19"><a href="exploratory-spatial-data-analysis.html#cb97-19" aria-hidden="true"></a></span>
-<span id="cb97-20"><a href="exploratory-spatial-data-analysis.html#cb97-20" aria-hidden="true"></a><span class="co"># and the result</span></span>
-<span id="cb97-21"><a href="exploratory-spatial-data-analysis.html#cb97-21" aria-hidden="true"></a>df_reformatted</span></code></pre></div>
+<span id="cb97-18"><a href="exploratory-spatial-data-analysis.html#cb97-18" aria-hidden="true"></a><span class="co"># do.call executes the function rbind for all elements in our list</span></span>
+<span id="cb97-19"><a href="exploratory-spatial-data-analysis.html#cb97-19" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(<span class="kw">do.call</span>(rbind,df_lst))</span>
+<span id="cb97-20"><a href="exploratory-spatial-data-analysis.html#cb97-20" aria-hidden="true"></a></span>
+<span id="cb97-21"><a href="exploratory-spatial-data-analysis.html#cb97-21" aria-hidden="true"></a><span class="co"># and the result</span></span>
+<span id="cb97-22"><a href="exploratory-spatial-data-analysis.html#cb97-22" aria-hidden="true"></a>df_reformatted</span></code></pre></div>
 <pre><code>## # A tibble: 2,765,184 x 3
 ##    msoa11cd  age_group                                                     count
 ##    &lt;chr&gt;     &lt;chr&gt;                                                         &lt;dbl&gt;
@@ -565,13 +627,15 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <span id="cb99-2"><a href="exploratory-spatial-data-analysis.html#cb99-2" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">filter</span>(df_reformatted,<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&#39;*All categories*&#39;</span>,age_group))</span>
 <span id="cb99-3"><a href="exploratory-spatial-data-analysis.html#cb99-3" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">filter</span>(df_reformatted,<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&#39;*Total*&#39;</span>,age_group))</span>
 <span id="cb99-4"><a href="exploratory-spatial-data-analysis.html#cb99-4" aria-hidden="true"></a></span>
-<span id="cb99-5"><a href="exploratory-spatial-data-analysis.html#cb99-5" aria-hidden="true"></a><span class="co"># truncate information</span></span>
+<span id="cb99-5"><a href="exploratory-spatial-data-analysis.html#cb99-5" aria-hidden="true"></a><span class="co"># create variable that flags the 85 and over category</span></span>
 <span id="cb99-6"><a href="exploratory-spatial-data-analysis.html#cb99-6" aria-hidden="true"></a>df_reformatted<span class="op">$</span>g &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&#39;85&#39;</span>,<span class="kw">as.character</span>(df_reformatted<span class="op">$</span>age_group)),<span class="dv">1</span>,<span class="dv">0</span>)</span>
-<span id="cb99-7"><a href="exploratory-spatial-data-analysis.html#cb99-7" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">mutate</span>(df_reformatted,<span class="dt">group =</span> <span class="kw">ifelse</span>(g<span class="op">==</span><span class="dv">0</span>,<span class="kw">substr</span>(<span class="kw">as.character</span>(age_group),<span class="dv">38</span>,<span class="dv">500</span>),</span>
-<span id="cb99-8"><a href="exploratory-spatial-data-analysis.html#cb99-8" aria-hidden="true"></a>                                                            <span class="kw">substr</span>(<span class="kw">as.character</span>(age_group),<span class="dv">41</span>,<span class="dv">500</span>))) </span>
-<span id="cb99-9"><a href="exploratory-spatial-data-analysis.html#cb99-9" aria-hidden="true"></a></span>
-<span id="cb99-10"><a href="exploratory-spatial-data-analysis.html#cb99-10" aria-hidden="true"></a><span class="co"># remove unnecessary columns</span></span>
-<span id="cb99-11"><a href="exploratory-spatial-data-analysis.html#cb99-11" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">select</span>(df_reformatted, <span class="op">-</span>age_group, <span class="op">-</span>g)</span></code></pre></div>
+<span id="cb99-7"><a href="exploratory-spatial-data-analysis.html#cb99-7" aria-hidden="true"></a></span>
+<span id="cb99-8"><a href="exploratory-spatial-data-analysis.html#cb99-8" aria-hidden="true"></a><span class="co"># select information from character 41 (85 and over category) or from character 38</span></span>
+<span id="cb99-9"><a href="exploratory-spatial-data-analysis.html#cb99-9" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">mutate</span>(df_reformatted,<span class="dt">group =</span> <span class="kw">ifelse</span>(g<span class="op">==</span><span class="dv">0</span>,<span class="kw">substr</span>(<span class="kw">as.character</span>(age_group),<span class="dv">38</span>,<span class="dv">500</span>),</span>
+<span id="cb99-10"><a href="exploratory-spatial-data-analysis.html#cb99-10" aria-hidden="true"></a>                                                            <span class="kw">substr</span>(<span class="kw">as.character</span>(age_group),<span class="dv">41</span>,<span class="dv">500</span>))) </span>
+<span id="cb99-11"><a href="exploratory-spatial-data-analysis.html#cb99-11" aria-hidden="true"></a></span>
+<span id="cb99-12"><a href="exploratory-spatial-data-analysis.html#cb99-12" aria-hidden="true"></a><span class="co"># remove unnecessary columns</span></span>
+<span id="cb99-13"><a href="exploratory-spatial-data-analysis.html#cb99-13" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">select</span>(df_reformatted, <span class="op">-</span>age_group, <span class="op">-</span>g)</span></code></pre></div>
 <p>We are now really getting somewhere, although in order for our data to be tidy each variable must have its own column. We also want, within each ethnic group, to have the sum of the values that used to belong to individual age groups.</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="exploratory-spatial-data-analysis.html#cb100-1" aria-hidden="true"></a><span class="co"># pivot table and aggregate values</span></span>
 <span id="cb100-2"><a href="exploratory-spatial-data-analysis.html#cb100-2" aria-hidden="true"></a>df_clean &lt;-<span class="st"> </span><span class="kw">pivot_wider</span>(df_reformatted,<span class="dt">names_from=</span>group,<span class="dt">values_from=</span>count,<span class="dt">values_fn=</span>sum)</span>
@@ -603,13 +667,14 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## #   asian_pakistani &lt;dbl&gt;, asian_bangladeshi &lt;dbl&gt;, asian_chinese &lt;dbl&gt;,
 ## #   asian_other &lt;dbl&gt;, black_african &lt;dbl&gt;, black_caribbean &lt;dbl&gt;,
 ## #   black_other &lt;dbl&gt;, other_arab &lt;dbl&gt;, other_other &lt;dbl&gt;</code></pre>
-<p>Finally. We now have a <strong>tidy</strong> dataset that we can work with!</p>
+<p>Finally. We now have a <strong>tidy dataset</strong> that we can work with!</p>
+</div>
 </div>
 <div id="assignment_w05" class="section level3" number="5.2.4">
 <h3><span class="header-section-number">5.2.4</span> Assignments</h3>
 <div id="assignment-1" class="section level4 unnumbered">
 <h4>Assignment 1</h4>
-<p>Since we went through all the trouble in cleaning and creating this file, the first task for Friday’s seminar is to finalise the analysis: use the cleaned data set to create a table that, for each MSOA, contains the proportions of the population belonging to each of the ethnic groups in the UK 2011 Census of Population. It could look something like this:</p>
+<p>Since we went through all the trouble of cleaning and creating this file, the first task for Friday’s seminar is to finalise the analysis: use the cleaned data set to create a table that, for each MSOA, contains the proportions of the population belonging to each of the ethnic groups in the UK 2011 Census of Population. It could look something like this:</p>
 <table>
 <thead>
 <tr class="header">
@@ -635,21 +700,50 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </tbody>
 </table>
 </div>
+<div id="tips" class="section level4 unnumbered">
+<h4>Tips</h4>
+<ol style="list-style-type: decimal">
+<li>First think what you what steps you would need to take in order to get the group proportions. Write them down on a piece of paper if you like. Once you have identified the steps, then start coding.</li>
+<li>Conduct sanity checks. Every time you have written a piece of code, check the results to see if the code did indeed give the result that you expected to get.</li>
+<li>Google is your friend. Do not be afraid to search for specific solutions and suggestions, chances are that there have been other people who have faces similar problems and posted their questions on <a href="https://stackoverflow.com/">stackoverflow</a>.</li>
+</ol>
+</div>
 <div id="assignment-2" class="section level4 unnumbered">
 <h4>Assignment 2</h4>
-<p>Further to calculating the proportions of the population belonging to each of the ethnic groups in the UK 2011 Census of Population, we also want to make a choropleth map at district level of the UK population that is older than 60 as a proportion of the total population. For this analysis we have available one dataset with the administrative boundaries of the UK 2020 Local Authorithy Districts administrative geography and we have a <code>.csv</code> file that holds population data. Use everything you have learned over the past weeks to produces this map. Some tips:</p>
+<p>Further to calculating the proportions of the population belonging to each of the ethnic groups in the UK 2011 Census of Population, we also want to make a choropleth map at district level of the UK population that is older than 60 as a proportion of the total population. For this analysis we have available one dataset with the administrative boundaries of the UK 2020 Local Authorithy Districts administrative geography and we have a <code>.csv</code> file that holds population estimates for the UK in 2019. Use everything you have learned over the past weeks to produces this map. Some tips:</p>
+</div>
+<div id="tips-1" class="section level4 unnumbered">
+<h4>Tips</h4>
 <ol style="list-style-type: decimal">
-<li>Inspect both the shapefile and the <code>.csv</code> file to get an idea of how your data look like.</li>
-<li>The data file does contain a mix of administrative geographies, and you will need to filter out <em>Country</em>, <em>County</em>, <em>Metropolitan County</em>, and <em>Region</em>.</li>
-<li>You are in charge of deciding which tools you want to use to visualise the data (ArcGIS, R, QGIS, etc.)</li>
-<li>You do not to do to everything that we have done in the practical so far, you now have to make your own decisions.</li>
+<li>Inspect both the shapefile and the <code>.csv</code> file to get an idea of how your data look like. Use any tool you like to do this inspection (ArcGIS, R, QGIS, Microsoft Excel, etc.).</li>
+<li>The <code>.csv</code> file does contain a mix of administrative geographies, and you will need to do some data cleaning by filtering out <em>Country</em>, <em>County</em>, <em>Metropolitan County</em>, and <em>Region</em> before you link the data to the shapefile.</li>
+<li>You are in charge of deciding which tools you want to use to visualise the data (ArcGIS, R, QGIS, etc.).</li>
+<li>You now have to make your own decisions on how to go about this problem. Although this practical has so far covered some of the fucntions and strategies you might need, the data cleaning and data preparation process is not the same.</li>
 </ol>
- 
-<center>
-<p><strong>You can download the shapefile with the administrative boundaries <a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/administrative_boundaries/uk_lad_2020/LADs_uk_2020.zip">here</a>.</strong></p>
-<strong>You can download the <code>.csv</code> file with the population data <a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/mye_pop_2019/mye_pop_2019.zip">here</a>.</strong>
-</center>
-<p> </p>
+</div>
+<div id="file-download-1" class="section level4 unnumbered">
+<h4>File download</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">File</th>
+<th align="left">Type</th>
+<th align="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Local Authorithy District boundaries 2020</td>
+<td align="left"><code>zip</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/administrative_boundaries/uk_lad_2020/LADs_uk_2020.zip">Download</a></td>
+</tr>
+<tr class="even">
+<td align="left">Mid-Year Population Estimates 2019</td>
+<td align="left"><code>zip</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/mye_pop_2019/mye_pop_2019.zip">Download</a></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -662,6 +756,41 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </div>
 <div id="example-exploring-our-dataset" class="section level3" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> Example: Exploring our dataset</h3>
+<p>After successfully creating the maps that we were requested to make, our boss got so happy that she directly gave us a new assignment. This time she wants us to look at crime data in London again, specifically she wants to know whether relative deprivation and factors from the built environment can explain the occurence of anti-social behaviour in London in March 2019. We have access to two <strong>open</strong> data sets. The first one contains the English <a href="https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019">Index of Multiple Deprivation (IMD)</a> for M 2019. The English indices of deprivation measure relative deprivation in small areas in England called Lower-layer Super Output Areas (LSOAs) The index of multiple deprivation is the most widely used of these indices. The second one contains some of the input data of the <a href="https://data.cdrc.ac.uk/dataset/access-healthy-assets-hazards-ahah">Access to Healthy Assets and Hazards (AHAH)</a>. AHAH is a multi-dimensional index developed by the the <a href="https://www.cdrc.ac.uk/">Consumer Data Research Centre (CDRC)</a> for Great Britain measuring how ‘healthy’ neighbourhoods are. We also have access to the LSOAs for London.</p>
+<div id="file-download-2" class="section level4 unnumbered">
+<h4>File download</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">File</th>
+<th align="left">Type</th>
+<th align="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Lower-layer Super Output Areas London 2011</td>
+<td align="left"><code>zip</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/administrative_boundaries/london_lsoa_2011/lsoa_london_2011.zip">Download</a></td>
+</tr>
+<tr class="even">
+<td align="left">Anti-social behaviour crime data London 2019</td>
+<td align="left"><code>zip</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/crime/march2019_london_anti_social.zip">Download</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Index of Multiple Deprivation London 2019</td>
+<td align="left"><code>zip</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/index/imd_ew_2019.zip">Download</a></td>
+</tr>
+<tr class="even">
+<td align="left">Access to Healthy Assets and Hazards (AHAH) London</td>
+<td align="left"><code>zip</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/index/ahah_input_gb_2016.zip">Download</a></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="spatial-heterogeneity" class="section level2" number="5.4">
