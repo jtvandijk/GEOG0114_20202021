@@ -329,7 +329,7 @@ head(imd)
 head(ahah)
 ```
 
-Looking at the data you will notice that the crime data exists of longitudes and latitudes. The IMD dataset has an *lsoa11cd* column, an IMD rank column, and an IMD decile column. The AHAH dataset has an *lsoa11cd* column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The [technical report of the AHAH index](https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1) suggests that access is calculated as the mean disance (kilometres) by car travel route of postcodes within a LSOA to the nearest outlet. Good to know!
+Looking at the data you will notice that the anti-social behaviour crime data exists of longitudes and latitudes. The IMD dataset has an *lsoa11cd* column, an IMD rank column, and an IMD decile column. The AHAH dataset has an *lsoa11cd* column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The [technical report of the AHAH index](https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1) suggests that access is calculated as the mean disance (kilometres) by car travel route of postcodes within a LSOA to the nearest outlet. Good to know!
 
 Let's start by linking the IMD dataset and the AHAH dataset to the spatial dataset. Since we are using `sf` for our spatial data, we can very easily joining them together using the common variable in these datasets: *lsoa11cd*.
 
@@ -344,7 +344,7 @@ lsoa_join <- left_join(lsoa_join,ahah,by=c('lsoa11cd'))
 head(lsoa_join)
 ```
 
-This is all looking fine. Let's now turn our turn our crime location dataset into a spatial dataset using the longitude and latitude values and get total crime counts within each of London's LSOAs.
+This is all looking fine. Let's now turn our turn our anti-social behaviour crime location dataset into a spatial dataset using the longitude and latitude values and get total anti-social behaviour crime counts within each of London's LSOAs.
 
 ```{r 05-points-to-lsoa, warnings=FALSE, message=FALSE}
 # filter out points without a longitude and/or latitude value
@@ -361,7 +361,7 @@ lsoa_join$n_crime <- lengths(st_intersects(lsoa_join,crime_points))
 tm_shape(lsoa_join) +
   tm_fill(col='n_crime')
 
-# transform the crime data to see the smaller differences
+# transform the anti-social behaviour crime data to see the smaller differences
 lsoa_join$n_crime_sqrt <- sqrt(lsoa_join$n_crime)
 
 # inspect the result
@@ -369,7 +369,7 @@ tm_shape(lsoa_join) +
   tm_fill(col='n_crime_sqrt')
 ```
 
-This all looks good. We can see, however, that the the number of times anti-social behaviour was reported are highly skewed by Central London as well as an LSOA in the West of London. It is now a good idea to explore the crime data a bit further to see how the data are distributed non-spatially by plotting them.
+This all looks good. We can see, however, that the the number of times anti-social behaviour was reported are highly skewed by Central London as well as an LSOA in the West of London. It is now a good idea to explore the anti-social behaviour crime data a bit further to see how the data are distributed non-spatially by plotting them.
 
 ```{r 05-inspect-the-crime-data, warnings=FALSE, message=FALSE}
 # summary
@@ -414,36 +414,36 @@ ggplot(lsoa_join, aes(x=off_dist))+
 The input data look good. There are no real strange and unexpected outliers or missing values and at the same time there is enough [heterogeneity](https://en.wikipedia.org/wiki/Homogeneity_and_heterogeneity) in our data. This is important because if the input data have very similar values for al LSOAs they would not be very useful in trying to explain the differences in anti-social behaviour. So, we can continue. Let's start by seeing if there is any relationship between our input (independent) variables and our output (dependent) variable by some plots.
 
 ```{r 05-lets-scatterplot, warnings=FALSE, message=FALSE}
-# imd vs crime
+# imd vs anti-social behaviour crime
 ggplot(lsoa_join,aes(x=imd_dec, y=n_crime_sqrt)) +
   geom_point()
 
-# gambling outlet distance vs crime
+# gambling outlet distance vs anti-social behaviour crime
 ggplot(lsoa_join,aes(x=gamb_dist, y=n_crime_sqrt)) +
   geom_point()
 
-# pub distance vs crime
+# pub distance vs anti-social behaviour crime
 ggplot(lsoa_join,aes(x=pubs_dist, y=n_crime_sqrt)) +
   geom_point()
 
-# off license distance vs crime
+# off license distance vs anti-social behaviour crime
 ggplot(lsoa_join,aes(x=off_dist, y=n_crime_sqrt)) +
   geom_point()
 ```
 
-The IMD deciles, which are in fact categorical data, do not show any pattern, however, the distance to the various outlets do show some pattern. Let's correlate.
+The IMD deciles, which are in fact categorical data, do not show any obvious pattern, however, the distance to the various outlets do show some pattern. Let's correlate.
 
 ```{r 05-lets-correlate, warnings=FALSE, message=FALSE}
-# imd vs crime
+# imd vs anti-social behaviour crime
 cor(lsoa_join$imd_dec,lsoa_join$n_crime_sqrt)
 
-# gambling outlet distance vs crime
+# gambling outlet distance vs anti-social behaviour crime
 cor(lsoa_join$gamb_dist,lsoa_join$n_crime_sqrt)
 
-# pub distance vs crime
+# pub distance vs anti-social behaviour crime
 cor(lsoa_join$pubs_dist,lsoa_join$n_crime_sqrt)
 
-# off license distance vs crime
+# off license distance vs anti-social behaviour crime
 cor(lsoa_join$off_dist,lsoa_join$n_crime_sqrt)
 ```
 So, looking at these graphs there seems to be some relationship between our explantory (independent) variables and our dependent variables. It is time to form a hypothesis: LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest experience more anti-social behaviour. The null hypothesis then becomes: LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest **do not** experience more anti-social behaviour, i.e. there is no relationship whatsoever.
@@ -463,7 +463,7 @@ summary(crime_model)
 In running a regression model, we are effectively trying to test our null hypothesis. If our null hypothesis was true, then we would expect our coefficients to equal 0. Right now our null hypothesis was that there is no relationship between anti-social behaviour and our input variables. Without going in much further detail, as this will be in-depth covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we can see that the null hypothesis is disproven and, in fact, there seems to be a negative relationship between our input variables and our dependent variable. Three out of our four variables are significant at a 0.05 level of significance. The R-squared, which is a measure of the goodness-of-fit of the model, suggest that 13.50 per cent of the variation in our dependent variable can be explained by our input variables. This means that a relationship is present, but it is not very strong! Nonetheless, the model suggest that LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest experience more anti-social behaviour. Consider that when moving house.
 
 #### Important {-}
-Normally, you would also check the underlying assumptions of the linear model (linearity, homoscedasticity, indepdence, and normality), however, this will be covered more in-depth in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html) and for our current purposes we are going to be a little naughty and accept the results as is and assume that all our underlying assumptions are satisfied (even though we are actually violating some of these underlying assumptions!).
+Normally, you would also check the underlying assumptions of the linear model (linearity, homoscedasticity, independence, and normality), however, this will be covered more in-depth in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html) and for our current purposes we are going to be a little naughty and accept the results as is and assume that all our underlying assumptions are satisfied (even though we are actually violating some of these underlying assumptions!).
 
 ## Spatial heterogeneity
 Although we have established a relationship between IMD deciles, access to gambling outlets, access to pubs, access to off licenses, and the occurence of anti-social behaviour, our data are very spatial.However, we did not incorporate this spatial distribution into our model. So if we want to develop a regression model for anti-social behaviour in London we may have to recognise this spatial component. On top of this, a regression model assumes indepence of observations: what happens in LSOA 1 is not related to what happens in LSOA 2. However, we know from last weeks content that this is not always the case because of spatial autocorrelation.
