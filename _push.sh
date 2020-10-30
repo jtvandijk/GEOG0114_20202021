@@ -2,6 +2,7 @@
 
 # commit message
 commit=$1
+branch=$2
 
 # build bookdown
 bash _build.sh
@@ -13,4 +14,4 @@ git add .
 git commit -m "$commit"
 
 # git push
-git push origin master
+git push origin $branch

@@ -189,7 +189,6 @@ st_queen <- function(a, b = a) st_relate(a, b, pattern = "F***T****")
 
 # these methods are now in the documetation for st_relate()
 # have a look in the examples at the bottom of the documentation
-# st_relate()
 
 ```
 
