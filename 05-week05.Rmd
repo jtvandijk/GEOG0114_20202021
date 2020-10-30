@@ -446,7 +446,9 @@ cor(lsoa_join$pubs_dist,lsoa_join$n_crime_sqrt)
 # off license distance vs crime
 cor(lsoa_join$off_dist,lsoa_join$n_crime_sqrt)
 ```
-So! There seems to be some relationship between our explantory (independent) variables and our dependent variables. Let's see if we can put this together into a Ordinary Least Squares (OLS) regression model. In R, models are typically fitted by calling a model-fitting function, in our case `lm()` (linear model). The `lm()` function returns a fitted model which we can inspect by calling `summary` on the object. 
+So, looking at these graphs there seems to be some relationship between our explantory (independent) variables and our dependent variables. It is time to form a hypothesis: LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest experience more anti-social behaviour. The null hypothesis then becomes: LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest **do not** experience more anti-social behaviour, i.e. there is no relationship whatsoever.
+
+Let's see if we can test this hypothesis using an Ordinary Least Squares (OLS) regression model. In R, models are typically fitted by calling a model-fitting function, in our case `lm()` (linear model). The `lm()` function returns a fitted model which we can inspect by calling `summary` on the object. 
 
 ```{r 05-we-are-regressing, warnings=FALSE, message=FALSE}
 # linear model
@@ -458,12 +460,14 @@ crime_model <- lm(n_crime_sqrt ~
 summary(crime_model)
 ```
 
-In running a regression model, we are effectively trying to test a null hypothesis. If our null hypothsis was true, then we would expect our coefficients to = 0. Right now our null hypothesis is that there is no relationship between anti-social behaviour and our input variables. Without going in much further detail, as this will be in-depth covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we can see that there seems to be indeed a relationship between our input variables and our dependent variable. Three out of our four variables are significant at a 0.05 level of significance. The R-squared, which is a measure of the goodness-of-fit of the model, suggest that 13.5 per cent of the variation in our dependent variable can be explained by our input variables. This means that the relationship is present, but not very strong! 
+In running a regression model, we are effectively trying to test our null hypothesis. If our null hypothesis was true, then we would expect our coefficients to equal 0. Right now our null hypothesis was that there is no relationship between anti-social behaviour and our input variables. Without going in much further detail, as this will be in-depth covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we can see that the null hypothesis is disproven and, in fact, there seems to be a negative relationship between our input variables and our dependent variable. Three out of our four variables are significant at a 0.05 level of significance. The R-squared, which is a measure of the goodness-of-fit of the model, suggest that 13.50 per cent of the variation in our dependent variable can be explained by our input variables. This means that a relationship is present, but it is not very strong! Nonetheless, the model suggest that LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest experience more anti-social behaviour. Consider that when moving house.
 
 #### Important {-}
-Normally, you would also check the underlying assumptions of the linear model (linearity, homoscedasticity, indepdence, and normality), however, this will be covered in-depth in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html) and for our current purposes we are going to be a little naughty and accept the results as is and assume that all our underlying assumptions are satisfied (even though we are actually violating some of these underlying assumptions!).
+Normally, you would also check the underlying assumptions of the linear model (linearity, homoscedasticity, indepdence, and normality), however, this will be covered more in-depth in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html) and for our current purposes we are going to be a little naughty and accept the results as is and assume that all our underlying assumptions are satisfied (even though we are actually violating some of these underlying assumptions!).
 
 ## Spatial heterogeneity
+Although we have established a relationship between IMD deciles, access to gambling outlets, access to pubs, access to off licenses, and the occurence of anti-social behaviour, our data are very spatial.However, we did not incorporate this spatial distribution into our model. So if we want to develop a regression model for anti-social behaviour in London we may have to recognise this spatial component. On top of this, a regression model assumes indepence of observations: what happens in LSOA 1 is not related to what happens in LSOA 2. However, we know from last weeks content that this is not always the case because of spatial autocorrelation.
+
 ### Video: Spatial heterogeneity
 ```{r echo=FALSE}
 library(vembedr)
@@ -480,6 +484,7 @@ Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cl
 This week's content and practical uses content and inspiration from:
 
 - Wickham, H., Grolemund, G. 2017. R for Data Science. https://r4ds.had.co.nz/index.html 
+- Medina, J, Solymosi, R. 2019. Crime Mapping in R. https://maczokni.github.io/crimemapping_textbook_bookdown/
 
 ## Feedback {#feedback_w05}
 Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).
