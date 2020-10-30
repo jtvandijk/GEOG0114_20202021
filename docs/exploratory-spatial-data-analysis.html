@@ -888,7 +888,10 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <span id="cb113-2"><a href="exploratory-spatial-data-analysis.html#cb113-2" aria-hidden="true"></a><span class="kw">summary</span>(lsoa_join<span class="op">$</span>n_crime)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   0.000   1.000   2.000   3.912   5.000 107.000</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="exploratory-spatial-data-analysis.html#cb115-1" aria-hidden="true"></a><span class="co"># boxplot</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="exploratory-spatial-data-analysis.html#cb115-1" aria-hidden="true"></a><span class="co"># barplot</span></span>
+<span id="cb115-2"><a href="exploratory-spatial-data-analysis.html#cb115-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>n_crime)) <span class="op">+</span></span>
+<span id="cb115-3"><a href="exploratory-spatial-data-analysis.html#cb115-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span>.<span class="dv">5</span>, <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/05-inspect-the-crime-data-1.png" width="672" /></p>
 </div>
 </div>
 </div>

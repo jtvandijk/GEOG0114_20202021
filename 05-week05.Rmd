@@ -366,8 +366,9 @@ This all looks good. We can see, however, that the the number of times anti-soci
 # summary
 summary(lsoa_join$n_crime)
 
-# boxplot
-
+# barplot
+ggplot(lsoa_join, aes(x=n_crime)) +
+    geom_histogram(binwidth=.5, colour="black", fill="white")
 ```
 
 ## Spatial heterogeneity
