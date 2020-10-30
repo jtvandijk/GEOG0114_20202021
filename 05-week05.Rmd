@@ -90,7 +90,7 @@ Fortunately, there are some functions in the `tidyr` and `dplyr` packages, both 
 Keep in mind that if you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through `?name_of_function`, e.g. `?pivot_longer`. For any mature R package, the documentation contains a list of arguments that the function takes as well as a set of usage examples.
 
 ### Example: Creating tidy data
-Now we know what consitute **tidy data**, we can put this into practice with an example using some data from the [Office for National Statistics](https://www.ons.gov.uk/). Let's say we are asked by our boss to analyse some data on the ethnic background of the UK population, for instance, because we want to get some insights into the relationship between [COVID-19 and ethnic background](https://www.theguardian.com/world/2020/oct/09/bame-groups-hit-hard-again-covid-second-wave-grips-uk-nations). Our assignment is to calculate the relative proportions of each ethnic group within the administrative geography of the [Middle layer Super Output Area (MSOA)](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates). In order to do this, we have been given a file that contains data on ethnicity by age group at the MSOA-level of every person in the 2011 UK Census who is 16 year or older. Download the file to your own computer and [set up your data directory](spatial-autocorrelation.html#setting-up-the-environment) in the same fashion as you did last week. 
+Now we know what consitute **tidy data**, we can put this into practice with an example using some data from the [Office for National Statistics](https://www.ons.gov.uk/). Let's say we are asked by our boss to analyse some data on the ethnic background of the UK population, for instance, because we want to get some insights into the relationship between [COVID-19 and ethnic background](https://www.theguardian.com/world/2020/oct/09/bame-groups-hit-hard-again-covid-second-wave-grips-uk-nations). Our assignment is to calculate the relative proportions of each ethnic group within the administrative geography of the [Middle layer Super Output Area (MSOA)](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates). In order to do this, we have been given a file that contains data on ethnicity by age group at the MSOA-level of every person in the 2011 UK Census who is 16 year or older. Download the file to your own computer and [set up your data directory](spatial-autocorrelation.html#setting-up-the-environment) in the same fashion as you did last week. You can also decide on setting up your own folder structure, no problem, just make sure that you update the file paths in the practical to match the file paths on your own computers. Also, make sure that you unzip the data.
 
 #### File download {-}
 | File                                                 | Type           | Link |
@@ -175,7 +175,7 @@ columns_to_rows <- function(df, start, stop) {
   df_sub <- select(df,col_sub)
   
   # pivot the columns in the dataframe, exclude the MSOA code column 
-  df_piv <- pivot_longer(df_sub,!msoa11cd)
+  df_piv <- pivot_longer(df_sub,-msoa11cd)
   
   # rename columns
   names(df_piv) <- c('msoa11cd','age_group','count')
@@ -290,7 +290,7 @@ library(vembedr)
 [[Lecture slides]]() [[Watch on MS stream]]()
 
 ### Example: Exploring our dataset
-After successfully creating the maps that we were requested to make, our boss got so happy that she directly gave us a new assignment. This time she wants us to look at crime data in London again, specifically she wants to know whether relative deprivation and factors from the built environment can explain the occurence of anti-social behaviour in London in March 2019. We have access to two **open** data sets. The first one contains the English [Index of Multiple Deprivation (IMD)](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) for M 2019. The English indices of deprivation measure relative deprivation in small areas in England called Lower-layer Super Output Areas (LSOAs) The index of multiple deprivation is the most widely used of these indices. The second one contains some of the input data of the [Access to Healthy Assets and Hazards (AHAH)](https://data.cdrc.ac.uk/dataset/access-healthy-assets-hazards-ahah). AHAH is a multi-dimensional index developed by the the [Consumer Data Research Centre (CDRC)](https://www.cdrc.ac.uk/) for Great Britain measuring how ‘healthy’ neighbourhoods are. We also have access to the LSOAs for London.
+After successfully creating the maps that we were requested to make, our boss got so happy that she directly gave us a new assignment. This time she wants us to look at crime data in London again, specifically she wants to know whether relative deprivation and factors from the built environment can explain the occurence of anti-social behaviour in London in March 2019. We have access to two **open** data sets. The first one contains the English [Index of Multiple Deprivation (IMD)](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) for 2019. The English indices of deprivation measure relative deprivation in small areas in England called Lower-layer Super Output Areas (LSOAs) The index of multiple deprivation is the most widely used of these indices. The second one contains some of the input data of the [Access to Healthy Assets and Hazards (AHAH)](https://data.cdrc.ac.uk/dataset/access-healthy-assets-hazards-ahah). AHAH is a multi-dimensional index developed by the [Consumer Data Research Centre (CDRC)](https://www.cdrc.ac.uk/) for Great Britain measuring how ‘healthy’ neighbourhoods are. We also have access to the LSOAs for London.
 
 #### File download {-}
 | File                                        | Type         | Link |
@@ -299,6 +299,22 @@ After successfully creating the maps that we were requested to make, our boss go
 | Anti-social behaviour crime data London 2019| `zip`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/crime/march2019_london_anti_social.zip) |
 | Index of Multiple Deprivation London 2019   | `zip`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/index/imd_ew_2019.zip) |
 | Access to Healthy Assets and Hazards (AHAH) London | `zip` | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/index/ahah_input_gb_2016.zip) |
+
+Download and the file to your own computer and again make sure your [your data directory](spatial-autocorrelation.html#setting-up-the-environment) is set up correctly and the data are unzipped. Then load the libraries and the data into R.
+
+```{r 05-load-libraries, warnings=FALSE, message=FALSE}
+# load libraries
+library(tidyverse)
+library(sf)
+library(tmap)
+
+# load data
+lsoa <- st_read('raw/administrative_boundaries/london_lsoa_2011/lsoa_london_2011.shp')
+crime <- read_csv('raw/crime/march2019_london_anti_social.csv')
+imd <- read_csv('raw/index/imd_ew_2019.csv')
+ahah <- read_csv('raw/index/ahah_input_gb_2016.csv')
+
+```
 
 ## Spatial heterogeneity
 ### Video: Spatial heterogeneity
