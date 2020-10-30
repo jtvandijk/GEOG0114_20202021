@@ -1,17 +1,285 @@
-# Exploratory data analysis
+# Exploratory spatial data analysis
 
+## Introduction {#introduction_w05}
 This week, we focus on the second of the two key properties of spatial data: spatial heterogeneity. With the underlying process (or processes) that govern a spatial variable likely to vary across space, a single global relationship for an entire region of study may not adequately model the process that governs outcomes in any given location of the study region. As a result, multiple methods have been developed to incorporate ‘space’ into traditional regression models, including spatial lag models, spatial error models, and Geographical Weighted Regression. 
 
-This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, first looking at the concept of Exploratory Spatial Data Analysis (ESDA) and how to understand data distributions, descriptive statistics, transformations as well as check for outliers and trends. We then look at the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships. 
+This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, first looking at the concepts of **tidy data** and **Exploratory Spatial Data Analysis (ESDA)**. We then look at the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships. 
 
 In this week's session we will explore potential factors that may contribute to our crime rate in London, using previous literature to identify variables for inclusion in our analysis. We conduct an ESDA of these variables, followed by statistical and spatial regression analysis to determine whether our variables adhere to previous literature and do contribute to crime in our area of study. 
 
-<center>**This week's content will be made available on 02/11.**</center>
+This week is structured by **three** short lecture videos, **two** [assignments](#assignment_w05) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is availble on the UCL library reading list page for the course.
 
-```{r echo=FALSE}
-# library(vembedr)
+### Video: Overview {#overview_w05}
+```{r 05-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
 # embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
 ```
+[[Lecture slides]]() [[Watch on MS stream]]()
 
-## Feedback
+
+## Tidy data
+Over the past weeks a lot of information has come your way, diving deep into the world of Spatial Data Science. However, whilst you are slowly becoming proficient in using R and Python to solve complex (spatial) problems, it is now a good moment to start thinking about data themselves and how they are organised. This is crucial for when you are moving on to working on your own projects where you have to source data yourselves: the vast majority of the data you will find in the public domain (or private domain for that matter) will be **dirty data**. With dirty data we mean data that needs some form of pre-processing, cleaning, and linkage before you can use it for your analysis. Exploratory Spatial Data Analysis very much starts with your data preparation. 
+
+In the following, you will learn a consistent way to structure your data in R: **tidy data**. Tidy data, as formalised by [R Wizard Hadley Wickham](http://hadley.nz/) in his contribution to the [Journal of Statistical Software](http://www.jstatsoft.org/v59/i10/paper) is not only very much at the core of the `tidyverse()` R package, but also of general importance when organising your data. In the words, of [the Wizard](https://r4ds.had.co.nz/tidy-data.html):
+
+> Once you have tidy data and the tidy tools provided by packages in the tidyverse, you will spend much less time munging data from one representation to another, allowing you to spend more time on the analytic questions at hand.
+
+### Video: Tidy data
+```{r 05-short-lecture-tidy-data, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+# embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
+```
+[[Lecture slides]]() [[Watch on MS stream]]()
+
+### What do tidy data look like?
+
+You can represent the same underlying data in multiple ways. The example below, taken from the the `tidyverse()` package and described in the [R for Data Science](https://r4ds.had.co.nz/tidy-data.html) book, shows that the same data can organised in four different ways. 
+
+```{r 05-loading-tidyverse, warnings=FALSE, message=FALSE}
+# load the tidyverse 
+library(tidyverse)
+```
+
+Table **1**:
+```{r 05-tidyverse-table1, warnings=FALSE, message=FALSE}
+table1
+```
+
+Table **2**:
+```{r 05-tidyverse-table2, warnings=FALSE, message=FALSE}
+table2
+```
+
+Table **3**:
+```{r 05-tidyverse-table3, warnings=FALSE, message=FALSE}
+table3
+```
+
+Table **4a**:
+```{r 05-tidyverse-table4a, warnings=FALSE, message=FALSE}
+table4a
+```
+
+Table **4b**:
+```{r 05-tidyverse-table4b, warnings=FALSE, message=FALSE}
+table4b
+```
+
+None of these representations are wrong per se, however, not are equally easy to use. Only Table **1** can be considered as tidy data because it is the only table that adheres to the three rules that make a dataset tidy:
+
+1. Each variable must have its own column.
+2. Each observation must have its own row.
+3. Each value must have its own cell.
+
+```{r 05-figure-hadley-wickham, echo=FALSE, fig.align='center', fig.cap='A visual representation of tidy data by [Hadley Wickham](https://r4ds.had.co.nz/tidy-data.html).'}
+knitr::include_graphics('images/week05/05_a_tidy_data.png')
+```
+
+### Example: Creating tidy data
+Now we know what consitute tidy data, we can put this into practice with an example using some data from the [Office for National Statistics](https://www.ons.gov.uk/). Let's say we need to analyse some data on the ethnic background of the UK population, for instance, because we want to get some insights into the relationship between [COVID-19 and ethnic background](https://www.theguardian.com/world/2020/oct/09/bame-groups-hit-hard-again-covid-second-wave-grips-uk-nations). Our assignment is to calculate the relative proportions of each ethnic group within the administrative geography of the [Middle layer Super Output Area (MSOA)](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates). In order to do this, we have been given a file that contains data on ethnicity by age group at the MSOA-level of every person in the 2011 UK Census who is 16 year or older. Download the file to your own computer and [set up your data directory](spatial-autocorrelation.html#setting-up-the-environment) in the same fashion as you did last week. 
+
+&nbsp;<center>**You can download the file [here](https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/eth_pop_2011/msoa_eth2011_ew_16plus.zip).** </center>&nbsp;
+
+We start by making sure our `tidyverse()` is loaded into R and using the `read_csv()` function to read our `.csv` file.
+
+```{r 05-reading-data, warnings=FALSE, message=FALSE}
+# load the tidyverse 
+library(tidyverse)
+
+# read data into dataframe
+df <- read_csv('raw/population/eth_pop_2011/msoa_eth2011_ew_16plus.csv')
+  
+# inspect the dataframe: number of columns
+ncol(df)
+
+# inspect the dataframe: number of rows
+nrow(df)
+
+# inspect the dataframe: sneak peak
+print(df, n_extra=2)
+```
+
+It is clear that the data are not directly suitable to establish the proportion of each ethnic group within the population of each MSOA because the data are split out over multiple columns. Let's inspect the names of the columns to get a better idea of the structure of our data set.
+
+```{r 05-setting-max-print, warnings=FALSE, message=FALSE, echo=FALSE}
+# settings
+options(max.print = 30)
+```
+
+```{r 05-inspecting-column-names, warnings=FALSE, message=FALSE}
+# inspect the dataframe: column names
+names(df)
+```
+
+The column names are all awfully long and it looks like that the data have been split out into age groups. Further to this, the data contain within group total counts: *all categories*, *white total*, *mixed/multiple ethnic group total*, and so on. You can also try using `View(df)` to browse through the dataset to get a better idea of what is happening.
+
+Although the data is messy and we will need to reorganise our data set, it does look there is some form of structure present that we can exploit: the various columns are repeated for each for the different age groups. This means that we can go through the data frame in steps of equal size to select the data we want: starting from column 2 (column 1 only contains the reference to the adminsitrative geography) we want to select all 24 columns of data for that particular age group. We create a `for` loop that does exactly that:
+
+```{r 05-creating-loop, warnings=FALSE, message=FALSE}
+# loop through the columns of our data set
+for (column in seq(2,ncol(df),24)) {
+    
+  # index number of start column of age group
+  start <- column
+  
+  # index number of end column of age group
+  stop <- column + 23 
+  
+  # print results
+  print(c(start,stop))
+}
+```
+For each age group in our data, the printed values should **(!)** correspond with the index number of the start column of the age group and the index number of the end column of the age group, respectively. Let's do a sanity check.
+
+```{r 05-sanity-check-columns, warnings=FALSE, message=FALSE}
+# sanity check: age group 16-17 (start column)
+df[,2]
+
+# sanity check: age group 16-17 (end column)
+df[,25]
+
+# sanity check: age group 18-19 (start column)
+df[,26]
+
+# sanity check: age group 18-19 (end column)
+df[,49]
+```
+
+All seems to be correct and we have successfully identified our columns. This is great, however, we still cannot work with our data as everything is spread out over different columns. Let's fix this by manipulating the shape of our data by turning columns into rows.
+
+```{r 05-columns-to-rows-function, warnings=FALSE, message=FALSE}
+# create function
+columns_to_rows <- function(df, start, stop) {
+  
+  # columns we are interested in
+  col_sub <- c(1,start:stop)
+  
+  # subset the dataframe 
+  df_sub <- select(df,col_sub)
+  
+  # pivot the columns in the dataframe, exclude the MSOA code column 
+  df_piv <- pivot_longer(df_sub,!msoa11cd)
+  
+  # rename columns
+  names(df_piv) <- c('msoa11cd','age_group','count')
+  return(df_piv)
+}
+
+# test
+columns_to_rows(df,2,25)
+```
+
+This looks much better. Now let's combine our loop with our newly created function to apply this to all of our data.
+
+```{r 05-reformat-dataframe, warnings=FALSE, message=FALSE}
+# create an empty list to store our result from the loop
+df_lst <- list()
+
+# loop through the columns of our data set
+for (column in seq(2,ncol(df),24)) {
+    
+  # index number of start column of age group
+  start <- column
+  
+  # index number of end column of age group
+  stop <- column + 23 
+  
+  # call our function and assign it to the list
+  df_lst[[length(df_lst)+1]] <- columns_to_rows(df,start=start,stop=stop)
+}
+
+# paste all elements from the list underneath one another
+df_reformatted <- as_tibble(do.call(rbind,df_lst))
+
+# and the result
+df_reformatted
+```
+
+Now the data is in a much more managable format, we can move on with preparing the data further. We will start by filtering out the columns (now rows!) that contain *all categories* and the *within group totals*. We will do this by cleverly filtering our data set on only a part of the text string that is contained in the *age_group* column of our dataframe using a [regular expression](https://en.wikipedia.org/wiki/Regular_expression). We further truncate the information that is contained in the *age_group* column to make all a little more readable.
+
+```{r 05-further-clean-dataframe, warnings=FALSE, message=FALSE}
+# filter rows
+df_reformatted <- filter(df_reformatted,!grepl('*All categories*',age_group))
+df_reformatted <- filter(df_reformatted,!grepl('*Total*',age_group))
+
+# truncate information
+df_reformatted$g <- ifelse(grepl('85',as.character(df_reformatted$age_group)),1,0)
+df_reformatted <- mutate(df_reformatted,group = ifelse(g==0,substr(as.character(age_group),38,500),
+                                                            substr(as.character(age_group),41,500))) 
+
+# remove unnecessary columns
+df_reformatted <- select(df_reformatted, -age_group, -g)
+```
+
+We are now really getting somewhere, although in order for our data to be tidy each variable must have its own column. We also want, within each ethnic group, to have the sum of the values that used to belong to individual age groups.
+
+```{r 05-pivot-table-aggregate, warnings=FALSE, message=FALSE}
+# pivot table and aggregate values
+df_clean <- pivot_wider(df_reformatted,names_from=group,values_from=count,values_fn=sum)
+
+# rename columns
+names(df_clean) <- c('msoa11cd','white_british','white_irish','white_traveller','white_other','mixed_white_black_caribbean',
+                     'mixed_white_black_african','mixed_white_asian','mixed_other','asian_indian','asian_pakistani',
+                     'asian_bangladeshi','asian_chinese','asian_other','black_african','black_caribbean','black_other',
+                     'other_arab','other_other')
+
+# tidy date
+df_clean
+```
+
+Finally. We now have a **tidy** dataset that we can work with!
+
+### Assignments {#assignment_w05}
+
+#### Assignment 1 {-}
+Since we went through all the trouble in cleaning and creating this file, the first task for Friday's seminar is to finalise the analysis: use the cleaned data set to create a table that, for each MSOA, contains the proportions of the population belonging to each of the ethnic groups in the UK 2011 Census of Population. It could look something like this:
+
+| msoa11cd          | white_british          | white_irish       | etc.        |
+| :------           | :------:               | :------:          |  :------:   |
+| E02002562         | 0.74                   | 0.03              | ...         |
+| E02002560         | 0.32                   | 0.32              | ...         |
+
+#### Assignment 2 {-}
+Further to calculating the proportions of the population belonging to each of the ethnic groups in the UK 2011 Census of Population, we also want to make a choropleth map at district level of the UK population that is older than 60 as a proportion of the total population. For this analysis we have available one dataset with the administrative boundaries of the UK 2020 Local Authorithy Districts administrative geography and we have a `.csv` file that holds population data. Use everything you have learned over the past weeks to produces this map. Some tips:
+
+1. Inspect both the shapefile and the `.csv` file to get an idea of how your data look like.
+2. The data file does contain a mix of administrative geographies, and you will need to filter out *Country*, *County*, *Metropolitan County*, and *Region*.
+3. You are in charge of deciding which tools you want to use to visualise the data (ArcGIS, R, QGIS, etc.) 
+4. You do not to do to everything that we have done in the practical so far, you now have to make your own decisions.
+
+&nbsp;
+<center>**You can download the shapefile with the administrative boundaries [here](https://github.com/jtvandijk/GEOG0114/tree/master/raw/administrative_boundaries/uk_lad_2020/LADs_uk_2020.zip).**
+
+**You can download the `.csv` file with the population data [here](https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/mye_pop_2019/mye_pop_2019.zip).**
+</center>
+&nbsp;
+
+## Exploratory spatial data analysis in R
+Exploratory Data Analysis got introduced in the the late 1970s by the American mathematician [John Tukey](https://en.wikipedia.org/wiki/John_Tukey). Tukey thought that in much data analysis there was much emphasis on statistical hypothesis testing and very little development of new hypotheses. He therefore made a distinction between **confirmatory data analysis** and **exploratory data analysis (EDA)**. EDA is a collection of descriptive techniques used to detect patterns, identify outliers, and form hypotheses from the data. An EDA typically involves descriptive statistics and data visualisation. Exploratory techniques generally stay 'close' to the original data. **Exploratory spatial data analysis (ESDA)** is the extension of exploratory data analysis (EDA) to the spatial realm.
+
+### Video: Exploratory spatial data analysis
+```{r echo=FALSE}
+library(vembedr)
+# embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
+```
+[[Lecture slides]]() [[Watch on MS stream]]()
+
+### Example: Exploring our dataset
+
+## Spatial heterogeneity
+### Video: Spatial heterogeneity
+```{r echo=FALSE}
+library(vembedr)
+# embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
+```
+[[Lecture slides]]() [[Watch on MS stream]]()
+
+### Example: Accounting for spatial heterogeneity
+
+## Attributions {#attributions_w05}
+This week's content and practical uses content and inspiration from:
+
+- Wickham, H., Grolemund, G. 2017. R for Data Science. https://r4ds.had.co.nz/index.html 
+
+## Feedback {#feedback_w05}
 Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).
