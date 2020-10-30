@@ -255,9 +255,7 @@ Further to calculating the proportions of the population belonging to each of th
 &nbsp;
 
 ## Exploratory spatial data analysis in R
-Exploratory spatial data analysis (ESDA) is the extension of exploratory data analysis (EDA) to the spatial realm. EDA is a collection of descriptive techniques used to detect patterns, identiy outliers, and form hypotheses from the data. An EDA typically involves descriptive statistics and data visualisation. Exploratory techniques generally stay 'close' to the original data.
-
-### Example: Exploring our dataset
+Exploratory Data Analysis got introduced in the the late 1970s by the American mathematician [John Tukey](https://en.wikipedia.org/wiki/John_Tukey). Tukey thought that in much data analysis there was much emphasis on statistical hypothesis testing and very little development of new hypotheses. He therefore made a distinction between **confirmatory data analysis** and **exploratory data analysis (EDA)**. EDA is a collection of descriptive techniques used to detect patterns, identify outliers, and form hypotheses from the data. An EDA typically involves descriptive statistics and data visualisation. Exploratory techniques generally stay 'close' to the original data. **Exploratory spatial data analysis (ESDA)** is the extension of exploratory data analysis (EDA) to the spatial realm.
 
 ### Video: Exploratory spatial data analysis
 ```{r echo=FALSE}
@@ -266,6 +264,13 @@ library(vembedr)
 ```
 [[Lecture slides]]() [[Watch on MS stream]]()
 
+### Example: Exploring our dataset
+
+camden bike theft
+scatterplot
+histogram
+linear model
+
 ## Spatial heterogeneity
 ### Video: Spatial heterogeneity
 ```{r echo=FALSE}
@@ -273,6 +278,12 @@ library(vembedr)
 # embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
 ```
 [[Lecture slides]]() [[Watch on MS stream]]()
+
+### Example: Accounting for spatial heterogeneity
+
+spatial error
+spatial leg
+geographically weighted regression
 
 ## Attributions {#attributions_w05}
 This week's content and practical uses content and inspiration from:
