@@ -217,10 +217,12 @@ Now the data is in a much more managable format, we can move on with preparing t
 
 ```{r 05-further-clean-dataframe, warnings=FALSE, message=FALSE}
 # filter rows
+# this can be a little slow because of the regular expression!
 df_reformatted <- filter(df_reformatted,!grepl('*All categories*',age_group))
 df_reformatted <- filter(df_reformatted,!grepl('*Total*',age_group))
 
 # create variable that flags the 85 and over category
+# this can be a little slow because of the regular expression!
 df_reformatted$g <- ifelse(grepl('85',as.character(df_reformatted$age_group)),1,0)
 
 # select information from character 41 (85 and over category) or from character 38
@@ -327,7 +329,7 @@ head(imd)
 head(ahah)
 ```
 
-Looking at the data you will notice that the crime data exists of longitudes and latitudes. The IMD dataset has an *lsoa11cd* column, an IMD rank column, and an IMD decile column. The AHAH dataset has an *lsoa11cd* column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. 
+Looking at the data you will notice that the crime data exists of longitudes and latitudes. The IMD dataset has an *lsoa11cd* column, an IMD rank column, and an IMD decile column. The AHAH dataset has an *lsoa11cd* column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The [technical report of the AHAH index](https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1) suggests that access is calculated as the mean disance (kilometres) by car travel route of postcodes within a LSOA to the nearest outlet. Good to know!
 
 Let's start by linking the IMD dataset and the AHAH dataset to the spatial dataset. Since we are using `sf` for our spatial data, we can very easily joining them together using the common variable in these datasets: *lsoa11cd*.
 
@@ -358,18 +360,108 @@ lsoa_join$n_crime <- lengths(st_intersects(lsoa_join,crime_points))
 # inspect the result
 tm_shape(lsoa_join) +
   tm_fill(col='n_crime')
+
+# transform the crime data to see the smaller differences
+lsoa_join$n_crime_sqrt <- sqrt(lsoa_join$n_crime)
+
+# inspect the result
+tm_shape(lsoa_join) +
+  tm_fill(col='n_crime_sqrt')
 ```
 
 This all looks good. We can see, however, that the the number of times anti-social behaviour was reported are highly skewed by Central London as well as an LSOA in the West of London. It is now a good idea to explore the crime data a bit further to see how the data are distributed non-spatially by plotting them.
 
 ```{r 05-inspect-the-crime-data, warnings=FALSE, message=FALSE}
 # summary
-summary(lsoa_join$n_crime)
+summary(lsoa_join$n_crime_sqrt)
 
-# barplot
-ggplot(lsoa_join, aes(x=n_crime)) +
-    geom_histogram(binwidth=.5, colour="black", fill="white")
+# histogram
+ggplot(lsoa_join, aes(x=n_crime_sqrt)) +
+    geom_histogram(binwidth=.5, colour='black', fill='white')
+
+# boxplot
+ggplot(lsoa_join, aes(x=n_crime_sqrt))+
+ geom_boxplot()
 ```
+
+There are clearly several outliers in our data set with some areas that have a higher number of cases of anti-social behaviour in March 2019. This raises the questions: where are these differences coming from? Let's also inspect our input data before we start to see whether there is a relationship between our input data and the number of cases of anti-social behaviour. For the IMD dataset we will use the IMD deciles.
+
+```{r 05-inspect-the-input-data, warnings=FALSE, message=FALSE}
+# summary imd
+summary(lsoa_join[,4])
+
+# boxplot imd
+ggplot(lsoa_join, aes(x=imd_dec))+
+ geom_boxplot()
+
+# summary ahah
+summary(lsoa_join[,5:7])
+
+# boplot ahah gambling outlet distance
+ggplot(lsoa_join, aes(x=gamb_dist))+
+ geom_boxplot()
+
+# boplot ahah pub distance
+ggplot(lsoa_join, aes(x=gamb_dist))+
+ geom_boxplot()
+
+# boplot ahah off license distance
+ggplot(lsoa_join, aes(x=off_dist))+
+ geom_boxplot()
+
+```
+
+The input data look good. There are no real strange and unexpected outliers or missing values and at the same time there is enough [heterogeneity](https://en.wikipedia.org/wiki/Homogeneity_and_heterogeneity) in our data. This is important because if the input data have very similar values for al LSOAs they would not be very useful in trying to explain the differences in anti-social behaviour. So, we can continue. Let's start by seeing if there is any relationship between our input (independent) variables and our output (dependent) variable by some plots.
+
+```{r 05-lets-scatterplot, warnings=FALSE, message=FALSE}
+# imd vs crime
+ggplot(lsoa_join,aes(x=imd_dec, y=n_crime_sqrt)) +
+  geom_point()
+
+# gambling outlet distance vs crime
+ggplot(lsoa_join,aes(x=gamb_dist, y=n_crime_sqrt)) +
+  geom_point()
+
+# pub distance vs crime
+ggplot(lsoa_join,aes(x=pubs_dist, y=n_crime_sqrt)) +
+  geom_point()
+
+# off license distance vs crime
+ggplot(lsoa_join,aes(x=off_dist, y=n_crime_sqrt)) +
+  geom_point()
+```
+
+The IMD deciles, which are in fact categorical data, do not show any pattern, however, the distance to the various outlets do show some pattern. Let's correlate.
+
+```{r 05-lets-correlate, warnings=FALSE, message=FALSE}
+# imd vs crime
+cor(lsoa_join$imd_dec,lsoa_join$n_crime_sqrt)
+
+# gambling outlet distance vs crime
+cor(lsoa_join$gamb_dist,lsoa_join$n_crime_sqrt)
+
+# pub distance vs crime
+cor(lsoa_join$pubs_dist,lsoa_join$n_crime_sqrt)
+
+# off license distance vs crime
+cor(lsoa_join$off_dist,lsoa_join$n_crime_sqrt)
+```
+So! There seems to be some relationship between our explantory (independent) variables and our dependent variables. Let's see if we can put this together into a Ordinary Least Squares (OLS) regression model. In R, models are typically fitted by calling a model-fitting function, in our case `lm()` (linear model). The `lm()` function returns a fitted model which we can inspect by calling `summary` on the object. 
+
+```{r 05-we-are-regressing, warnings=FALSE, message=FALSE}
+# linear model
+crime_model <- lm(n_crime_sqrt ~
+                  imd_dec+gamb_dist+pubs_dist+off_dist,
+                  data=lsoa_join)
+
+# get the results
+summary(crime_model)
+```
+
+In running a regression model, we are effectively trying to test a null hypothesis. If our null hypothsis was true, then we would expect our coefficients to = 0. Right now our null hypothesis is that there is no relationship between anti-social behaviour and our input variables. Without going in much further detail, as this will be in-depth covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we can see that there seems to be indeed a relationship between our input variables and our dependent variable. Three out of our four variables are significant at a 0.05 level of significance. The R-squared, which is a measure of the goodness-of-fit of the model, suggest that 13.5 per cent of the variation in our dependent variable can be explained by our input variables. This means that the relationship is present, but not very strong! 
+
+#### Important {-}
+Normally, you would also check the underlying assumptions of the linear model (linearity, homoscedasticity, indepdence, and normality), however, this will be covered in-depth in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html) and for our current purposes we are going to be a little naughty and accept the results as is and assume that all our underlying assumptions are satisfied (even though we are actually violating some of these underlying assumptions!).
 
 ## Spatial heterogeneity
 ### Video: Spatial heterogeneity
@@ -380,6 +472,9 @@ library(vembedr)
 [[Lecture slides]]() [[Watch on MS stream]]()
 
 ### Example: Accounting for spatial heterogeneity
+
+## Take home message
+Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cleaned and prepared your data, you first want to inspect your data through simple and visual methods to get acquainted with the data. The you can start looking for relationships, and, if any relationships are found up you are going to want to ask the question to what extent these relationships are real or or to what extent other processes play a role in shaping these relationships. Next week we will move to point pattern analysis and go beyond simple point-to-polygon aggregation, but that is next week so for now we can [celebrate the successful completion](https://www.youtube.com/watch?v=d8Fmu3RLEOY) of this week's material.
 
 ## Attributions {#attributions_w05}
 This week's content and practical uses content and inspiration from:
