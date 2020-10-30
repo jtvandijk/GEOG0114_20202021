@@ -285,14 +285,14 @@ Further to calculating the proportions of the population belonging to each of th
 Exploratory Data Analysis got introduced in the the late 1970s by the American mathematician [John Tukey](https://en.wikipedia.org/wiki/John_Tukey). Tukey thought that in much data analysis there was much emphasis on statistical hypothesis testing and very little development of new hypotheses. He therefore made a distinction between **confirmatory data analysis** and **exploratory data analysis (EDA)**. EDA is a collection of descriptive techniques used to detect patterns, identify outliers, and form hypotheses from the data. An EDA typically involves descriptive statistics and data visualisation. Exploratory techniques generally stay 'close' to the original data. **Exploratory spatial data analysis (ESDA)** is the extension of exploratory data analysis (EDA) to the spatial realm.
 
 ### Video: Exploratory spatial data analysis
-```{r echo=FALSE}
+```{r short-lecture-esda, echo=FALSE}
 library(vembedr)
 # embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
 ```
 [[Lecture slides]]() [[Watch on MS stream]]()
 
 ### Example: Exploring our dataset
-After successfully creating the maps that we were requested to make, our boss got so happy that she directly gave us a new assignment. This time she wants us to look at crime data in London again, specifically she wants to know whether relative deprivation and factors from the built environment can explain the occurence of anti-social behaviour in London in March 2019. We have access to two **open** data sets. The first one contains the English [Index of Multiple Deprivation (IMD)](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) for 2019. The English indices of deprivation measure relative deprivation in small areas in England called Lower-layer Super Output Areas (LSOAs) The index of multiple deprivation is the most widely used of these indices. The second one contains some of the input data of the [Access to Healthy Assets and Hazards (AHAH)](https://data.cdrc.ac.uk/dataset/access-healthy-assets-hazards-ahah). AHAH is a multi-dimensional index developed by the [Consumer Data Research Centre (CDRC)](https://www.cdrc.ac.uk/) for Great Britain measuring how ‘healthy’ neighbourhoods are. We also have access to the LSOAs for London.
+After successfully creating the maps that we were requested to make, our boss got so happy that she directly gave us a new assignment. This time she wants us to look at crime data in London again, specifically she wants to know whether relative deprivation and factors from the built environment can explain the occurence of anti-social behaviour in London in March 2019. We have access to two **open** data sets. The first one contains the English [Index of Multiple Deprivation (IMD)](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) for 2019. The English indices of deprivation measure relative deprivation in small areas in England called Lower-layer Super Output Areas (LSOAs) The index of multiple deprivation is the most widely used of these indices. The second one contains some of the input data that have been used to create the [Access to Healthy Assets and Hazards (AHAH)](https://data.cdrc.ac.uk/dataset/access-healthy-assets-hazards-ahah). AHAH is a multi-dimensional index developed by the [Consumer Data Research Centre (CDRC)](https://www.cdrc.ac.uk/) for Great Britain measuring how ‘healthy’ neighbourhoods are. We also have access to the LSOAs for London.
 
 #### File download {-}
 | File                                        | Type         | Link |
@@ -469,7 +469,7 @@ Normally, you would also check the underlying assumptions of the linear model (l
 Although we have established a relationship between IMD deciles, access to gambling outlets, access to pubs, access to off licenses, and the occurence of anti-social behaviour, our data are very spatial.However, we did not incorporate this spatial distribution into our model. So if we want to develop a regression model for anti-social behaviour in London we may have to recognise this spatial component. On top of this, a regression model assumes indepence of observations: what happens in LSOA 1 is not related to what happens in LSOA 2. However, we know from last weeks content that this is not always the case because of spatial autocorrelation.
 
 ### Video: Spatial heterogeneity
-```{r echo=FALSE}
+```{r 05-short-lecture-spatial-heterogeneity,echo=FALSE}
 library(vembedr)
 # embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
 ```
@@ -478,7 +478,7 @@ library(vembedr)
 ### Example: Accounting for spatial heterogeneity
 
 ## Take home message
-Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cleaned and prepared your data, you first want to inspect your data through simple and visual methods to get acquainted with the data. The you can start looking for relationships, and, if any relationships are found up you are going to want to ask the question to what extent these relationships are real or or to what extent other processes play a role in shaping these relationships. Next week we will move to point pattern analysis and go beyond simple point-to-polygon aggregation, but that is next week so for now we can [celebrate the successful completion](https://www.youtube.com/watch?v=d8Fmu3RLEOY) of this week's material.
+Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cleaned and prepared your data, you first want to inspect your data through simple and visual methods to get acquainted with the data. The you can start looking for relationships, and, if any relationships are found up you are going to want to ask the question to what extent these relationships are real or or to what extent other (spatial) processes play a role in shaping these relationships. Next week we will move to point pattern analysis and go beyond simple point-to-polygon aggregation, but that is next week so for now we can [celebrate the successful completion](https://www.youtube.com/watch?v=d8Fmu3RLEOY) of this week's material.
 
 ## Attributions {#attributions_w05}
 This week's content and practical uses content and inspiration from:
