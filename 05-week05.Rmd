@@ -632,7 +632,7 @@ If we have good reasons to believe that we need to run a spatial error model rat
 
 > This time you could actually compare the regression coefficients from the spatial error model with those from the OLS model!
 
-### Geographically Weighted Regression
+### Geographically Weighted Regression {-}
 As mentioned in the short lecture video, another option to take 'space' into account is by executing a Geographically Weighted Regression (GWR). However, as this week's content is already getting very long as well as that GWR will be covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we will not cover this now. Do have a look at the article by [Shabrian et al. 2020](https://onlinelibrary.wiley.com/doi/10.1111/gean.12259) that is part of this week's essential reading to see GWR in action.
 
 ## Take home message
