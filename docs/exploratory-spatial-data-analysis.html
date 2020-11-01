@@ -380,9 +380,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>Remember that if you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through <code>?name_of_function</code>, e.g. <code>?pivot_longer</code>. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.</p>
-</blockquote>
+<p> 
+&gt; Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through <code>?name_of_function</code>, e.g. <code>?pivot_longer</code>. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.</p>
 </div>
 <div id="example-creating-tidy-data" class="section level3" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Example: Creating tidy data</h3>
@@ -825,7 +824,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </tr>
 </tbody>
 </table>
-<p>Download and the file to your own computer and again make sure <a href="spatial-autocorrelation.html#setting-up-the-environment">your data directory</a> is set up correctly and the data are unzipped. Then load the libraries and the data into R.</p>
+<p>Download the individual files to your own computer and again make sure <a href="spatial-autocorrelation.html#setting-up-the-environment">your data directory</a> is set up correctly and the data are unzipped. Then load the libraries and the data into R.</p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="exploratory-spatial-data-analysis.html#cb102-1" aria-hidden="true"></a><span class="co"># load libraries</span></span>
 <span id="cb102-2"><a href="exploratory-spatial-data-analysis.html#cb102-2" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
 <span id="cb102-3"><a href="exploratory-spatial-data-analysis.html#cb102-3" aria-hidden="true"></a><span class="kw">library</span>(sf)</span>
@@ -892,8 +891,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## 4 Acton Main Line    51.5 -0.268  
 ## 5 Acton Town         51.5 -0.280  
 ## 6 Addington Village  51.4 -0.0327</code></pre>
-<p>Looking at the data you will notice that both the bike theft data and the tube location data exist of longitudes and latitudes. The IMD dataset has an <em>lsoa11cd</em> column, an IMD rank column, and an IMD decile column. The AHAH dataset has an <em>lsoa11cd</em> column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The <a href="https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1">technical report of the AHAH index</a> suggests that access is calculated as the mean distance (kilometres) by car travel route of postcodes within a LSOA to the nearest outlet. Good to know!</p>
-<p>Let’s start by linking the IMD dataset and the AHAH dataset to the spatial dataset. Since we are using <code>sf</code> for our spatial data, we can very easily joining them together using the common variable in these datasets: <em>lsoa11cd</em>.</p>
+<p>Looking at the data you will notice that both the bike theft data and the tube location data exist of longitudes and latitudes. The IMD dataset has an <em>lsoa11cd</em> column, an IMD rank column, and an IMD decile column. The AHAH dataset has an <em>lsoa11cd</em> column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The <a href="https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1">technical report of the AHAH index</a> suggests these distances represent the mean distance (kilometres) by car of all postcodes within each LSOA to the nearest outlet. Good to know!</p>
+<p>Let’s start by linking the IMD dataset and the AHAH dataset to the spatial dataset. Since we are using <code>sf</code> for our spatial data, we can very easily join them together using the common variable in these datasets: <em>lsoa11cd</em>.</p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="exploratory-spatial-data-analysis.html#cb112-1" aria-hidden="true"></a><span class="co"># join imd data</span></span>
 <span id="cb112-2"><a href="exploratory-spatial-data-analysis.html#cb112-2" aria-hidden="true"></a>lsoa_join &lt;-<span class="st"> </span><span class="kw">left_join</span>(lsoa,imd,<span class="dt">by=</span><span class="kw">c</span>(<span class="st">&#39;lsoa11cd&#39;</span>))</span>
 <span id="cb112-3"><a href="exploratory-spatial-data-analysis.html#cb112-3" aria-hidden="true"></a></span>
@@ -966,8 +965,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <span id="cb123-2"><a href="exploratory-spatial-data-analysis.html#cb123-2" aria-hidden="true"></a><span class="kw">tm_shape</span>(lsoa_join) <span class="op">+</span></span>
 <span id="cb123-3"><a href="exploratory-spatial-data-analysis.html#cb123-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&#39;n_crime_cube&#39;</span>)</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-crime-data-5.png" width="672" /></p>
-<p>This does look much better, although there are clearly several outliers in our data set with some areas that have a higher number of cases of bike theft in March 2019. This raises the questions: where are these differences coming from? Let’s also inspect our input data before we start to see whether there is a relationship between our input data and the number of cases of bike theft. For the IMD dataset we will use the IMD deciles.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="exploratory-spatial-data-analysis.html#cb124-1" aria-hidden="true"></a><span class="co"># summary imd</span></span>
+<p>This does look much better, although there are clearly several outliers in our data set with some areas that have a higher number of cases of bike theft. Let’s now also inspect our input data before we start to see whether there is a relationship between our independent variables and our dependent variable (i.e. the number of cases of bike theft).</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="exploratory-spatial-data-analysis.html#cb124-1" aria-hidden="true"></a><span class="co"># summary imd deciles</span></span>
 <span id="cb124-2"><a href="exploratory-spatial-data-analysis.html#cb124-2" aria-hidden="true"></a><span class="kw">summary</span>(lsoa_join[,<span class="dv">4</span>])</span></code></pre></div>
 <pre><code>##    gamb_dist               geometry   
 ##  Min.   :0.1230   MULTIPOLYGON :1020  
@@ -976,7 +975,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  Mean   :0.5189                       
 ##  3rd Qu.:0.6268                       
 ##  Max.   :3.8188</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="exploratory-spatial-data-analysis.html#cb126-1" aria-hidden="true"></a><span class="co"># boxplot imd</span></span>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="exploratory-spatial-data-analysis.html#cb126-1" aria-hidden="true"></a><span class="co"># boxplot imd deciles</span></span>
 <span id="cb126-2"><a href="exploratory-spatial-data-analysis.html#cb126-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>imd_dec))<span class="op">+</span></span>
 <span id="cb126-3"><a href="exploratory-spatial-data-analysis.html#cb126-3" aria-hidden="true"></a><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-input-data-1.png" width="672" /></p>
@@ -1001,9 +1000,9 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <span id="cb131-2"><a href="exploratory-spatial-data-analysis.html#cb131-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>gamb_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></span>
 <span id="cb131-3"><a href="exploratory-spatial-data-analysis.html#cb131-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-input-data-4.png" width="672" /></p>
-<p>The input data look good. There are no real strange and unexpected outliers or missing values and at the same time there is enough <a href="https://en.wikipedia.org/wiki/Homogeneity_and_heterogeneity">heterogeneity</a> in our data. This is important because if the input data have very similar values for al LSOAs they would not be very useful in trying to explain the differences in bike theft. However, we have not touched our tube locations dataset just yet. Perhaps bicycle theft happens more around tube stations? Let’s do some quick spatial analysis and add the mean distance to the nearest tube station to our LSOAs.</p>
+<p>The input data look good. There are no real strange and unexpected outliers or missing values. At the same time there is enough <a href="https://en.wikipedia.org/wiki/Homogeneity_and_heterogeneity">heterogeneity</a> in our data. This is important because if the input data have very similar values for al LSOAs they would not be very useful in trying to explain the differences in bike theft. However, we have not touched our tube locations dataset just yet. Perhaps bicycle theft happens more around tube stations? Let’s do some quick spatial analysis and add for each LSOA the distance to the nearest tube station to our dataset.</p>
 <blockquote>
-<p>Please note: the following operation requires some computing power as for all of our available LSOAs in London we are going to calculate the euclidean distance from its centroid to all tube stations and create a <strong>distance matrix</strong>. In case the calculation takes too much time on your computer, you can also download the <a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/dist_matrix.zip">distance matrix</a> and use <code>dist_matrix &lt;- data.matrix(read_csv('path_to_file'))</code> to continue.</p>
+<p>Please note: the following operation requires some computing power as for all of our selected LSOAs in London we are going to calculate the euclidean distance from its centroid to all tube stations and create a <strong>distance matrix</strong>. In case the calculation takes too much time on your computer, you can download the <a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/dist_matrix.zip">distance matrix</a> instead and use <code>dist_matrix &lt;- data.matrix(read_csv('path_to_file'))</code> to continue with the practical.</p>
 </blockquote>
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="exploratory-spatial-data-analysis.html#cb132-1" aria-hidden="true"></a><span class="co"># create a point dataset from the tube csv file</span></span>
 <span id="cb132-2"><a href="exploratory-spatial-data-analysis.html#cb132-2" aria-hidden="true"></a>tube_points &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(tube, <span class="dt">coords=</span><span class="kw">c</span>(<span class="st">&#39;long&#39;</span>,<span class="st">&#39;lat&#39;</span>),<span class="dt">crs=</span><span class="dv">4326</span>)</span>
@@ -1017,7 +1016,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## constant over geometries of x</code></pre>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="exploratory-spatial-data-analysis.html#cb134-1" aria-hidden="true"></a><span class="co"># assign the distance of the closes tube station </span></span>
 <span id="cb134-2"><a href="exploratory-spatial-data-analysis.html#cb134-2" aria-hidden="true"></a>lsoa_join<span class="op">$</span>tube_dist &lt;-<span class="st"> </span><span class="kw">rowMins</span>(dist_matrix,<span class="dt">value=</span><span class="ot">TRUE</span>)</span></code></pre></div>
-<p>Great. So, now we can continue. Let’s start by seeing if there is any visual relationship between our input (independent) variables and our output (dependent) variable by some plots.</p>
+<p>Great. So, now we can continue. Let’s start by seeing if there is any visual relationship between our input (independent) variables and our output (dependent) variable by plotting them against each other.</p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="exploratory-spatial-data-analysis.html#cb135-1" aria-hidden="true"></a><span class="co"># imd decile vs bike theft </span></span>
 <span id="cb135-2"><a href="exploratory-spatial-data-analysis.html#cb135-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>imd_dec, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></span>
 <span id="cb135-3"><a href="exploratory-spatial-data-analysis.html#cb135-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
@@ -1054,7 +1053,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="exploratory-spatial-data-analysis.html#cb148-1" aria-hidden="true"></a><span class="co"># tube location distance vs bike theft</span></span>
 <span id="cb148-2"><a href="exploratory-spatial-data-analysis.html#cb148-2" aria-hidden="true"></a><span class="kw">cor</span>(lsoa_join<span class="op">$</span>off_dist,lsoa_join<span class="op">$</span>n_crime_cube)</span></code></pre></div>
 <pre><code>## [1] -0.1750449</code></pre>
-<p>So, looking at these correlations there seems to be some relationship between our explanatory (independent) variables and our dependent variables. It is time to form a hypothesis: LSOAs that are in a more deprived IMD decile, LSOAs with a lower mean distance to one of our outlets of interest, and LSOAs that are closer to a tube station, experience more bike theft. The null hypothesis then becomes: this relationship <strong>does not</strong> exist.</p>
+<p>So, looking at these correlations there seems to be some relationship between our explanatory (independent) variables and our dependent variables. It is time to form a hypothesis: LSOAs that are in a less deprived IMD decile, LSOAs with a lower mean distance to one of our outlets of interest, and LSOAs that are closer to a tube station, experience more bike theft. The null hypothesis then becomes: this relationship <strong>does not</strong> exist.</p>
 <p>Let’s see if we can test this hypothesis using an Ordinary Least Squares (OLS) regression model. In R, models are typically fitted by calling a model-fitting function, in our case <code>lm()</code> (linear model). The <code>lm()</code> function returns a fitted model which we can inspect by calling <code>summary()</code> on the object.</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="exploratory-spatial-data-analysis.html#cb150-1" aria-hidden="true"></a><span class="co"># linear model</span></span>
 <span id="cb150-2"><a href="exploratory-spatial-data-analysis.html#cb150-2" aria-hidden="true"></a>crime_model &lt;-<span class="st"> </span><span class="kw">lm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>gamb_dist <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>off_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join)</span>
@@ -1084,7 +1083,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## Residual standard error: 0.8039 on 1014 degrees of freedom
 ## Multiple R-squared:  0.2034,	Adjusted R-squared:  0.1995 
 ## F-statistic: 51.79 on 5 and 1014 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>In running a regression model, we are effectively trying to test our null hypothesis. If our null hypothesis was true, then we would expect our coefficients to equal 0. Right now our null hypothesis was that there is no relationship between bike theft and our input variables. Without going in much further detail, as this will be in-depth covered in your <a href="https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html">CASA005 module</a>, we can see that the null hypothesis is disproven and, in fact, there seems to be a negative relationship between our input variables and our dependent variable. Four out of our five variables are significant at a 0.05 level of significance. The R-squared, which is a measure of the goodness-of-fit of the model, suggest that <strong>19.95</strong> per cent of the variation in our dependent variable can be explained by our independent variables. This means that a relationship is present, but it is not very strong! Nonetheless, the model suggest that LSOAs with a lower IMD score, a higher accessibility to pubs, a higher accessibility to off licenses, and a higher accessibility to a tube location, experience more bike theft. Consider that when parking your bike at night.</p>
+<p>In running a regression model, we are effectively trying to test our null hypothesis. If our null hypothesis is true then we expect our coefficients to equal to 0. Right now our null hypothesis is that there is no relationship between bike theft and our input variables. Without going in much further detail, as this will be in-depth covered in your <a href="https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html">CASA005 module</a>, we can see that the null hypothesis is disproven and, in fact, there seems to be a negative relationship between our distance-related input variables and our dependent variable. Four out of our five variables are significant at a 0.05 level of significance. The R-squared, which is a measure of the goodness-of-fit of the model, suggest that <strong>19.95</strong> per cent of the variation in our dependent variable can be explained by our independent variables. This means that a relationship is present, but it is not very strong! Nonetheless, the model suggest that LSOAs with a higher IMD score, a higher accessibility to pubs, a higher accessibility to gambling outlets, and a higher accessibility to a tube location, experience more bike theft. Consider that when parking your bike somewhere overnight.</p>
 </div>
 <div id="important" class="section level4 unnumbered">
 <h4>Important</h4>
@@ -1112,14 +1111,14 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </div>
 <div id="example-accounting-for-spatial-heterogeneity" class="section level3" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> Example: Accounting for spatial heterogeneity</h3>
-<p>Let’s start by exploring wether autocorrelation is an issue in our current analysis. Make sure the following libraries are (still) loaded:</p>
+<p>Let’s start by exploring wether autocorrelation is an issue in our current analysis. Make sure the following libraries are loaded:</p>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="exploratory-spatial-data-analysis.html#cb152-1" aria-hidden="true"></a><span class="co"># load libraries</span></span>
 <span id="cb152-2"><a href="exploratory-spatial-data-analysis.html#cb152-2" aria-hidden="true"></a><span class="kw">library</span>(sf)</span>
 <span id="cb152-3"><a href="exploratory-spatial-data-analysis.html#cb152-3" aria-hidden="true"></a><span class="kw">library</span>(tmap)</span>
 <span id="cb152-4"><a href="exploratory-spatial-data-analysis.html#cb152-4" aria-hidden="true"></a><span class="kw">library</span>(sp)</span>
 <span id="cb152-5"><a href="exploratory-spatial-data-analysis.html#cb152-5" aria-hidden="true"></a><span class="kw">library</span>(spdep)</span>
 <span id="cb152-6"><a href="exploratory-spatial-data-analysis.html#cb152-6" aria-hidden="true"></a><span class="kw">library</span>(spatialreg)</span></code></pre></div>
-<p>Now we are ready to go again, we are going to start by having a closer look at the residuals of our model. In other words, the residuals represent the distance between the observed values of the dependent variable and the predicted values of our dependent variables in our linear model. Residuals should be randomly distributed over space, otherwise we may be dealing with spatial autocorrelation. Strange words coming from a geographer, but right now we do <strong>not</strong>* want to see any spatial patterning.</p>
+<p>Now we are ready to go again, we are going to start by having a closer look at the residuals of our model. In other words, the residuals represent the distance between the observed values of the dependent variable and the predicted values of our dependent variables in our linear model. Residuals should be randomly distributed over space, otherwise we may be dealing with spatial autocorrelation. Strange words coming from a geographer, but right now we do <strong>not</strong> want to see any spatial patterning.</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="exploratory-spatial-data-analysis.html#cb153-1" aria-hidden="true"></a><span class="co"># extract the residuals from the model and assign to our spatial dataset</span></span>
 <span id="cb153-2"><a href="exploratory-spatial-data-analysis.html#cb153-2" aria-hidden="true"></a>lsoa_join<span class="op">$</span>residuals &lt;-<span class="st"> </span><span class="kw">residuals</span>(crime_model)</span>
 <span id="cb153-3"><a href="exploratory-spatial-data-analysis.html#cb153-3" aria-hidden="true"></a></span>
@@ -1186,7 +1185,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## sample estimates:
 ## Observed Moran I      Expectation         Variance 
 ##     0.3439158982    -0.0035656704     0.0003556032</code></pre>
-<p>Not surprisingly, the test is significant: we are indeed dealing with spatial autocorrelation. This means that our OLS regression may not be the best way to respresent our data as currently our regression line will per definition under-predict or over-predict in areas that are close to one another. There are two ways of taking this spatial dependence into account: by means of a <strong>spatial error</strong> model or by means of a <strong>spatially lagged</strong> model. These methods are quite different as the treat spatial autocorrelation in different ways. In the first case, the observed spatial dependence <em>is not</em> considered as an actual spatial process but is an effect of spatial clustering. In the second case, spatial dependence <em>is</em> considered as an actual spatial process and ‘space’ should be incorporated as an explanation in the model.</p>
+<p>Not surprisingly, the test is significant: we are indeed dealing with spatial autocorrelation. This means that our OLS regression may not be the best way to respresent our data as currently our regression line will per definition under-predict or over-predict in areas that are close to one another. There are two ways of taking this spatial dependence into account: by means of a <strong>spatial error</strong> model or by means of a <strong>spatially lagged</strong> model. These methods are quite different as they treat spatial autocorrelation in different ways. In the first case, the observed spatial dependence <em>is not</em> considered as an actual spatial process but is an effect of spatial clustering. In the second case, spatial dependence <em>is</em> considered as an actual spatial process and ‘space’ should be incorporated as an explanation in the model.</p>
 <p>How do we now decide which model to use? Well, first, as with any model, the relationship between independent and dependent variables must make sense. So, for instance, if you think that the spatial dependence is just an artefact of the data distribution rather than a truly spatial process, you should go with a spatial error model. Vice versa, if you think that the spatial dependence is the result of a spatial process, you should consider the spatially lagged model. In less clear cut cases, we can also get a little help by making use of the <strong>Lagrange Multiplier test statistics</strong>. We can these run these tests as follows:</p>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="exploratory-spatial-data-analysis.html#cb161-1" aria-hidden="true"></a><span class="co"># lagrange mulitplier</span></span>
 <span id="cb161-2"><a href="exploratory-spatial-data-analysis.html#cb161-2" aria-hidden="true"></a><span class="kw">lm.LMtests</span>(crime_model, rwm, <span class="dt">test =</span> <span class="kw">c</span>(<span class="st">&#39;LMerr&#39;</span>,<span class="st">&#39;LMlag&#39;</span>,<span class="st">&#39;RLMerr&#39;</span>,<span class="st">&#39;RLMlag&#39;</span>))</span></code></pre></div>
@@ -1230,93 +1229,93 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## 
 ## RLMlag = 29.348, df = 1, p-value = 6.049e-08</code></pre>
 <p>How dow we use this information? The output of the test is split into two groups: the standard tests (<strong>LMerr</strong> and <strong>LMlag</strong>) and the robust versions of these tests (<strong>RLMerr</strong> and <strong>RMlag</strong>).</p>
-<p>The robust version should be used only if both of the standard tests are significant (i.e. below the .05 level). If only one of the standard tests comes back signficant, but the other one is not, then it becomes very easy to decide between the spatial error and the spatially lagged model: choose the one that is significant! In case both the standard tests are significant so we need look at the outcomes of the robust tests and make a decision. The best suggestion now is to compare the <em>p-values</em> of both tests and use the one that is ‘more significant’ than the other, in our case indicating that we should go with a spatially lagged model rather than a spatial error model. Let’s do that using the <code>lagsarlm()</code> function. Also, let’s remove the gambling distance as that variable was not significant to begin with.</p>
+<p>The robust version should be used only if both of the standard tests are significant (i.e. below the .05 level). If only one of the standard tests comes back signficant, but the other one is not, then it becomes very easy to decide between the spatial error and the spatially lagged model: choose the one that is significant! In case both the standard tests are significant we would need to look at the outcomes of the robust tests and make a decision. In such a situation, the best suggestion is to compare the <em>p-values</em> of both tests and select the model that is ‘more significant’ than the other. In our case the situation is very clear and we should go with a spatially lagged model rather than a spatial error model. Let’s do that using the <code>lagsarlm()</code> function. Also, let’s remove the distance to the neareast off license as that variable was not significant to begin with.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="exploratory-spatial-data-analysis.html#cb163-1" aria-hidden="true"></a><span class="co"># execute the spatially lagged model</span></span>
 <span id="cb163-2"><a href="exploratory-spatial-data-analysis.html#cb163-2" aria-hidden="true"></a><span class="co"># this can take a little bit of time, be patient!</span></span>
-<span id="cb163-3"><a href="exploratory-spatial-data-analysis.html#cb163-3" aria-hidden="true"></a>crime_model_lag &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>off_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join, <span class="dt">listw=</span>rwm)</span>
+<span id="cb163-3"><a href="exploratory-spatial-data-analysis.html#cb163-3" aria-hidden="true"></a>crime_model_lag &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>gamb_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join, <span class="dt">listw=</span>rwm)</span>
 <span id="cb163-4"><a href="exploratory-spatial-data-analysis.html#cb163-4" aria-hidden="true"></a></span>
 <span id="cb163-5"><a href="exploratory-spatial-data-analysis.html#cb163-5" aria-hidden="true"></a><span class="co"># let&#39;s inspet the results</span></span>
 <span id="cb163-6"><a href="exploratory-spatial-data-analysis.html#cb163-6" aria-hidden="true"></a><span class="kw">summary</span>(crime_model_lag)</span></code></pre></div>
 <pre><code>## 
-## Call:lagsarlm(formula = n_crime_cube ~ imd_dec + pubs_dist + off_dist + 
+## Call:lagsarlm(formula = n_crime_cube ~ imd_dec + pubs_dist + gamb_dist + 
 ##     tube_dist, data = lsoa_join, listw = rwm)
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
-## -2.184414 -0.387466  0.016729  0.407739  3.199116 
+## -2.202012 -0.393879  0.016251  0.403836  3.178825 
 ## 
 ## Type: lag 
 ## Coefficients: (asymptotic standard errors) 
 ##                Estimate  Std. Error z value  Pr(&gt;|z|)
-## (Intercept)  1.1034e+00  1.0395e-01 10.6141 &lt; 2.2e-16
-## imd_dec      2.5645e-02  1.0254e-02  2.5010 0.0123850
-## pubs_dist   -8.8370e-01  1.1815e-01 -7.4793 7.461e-14
-## off_dist     9.7294e-04  6.9273e-02  0.0140 0.9887941
-## tube_dist   -3.2755e-04  8.7572e-05 -3.7404 0.0001837
+## (Intercept)  1.12440760  0.09842553 11.4239 &lt; 2.2e-16
+## imd_dec      0.03119665  0.01078435  2.8928 0.0038186
+## pubs_dist   -0.77701415  0.12727377 -6.1051 1.028e-09
+## gamb_dist   -0.16495609  0.09942310 -1.6591 0.0970891
+## tube_dist   -0.00031330  0.00008769 -3.5729 0.0003531
 ## 
-## Rho: 0.54753, LR test value: 246.91, p-value: &lt; 2.22e-16
-## Asymptotic standard error: 0.033526
-##     z-value: 16.331, p-value: &lt; 2.22e-16
-## Wald statistic: 266.71, p-value: &lt; 2.22e-16
+## Rho: 0.54502, LR test value: 244.87, p-value: &lt; 2.22e-16
+## Asymptotic standard error: 0.033565
+##     z-value: 16.238, p-value: &lt; 2.22e-16
+## Wald statistic: 263.67, p-value: &lt; 2.22e-16
 ## 
-## Log likelihood: -1100.668 for lag model
-## ML residual variance (sigma squared): 0.47528, (sigma: 0.6894)
+## Log likelihood: -1099.293 for lag model
+## ML residual variance (sigma squared): 0.47432, (sigma: 0.68871)
 ## Number of observations: 1020 
 ## Number of parameters estimated: 7 
-## AIC: 2215.3, (AIC for lm: 2460.2)
+## AIC: 2212.6, (AIC for lm: 2455.5)
 ## LM test for residual autocorrelation
-## test value: 7.9369, p-value: 0.0048438</code></pre>
-<p>To interpret these results, we have to look at the Akaike Information Criterion (AIC). The AIC of our spatially lagged model is 2215.3, whereas the model without taking spatial dependence into account has an AIC of 2460.2. This means that the spatially lagged model is a better fit to the data then the standard OLS model. We also have a new term <strong>Rho</strong>, which is the spatial autoregressive parameter. In our case it is both positive and statistically significant, suggesting that when bike theft in the neighbours of area <strong>X</strong><em>i</em> increase, bike theft will also be higher in area <strong>X</strong><em>i</em>. At the same time, the IMD decile, the distance to the nearest pub, and the distance to the nearest tube stations are all still significant. Next time you know where not to park your bike.</p>
+## test value: 8.1292, p-value: 0.0043559</code></pre>
+<p>To interpret these results, we have to look at the Akaike Information Criterion (AIC). The AIC of our spatially lagged model is 2212.6, whereas the model without taking spatial dependence into account has an AIC of 2455.5 This means that the spatially lagged model is a better fit to the data then the standard OLS model. We also have a new term <strong>Rho</strong>, which is the spatial autoregressive parameter. In our case it is both positive and statistically significant, suggesting that when bike theft in the neighbours of area <strong>X</strong><em>i</em> increase, bike theft will also be higher in area <strong>X</strong><em>i</em>. At the same time, the IMD decile, the distance to the nearest pub, and the distance to the nearest tube stations are all still significant. Next time you know where not to park your bike.</p>
 <blockquote>
 <p>Be careful <strong>not</strong> to compare the regression coefficients of the spatially lagged model to the regression coefficients of the original OLS model because their meaning now has changed. Whilst in the OLS model the coefficient of any of the independent variables measures the overall impact of these variables, this is not the case in the spatially lagged model: by including the spatial lag, the effect that X has on Y depends also (indirectly) on the effect that X has on Y in its neighbours.</p>
 </blockquote>
 <p>Although we probably should not, let’s also run a spatial error model. Just for the sake of running it and see how it looks.</p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="exploratory-spatial-data-analysis.html#cb165-1" aria-hidden="true"></a><span class="co"># execute the spatially lagged model</span></span>
 <span id="cb165-2"><a href="exploratory-spatial-data-analysis.html#cb165-2" aria-hidden="true"></a><span class="co"># this can take a little bit of time, be patient!</span></span>
-<span id="cb165-3"><a href="exploratory-spatial-data-analysis.html#cb165-3" aria-hidden="true"></a>crime_model_err &lt;-<span class="st"> </span><span class="kw">errorsarlm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>off_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join, <span class="dt">listw=</span>rwm)</span>
+<span id="cb165-3"><a href="exploratory-spatial-data-analysis.html#cb165-3" aria-hidden="true"></a>crime_model_err &lt;-<span class="st"> </span><span class="kw">errorsarlm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>gamb_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join, <span class="dt">listw=</span>rwm)</span>
 <span id="cb165-4"><a href="exploratory-spatial-data-analysis.html#cb165-4" aria-hidden="true"></a></span>
 <span id="cb165-5"><a href="exploratory-spatial-data-analysis.html#cb165-5" aria-hidden="true"></a><span class="co"># let&#39;s inspect the results</span></span>
 <span id="cb165-6"><a href="exploratory-spatial-data-analysis.html#cb165-6" aria-hidden="true"></a><span class="kw">summary</span>(crime_model_err)</span></code></pre></div>
 <pre><code>## 
-## Call:errorsarlm(formula = n_crime_cube ~ imd_dec + pubs_dist + off_dist + 
+## Call:errorsarlm(formula = n_crime_cube ~ imd_dec + pubs_dist + gamb_dist + 
 ##     tube_dist, data = lsoa_join, listw = rwm)
 ## 
 ## Residuals:
-##        Min         1Q     Median         3Q        Max 
-## -2.0939934 -0.3845238 -0.0062541  0.4052032  3.1769698 
+##         Min          1Q      Median          3Q         Max 
+## -2.1086e+00 -3.8717e-01  5.2999e-05  4.0082e-01  3.1615e+00 
 ## 
 ## Type: error 
 ## Coefficients: (asymptotic standard errors) 
 ##                Estimate  Std. Error z value  Pr(&gt;|z|)
-## (Intercept)  1.98734902  0.11457173 17.3459 &lt; 2.2e-16
-## imd_dec      0.05709867  0.01311705  4.3530 1.343e-05
-## pubs_dist   -1.05502445  0.14931259 -7.0659 1.596e-12
-## off_dist     0.00647071  0.10286682  0.0629    0.9498
-## tube_dist   -0.00050550  0.00012541 -4.0309 5.556e-05
+## (Intercept)  2.01465810  0.10346058 19.4727 &lt; 2.2e-16
+## imd_dec      0.06067673  0.01345733  4.5088 6.519e-06
+## pubs_dist   -0.96803178  0.15645501 -6.1873 6.121e-10
+## gamb_dist   -0.14677894  0.11902951 -1.2331    0.2175
+## tube_dist   -0.00049008  0.00012571 -3.8986 9.675e-05
 ## 
-## Lambda: 0.58552, LR test value: 245.25, p-value: &lt; 2.22e-16
-## Asymptotic standard error: 0.033672
-##     z-value: 17.389, p-value: &lt; 2.22e-16
-## Wald statistic: 302.37, p-value: &lt; 2.22e-16
+## Lambda: 0.58216, LR test value: 241.97, p-value: &lt; 2.22e-16
+## Asymptotic standard error: 0.033829
+##     z-value: 17.209, p-value: &lt; 2.22e-16
+## Wald statistic: 296.16, p-value: &lt; 2.22e-16
 ## 
-## Log likelihood: -1101.498 for error model
-## ML residual variance (sigma squared): 0.47091, (sigma: 0.68623)
+## Log likelihood: -1100.746 for error model
+## ML residual variance (sigma squared): 0.47069, (sigma: 0.68607)
 ## Number of observations: 1020 
 ## Number of parameters estimated: 7 
-## AIC: 2217, (AIC for lm: 2460.2)</code></pre>
-<p>If we have good reasons to believe that we need to run a spatial error model rather than an OLS regression model, we actually notice that the model fit improves: the AIC of the spatial error model is 2217, whilst the AIC of the OLS model is still 2460.2. Keep in mind: whereas the spatially lagged model takes spatial dependence into account, the spatial error model simply tries to remove the influence of space and we in fact estimate a model that relaxes one of the standard regression model assumptions that the errors need to be independent.</p>
+## AIC: 2215.5, (AIC for lm: 2455.5)</code></pre>
+<p>If we have good reasons to believe that we need to run a spatial error model rather than an OLS regression model, we actually notice that the model fit improves: the AIC of the spatial error model is 2215.5, whilst the AIC of the OLS model is still 2455.5 Keep in mind: whereas the spatially lagged model takes spatial dependence into account, the spatial error model simply tries to remove the influence of space and we in fact estimate a model that relaxes one of the standard regression model assumptions that the errors need to be independent.</p>
 <blockquote>
-<p>This time you can actually compare the regression coefficients from the spatial error model with those from the OLS model!</p>
+<p>This time you could actually compare the regression coefficients from the spatial error model with those from the OLS model!</p>
 </blockquote>
 </div>
 <div id="geographically-weighted-regression" class="section level3" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> Geographically Weighted Regression</h3>
-<p>As mentioned in the short lecture video, another option to take ‘space’ into account is by executing a Geographically Weighted Regression (GWR). However, as this week’s content is already getting very long as well as that GWR will be covered in your <a href="https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html">CASA005 module</a>, we will not cover this now.</p>
+<p>As mentioned in the short lecture video, another option to take ‘space’ into account is by executing a Geographically Weighted Regression (GWR). However, as this week’s content is already getting very long as well as that GWR will be covered in your <a href="https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html">CASA005 module</a>, we will not cover this now. Do have a look at the <a href="https://onlinelibrary.wiley.com/doi/10.1111/gean.12259">Shabrian et al. 2020</a> that is part of this week’s essential reading to see GWR in action.</p>
 </div>
 </div>
 <div id="take-home-message" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Take home message</h2>
-<p>Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cleaned and prepared your data, you first want to inspect your data through simple and visual methods to get acquainted with the data. Then you can start looking for relationships, and, if any relationships are found you are going to want to ask the question to what extent these relationships are real or to what extent other (spatial) processes, such as spatial autocorrelation, play a role in shaping these relationships. That is it for this week! Next week we will move to point pattern analysis, but that is next week so for now we can <a href="https://www.youtube.com/watch?v=d8Fmu3RLEOY">celebrate the successful completion</a> of this week’s material.</p>
+<p>Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cleaned and prepared your data, you first want to inspect your data through simple and visual methods to get acquainted with the data. Then you can start looking for relationships, and, if any relationships are found you are going to want to ask the question to what extent these relationships are real or to what extent other (spatial) processes, such as spatial dependence, play a role in shaping these relationships. That is it for this week! Next week we will move to point pattern analysis, but that is next week so for now we can <a href="https://www.youtube.com/watch?v=d8Fmu3RLEOY">celebrate the successful completion</a> of this week’s material.</p>
 </div>
 <div id="attributions_w05" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Attributions</h2>

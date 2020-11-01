@@ -85,7 +85,8 @@ Fortunately, there are some functions in the `tidyr` and `dplyr` packages, both 
 | tidyr	    | pivot_longer      | convert data from wide format to long format |
 | tidyr	    | pivot_wider       | convert long format dataset to wide format |
 
-> Remember that if you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through `?name_of_function`, e.g. `?pivot_longer`. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.
+&nbsp;
+> Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through `?name_of_function`, e.g. `?pivot_longer`. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.
 
 ### Example: Creating tidy data
 Now we know what consitute **tidy data**, we can put this into practice with an example using some data from the [Office for National Statistics](https://www.ons.gov.uk/). Let's say we are asked by our bosses to analyse some data on the ethnic background of the UK population, for instance, because we want to get some insights into the relationship between [COVID-19 and ethnic background](https://www.theguardian.com/world/2020/oct/09/bame-groups-hit-hard-again-covid-second-wave-grips-uk-nations). Our assignment is to calculate the relative proportions of each ethnic group within the administrative geography of the [Middle layer Super Output Area (MSOA)](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates). In order to do this, we have been given a file that contains data on ethnicity by age group at the MSOA-level of every person in the 2011 UK Census who is 16 year or older. Download the file to your own computer and [set up your data directory](spatial-autocorrelation.html#setting-up-the-environment) in the same fashion as you did last week. You can also decide on setting up your own folder structure, no problem, just make sure that you update the file paths in the practical to match the file paths on your own computer. 
@@ -307,7 +308,7 @@ After successfully creating the maps that we were requested to make, our bosses 
 | Access to Healthy Assets and Hazards (AHAH) London | `csv` | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/ahah_input_gb_2016.zip) |
 | Locations of tube stations in London        | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/london_underground_stations.zip) |
 
-Download and the file to your own computer and again make sure [your data directory](spatial-autocorrelation.html#setting-up-the-environment) is set up correctly and the data are unzipped. Then load the libraries and the data into R.
+Download the individual files to your own computer and again make sure [your data directory](spatial-autocorrelation.html#setting-up-the-environment) is set up correctly and the data are unzipped. Then load the libraries and the data into R.
 
 ```{r 05-load-libraries, warnings=FALSE, message=FALSE}
 # load libraries
@@ -339,9 +340,9 @@ head(ahah)
 head(tube)
 ```
 
-Looking at the data you will notice that both the bike theft data and the tube location data exist of longitudes and latitudes. The IMD dataset has an *lsoa11cd* column, an IMD rank column, and an IMD decile column. The AHAH dataset has an *lsoa11cd* column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The [technical report of the AHAH index](https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1) suggests that access is calculated as the mean distance (kilometres) by car travel route of postcodes within a LSOA to the nearest outlet. Good to know!
+Looking at the data you will notice that both the bike theft data and the tube location data exist of longitudes and latitudes. The IMD dataset has an *lsoa11cd* column, an IMD rank column, and an IMD decile column. The AHAH dataset has an *lsoa11cd* column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The [technical report of the AHAH index](https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1) suggests these distances represent the mean distance (kilometres) by car of all postcodes within each LSOA to the nearest outlet. Good to know!
 
-Let's start by linking the IMD dataset and the AHAH dataset to the spatial dataset. Since we are using `sf` for our spatial data, we can very easily joining them together using the common variable in these datasets: *lsoa11cd*.
+Let's start by linking the IMD dataset and the AHAH dataset to the spatial dataset. Since we are using `sf` for our spatial data, we can very easily join them together using the common variable in these datasets: *lsoa11cd*.
 
 ```{r 05-join-data-to-shape, warnings=FALSE, message=FALSE}
 # join imd data
@@ -406,13 +407,13 @@ tm_shape(lsoa_join) +
   tm_fill(col='n_crime_cube')
 ```
 
-This does look much better, although there are clearly several outliers in our data set with some areas that have a higher number of cases of bike theft in March 2019. This raises the questions: where are these differences coming from? Let's also inspect our input data before we start to see whether there is a relationship between our input data and the number of cases of bike theft. For the IMD dataset we will use the IMD deciles.
+This does look much better, although there are clearly several outliers in our data set with some areas that have a higher number of cases of bike theft. Let's now also inspect our input data before we start to see whether there is a relationship between our independent variables and our dependent variable (i.e. the number of cases of bike theft).
 
 ```{r 05-inspect-the-input-data, warnings=FALSE, message=FALSE}
-# summary imd
+# summary imd deciles
 summary(lsoa_join[,4])
 
-# boxplot imd
+# boxplot imd deciles
 ggplot(lsoa_join, aes(x=imd_dec))+
  geom_boxplot()
 
@@ -432,9 +433,9 @@ ggplot(lsoa_join,aes(x=gamb_dist, y=n_crime_cube)) +
   geom_point()
 ```
 
-The input data look good. There are no real strange and unexpected outliers or missing values and at the same time there is enough [heterogeneity](https://en.wikipedia.org/wiki/Homogeneity_and_heterogeneity) in our data. This is important because if the input data have very similar values for al LSOAs they would not be very useful in trying to explain the differences in bike theft. However, we have not touched our tube locations dataset just yet. Perhaps bicycle theft happens more around tube stations? Let's do some quick spatial analysis and add the mean distance to the nearest tube station to our LSOAs.
+The input data look good. There are no real strange and unexpected outliers or missing values. At the same time there is enough [heterogeneity](https://en.wikipedia.org/wiki/Homogeneity_and_heterogeneity) in our data. This is important because if the input data have very similar values for al LSOAs they would not be very useful in trying to explain the differences in bike theft. However, we have not touched our tube locations dataset just yet. Perhaps bicycle theft happens more around tube stations? Let's do some quick spatial analysis and add for each LSOA the distance to the nearest tube station to our dataset.
 
-> Please note: the following operation requires some computing power as for all of our available LSOAs in London we are going to calculate the euclidean distance from its centroid to all tube stations and create a **distance matrix**. In case the calculation takes too much time on your computer, you can also download the [distance matrix](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/dist_matrix.zip) and use `dist_matrix <- data.matrix(read_csv('path_to_file'))` to continue.
+> Please note: the following operation requires some computing power as for all of our selected LSOAs in London we are going to calculate the euclidean distance from its centroid to all tube stations and create a **distance matrix**. In case the calculation takes too much time on your computer, you can download the [distance matrix](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/dist_matrix.zip) instead and use `dist_matrix <- data.matrix(read_csv('path_to_file'))` to continue with the practical.
 
 ```{r 05-add-those-tube-locactions, warnings=FALSE, message=FALSE}
 # create a point dataset from the tube csv file
@@ -450,7 +451,7 @@ dist_matrix <- st_distance(st_centroid(lsoa_join),tube_points)
 lsoa_join$tube_dist <- rowMins(dist_matrix,value=TRUE)
 ```
 
-Great. So, now we can continue. Let's start by seeing if there is any visual relationship between our input (independent) variables and our output (dependent) variable by some plots.
+Great. So, now we can continue. Let's start by seeing if there is any visual relationship between our input (independent) variables and our output (dependent) variable by plotting them against each other.
 
 ```{r 05-lets-scatterplot, warnings=FALSE, message=FALSE}
 # imd decile vs bike theft 
@@ -493,7 +494,7 @@ cor(lsoa_join$off_dist,lsoa_join$n_crime_cube)
 cor(lsoa_join$off_dist,lsoa_join$n_crime_cube)
 ```
 
-So, looking at these correlations there seems to be some relationship between our explanatory (independent) variables and our dependent variables. It is time to form a hypothesis: LSOAs that are in a more deprived IMD decile, LSOAs with a lower mean distance to one of our outlets of interest, and LSOAs that are closer to a tube station, experience more bike theft. The null hypothesis then becomes: this relationship **does not** exist.
+So, looking at these correlations there seems to be some relationship between our explanatory (independent) variables and our dependent variables. It is time to form a hypothesis: LSOAs that are in a less deprived IMD decile, LSOAs with a lower mean distance to one of our outlets of interest, and LSOAs that are closer to a tube station, experience more bike theft. The null hypothesis then becomes: this relationship **does not** exist.
 
 Let's see if we can test this hypothesis using an Ordinary Least Squares (OLS) regression model. In R, models are typically fitted by calling a model-fitting function, in our case `lm()` (linear model). The `lm()` function returns a fitted model which we can inspect by calling `summary()` on the object. 
 
@@ -505,7 +506,7 @@ crime_model <- lm(n_crime_cube ~ imd_dec + gamb_dist + pubs_dist + off_dist + tu
 summary(crime_model)
 ```
 
-In running a regression model, we are effectively trying to test our null hypothesis. If our null hypothesis was true, then we would expect our coefficients to equal 0. Right now our null hypothesis was that there is no relationship between bike theft and our input variables. Without going in much further detail, as this will be in-depth covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we can see that the null hypothesis is disproven and, in fact, there seems to be a negative relationship between our input variables and our dependent variable. Four out of our five variables are significant at a 0.05 level of significance. The R-squared, which is a measure of the goodness-of-fit of the model, suggest that **19.95** per cent of the variation in our dependent variable can be explained by our independent variables. This means that a relationship is present, but it is not very strong! Nonetheless, the model suggest that LSOAs with a lower IMD score, a higher accessibility to pubs, a higher accessibility to off licenses, and a higher accessibility to a tube location, experience more bike theft. Consider that when parking your bike at night.
+In running a regression model, we are effectively trying to test our null hypothesis. If our null hypothesis is true then we  expect our coefficients to equal to 0. Right now our null hypothesis is that there is no relationship between bike theft and our input variables. Without going in much further detail, as this will be in-depth covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we can see that the null hypothesis is disproven and, in fact, there seems to be a negative relationship between our distance-related input variables and our dependent variable. Four out of our five variables are significant at a 0.05 level of significance. The R-squared, which is a measure of the goodness-of-fit of the model, suggest that **19.95** per cent of the variation in our dependent variable can be explained by our independent variables. This means that a relationship is present, but it is not very strong! Nonetheless, the model suggest that LSOAs with a higher IMD score, a higher accessibility to pubs, a higher accessibility to gambling outlets, and a higher accessibility to a tube location, experience more bike theft. Consider that when parking your bike somewhere overnight.
 
 #### Important {-}
 Normally, you would also check the underlying assumptions of the linear model (linearity, homoscedasticity, independence, and normality), however, this will be covered more in-depth in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html) and for our current purposes we are going to be a little naughty and accept the results as is and assume that all our underlying assumptions are satisfied (even though we are actually violating some of these underlying assumptions!). 
@@ -528,7 +529,7 @@ embed_msstream('454ff23d-4d5c-4ae4-9f3c-323a71c42b67') %>% use_align('left')
 [[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w05/w05_03_spatial_models.pdf) [[Watch on MS stream]](https://web.microsoftstream.com/video/454ff23d-4d5c-4ae4-9f3c-323a71c42b67?list=studio)
 
 ### Example: Accounting for spatial heterogeneity
-Let's start by exploring wether autocorrelation is an issue in our current analysis. Make sure the following libraries are (still) loaded:
+Let's start by exploring wether autocorrelation is an issue in our current analysis. Make sure the following libraries are loaded:
 
 ```{r 05-load-libraries-again, warnings=FALSE, message=FALSE}
 # load libraries
@@ -539,7 +540,7 @@ library(spdep)
 library(spatialreg)
 ```
 
-Now we are ready to go again, we are going to start by having a closer look at the residuals of our model. In other words, the residuals represent the distance between the observed values of the dependent variable and the predicted values of our dependent variables in our linear model. Residuals should be randomly distributed over space, otherwise we may be dealing with spatial autocorrelation. Strange words coming from a geographer, but right now we do **not*** want to see any spatial patterning.
+Now we are ready to go again, we are going to start by having a closer look at the residuals of our model. In other words, the residuals represent the distance between the observed values of the dependent variable and the predicted values of our dependent variables in our linear model. Residuals should be randomly distributed over space, otherwise we may be dealing with spatial autocorrelation. Strange words coming from a geographer, but right now we do **not** want to see any spatial patterning.
 
 ```{r 05-get-those-residuals, warnings=FALSE, message=FALSE}
 # extract the residuals from the model and assign to our spatial dataset
@@ -590,7 +591,7 @@ lm.morantest(crime_model, rwm, alternative='two.sided')
 ```
 
 
-Not surprisingly, the test is significant: we are indeed dealing with spatial autocorrelation. This means that our OLS regression may not be the best way to respresent our data as currently our regression line will per definition under-predict or over-predict in areas that are close to one another. There are two ways of taking this spatial dependence into account: by means of a **spatial error** model or by means of a **spatially lagged** model. These methods are quite different as the treat spatial autocorrelation in different ways. In the first case, the observed spatial dependence *is not* considered as an actual spatial process but is an effect of spatial clustering. In the second case, spatial dependence *is* considered as an actual spatial process and 'space' should be incorporated as an explanation in the model.
+Not surprisingly, the test is significant: we are indeed dealing with spatial autocorrelation. This means that our OLS regression may not be the best way to respresent our data as currently our regression line will per definition under-predict or over-predict in areas that are close to one another. There are two ways of taking this spatial dependence into account: by means of a **spatial error** model or by means of a **spatially lagged** model. These methods are quite different as they treat spatial autocorrelation in different ways. In the first case, the observed spatial dependence *is not* considered as an actual spatial process but is an effect of spatial clustering. In the second case, spatial dependence *is* considered as an actual spatial process and 'space' should be incorporated as an explanation in the model.
 
 How do we now decide which model to use? Well, first, as with any model, the relationship between independent and dependent variables must make sense. So, for instance, if you think that the spatial dependence is just an artefact of the data distribution rather than a truly spatial process, you should go with a spatial error model. Vice versa, if you think that the spatial dependence is the result of a spatial process, you should consider the spatially lagged model. In less clear cut cases, we can also get a little help by making use of the **Lagrange Multiplier test statistics**. We can these run these tests as follows:
 
@@ -601,18 +602,18 @@ lm.LMtests(crime_model, rwm, test = c('LMerr','LMlag','RLMerr','RLMlag'))
 
 How dow we use this information? The output of the test is split into two groups: the standard tests (**LMerr** and **LMlag**) and the robust versions of these tests (**RLMerr** and **RMlag**). 
 
-The robust version should be used only if both of the standard tests are significant (i.e. below the .05 level). If only one of the standard tests comes back signficant, but the other one is not, then it becomes very easy to decide between the spatial error and the spatially lagged model: choose the one that is significant! In case both the standard tests are significant so we need look at the outcomes of the robust tests and make a decision. The best suggestion now is to compare the *p-values* of both tests and use the one that is 'more significant' than the other, in our case indicating that we should go with a spatially lagged model rather than a spatial error model. Let's do that using the `lagsarlm()` function. Also, let's remove the gambling distance as that variable was not significant to begin with.
+The robust version should be used only if both of the standard tests are significant (i.e. below the .05 level). If only one of the standard tests comes back signficant, but the other one is not, then it becomes very easy to decide between the spatial error and the spatially lagged model: choose the one that is significant! In case both the standard tests are significant we would need to look at the outcomes of the robust tests and make a decision. In such a situation, the best suggestion is to compare the *p-values* of both tests and select the model that is 'more significant' than the other. In our case the situation is very clear and we should go with a spatially lagged model rather than a spatial error model. Let's do that using the `lagsarlm()` function. Also, let's remove the distance to the neareast off license as that variable was not significant to begin with.
 
 ```{r 05-spatially-lagged-model, warnings=FALSE, message=FALSE}
 # execute the spatially lagged model
 # this can take a little bit of time, be patient!
-crime_model_lag <- lagsarlm(n_crime_cube ~ imd_dec + pubs_dist + off_dist + tube_dist, data=lsoa_join, listw=rwm)
+crime_model_lag <- lagsarlm(n_crime_cube ~ imd_dec + pubs_dist + gamb_dist + tube_dist, data=lsoa_join, listw=rwm)
 
 # let's inspet the results
 summary(crime_model_lag)
 ```
 
-To interpret these results, we have to look at the Akaike Information Criterion (AIC). The AIC of our spatially lagged model is 2215.3, whereas the model without taking spatial dependence into account has an AIC of 2460.2. This means that the spatially lagged model is a better fit to the data then the standard OLS model. We also have a new term **Rho**, which is the spatial autoregressive parameter. In our case it is both positive and statistically significant, suggesting that when bike theft in the neighbours of area **X***i* increase, bike theft will also be higher in area **X***i*. At the same time, the IMD decile, the distance to the nearest pub, and the distance to the nearest tube stations are all still significant. Next time you know where not to park your bike.
+To interpret these results, we have to look at the Akaike Information Criterion (AIC). The AIC of our spatially lagged model is 2212.6, whereas the model without taking spatial dependence into account has an AIC of 2455.5 This means that the spatially lagged model is a better fit to the data then the standard OLS model. We also have a new term **Rho**, which is the spatial autoregressive parameter. In our case it is both positive and statistically significant, suggesting that when bike theft in the neighbours of area **X***i* increase, bike theft will also be higher in area **X***i*. At the same time, the IMD decile, the distance to the nearest pub, and the distance to the nearest tube stations are all still significant. Next time you know where not to park your bike.
 
 > Be careful **not** to compare the regression coefficients of the spatially lagged model to the regression coefficients of the original OLS model because their meaning now has changed. Whilst in the OLS model the coefficient of any of the independent variables measures the overall impact of these variables, this is not the case in the spatially lagged model: by including the spatial lag, the effect that X has on Y depends also (indirectly) on the effect that X has on Y in its neighbours.
 
@@ -621,21 +622,21 @@ Although we probably should not, let's also run a spatial error model. Just for 
 ```{r 05-spatial-error-model, warnings=FALSE, message=FALSE}
 # execute the spatially lagged model
 # this can take a little bit of time, be patient!
-crime_model_err <- errorsarlm(n_crime_cube ~ imd_dec + pubs_dist + off_dist + tube_dist, data=lsoa_join, listw=rwm)
+crime_model_err <- errorsarlm(n_crime_cube ~ imd_dec + pubs_dist + gamb_dist + tube_dist, data=lsoa_join, listw=rwm)
 
 # let's inspect the results
 summary(crime_model_err)
 ```
 
-If we have good reasons to believe that we need to run a spatial error model rather than an OLS regression model, we actually notice that the model fit improves: the AIC of the spatial error model is 2217, whilst the AIC of the OLS model is still 2460.2. Keep in mind: whereas the spatially lagged model takes spatial dependence into account, the spatial error model simply tries to remove the influence of space and we in fact estimate a model that relaxes one of the standard regression model assumptions that the errors need to be independent.
+If we have good reasons to believe that we need to run a spatial error model rather than an OLS regression model, we actually notice that the model fit improves: the AIC of the spatial error model is 2215.5, whilst the AIC of the OLS model is still 2455.5 Keep in mind: whereas the spatially lagged model takes spatial dependence into account, the spatial error model simply tries to remove the influence of space and we in fact estimate a model that relaxes one of the standard regression model assumptions that the errors need to be independent.
 
-> This time you can actually compare the regression coefficients from the spatial error model with those from the OLS model!
+> This time you could actually compare the regression coefficients from the spatial error model with those from the OLS model!
 
 ### Geographically Weighted Regression
-As mentioned in the short lecture video, another option to take 'space' into account is by executing a Geographically Weighted Regression (GWR). However, as this week's content is already getting very long as well as that GWR will be covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we will not cover this now.
+As mentioned in the short lecture video, another option to take 'space' into account is by executing a Geographically Weighted Regression (GWR). However, as this week's content is already getting very long as well as that GWR will be covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we will not cover this now. Do have a look at the [Shabrian et al. 2020](https://onlinelibrary.wiley.com/doi/10.1111/gean.12259) that is part of this week's essential reading to see GWR in action.
 
 ## Take home message
-Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cleaned and prepared your data, you first want to inspect your data through simple and visual methods to get acquainted with the data. Then you can start looking for relationships, and, if any relationships are found you are going to want to ask the question to what extent these relationships are real or to what extent other (spatial) processes, such as spatial autocorrelation, play a role in shaping these relationships. That is it for this week! Next week we will move to point pattern analysis, but that is next week so for now we can [celebrate the successful completion](https://www.youtube.com/watch?v=d8Fmu3RLEOY) of this week's material.
+Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cleaned and prepared your data, you first want to inspect your data through simple and visual methods to get acquainted with the data. Then you can start looking for relationships, and, if any relationships are found you are going to want to ask the question to what extent these relationships are real or to what extent other (spatial) processes, such as spatial dependence, play a role in shaping these relationships. That is it for this week! Next week we will move to point pattern analysis, but that is next week so for now we can [celebrate the successful completion](https://www.youtube.com/watch?v=d8Fmu3RLEOY) of this week's material.
 
 ## Attributions {#attributions_w05}
 This week's content and practical uses content and inspiration from:
