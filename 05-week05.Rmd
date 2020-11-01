@@ -3,7 +3,7 @@
 ## Introduction {#introduction_w05}
 This week, we focus on the second of the two key properties of spatial data: spatial heterogeneity. With the underlying process (or processes) that govern a spatial variable likely to vary across space, a single global relationship for an entire region of study may not adequately model the process that governs outcomes in any given location of the study region. As a result, multiple methods have been developed to incorporate ‘space’ into traditional regression models, including spatial lag models, spatial error models, and Geographical Weighted Regression. 
 
-This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, looking at the concept of **Exploratory Spatial Data Analysis (ESDA)**. We then look at the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships. However, before we move on to ESDA, we will look into some aspects of data prepration, data cleaning, and creating a **tidy dataset**.
+This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, looking at the concept of **Exploratory Spatial Data Analysis (ESDA)**. We then look at the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships. However, before we move on to ESDA, we will look into some aspects of data preparation, data cleaning, and creating a **tidy dataset**.
 
 In the first part of this week's session we will start by creating a **tidy dataset** using some data from the [UK 2011 Census of Population](https://www.ons.gov.uk/census/2011census). In the second part of this week's session we will explore potential factors that may contribute to the crime rate in London. We conduct an ESDA of these variables, followed by statistical and spatial regression analysis to determine whether our variables contribute to crime in our area of study. 
 
@@ -12,10 +12,9 @@ This week is structured by **three** short lecture videos, **two** [assignments]
 ### Video: Overview {#overview_w05}
 ```{r 05-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-# embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
+embed_msstream('9ba75497-60e1-40c2-99c4-ac6057acbd27') %>% use_align('left')
 ```
-[[Lecture slides]]() [[Watch on MS stream]]()
-
+[Lecture slides] [[Watch on MS stream]](https://web.microsoftstream.com/video/9ba75497-60e1-40c2-99c4-ac6057acbd27?list=studio)
 
 ## Tidy data
 Over the past weeks a lot of information has come your way, diving deep into the world of Spatial Data Science. However, whilst you are slowly becoming proficient in using R and Python to solve complex (spatial) problems, it is now a good moment to start thinking about data themselves and how they are organised. This is crucial for when you are moving on to working on your own projects where you have to source data yourselves: the vast majority of the data you will find in the public domain (or private domain for that matter) will be **dirty data**. With dirty data we mean data that needs some form of pre-processing, cleaning, and linkage before you can use it for your analysis. Exploratory Spatial Data Analysis very much starts with your data preparation. 
@@ -27,7 +26,7 @@ In the following, you will learn a consistent way to structure your data in R: *
 ### Video: Tidy data
 ```{r 05-short-lecture-tidy-data, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-# embed_msstream("52d0ac98-563e-46ac-b86b-efe5524d37bf") %>% use_align("center")
+embed_msstream('1a534d23-24e2-4f4a-aa38-f85a029ba19b') %>% use_align('left')
 ```
 [[Lecture slides]]() [[Watch on MS stream]]()
 
@@ -95,9 +94,9 @@ Now we know what consitute **tidy data**, we can put this into practice with an 
 #### File download {-}
 | File                                                 | Type           | Link |
 | :------                                              | :------        | :------ |
-| Etnicity by age group 2011 Census of Population      | `zip`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/eth_pop_2011/msoa_eth2011_ew_16plus.zip) |
+| Etnicity by age group 2011 Census of Population      | `csv`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/eth_pop_2011/msoa_eth2011_ew_16plus.zip) |
 
-We start by making sure our `tidyverse` is loaded into R and using the `read_csv()` function to read our `.csv` file.
+We start by making sure our `tidyverse` is loaded into R and using the `read_csv()` function to read our `csv` file.
 
 ```{r 05-reading-data, warnings=FALSE, message=FALSE}
 # load the tidyverse 
@@ -213,7 +212,7 @@ df_reformatted <- as_tibble(do.call(rbind,df_lst))
 df_reformatted
 ```
 
-Now the data is in a much more managable format, we can move on with preparing the data further. We will start by filtering out the columns (now rows!) that contain *all categories* and the *within group totals*. We will do this by cleverly filtering our data set on only a part of the text string that is contained in the *age_group* column of our dataframe using a [regular expression](https://en.wikipedia.org/wiki/Regular_expression). We further truncate the information that is contained in the *age_group* column to make all a little more readable.
+Now the data is in a much more manageable format, we can move on with preparing the data further. We will start by filtering out the columns (now rows!) that contain *all categories* and the *within group totals*. We will do this by cleverly filtering our data set on only a part of the text string that is contained in the *age_group* column of our dataframe using a [regular expression](https://en.wikipedia.org/wiki/Regular_expression). We further truncate the information that is contained in the *age_group* column to make all a little more readable.
 
 ```{r 05-further-clean-dataframe, warnings=FALSE, message=FALSE}
 # filter rows
@@ -267,19 +266,19 @@ Since we went through all the trouble of cleaning and creating this file, the fi
 3. Google is your friend. Do not be afraid to search for specific solutions and suggestions, chances are that there have been other people who have faces similar problems and posted their questions on [stackoverflow](https://stackoverflow.com/).
 
 #### Assignment 2 {-}
-Further to calculating the proportions of the population belonging to each of the ethnic groups in the UK 2011 Census of Population, we also want to make a choropleth map at district level of the UK population that is older than 60 as a proportion of the total population. For this analysis we have available one dataset with the administrative boundaries of the UK 2020 Local Authorithy Districts administrative geography and we have a `.csv` file that holds population estimates for the UK in 2019. Use everything you have learned over the past weeks to produces this map. Some tips:
+Further to calculating the proportions of the population belonging to each of the ethnic groups in the UK 2011 Census of Population, we also want to make a choropleth map at district level of the UK population that is older than 60 as a proportion of the total population. For this analysis we have available one dataset with the administrative boundaries of the UK 2020 Local Authorithy Districts administrative geography and we have a `csv` file that holds population estimates for the UK in 2019. Use everything you have learned over the past weeks to produces this map. Some tips:
 
 #### Tips {-}
-1. Inspect both the shapefile and the `.csv` file to get an idea of how your data look like. Use any tool you like to do this inspection (ArcGIS, R, QGIS, Microsoft Excel, etc.).
-2. The `.csv` file does contain a mix of administrative geographies, and you will need to do some data cleaning by filtering out *Country*, *County*, *Metropolitan County*, and *Region* before you link the data to the shapefile.
+1. Inspect both the shapefile and the `csv` file to get an idea of how your data look like. Use any tool you like to do this inspection (ArcGIS, R, QGIS, Microsoft Excel, etc.).
+2. The `csv` file does contain a mix of administrative geographies, and you will need to do some data cleaning by filtering out *Country*, *County*, *Metropolitan County*, and *Region* before you link the data to the shapefile.
 3. You are in charge of deciding which tools you want to use to visualise the data (ArcGIS, R, QGIS, etc.).
-4. You now have to make your own decisions on how to go about this problem. Although this practical has so far covered some of the fucntions and strategies you might need, the data cleaning and data preparation process is not the same.
+4. You now have to make your own decisions on how to go about this problem. Although this practical has so far covered some of the functions and strategies you might need, the data cleaning and data preparation process is not the same.
 
 #### File download {-}
 | File                                        | Type         | Link |
 | :------                                     | :------      | :------ |
-| Local Authorithy District boundaries 2020   | `zip`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/administrative_boundaries/uk_lad_2020/LADs_uk_2020.zip) |
-| Mid-Year Population Estimates 2019          | `zip`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/mye_pop_2019/mye_pop_2019.zip) |
+| Local Authorithy District boundaries 2020   | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/administrative_boundaries/uk_lad_2020/LADs_uk_2020.zip) |
+| Mid-Year Population Estimates 2019          | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/population/mye_pop_2019/mye_pop_2019.zip) |
 
 ## Exploratory spatial data analysis in R
 Exploratory Data Analysis got introduced in the the late 1970s by the American mathematician [John Tukey](https://en.wikipedia.org/wiki/John_Tukey). Tukey thought that in much data analysis there was much emphasis on statistical hypothesis testing and very little development of new hypotheses. He therefore made a distinction between **confirmatory data analysis** and **exploratory data analysis (EDA)**. EDA is a collection of descriptive techniques used to detect patterns, identify outliers, and form hypotheses from the data. An EDA typically involves descriptive statistics and data visualisation. Exploratory techniques generally stay 'close' to the original data. **Exploratory spatial data analysis (ESDA)** is the extension of exploratory data analysis (EDA) to the spatial realm.
@@ -292,15 +291,15 @@ library(vembedr)
 [[Lecture slides]]() [[Watch on MS stream]]()
 
 ### Example: Exploring our dataset
-After successfully creating the maps that we were requested to make, our boss got so happy that she directly gave us a new assignment. This time she wants us to look at crime data in London again, specifically she wants to know whether relative deprivation and factors from the built environment can explain the occurence of anti-social behaviour in London in March 2019. We have access to two **open** data sets. The first one contains the English [Index of Multiple Deprivation (IMD)](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) for 2019. The English indices of deprivation measure relative deprivation in small areas in England called Lower-layer Super Output Areas (LSOAs) The index of multiple deprivation is the most widely used of these indices. The second one contains some of the input data that have been used to create the [Access to Healthy Assets and Hazards (AHAH)](https://data.cdrc.ac.uk/dataset/access-healthy-assets-hazards-ahah). AHAH is a multi-dimensional index developed by the [Consumer Data Research Centre (CDRC)](https://www.cdrc.ac.uk/) for Great Britain measuring how ‘healthy’ neighbourhoods are. We also have access to the LSOAs for London.
+After successfully creating the maps that we were requested to make, our boss got so happy that she directly gave us a new assignment. This time she wants us to look at crime data in London again, specifically she wants to know whether relative deprivation and factors from the built environment can explain the occurrence of anti-social behaviour in London in March 2019. We have access to two **open** data sets. The first one contains the English [Index of Multiple Deprivation (IMD)](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019) for 2019. The English indices of deprivation measure relative deprivation in small areas in England called Lower-layer Super Output Areas (LSOAs) The index of multiple deprivation is the most widely used of these indices. The second one contains some of the input data that have been used to create the [Access to Healthy Assets and Hazards (AHAH)](https://data.cdrc.ac.uk/dataset/access-healthy-assets-hazards-ahah). AHAH is a multi-dimensional index developed by the [Consumer Data Research Centre (CDRC)](https://www.cdrc.ac.uk/) for Great Britain measuring how ‘healthy’ neighbourhoods are. We also have access to the LSOAs for London.
 
 #### File download {-}
 | File                                        | Type         | Link |
 | :------                                     | :------      | :------ |
-| Lower-layer Super Output Areas London 2011  | `zip`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/administrative_boundaries/london_lsoa_2011/lsoa_london_2011.zip) |
-| Anti-social behaviour crime data London 2019| `zip`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/crime/march2019_london_anti_social.zip) |
-| Index of Multiple Deprivation London 2019   | `zip`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/index/imd_ew_2019.zip) |
-| Access to Healthy Assets and Hazards (AHAH) London | `zip` | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/index/ahah_input_gb_2016.zip) |
+| Lower-layer Super Output Areas London 2011  | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/administrative_boundaries/london_lsoa_2011/lsoa_london_2011.zip) |
+| Anti-social behaviour crime data London 2019| `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/crime/march2019_london_anti_social.zip) |
+| Index of Multiple Deprivation London 2019   | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/index/imd_ew_2019.zip) |
+| Access to Healthy Assets and Hazards (AHAH) London | `csv` | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/index/ahah_input_gb_2016.zip) |
 
 Download and the file to your own computer and again make sure your [your data directory](spatial-autocorrelation.html#setting-up-the-environment) is set up correctly and the data are unzipped. Then load the libraries and the data into R.
 
@@ -312,7 +311,7 @@ library(tmap)
 
 # load spatial data
 lsoa <- st_read('raw/administrative_boundaries/london_lsoa_2011/lsoa_london_2011.shp')
-names(lsoa) <- c('lsoa11cd','popdens','geometry')
+names(lsoa) <- c('lsoa11cd','geometry')
 
 # load data
 crime <- read_csv('raw/crime/march2019_london_anti_social.csv')
@@ -327,9 +326,10 @@ head(imd)
 
 # inspect ahah data
 head(ahah)
+
 ```
 
-Looking at the data you will notice that the anti-social behaviour crime data exists of longitudes and latitudes. The IMD dataset has an *lsoa11cd* column, an IMD rank column, and an IMD decile column. The AHAH dataset has an *lsoa11cd* column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The [technical report of the AHAH index](https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1) suggests that access is calculated as the mean disance (kilometres) by car travel route of postcodes within a LSOA to the nearest outlet. Good to know!
+Looking at the data you will notice that the anti-social behaviour crime data exists of longitudes and latitudes. The IMD dataset has an *lsoa11cd* column, an IMD rank column, and an IMD decile column. The AHAH dataset has an *lsoa11cd* column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The [technical report of the AHAH index](https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1) suggests that access is calculated as the mean distance (kilometres) by car travel route of postcodes within a LSOA to the nearest outlet. Good to know!
 
 Let's start by linking the IMD dataset and the AHAH dataset to the spatial dataset. Since we are using `sf` for our spatial data, we can very easily joining them together using the common variable in these datasets: *lsoa11cd*.
 
@@ -361,26 +361,27 @@ lsoa_join$n_crime <- lengths(st_intersects(lsoa_join,crime_points))
 tm_shape(lsoa_join) +
   tm_fill(col='n_crime')
 
-# transform the anti-social behaviour crime data to see the smaller differences
-lsoa_join$n_crime_sqrt <- sqrt(lsoa_join$n_crime)
+# cube transform the anti-social behaviour crime data 
+# effect is more pronounced than squareroot transformation
+lsoa_join$n_crime_cube <- abs(lsoa_join$n_crime)^(1/3)
 
 # inspect the result
 tm_shape(lsoa_join) +
-  tm_fill(col='n_crime_sqrt')
+  tm_fill(col='n_crime_cube')
 ```
 
-This all looks good. We can see, however, that the the number of times anti-social behaviour was reported are highly skewed by Central London as well as an LSOA in the West of London. It is now a good idea to explore the anti-social behaviour crime data a bit further to see how the data are distributed non-spatially by plotting them.
+This all looks good. We can see, however, that the the number of times anti-social behaviour was reported are highly skewed by Central London. It is now a good idea to explore the anti-social behaviour crime data a bit further to see how the data are distributed non-spatially by plotting them.
 
 ```{r 05-inspect-the-crime-data, warnings=FALSE, message=FALSE}
 # summary
-summary(lsoa_join$n_crime_sqrt)
+summary(lsoa_join$n_crime_cube)
 
 # histogram
-ggplot(lsoa_join, aes(x=n_crime_sqrt)) +
+ggplot(lsoa_join, aes(x=n_crime_cube)) +
     geom_histogram(binwidth=.5, colour='black', fill='white')
 
 # boxplot
-ggplot(lsoa_join, aes(x=n_crime_sqrt))+
+ggplot(lsoa_join, aes(x=n_crime_cube))+
  geom_boxplot()
 ```
 
@@ -408,26 +409,25 @@ ggplot(lsoa_join, aes(x=gamb_dist))+
 # boplot ahah off license distance
 ggplot(lsoa_join, aes(x=off_dist))+
  geom_boxplot()
-
 ```
 
 The input data look good. There are no real strange and unexpected outliers or missing values and at the same time there is enough [heterogeneity](https://en.wikipedia.org/wiki/Homogeneity_and_heterogeneity) in our data. This is important because if the input data have very similar values for al LSOAs they would not be very useful in trying to explain the differences in anti-social behaviour. So, we can continue. Let's start by seeing if there is any relationship between our input (independent) variables and our output (dependent) variable by some plots.
 
 ```{r 05-lets-scatterplot, warnings=FALSE, message=FALSE}
 # imd vs anti-social behaviour crime
-ggplot(lsoa_join,aes(x=imd_dec, y=n_crime_sqrt)) +
+ggplot(lsoa_join,aes(x=imd_dec, y=n_crime_cube)) +
   geom_point()
 
 # gambling outlet distance vs anti-social behaviour crime
-ggplot(lsoa_join,aes(x=gamb_dist, y=n_crime_sqrt)) +
+ggplot(lsoa_join,aes(x=gamb_dist, y=n_crime_cube)) +
   geom_point()
 
 # pub distance vs anti-social behaviour crime
-ggplot(lsoa_join,aes(x=pubs_dist, y=n_crime_sqrt)) +
+ggplot(lsoa_join,aes(x=pubs_dist, y=n_crime_cube)) +
   geom_point()
 
 # off license distance vs anti-social behaviour crime
-ggplot(lsoa_join,aes(x=off_dist, y=n_crime_sqrt)) +
+ggplot(lsoa_join,aes(x=off_dist, y=n_crime_cube)) +
   geom_point()
 ```
 
@@ -435,24 +435,24 @@ The IMD deciles, which are in fact categorical data, do not show any obvious pat
 
 ```{r 05-lets-correlate, warnings=FALSE, message=FALSE}
 # imd vs anti-social behaviour crime
-cor(lsoa_join$imd_dec,lsoa_join$n_crime_sqrt)
+cor(lsoa_join$imd_dec,lsoa_join$n_crime_cube)
 
 # gambling outlet distance vs anti-social behaviour crime
-cor(lsoa_join$gamb_dist,lsoa_join$n_crime_sqrt)
+cor(lsoa_join$gamb_dist,lsoa_join$n_crime_cube)
 
 # pub distance vs anti-social behaviour crime
-cor(lsoa_join$pubs_dist,lsoa_join$n_crime_sqrt)
+cor(lsoa_join$pubs_dist,lsoa_join$n_crime_cube)
 
 # off license distance vs anti-social behaviour crime
-cor(lsoa_join$off_dist,lsoa_join$n_crime_sqrt)
+cor(lsoa_join$off_dist,lsoa_join$n_crime_cube)
 ```
-So, looking at these graphs there seems to be some relationship between our explantory (independent) variables and our dependent variables. It is time to form a hypothesis: LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest experience more anti-social behaviour. The null hypothesis then becomes: LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest **do not** experience more anti-social behaviour, i.e. there is no relationship whatsoever.
+So, looking at these graphs there seems to be some relationship between our explanatory (independent) variables and our dependent variables. It is time to form a hypothesis: LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest experience more anti-social behaviour. The null hypothesis then becomes: LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest **do not** experience more anti-social behaviour, i.e. there is no relationship whatsoever.
 
 Let's see if we can test this hypothesis using an Ordinary Least Squares (OLS) regression model. In R, models are typically fitted by calling a model-fitting function, in our case `lm()` (linear model). The `lm()` function returns a fitted model which we can inspect by calling `summary` on the object. 
 
 ```{r 05-we-are-regressing, warnings=FALSE, message=FALSE}
 # linear model
-crime_model <- lm(n_crime_sqrt ~
+crime_model <- lm(n_crime_cube ~
                   imd_dec+gamb_dist+pubs_dist+off_dist,
                   data=lsoa_join)
 
@@ -460,13 +460,20 @@ crime_model <- lm(n_crime_sqrt ~
 summary(crime_model)
 ```
 
-In running a regression model, we are effectively trying to test our null hypothesis. If our null hypothesis was true, then we would expect our coefficients to equal 0. Right now our null hypothesis was that there is no relationship between anti-social behaviour and our input variables. Without going in much further detail, as this will be in-depth covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we can see that the null hypothesis is disproven and, in fact, there seems to be a negative relationship between our input variables and our dependent variable. Three out of our four variables are significant at a 0.05 level of significance. The R-squared, which is a measure of the goodness-of-fit of the model, suggest that 13.50 per cent of the variation in our dependent variable can be explained by our input variables. This means that a relationship is present, but it is not very strong! Nonetheless, the model suggest that LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest experience more anti-social behaviour. Consider that when moving house.
+In running a regression model, we are effectively trying to test our null hypothesis. If our null hypothesis was true, then we would expect our coefficients to equal 0. Right now our null hypothesis was that there is no relationship between anti-social behaviour and our input variables. Without going in much further detail, as this will be in-depth covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we can see that the null hypothesis is disproven and, in fact, there seems to be a negative relationship between our input variables and our dependent variable. Three out of our four variables are significant at a 0.05 level of significance. The R-squared, which is a measure of the goodness-of-fit of the model, suggest that **13.17** per cent of the variation in our dependent variable can be explained by our independent variables. This means that a relationship is present, but it is not very strong! Nonetheless, the model suggest that LSOAs that are in a more deprived IMD decile and LSOAs with a lower mean distance to one of our outlets of interest experience more anti-social behaviour. Consider that when moving house.
 
 #### Important {-}
-Normally, you would also check the underlying assumptions of the linear model (linearity, homoscedasticity, independence, and normality), however, this will be covered more in-depth in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html) and for our current purposes we are going to be a little naughty and accept the results as is and assume that all our underlying assumptions are satisfied (even though we are actually violating some of these underlying assumptions!).
+Normally, you would also check the underlying assumptions of the linear model (linearity, homoscedasticity, independence, and normality), however, this will be covered more in-depth in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html) and for our current purposes we are going to be a little naughty and accept the results as is and assume that all our underlying assumptions are satisfied (even though we are actually violating some of these underlying assumptions!). 
+
+If you do want to get into some more detail on regression analysis right here and now, the following video explains the process of fitting a line to your data very clearly. While you at it, do have a look at some of the other videos on the [StatsQuestwith Josh Stammer](https://www.youtube.com/channel/UCtYLUTtgS3k1Fg4y5tAhLbw) Youtube Channel.
+
+```{r 05-statquest-ols,echo=FALSE}
+library(vembedr)
+embed_youtube('nk2CQITm_eo',frameborder=1) %>% use_align('left)
+```
 
 ## Spatial heterogeneity
-Although we have established a relationship between IMD deciles, access to gambling outlets, access to pubs, access to off licenses, and the occurence of anti-social behaviour, our data are very spatial.However, we did not incorporate this spatial distribution into our model. So if we want to develop a regression model for anti-social behaviour in London we may have to recognise this spatial component. On top of this, a regression model assumes indepence of observations: what happens in LSOA 1 is not related to what happens in LSOA 2. However, we know from last weeks content that this is not always the case because of spatial autocorrelation.
+Although we have established a relationship between IMD deciles, access to gambling outlets, access to pubs, access to off licenses, and the occurrence of anti-social behaviour, our data are very spatial.However, we did not incorporate this spatial distribution into our model. So if we want to develop a regression model for anti-social behaviour in London we may have to recognise this spatial component. On top of this, a regression model assumes indepence of observations: what happens in LSOA001 is not related to what happens in LSOA002 or any other LSOA. However, we know from last weeks content that this is not always the case because of spatial autocorrelation.
 
 ### Video: Spatial heterogeneity
 ```{r 05-short-lecture-spatial-heterogeneity,echo=FALSE}
@@ -476,9 +483,71 @@ library(vembedr)
 [[Lecture slides]]() [[Watch on MS stream]]()
 
 ### Example: Accounting for spatial heterogeneity
+Let's start by exploring wether autocorrelation is an issue in our current analysis. Make sure the following libraries are (still) loaded:
+
+```{r 05-load-libraries-again, warnings=FALSE, message=FALSE}
+# load libraries
+library(sf)
+library(tmap)
+library(sp)
+library(spdep)
+```
+
+Now we are ready to go again, we are going to start by having a closer look at the residuals of our model. In other words, the residuals represent the distance between the observed values of the dependent variable and the predicted values of our dependent variables. Residuals should be randomly distributed over space, otherwise we may be dealing with spatial autocorrelation. Strange words coming from a geographe, but right now we do **not*** want to see any spatial patterning.
+
+```{r 05-get-those-residuals, warnings=FALSE, message=FALSE}
+# extract the residuals from the model and assign to our spatial dataset
+lsoa_join$residuals <- residuals(crime_model)
+
+# extract the predicted values from the model and assign to our spatial dataset
+lsoa_join$predicted <- fitted(crime_model)
+
+# example observed, residual, predicted of first LSOA in our data
+lsoa_join[1,c(1,10)]
+```
+
+Now we have our residuals assigned to their spatial units, we can plot the residuals in number of standard deviations from the mean.
+
+```{r 05-standardise-and-plot-yeah, warnings=FALSE, message=FALSE}
+# standardise
+lsoa_join$sd_mean <- (lsoa_join$predicted - mean(lsoa_join$predicted)) / sd(lsoa_join$predicted)
+
+# inspect the result
+breaks <- c(-14,-3,-2,-1,1,2,3,14)
+tm_shape(lsoa_join) + 
+  tm_fill('sd_mean', style='fixed', breaks=breaks, palette='-RdBu') +
+  tm_borders(alpha = 0.1) 
+```
+
+You can see the spatial patterning of areas of over-prediction in the centre of Greater London with areas of under-prediction concentrating on the edges of area. We could be dealing with some spatial autocorrelation, so we need to test for it again. We will be using a Global Moran's I for this. Remember with a global Moran’s I we can test how 'random' the spatial distribution of these values is. Global Moran’s I is a metric between -1 and 1. -1 is a completely even spatial distribution of values, 0 is a 'random' distribution, and 1 is a 'non-random' distribution of clearly defined clusters.
+
+```{r 05-moran-preparation, message=FALSE, warnings=FALSE}
+# force sf to sp
+lsoa_join_sp <- as_Spatial(lsoa_join, IDs=lsoa_join$lsoa11cd)
+
+# create a list of neighbours using the 'queen' criteria
+lsoa_nb <- poly2nb(lsoa_join_sp, row.names=lsoa_join_sp$lsoa11cd)
+
+# check connection
+summary(lsoa_nb)
+
+# generate the row standardise spatial weight matrix and the Moran Scatterplot
+wm <- nb2mat(lsoa_nb, style='W')
+rwm <- nb2listw(lsoa_nb, style='W')
+```
+
+Now we can execute a Moran's test **for the regression residuals**. We use `lm.morantest()` for this. This is important because this function takes into account that the input data are residuals, something which the 'normal' Moran's I test does not do.
+
+```{r 05-moran-execution, warnings=FALSE, message=FALSE}
+# Moran's I
+lm.morantest(crime_model, rwm, alternative='two.sided')
+```
+
+
+
 
 ## Take home message
-Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cleaned and prepared your data, you first want to inspect your data through simple and visual methods to get acquainted with the data. The you can start looking for relationships, and, if any relationships are found up you are going to want to ask the question to what extent these relationships are real or or to what extent other (spatial) processes play a role in shaping these relationships. Next week we will move to point pattern analysis and go beyond simple point-to-polygon aggregation, but that is next week so for now we can [celebrate the successful completion](https://www.youtube.com/watch?v=d8Fmu3RLEOY) of this week's material.
+Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cleaned and prepared your data, you first want to inspect your data through simple and visual methods to get acquainted with the data. The you can start looking for relationships, and, if any relationships are found you are going to want to ask the question to what extent these relationships are real or to what extent other (spatial) processes, such as spatial autocorrelation, play a role in shaping these relationships. Next week we will move to point pattern analysis and go beyond simple point-to-polygon aggregation, but that is next week so for now we can [celebrate the successful completion](https://www.youtube.com/watch?v=d8Fmu3RLEOY) of this week's material.
 
 ## Attributions {#attributions_w05}
 This week's content and practical uses content and inspiration from:

@@ -53,7 +53,7 @@ To check that you have all the files you need have a look at what's in these dir
 ``` {r 04-aa-listing-files}
 
 # make the filepath objects
-shapefile_dir_path <- "raw/administrative_boundaries/camden_oas_2011/"
+shapefile_dir_path <- "raw/boundaries/camden_oas_2011/"
 crime_data_dir_path <- "raw/crime/"
 
 # we can use list.files() with the direcotry names to find their contents
