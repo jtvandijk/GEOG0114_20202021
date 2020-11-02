@@ -26,9 +26,9 @@ In the following, you will learn a consistent way to structure your data in R: *
 ### Video: Tidy data
 ```{r 05-short-lecture-tidy-data, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-embed_msstream('1a534d23-24e2-4f4a-aa38-f85a029ba19b') %>% use_align('left')
+embed_msstream('ae00eeb4-4558-4f95-8e26-9a16d970bbd1') %>% use_align('left')
 ```
-[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w05/w05_01_tidy_data.pdf) [[Watch on MS stream]](https://web.microsoftstream.com/video/1a534d23-24e2-4f4a-aa38-f85a029ba19b?list=studio)
+[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w05/w05_01_tidy_data.pdf) [[Watch on MS stream]](https://web.microsoftstream.com/video/ae00eeb4-4558-4f95-8e26-9a16d970bbd1?list=studio)
 
 ### What do tidy data look like?
 You can represent the same underlying data in multiple ways. The example below, taken from the the `tidyverse` package and described in the [R for Data Science](https://r4ds.had.co.nz/tidy-data.html) book, shows that the same data can organised in four different ways. 
@@ -85,7 +85,6 @@ Fortunately, there are some functions in the `tidyr` and `dplyr` packages, both 
 | tidyr	    | pivot_longer      | convert data from wide format to long format |
 | tidyr	    | pivot_wider       | convert long format dataset to wide format |
 
-&nbsp;
 > Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through `?name_of_function`, e.g. `?pivot_longer`. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.
 
 ### Example: Creating tidy data
