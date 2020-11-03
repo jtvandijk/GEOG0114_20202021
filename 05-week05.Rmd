@@ -9,7 +9,7 @@ In the first part of this week's session we will start by creating a **tidy data
 
 This week is structured by **three** short lecture videos, **two** [assignments](#assignment_w05) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
 
-**Please be aware that you will need to [submit the result[#submit_w05] of the second assignment before Friday morning 09h00 UK time (GMT+0).**
+**Please be aware that you will need to [submit the result](#submit_w05) of the second assignment before Friday morning 09h00 UK time (GMT+0).**
 
 ### Video: Overview {#overview_w05}
 ```{r 05-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
