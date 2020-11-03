@@ -7,7 +7,7 @@ This week provides the building blocks to conducting a statistical and spatial i
 
 In the first part of this week's session we will start by creating a **tidy dataset** using some data from the [UK 2011 Census of Population](https://www.ons.gov.uk/census/2011census). In the second part of this week's session we will explore potential factors that may contribute to bicycle theft in London. We conduct an ESDA of these variables, followed by statistical and spatial regression analysis to determine whether our variables contribute to bicycle theft in our area of study. 
 
-This week is structured by **three** short lecture videos, **two** [assignments](#assignment_w05) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
+This week is structured by **three** short lecture videos, **two** [assignments](#assignment_w05) that you need to do in preparation for Friday's seminar, and the practical material. **Please be aware that you will need to submit the result of the second assignment before Friday morning 09h00 UK time (GMT+0).** As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
 
 ### Video: Overview {#overview_w05}
 ```{r 05-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
