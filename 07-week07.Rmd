@@ -2,8 +2,6 @@
 
 Following on from Week 3 and in conjunction with this week in your CASA005 module, we will also be focusing on rasters, exploring further the creation and application of rasters from vector datasets using geostatistics. During the lecture, we will provide a more in-depth and detailed explanation behind the geostatistics methods of interpolation, looking at various deterministic and geostatistical techniques. We then introduce methods to using vector datasets with rasters, utilizing a GIS method known as zonal statistics. 
 
-Following on from Week 3’s practical, we look to study further the role of greenspace quality in relation to schools and how this varies across different geographies. This week, we look at greenspace quality from a personal health perspective, analyzing air quality across our greenspaces. By analyzing the air quality of greenspace, we can provide a more detailed understanding to how "accessible" the greenspaces are to the surrounding schools.
-
 <center>**This week's content will be made available on 23/11.**</center>
 
 ## Feedback {#feedback_w07}
