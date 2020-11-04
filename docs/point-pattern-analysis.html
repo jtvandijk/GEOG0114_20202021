@@ -24,7 +24,7 @@
 <meta name="author" content="Justin van Dijk and Joanna Wilkin" />
 
 
-<meta name="date" content="2020-11-03" />
+<meta name="date" content="2020-11-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -190,7 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4.1</b> Video: Spatial heterogeneity</a></li>
 <li class="chapter" data-level="5.4.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-accounting-for-spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4.2</b> Example: Accounting for spatial heterogeneity</a></li>
-<li class="chapter" data-level="" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#geographically-weighted-regression"><i class="fa fa-check"></i>Geographically Weighted Regression</a></li>
+<li class="chapter" data-level="5.4.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#geographically-weighted-regression"><i class="fa fa-check"></i><b>5.4.3</b> Geographically Weighted Regression</a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#take-home-message"><i class="fa fa-check"></i><b>5.5</b> Take home message</a></li>
 <li class="chapter" data-level="5.6" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#attributions_w05"><i class="fa fa-check"></i><b>5.6</b> Attributions</a></li>
@@ -198,7 +198,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#feedback_w06"><i class="fa fa-check"></i><b>6.1</b> Feedback</a></li>
+<li class="chapter" data-level="6.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#introduction_w06"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#overview_w06"><i class="fa fa-check"></i><b>6.1.1</b> Video: Overview</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#basic-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2</b> Basic point pattern analysis</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-basic-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.1</b> Video: Basic point pattern analysis</a></li>
+<li class="chapter" data-level="6.2.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-basic-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.2</b> Example: Basic point pattern analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#advanced-point-pattern-analysis"><i class="fa fa-check"></i><b>6.3</b> Advanced Point Pattern Analysis</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-advanced-point-pattern-analaysis-data"><i class="fa fa-check"></i><b>6.3.1</b> Video: Advanced point pattern analaysis data</a></li>
+<li class="chapter" data-level="6.3.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-advanced-point-pattern-analysis"><i class="fa fa-check"></i><b>6.3.2</b> Example: Advanced Point Pattern Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#take-home-message"><i class="fa fa-check"></i><b>6.4</b> Take home message</a></li>
+<li class="chapter" data-level="6.5" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#attributions_w06"><i class="fa fa-check"></i><b>6.5</b> Attributions</a></li>
+<li class="chapter" data-level="6.6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#feedback_w06"><i class="fa fa-check"></i><b>6.6</b> Feedback</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="geostatistics.html"><a href="geostatistics.html"><i class="fa fa-check"></i><b>7</b> Geostatistics</a>
 <ul>
@@ -229,14 +245,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="point-pattern-analysis" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Point pattern analysis</h1>
+<div id="introduction_w06" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Introduction</h2>
 <p>In our previous practicals, we have aggregated our event data into areal units, primarily using administrative geographies, to enable its easy comparison with other datasets provided at the same spatial scale, such as the census data used in the previous week, as well as to conduct spatial autocorrelation tests. However, when locations are precisely known, spatial point data can be used with a variety of spatial analytic techniques that go beyond the methods typically applied to areal data. The set of methods unique to point data are often referred to as point pattern analysis and geostatistics.</p>
-<p>This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look first at basic forms of point pattern analysis, including mean centers and the standard deviational ellipse, and then more powerful analysis methods, including kernel density estimation and Ripley’s K function. These latter functions help determine and/or show whether points have a random, dispersed or clustered distribution pattern at a certain scale.</p>
-<p>To put these measures and methods into action, our practical component looks to test the hypothesis that “the majority of bicycle theft in London occurs with walking distance of a train or tube station”, by assessing clusters and hotspots of bike theft in relation to a transportation locations.</p>
-<center>
-<strong>This week’s content will be made available on 16/10.</strong>
-</center>
-<div id="feedback_w06" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Feedback</h2>
+<p>This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look first at basic forms of point pattern analysis, including mean centers and the standard deviational ellipse, and then more powerful analysis methods, including kernel density estimation and Ripley’s K function. These latter functions help determine and/or show whether points have a random, dispersed or clustered distribution pattern at a certain scale.
+This week is structured by <strong>two</strong> short lecture videos, <strong>one</strong> <a href="">assignment</a> that you need to do in preparation for Friday’s seminar, and the practical material. As always, this <a href="https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&amp;login=1">week’s reading list</a> is available on the UCL library reading list page for the course.</p>
+<div class="note">
+<p>Please be aware that you will need to <a href="">submit the result</a> of the assignment <strong>before Friday morning 09h00</strong> UK time (GMT+0).</p>
+</div>
+<div id="overview_w06" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Video: Overview</h3>
+<p>[Lecture slides] <a href="">[Watch on MS stream]</a></p>
+</div>
+</div>
+<div id="basic-point-pattern-analysis" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Basic point pattern analysis</h2>
+<p>In the previous weeks, we have aggregated our event data into areal units. In R we could do this very easily by identifying all points that fall within a polygon using the <code>st_intersects()</code> function from the <code>sf</code> package to and we used this method to
+<a href="spatial-autocorrelation.html#our-property-is-theft.">aggregate ‘theft from persons’ in Camden in 2019</a> as well as to <a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r">aggregate ‘bicycle theft’ in four of London’s boroughs</a>. However, depending on what you are trying to find out, points do not necessarily have to be aggregateda and there are many applications in which you want to work with the point locations directly. In fact, the R package <code>spatstat</code> for spatial statistics is predominantly designed for analysing spatial point patterns. The mere fact that the <a href="https://cran.r-project.org/web/packages/spatstat/spatstat.pdf"><code>spatstat</code> documentation</a> has almost 1,800 pages should give you a good idea about the genearl importance of point pattern analysis.</p>
+<div id="video-basic-point-pattern-analysis" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Video: Basic point pattern analysis</h3>
+<p><a href="">[Lecture slides]</a> <a href="">[Watch on MS stream]</a></p>
+</div>
+<div id="example-basic-point-pattern-analysis" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Example: Basic point pattern analysis</h3>
+<p>After last week’s success, we got a follow-up assignment to study bicycle theft. This time our assignment is to analyse the pattern of bicycle theft for the whole of <a href="https://en.wikipedia.org/wiki/Greater_London">Greater London</a>. We also have access to London’s <a href="https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography">Middle Layer super Output Areas</a> (MSOAs) as well as the boundaries of the <a href="https://en.wikipedia.org/wiki/London_boroughs">London boroughs</a>. Even though we are going to analyses the points, we still need some administrative boundaries even if it was only to give some context to our maps!</p>
+<div id="file-download" class="section level4 unnumbered">
+<h4>File download</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">File</th>
+<th align="left">Type</th>
+<th align="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Middle-layer Super Output Areas London 2011</td>
+<td align="left"><code>shp</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/msoa_london_2011.zip">Download</a></td>
+</tr>
+<tr class="even">
+<td align="left">Local Authorithy Districts London 2020</td>
+<td align="left"><code>csv</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/lad_london_2011.zip">Download</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Bicycle theft data London 2019</td>
+<td align="left"><code>csv</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/2019_london_bicycle_theft.zip">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p>Download the individual files to your own computer and as usal make sure <a href="spatial-autocorrelation.html#setting-up-the-environment">your data directory</a> is set up correctly and the data are unzipped.</p>
+</div>
+</div>
+</div>
+<div id="advanced-point-pattern-analysis" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Advanced Point Pattern Analysis</h2>
+<div id="video-advanced-point-pattern-analaysis-data" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Video: Advanced point pattern analaysis data</h3>
+</div>
+<div id="example-advanced-point-pattern-analysis" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Example: Advanced Point Pattern Analysis</h3>
+</div>
+</div>
+<div id="take-home-message" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Take home message</h2>
+</div>
+<div id="attributions_w06" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Attributions</h2>
+<p>This week’s content and practical uses content and inspiration from:</p>
+<ul>
+<li>Gimond, M. 2020. Geodesic geometry. <a href="https://mgimond.github.io/Spatial/index.html" class="uri">https://mgimond.github.io/Spatial/index.html</a></li>
+</ul>
+</div>
+<div id="feedback_w06" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Feedback</h2>
 <p>Please take a moment to give us some <a href="https://forms.gle/BYbZySVSHeoUEkJh9">feedback on this week’s content</a>.</p>
 
 </div>

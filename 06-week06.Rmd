@@ -6,12 +6,9 @@ In our previous practicals, we have aggregated our event data into areal units, 
 This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look first at basic forms of point pattern analysis, including mean centers and the standard deviational ellipse, and then more powerful analysis methods, including kernel density estimation and Ripley’s K function. These latter functions help determine and/or show whether points have a random, dispersed or clustered distribution pattern at a certain scale. 
 This week is structured by **two** short lecture videos, **one** [assignment]() that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
 
-<div class='note'>
-**Please be aware that you will need to [submit the result]() of the assignment before Friday morning 09h00 UK time (GMT+0).**
+<div class="note">
+Please be aware that you will need to [submit the result]() of the assignment **before Friday morning 09h00** UK time (GMT+0).
 </div>
-```{r }
-test <-10
-```
 
 ### Video: Overview {#overview_w06}
 ```{r 06-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
@@ -22,7 +19,7 @@ library(vembedr)
 
 ## Basic point pattern analysis
 In the previous weeks, we have aggregated our event data into areal units. In R we could do this very easily by identifying all points that fall within a polygon using the `st_intersects()` function from the `sf` package to and we used this method to 
-[aggregate 'theft from persons' in Camden in 2019](spatial-autocorrelation.html#our-property-is-theft.) as well as to [aggregate 'bicycle theft' in four of London's boroughs](exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r). However, depending on what you are trying to find out, points do not necessarily have to be aggregateda and there are many applications in which you want to work with the point locations directly. In fact, the R package `spatstat` for spatial statistics is predominantly designed for analysing spatial point patterns. The mere fact that the [`spatstat` documentation](https://cran.r-project.org/web/packages/spatstat/spatstat.pdf) has almost 1,800 pages is a good indication of the importance of point pattern analysis.
+[aggregate 'theft from persons' in Camden in 2019](spatial-autocorrelation.html#our-property-is-theft.) as well as to [aggregate 'bicycle theft' in four of London's boroughs](exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r). However, depending on what you are trying to find out, points do not necessarily have to be aggregateda and there are many applications in which you want to work with the point locations directly. In fact, the R package `spatstat` for spatial statistics is predominantly designed for analysing spatial point patterns. The mere fact that the [`spatstat` documentation](https://cran.r-project.org/web/packages/spatstat/spatstat.pdf) has almost 1,800 pages should give you a good idea about the genearl importance of point pattern analysis.
 
 ### Video: Basic point pattern analysis
 ```{r 06-basic-point-pattern-analysis, warnings=FALSE, message=FALSE, echo=FALSE}
@@ -31,9 +28,30 @@ library(vembedr)
 ```
 [[Lecture slides]]() [[Watch on MS stream]]()
 
+### Example: Basic point pattern analysis
+After last week's success, we got a follow-up assignment to study bicycle theft. This time our assignment is to analyse the pattern of bicycle theft for the whole of [Greater London](https://en.wikipedia.org/wiki/Greater_London). We also have access to London's [Middle Layer super Output Areas](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography) (MSOAs) as well as the boundaries of the [London boroughs](https://en.wikipedia.org/wiki/London_boroughs). Even though we are going to analyses the points, we still need some administrative boundaries even if it was only to give some context to our maps!
+
+#### File download {-}
+| File                                        | Type         | Link |
+| :------                                     | :------      | :------ |
+| Middle-layer Super Output Areas London 2011 | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/msoa_london_2011.zip) |
+| Local Authorithy Districts London 2020      | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/lad_london_2011.zip) |
+| Bicycle theft data London 2019              | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/2019_london_bicycle_theft.zip) |
+
+Download the individual files to your own computer and as usal make sure [your data directory](spatial-autocorrelation.html#setting-up-the-environment) is set up correctly and the data are unzipped. 
+
 ## Advanced Point Pattern Analysis
 
 ### Video: Advanced point pattern analaysis data
+
+### Example: Advanced Point Pattern Analysis
+
+## Take home message
+
+## Attributions {#attributions_w06}
+This week's content and practical uses content and inspiration from:
+
+- Gimond, M. 2020. Geodesic geometry. https://mgimond.github.io/Spatial/index.html
 
 ## Feedback {#feedback_w06}
 Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).

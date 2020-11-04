@@ -9,7 +9,9 @@ In the first part of this week's session we will start by creating a **tidy data
 
 This week is structured by **three** short lecture videos, **two** [assignments](#assignment_w05) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
 
-**Please be aware that you will need to [submit the result](#map-submission) of the second assignment before Friday morning 09h00 UK time (GMT+0).**
+<div class="note">
+Please be aware that you will need to [submit the result](#map-submission) of the second assignment **before Friday morning 09h00&** UK time (GMT+0).
+</div>
 
 ### Video: Overview {#overview_w05}
 ```{r 05-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
@@ -87,12 +89,16 @@ Fortunately, there are some functions in the `tidyr` and `dplyr` packages, both 
 | tidyr	    | pivot_longer      | convert data from wide format to long format |
 | tidyr	    | pivot_wider       | convert long format dataset to wide format |
 
-> Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through `?name_of_function`, e.g. `?pivot_longer`. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.
+<div class="note">
+Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through `?name_of_function`, e.g. `?pivot_longer`. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.
+</div>
 
 ### Example: Creating tidy data
 Now we know what consitute **tidy data**, we can put this into practice with an example using some data from the [Office for National Statistics](https://www.ons.gov.uk/). Let's say we are asked by our bosses to analyse some data on the ethnic background of the UK population, for instance, because we want to get some insights into the relationship between [COVID-19 and ethnic background](https://www.theguardian.com/world/2020/oct/09/bame-groups-hit-hard-again-covid-second-wave-grips-uk-nations). Our assignment is to calculate the relative proportions of each ethnic group within the administrative geography of the [Middle layer Super Output Area (MSOA)](https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates). In order to do this, we have been given a file that contains data on ethnicity by age group at the MSOA-level of every person in the 2011 UK Census who is 16 year or older. Download the file to your own computer and [set up your data directory](spatial-autocorrelation.html#setting-up-the-environment) in the same fashion as you did last week. You can also decide on setting up your own folder structure, no problem, just make sure that you update the file paths in the practical to match the file paths on your own computer. 
 
-> Make sure that after downloading you first unzip the data, for instance, using [7-Zip](https://www.7-zip.org/) on Windows or using [The Unarchiver](https://theunarchiver.com/) on Mac OS.
+<div class="note">
+Make sure that after downloading you first unzip the data, for instance, using [7-Zip](https://www.7-zip.org/) on Windows or using [The Unarchiver](https://theunarchiver.com/) on Mac OS.
+</div>
 
 #### File download {-}
 | File                                                 | Type           | Link |
@@ -132,7 +138,9 @@ names(df)
 
 The column names are all awfully long and it looks like the data have been split out into age groups. Further to this, the data contain within group total counts: *all categories*, *white total*, *mixed/multiple ethnic group total*, and so on. 
 
-> You can also try using `View(df)` or use any other form of spreadsheet software (e.g. Microsoft Excel) to **browse** through the dataset to get a better idea of what is happening and get a better idea of the structure of the data. You first will need to understand the structure of your dataset before you can start reorganising your dataset.
+<div class="note">
+You can also try using `View(df)` or use any other form of spreadsheet software (e.g. Microsoft Excel) to **browse** through the dataset to get a better idea of what is happening and get a better idea of the structure of the data. You first will need to understand the structure of your dataset before you can start reorganising your dataset.
+</div>
 
 Although the data is messy and we will need to reorganise our data set, it does look there is some form of structure present that we can exploit: the various columns with population counts for each ethnic group are repeated for each of the different age groups. This means that we can go through the data frame in steps of equal size to select the data we want: starting from column 2 (column 1 only contains the reference to the adminsitrative geography) we want to select all 24 columns of data for that particular age group. We can create a `for` loop that does exactly that:
 
@@ -306,7 +314,7 @@ After successfully creating the maps that we were requested to make, our bosses 
 #### File download {-}
 | File                                        | Type         | Link |
 | :------                                     | :------      | :------ |
-| Lower-layer Super Output Areas London 2011  | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/lsoa_london_2011_sel.zip) |
+| Selected Lower-layer Super Output Areas London 2011  | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/lsoa_london_2011_sel.zip) |
 | Bicycle theft data London 2019| `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/2019_london_bicycle_theft.zip) |
 | Index of Multiple Deprivation London 2019   | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/imd_ew_2019.zip) |
 | Access to Healthy Assets and Hazards (AHAH) London | `csv` | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/ahah_input_gb_2016.zip) |
@@ -439,7 +447,9 @@ ggplot(lsoa_join,aes(x=gamb_dist, y=n_crime_cube)) +
 
 The input data look good. There are no real strange and unexpected outliers or missing values. At the same time there is enough [heterogeneity](https://en.wikipedia.org/wiki/Homogeneity_and_heterogeneity) in our data. This is important because if the input data have very similar values for al LSOAs they would not be very useful in trying to explain the differences in bike theft. However, we have not touched our tube locations dataset just yet. Perhaps bicycle theft happens more around tube stations? Let's do some quick spatial analysis and add for each LSOA the distance to the nearest tube station to our dataset.
 
-> Please note: the following operation requires some computing power as for all of our selected LSOAs in London we are going to calculate the euclidean distance from its centroid to all tube stations and create a **distance matrix**. In case the calculation takes too much time on your computer, you can download the [distance matrix](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/dist_matrix.zip) instead and use `dist_matrix <- data.matrix(read_csv('path_to_file'))` to continue with the practical.
+<div class="note">
+Please note: the following operation requires some computing power as for all of our selected LSOAs in London we are going to calculate the euclidean distance from its centroid to all tube stations and create a **distance matrix**. In case the calculation takes too much time on your computer, you can download the [distance matrix](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/dist_matrix.zip) instead and use `dist_matrix <- data.matrix(read_csv('path_to_file'))` to continue with the practical.
+</div>
 
 ```{r 05-add-those-tube-locactions, warnings=FALSE, message=FALSE}
 # create a point dataset from the tube csv file
@@ -619,7 +629,9 @@ summary(crime_model_lag)
 
 To interpret these results, we have to look at the Akaike Information Criterion (AIC). The AIC of our spatially lagged model is 2212.6, whereas the model without taking spatial dependence into account has an AIC of 2455.5 This means that the spatially lagged model is a better fit to the data then the standard OLS model. We also have a new term **Rho**, which is the spatial autoregressive parameter. In our case it is both positive and statistically significant, suggesting that when bike theft in the neighbours of area **X***i* increase, bike theft will also be higher in area **X***i*. At the same time, the IMD decile, the distance to the nearest pub, and the distance to the nearest tube stations are all still significant. Next time you know where not to park your bike.
 
-> Be careful **not** to compare the regression coefficients of the spatially lagged model to the regression coefficients of the original OLS model because their meaning now has changed. Whilst in the OLS model the coefficient of any of the independent variables measures the overall impact of these variables, this is not the case in the spatially lagged model: by including the spatial lag, the effect that X has on Y depends also (indirectly) on the effect that X has on Y in its neighbours.
+<div class="note">
+Be careful **not** to compare the regression coefficients of the spatially lagged model to the regression coefficients of the original OLS model because their meaning now has changed. Whilst in the OLS model the coefficient of any of the independent variables measures the overall impact of these variables, this is not the case in the spatially lagged model: by including the spatial lag, the effect that X has on Y depends also (indirectly) on the effect that X has on Y in its neighbours.
+</div>
 
 Although we probably should not, let's also run a spatial error model. Just for the sake of running it and see how it looks.
 
@@ -634,9 +646,11 @@ summary(crime_model_err)
 
 If we have good reasons to believe that we need to run a spatial error model rather than an OLS regression model, we actually notice that the model fit improves: the AIC of the spatial error model is 2215.5, whilst the AIC of the OLS model is still 2455.5 Keep in mind: whereas the spatially lagged model takes spatial dependence into account, the spatial error model simply tries to remove the influence of space and we in fact estimate a model that relaxes one of the standard regression model assumptions that the errors need to be independent.
 
-> This time you could actually compare the regression coefficients from the spatial error model with those from the OLS model!
+<div class="note">
+This time you could actually compare the regression coefficients from the spatial error model with those from the OLS model!
+</div>
 
-### Geographically Weighted Regression {-}
+### Geographically Weighted Regression
 As mentioned in the short lecture video, another option to take 'space' into account is by executing a Geographically Weighted Regression (GWR). However, as this week's content is already getting very long as well as that GWR will be covered in your [CASA005 module](https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html), we will not cover this now. Do have a look at the article by [Shabrian et al. 2020](https://onlinelibrary.wiley.com/doi/10.1111/gean.12259) that is part of this week's essential reading to see GWR in action.
 
 ## Take home message
