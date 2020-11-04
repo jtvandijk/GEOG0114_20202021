@@ -1,11 +1,17 @@
 # Point pattern analysis
 
+## Introduction {#introduction_w06}
 In our previous practicals, we have aggregated our event data into areal units, primarily using administrative geographies, to enable its easy comparison with other datasets provided at the same spatial scale, such as the census data used in the previous week, as well as to conduct spatial autocorrelation tests. However, when locations are precisely known, spatial point data can be used with a variety of spatial analytic techniques that go beyond the methods typically applied to areal data. The set of methods unique to point data are often referred to as point pattern analysis and geostatistics. 
 
 This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look first at basic forms of point pattern analysis, including mean centers and the standard deviational ellipse, and then more powerful analysis methods, including kernel density estimation and Ripley’s K function. These latter functions help determine and/or show whether points have a random, dispersed or clustered distribution pattern at a certain scale. 
-This week is structured by **two** short lecture videos, **one** [assignments]() that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
+This week is structured by **two** short lecture videos, **one** [assignment]() that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
 
+<div class='note'>
 **Please be aware that you will need to [submit the result]() of the assignment before Friday morning 09h00 UK time (GMT+0).**
+</div>
+```{r }
+test <-10
+```
 
 ### Video: Overview {#overview_w06}
 ```{r 06-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
@@ -15,8 +21,15 @@ library(vembedr)
 [Lecture slides] [[Watch on MS stream]]()
 
 ## Basic point pattern analysis
+In the previous weeks, we have aggregated our event data into areal units. In R we could do this very easily by identifying all points that fall within a polygon using the `st_intersects()` function from the `sf` package to and we used this method to 
+[aggregate 'theft from persons' in Camden in 2019](spatial-autocorrelation.html#our-property-is-theft.) as well as to [aggregate 'bicycle theft' in four of London's boroughs](exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r). However, depending on what you are trying to find out, points do not necessarily have to be aggregateda and there are many applications in which you want to work with the point locations directly. In fact, the R package `spatstat` for spatial statistics is predominantly designed for analysing spatial point patterns. The mere fact that the [`spatstat` documentation](https://cran.r-project.org/web/packages/spatstat/spatstat.pdf) has almost 1,800 pages is a good indication of the importance of point pattern analysis.
 
-### Video: Basic point pattern analaysis data
+### Video: Basic point pattern analysis
+```{r 06-basic-point-pattern-analysis, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+#embed_msstream('ae00eeb4-4558-4f95-8e26-9a16d970bbd1') %>% use_align('left')
+```
+[[Lecture slides]]() [[Watch on MS stream]]()
 
 ## Advanced Point Pattern Analysis
 
@@ -24,4 +37,3 @@ library(vembedr)
 
 ## Feedback {#feedback_w06}
 Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).
-git

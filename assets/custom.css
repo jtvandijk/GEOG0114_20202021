@@ -18,3 +18,10 @@
 .summary {
   font-size: 110% !important;
 }
+
+/*--- notes ---*/
+.note {
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #f0f0f0;
+}
