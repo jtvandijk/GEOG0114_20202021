@@ -443,22 +443,22 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="exploratory-spatial-data-analysis.html#cb81-1" aria-hidden="true"></a><span class="co"># inspect the dataframe: sneak peak</span></span>
 <span id="cb81-2"><a href="exploratory-spatial-data-analysis.html#cb81-2" aria-hidden="true"></a><span class="kw">print</span>(df, <span class="dt">n_extra=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 385
-##    msoa11cd `Sex: All perso… `Sex: All perso… `Sex: All perso… `Sex: All perso…
+##    msoa11cd `Sex: All perso~ `Sex: All perso~ `Sex: All perso~ `Sex: All perso~
 ##    &lt;chr&gt;               &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;
-##  1 E020025…              215              206              204                0
-##  2 E020025…              175              170              168                1
-##  3 E020025…              140              128              128                0
-##  4 E020025…              160              155              154                0
-##  5 E020025…              132              130              130                0
-##  6 E020025…              270              263              261                0
-##  7 E020025…              124              119              117                0
-##  8 E020025…              150              125              117                0
-##  9 E020025…              178              166              159                0
-## 10 E020025…              162              159              157                0
-## # … with 7,191 more rows, and 380 more variables: `Sex: All persons; Age: Age
+##  1 E020025~              215              206              204                0
+##  2 E020025~              175              170              168                1
+##  3 E020025~              140              128              128                0
+##  4 E020025~              160              155              154                0
+##  5 E020025~              132              130              130                0
+##  6 E020025~              270              263              261                0
+##  7 E020025~              124              119              117                0
+##  8 E020025~              150              125              117                0
+##  9 E020025~              178              166              159                0
+## 10 E020025~              162              159              157                0
+## # ... with 7,191 more rows, and 380 more variables: `Sex: All persons; Age: Age
 ## #   16 to 17; Ethnic Group: White: Gypsy or Irish Traveller; measures:
 ## #   Value` &lt;dbl&gt;, `Sex: All persons; Age: Age 16 to 17; Ethnic Group: White:
-## #   Other White; measures: Value` &lt;dbl&gt;, …</code></pre>
+## #   Other White; measures: Value` &lt;dbl&gt;, ...</code></pre>
 <p>Because the data are split out over multiple columns, it is clear that the data are not directly suitable to establish the proportion of each ethnic group within the population of each MSOA. Let’s inspect the names of the columns to get a better idea of the structure of our data set.</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="exploratory-spatial-data-analysis.html#cb83-1" aria-hidden="true"></a><span class="co"># inspect the dataframe: column names</span></span>
 <span id="cb83-2"><a href="exploratory-spatial-data-analysis.html#cb83-2" aria-hidden="true"></a><span class="kw">names</span>(df)</span></code></pre></div>
@@ -530,7 +530,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="exploratory-spatial-data-analysis.html#cb87-1" aria-hidden="true"></a><span class="co"># sanity check: age group 16-17 (start column)</span></span>
 <span id="cb87-2"><a href="exploratory-spatial-data-analysis.html#cb87-2" aria-hidden="true"></a>df[,<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 1
-##    `Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categories: Ethnic g…
+##    `Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categories: Ethnic g~
 ##                                                                            &lt;dbl&gt;
 ##  1                                                                           215
 ##  2                                                                           175
@@ -542,11 +542,11 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  8                                                                           150
 ##  9                                                                           178
 ## 10                                                                           162
-## # … with 7,191 more rows</code></pre>
+## # ... with 7,191 more rows</code></pre>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="exploratory-spatial-data-analysis.html#cb89-1" aria-hidden="true"></a><span class="co"># sanity check: age group 16-17 (end column)</span></span>
 <span id="cb89-2"><a href="exploratory-spatial-data-analysis.html#cb89-2" aria-hidden="true"></a>df[,<span class="dv">25</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 1
-##    `Sex: All persons; Age: Age 16 to 17; Ethnic Group: Other ethnic group: Any …
+##    `Sex: All persons; Age: Age 16 to 17; Ethnic Group: Other ethnic group: Any ~
 ##                                                                            &lt;dbl&gt;
 ##  1                                                                             0
 ##  2                                                                             0
@@ -558,11 +558,11 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  8                                                                             0
 ##  9                                                                             0
 ## 10                                                                             0
-## # … with 7,191 more rows</code></pre>
+## # ... with 7,191 more rows</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="exploratory-spatial-data-analysis.html#cb91-1" aria-hidden="true"></a><span class="co"># sanity check: age group 18-19 (start column)</span></span>
 <span id="cb91-2"><a href="exploratory-spatial-data-analysis.html#cb91-2" aria-hidden="true"></a>df[,<span class="dv">26</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 1
-##    `Sex: All persons; Age: Age 18 to 19; Ethnic Group: All categories: Ethnic g…
+##    `Sex: All persons; Age: Age 18 to 19; Ethnic Group: All categories: Ethnic g~
 ##                                                                            &lt;dbl&gt;
 ##  1                                                                           157
 ##  2                                                                           129
@@ -574,11 +574,11 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  8                                                                           231
 ##  9                                                                           175
 ## 10                                                                            95
-## # … with 7,191 more rows</code></pre>
+## # ... with 7,191 more rows</code></pre>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="exploratory-spatial-data-analysis.html#cb93-1" aria-hidden="true"></a><span class="co"># sanity check: age group 18-19 (end column)</span></span>
 <span id="cb93-2"><a href="exploratory-spatial-data-analysis.html#cb93-2" aria-hidden="true"></a>df[,<span class="dv">49</span>]</span></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 1
-##    `Sex: All persons; Age: Age 18 to 19; Ethnic Group: Other ethnic group: Any …
+##    `Sex: All persons; Age: Age 18 to 19; Ethnic Group: Other ethnic group: Any ~
 ##                                                                            &lt;dbl&gt;
 ##  1                                                                             1
 ##  2                                                                             0
@@ -590,7 +590,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  8                                                                             1
 ##  9                                                                             0
 ## 10                                                                             0
-## # … with 7,191 more rows</code></pre>
+## # ... with 7,191 more rows</code></pre>
 <p>All seems to be correct and we have successfully identified our columns. This is great, however, we still cannot work with our data as everything is spread out over different columns. Let’s fix this by manipulating the shape of our data by turning columns into rows.</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="exploratory-spatial-data-analysis.html#cb95-1" aria-hidden="true"></a><span class="co"># create function</span></span>
 <span id="cb95-2"><a href="exploratory-spatial-data-analysis.html#cb95-2" aria-hidden="true"></a>columns_to_rows &lt;-<span class="st"> </span><span class="cf">function</span>(df, start, stop) {</span>
@@ -614,17 +614,17 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <pre><code>## # A tibble: 172,824 x 3
 ##    msoa11cd  age_group                                                     count
 ##    &lt;chr&gt;     &lt;chr&gt;                                                         &lt;dbl&gt;
-##  1 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categ…   215
-##  2 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: To…   206
-##  3 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: En…   204
-##  4 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ir…     0
-##  5 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Gy…     2
-##  6 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ot…     0
-##  7 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     4
-##  8 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     1
-##  9 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     2
-## 10 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     1
-## # … with 172,814 more rows</code></pre>
+##  1 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categ~   215
+##  2 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: To~   206
+##  3 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: En~   204
+##  4 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ir~     0
+##  5 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Gy~     2
+##  6 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ot~     0
+##  7 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     4
+##  8 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     1
+##  9 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     2
+## 10 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     1
+## # ... with 172,814 more rows</code></pre>
 <p>This looks much better. Now let’s combine our loop with our newly created function to apply this to all of our data.</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="exploratory-spatial-data-analysis.html#cb97-1" aria-hidden="true"></a><span class="co"># create an empty list to store our result from the loop</span></span>
 <span id="cb97-2"><a href="exploratory-spatial-data-analysis.html#cb97-2" aria-hidden="true"></a>df_lst &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
@@ -651,17 +651,17 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <pre><code>## # A tibble: 2,765,184 x 3
 ##    msoa11cd  age_group                                                     count
 ##    &lt;chr&gt;     &lt;chr&gt;                                                         &lt;dbl&gt;
-##  1 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categ…   215
-##  2 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: To…   206
-##  3 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: En…   204
-##  4 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ir…     0
-##  5 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Gy…     2
-##  6 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ot…     0
-##  7 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     4
-##  8 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     1
-##  9 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     2
-## 10 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     1
-## # … with 2,765,174 more rows</code></pre>
+##  1 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categ~   215
+##  2 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: To~   206
+##  3 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: En~   204
+##  4 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ir~     0
+##  5 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Gy~     2
+##  6 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ot~     0
+##  7 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     4
+##  8 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     1
+##  9 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     2
+## 10 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     1
+## # ... with 2,765,174 more rows</code></pre>
 <p>Now the data is in a much more manageable format, we can move on with preparing the data further. We will start by filtering out the columns (now rows!) that contain <em>all categories</em> and the <em>within group totals</em>. We will do this by cleverly filtering our data set on only a part of the text string that is contained in the <em>age_group</em> column of our dataframe using a <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a>. We further truncate the information that is contained in the <em>age_group</em> column to make all a little more readable.</p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="exploratory-spatial-data-analysis.html#cb99-1" aria-hidden="true"></a><span class="co"># filter rows</span></span>
 <span id="cb99-2"><a href="exploratory-spatial-data-analysis.html#cb99-2" aria-hidden="true"></a><span class="co"># this can be a little slow because of the regular expression!</span></span>
@@ -695,17 +695,17 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <pre><code>## # A tibble: 7,201 x 19
 ##    msoa11cd white_british white_irish white_traveller white_other
 ##    &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 E020025…          6775          17              27          51
-##  2 E020025…          4688          11               8          31
-##  3 E020025…          4609          20               3          55
-##  4 E020025…          4653           4               6         131
-##  5 E020025…          4369          13               2          38
-##  6 E020025…          7320          11               3          73
-##  7 E020025…          4274          16               2          96
-##  8 E020025…          4713          33              24         308
-##  9 E020025…          5344          17              42         111
-## 10 E020025…          4583          29               6         100
-## # … with 7,191 more rows, and 14 more variables:
+##  1 E020025~          6775          17              27          51
+##  2 E020025~          4688          11               8          31
+##  3 E020025~          4609          20               3          55
+##  4 E020025~          4653           4               6         131
+##  5 E020025~          4369          13               2          38
+##  6 E020025~          7320          11               3          73
+##  7 E020025~          4274          16               2          96
+##  8 E020025~          4713          33              24         308
+##  9 E020025~          5344          17              42         111
+## 10 E020025~          4583          29               6         100
+## # ... with 7,191 more rows, and 14 more variables:
 ## #   mixed_white_black_caribbean &lt;dbl&gt;, mixed_white_black_african &lt;dbl&gt;,
 ## #   mixed_white_asian &lt;dbl&gt;, mixed_other &lt;dbl&gt;, asian_indian &lt;dbl&gt;,
 ## #   asian_pakistani &lt;dbl&gt;, asian_bangladeshi &lt;dbl&gt;, asian_chinese &lt;dbl&gt;,
