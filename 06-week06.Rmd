@@ -8,19 +8,19 @@ This week is structured by **two** short lecture videos, **one** [assignments]()
 **Please be aware that you will need to [submit the result]() of the assignment before Friday morning 09h00 UK time (GMT+0).**
 
 ### Video: Overview {#overview_w06}
-```{r 05-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
+```{r 06-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
 #embed_msstream('9ba75497-60e1-40c2-99c4-ac6057acbd27') %>% use_align('left')
 ```
 [Lecture slides] [[Watch on MS stream]]()
 
-## Basic Point Pattern Analysis
+## Basic point pattern analysis
 
-### 
+### Video: Basic point pattern analaysis data
+
 ## Advanced Point Pattern Analysis
 
-
-
+### Video: Advanced point pattern analaysis data
 
 ## Feedback {#feedback_w06}
 Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).
