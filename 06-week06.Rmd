@@ -3,10 +3,25 @@
 In our previous practicals, we have aggregated our event data into areal units, primarily using administrative geographies, to enable its easy comparison with other datasets provided at the same spatial scale, such as the census data used in the previous week, as well as to conduct spatial autocorrelation tests. However, when locations are precisely known, spatial point data can be used with a variety of spatial analytic techniques that go beyond the methods typically applied to areal data. The set of methods unique to point data are often referred to as point pattern analysis and geostatistics. 
 
 This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look first at basic forms of point pattern analysis, including mean centers and the standard deviational ellipse, and then more powerful analysis methods, including kernel density estimation and Ripley’s K function. These latter functions help determine and/or show whether points have a random, dispersed or clustered distribution pattern at a certain scale. 
+This week is structured by **two** short lecture videos, **one** [assignments]() that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
 
-To put these measures and methods into action, our practical component looks to test the hypothesis that "the majority of bicycle theft in London occurs with walking distance of a train or tube station", by assessing clusters and hotspots of bike theft in relation to a transportation locations.
+**Please be aware that you will need to [submit the result]() of the assignment before Friday morning 09h00 UK time (GMT+0).**
 
-<center>**This week's content will be made available on 16/10.**</center>
+### Video: Overview {#overview_w06}
+```{r 05-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+#embed_msstream('9ba75497-60e1-40c2-99c4-ac6057acbd27') %>% use_align('left')
+```
+[Lecture slides] [[Watch on MS stream]]()
+
+## Basic Point Pattern Analysis
+
+### 
+## Advanced Point Pattern Analysis
+
+
+
 
 ## Feedback {#feedback_w06}
 Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).
+git
