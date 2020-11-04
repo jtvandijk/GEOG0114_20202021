@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Geostatistics | GEOG0114: Principles of Spatial Analysis</title>
+  <title>6 Point pattern analysis | GEOG0114: Principles of Spatial Analysis</title>
   <meta name="description" content="GEOG114: Principles of Spatial Analysis handbook." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 Geostatistics | GEOG0114: Principles of Spatial Analysis" />
+  <meta property="og:title" content="6 Point pattern analysis | GEOG0114: Principles of Spatial Analysis" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://jtvandijk.github.io/GEOG0114/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="jtvandijk/GEOG0114" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Geostatistics | GEOG0114: Principles of Spatial Analysis" />
+  <meta name="twitter:title" content="6 Point pattern analysis | GEOG0114: Principles of Spatial Analysis" />
   
   <meta name="twitter:description" content="GEOG114: Principles of Spatial Analysis handbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="point-pattern-analysis.html"/>
-<link rel="next" href="cluster-analysis.html"/>
+<link rel="prev" href="exploratory-spatial-data-analysis.html"/>
+<link rel="next" href="geostatistics.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -243,14 +243,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="geostatistics" class="section level1" number="7">
-<h1><span class="header-section-number">7</span> Geostatistics</h1>
-<p>Following on from Week 3 and in conjunction with this week in your CASA005 module, we will also be focusing on rasters, exploring further the creation and application of rasters from vector datasets using geostatistics. During the lecture, we will provide a more in-depth and detailed explanation behind the geostatistics methods of interpolation, looking at various deterministic and geostatistical techniques. We then introduce methods to using vector datasets with rasters, utilizing a GIS method known as zonal statistics.</p>
+<div id="point-pattern-analysis" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Point pattern analysis</h1>
+<div id="introduction_w06" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Introduction</h2>
+<p>In our previous practicals, we have aggregated our event data into areal units, primarily using administrative geographies, to enable its easy comparison with other datasets provided at the same spatial scale, such as the census data used in the previous week, as well as to conduct spatial autocorrelation tests. However, when locations are precisely known, spatial point data can be used with a variety of spatial analytic techniques that go beyond the methods typically applied to areal data. The set of methods unique to point data are often referred to as point pattern analysis and geostatistics.</p>
+<<<<<<< HEAD
+<p>This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look first at basic forms of point pattern analysis, including mean centers and the standard deviational ellipse, and then more powerful analysis methods, including kernel density estimation and Ripley’s K function. These latter functions help determine and/or show whether points have a random, dispersed or clustered distribution pattern at a certain scale.
+This week is structured by <strong>two</strong> short lecture videos, <strong>one</strong> <a href="">assignment</a> that you need to do in preparation for Friday’s seminar, and the practical material. As always, this <a href="https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&amp;login=1">week’s reading list</a> is available on the UCL library reading list page for the course.</p>
+<div class="note">
+<p>Please be aware that you will need to <a href="">submit the result</a> of the assignment <strong>before Friday morning 09h00</strong> UK time (GMT+0).</p>
+</div>
+<div id="overview_w06" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Video: Overview</h3>
+<p>[Lecture slides] <a href="">[Watch on MS stream]</a></p>
+</div>
+</div>
+<div id="basic-point-pattern-analysis" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Basic point pattern analysis</h2>
+<p>In the previous weeks, we have aggregated our event data into areal units. In R we could do this very easily by identifying all points that fall within a polygon using the <code>st_intersects()</code> function from the <code>sf</code> package to and we used this method to
+<a href="spatial-autocorrelation.html#our-property-is-theft.">aggregate ‘theft from persons’ in Camden in 2019</a> as well as to <a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r">aggregate ‘bicycle theft’ in four of London’s boroughs</a>. However, depending on what you are trying to find out, points do not necessarily have to be aggregateda and there are many applications in which you want to work with the point locations directly. In fact, the R package <code>spatstat</code> for spatial statistics is predominantly designed for analysing spatial point patterns. The mere fact that the <a href="https://cran.r-project.org/web/packages/spatstat/spatstat.pdf"><code>spatstat</code> documentation</a> has almost 1,800 pages should give you a good idea about the genearl importance of point pattern analysis.</p>
+<div id="video-basic-point-pattern-analysis" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Video: Basic point pattern analysis</h3>
+<p><a href="">[Lecture slides]</a> <a href="">[Watch on MS stream]</a></p>
+</div>
+<div id="example-basic-point-pattern-analysis" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Example: Basic point pattern analysis</h3>
+<p>After last week’s success, we got a follow-up assignment to study bicycle theft. This time our assignment is to analyse the pattern of bicycle theft for the whole of <a href="https://en.wikipedia.org/wiki/Greater_London">Greater London</a>. We also have access to London’s <a href="https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography">Middle Layer super Output Areas</a> (MSOAs) as well as the boundaries of the <a href="https://en.wikipedia.org/wiki/London_boroughs">London boroughs</a>. Even though we are going to analyses the points, we still need some administrative boundaries even if it was only to give some context to our maps!</p>
+<div id="file-download" class="section level4 unnumbered">
+<h4>File download</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">File</th>
+<th align="left">Type</th>
+<th align="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Middle-layer Super Output Areas London 2011</td>
+<td align="left"><code>shp</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/msoa_london_2011.zip">Download</a></td>
+</tr>
+<tr class="even">
+<td align="left">Local Authorithy Districts London 2020</td>
+<td align="left"><code>csv</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/lad_london_2011.zip">Download</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Bicycle theft data London 2019</td>
+<td align="left"><code>csv</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/2019_london_bicycle_theft.zip">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p>Download the individual files to your own computer and as usal make sure <a href="spatial-autocorrelation.html#setting-up-the-environment">your data directory</a> is set up correctly and the data are unzipped.</p>
+</div>
+</div>
+</div>
+<div id="advanced-point-pattern-analysis" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Advanced Point Pattern Analysis</h2>
+<div id="video-advanced-point-pattern-analaysis-data" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Video: Advanced point pattern analaysis data</h3>
+</div>
+<div id="example-advanced-point-pattern-analysis" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Example: Advanced Point Pattern Analysis</h3>
+</div>
+</div>
+<div id="take-home-message" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Take home message</h2>
+</div>
+<div id="attributions_w06" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Attributions</h2>
+<p>This week’s content and practical uses content and inspiration from:</p>
+<ul>
+<li>Gimond, M. 2020. Geodesic geometry. <a href="https://mgimond.github.io/Spatial/index.html" class="uri">https://mgimond.github.io/Spatial/index.html</a></li>
+</ul>
+</div>
+<div id="feedback_w06" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Feedback</h2>
+=======
+This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look first at basic forms of point pattern analysis, including mean centers and the standard deviational ellipse, and then more powerful analysis methods, including kernel density estimation and Ripley’s K function. These latter functions help determine and/or show whether points have a random, dispersed or clustered distribution pattern at a certain scale.
 <center>
-<strong>This week’s content will be made available on 23/11.</strong>
+<strong>This week’s content will be made available on 16/10.</strong>
 </center>
-<div id="feedback_w07" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Feedback</h2>
+<div id="feedback_w06" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Feedback</h2>
+>>>>>>> master
 <p>Please take a moment to give us some <a href="https://forms.gle/BYbZySVSHeoUEkJh9">feedback on this week’s content</a>.</p>
 
 </div>
@@ -260,8 +340,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="point-pattern-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cluster-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exploratory-spatial-data-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="geostatistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -292,7 +372,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jtvandijk/GEOG0114/edit/master/07-week07.Rmd",
+"link": "https://github.com/jtvandijk/GEOG0114/edit/master/06-week06.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -303,7 +383,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["https://github.com/jtvandijk/GEOG0114/raw/master/07-week07.Rmd"],
+"download": ["https://github.com/jtvandijk/GEOG0114/raw/master/06-week06.Rmd"],
 "toc": {
 "collapse": "section"
 }
