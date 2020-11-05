@@ -24,7 +24,7 @@
 <meta name="author" content="Justin van Dijk and Joanna Wilkin" />
 
 
-<meta name="date" content="2020-11-04" />
+<meta name="date" content="2020-11-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 <link rel="prev" href="spatial-autocorrelation.html"/>
 <link rel="next" href="point-pattern-analysis.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,26 +54,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -83,9 +81,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,13 +134,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
-<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#get-in-touch"><i class="fa fa-check"></i>Get in touch</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#noticed-a-mistake-in-this-resource"><i class="fa fa-check"></i>Noticed a mistake in this resource?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a>
-<ul>
+<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a><ul>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#module-structure"><i class="fa fa-check"></i>Module structure</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#weekly-topics"><i class="fa fa-check"></i>Weekly topics</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
@@ -153,41 +149,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="spatial-analysis-for-data-science.html"><a href="spatial-analysis-for-data-science.html"><i class="fa fa-check"></i><b>1</b> Spatial analysis for data science</a></li>
 <li class="chapter" data-level="2" data-path="geographical-representation.html"><a href="geographical-representation.html"><i class="fa fa-check"></i><b>2</b> Geographical representation</a></li>
 <li class="chapter" data-level="3" data-path="spatial-properties-and-relationships.html"><a href="spatial-properties-and-relationships.html"><i class="fa fa-check"></i><b>3</b> Spatial properties and relationships</a></li>
-<li class="chapter" data-level="4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Spatial autocorrelation</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#neighbours"><i class="fa fa-check"></i><b>4.1</b> Neighbours</a>
-<ul>
+<li class="chapter" data-level="4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Spatial autocorrelation</a><ul>
+<li class="chapter" data-level="4.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#neighbours"><i class="fa fa-check"></i><b>4.1</b> Neighbours</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#setting-up-the-environment"><i class="fa fa-check"></i><b>4.1.1</b> Setting up the environment</a></li>
 <li class="chapter" data-level="4.1.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#euclidean-neighbours"><i class="fa fa-check"></i><b>4.1.2</b> Euclidean neighbours</a></li>
 <li class="chapter" data-level="4.1.3" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#shared-boundary-neighbours"><i class="fa fa-check"></i><b>4.1.3</b> Shared boundary neighbours</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#quantifying-difference-over-space"><i class="fa fa-check"></i><b>4.2</b> Quantifying difference over space</a>
-<ul>
+<li class="chapter" data-level="4.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#quantifying-difference-over-space"><i class="fa fa-check"></i><b>4.2</b> Quantifying difference over space</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#our-property-is-theft."><i class="fa fa-check"></i><b>4.2.1</b> Our property is theft.</a></li>
 <li class="chapter" data-level="4.2.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#global-morans-i"><i class="fa fa-check"></i><b>4.2.2</b> Global Moran’s I</a></li>
 <li class="chapter" data-level="4.2.3" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#local-morans-i"><i class="fa fa-check"></i><b>4.2.3</b> Local Moran’s I</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory spatial data analysis</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#introduction_w05"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="5" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory spatial data analysis</a><ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#introduction_w05"><i class="fa fa-check"></i><b>5.1</b> Introduction</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#overview_w05"><i class="fa fa-check"></i><b>5.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#tidy-data"><i class="fa fa-check"></i><b>5.2</b> Tidy data</a>
-<ul>
+<li class="chapter" data-level="5.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#tidy-data"><i class="fa fa-check"></i><b>5.2</b> Tidy data</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-tidy-data"><i class="fa fa-check"></i><b>5.2.1</b> Video: Tidy data</a></li>
 <li class="chapter" data-level="5.2.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#what-do-tidy-data-look-like"><i class="fa fa-check"></i><b>5.2.2</b> What do tidy data look like?</a></li>
 <li class="chapter" data-level="5.2.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-creating-tidy-data"><i class="fa fa-check"></i><b>5.2.3</b> Example: Creating tidy data</a></li>
 <li class="chapter" data-level="5.2.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#assignment_w05"><i class="fa fa-check"></i><b>5.2.4</b> Assignments</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r"><i class="fa fa-check"></i><b>5.3</b> Exploratory spatial data analysis in R</a>
-<ul>
+<li class="chapter" data-level="5.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r"><i class="fa fa-check"></i><b>5.3</b> Exploratory spatial data analysis in R</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-exploratory-spatial-data-analysis"><i class="fa fa-check"></i><b>5.3.1</b> Video: Exploratory spatial data analysis</a></li>
 <li class="chapter" data-level="5.3.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-exploring-our-dataset"><i class="fa fa-check"></i><b>5.3.2</b> Example: Exploring our dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4</b> Spatial heterogeneity</a>
-<ul>
+<li class="chapter" data-level="5.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4</b> Spatial heterogeneity</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4.1</b> Video: Spatial heterogeneity</a></li>
 <li class="chapter" data-level="5.4.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-accounting-for-spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4.2</b> Example: Accounting for spatial heterogeneity</a></li>
 <li class="chapter" data-level="5.4.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#geographically-weighted-regression"><i class="fa fa-check"></i><b>5.4.3</b> Geographically Weighted Regression</a></li>
@@ -196,19 +184,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#attributions_w05"><i class="fa fa-check"></i><b>5.6</b> Attributions</a></li>
 <li class="chapter" data-level="5.7" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#feedback_w05"><i class="fa fa-check"></i><b>5.7</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#introduction_w06"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a><ul>
+<li class="chapter" data-level="6.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#introduction_w06"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#overview_w06"><i class="fa fa-check"></i><b>6.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#basic-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2</b> Basic point pattern analysis</a>
-<ul>
+<li class="chapter" data-level="6.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#basic-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2</b> Basic point pattern analysis</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-basic-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.1</b> Video: Basic point pattern analysis</a></li>
 <li class="chapter" data-level="6.2.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-basic-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.2</b> Example: Basic point pattern analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#advanced-point-pattern-analysis"><i class="fa fa-check"></i><b>6.3</b> Advanced Point Pattern Analysis</a>
-<ul>
+<li class="chapter" data-level="6.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#advanced-point-pattern-analysis"><i class="fa fa-check"></i><b>6.3</b> Advanced Point Pattern Analysis</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-advanced-point-pattern-analaysis-data"><i class="fa fa-check"></i><b>6.3.1</b> Video: Advanced point pattern analaysis data</a></li>
 <li class="chapter" data-level="6.3.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-advanced-point-pattern-analysis"><i class="fa fa-check"></i><b>6.3.2</b> Example: Advanced Point Pattern Analysis</a></li>
 </ul></li>
@@ -216,12 +200,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#attributions_w06"><i class="fa fa-check"></i><b>6.5</b> Attributions</a></li>
 <li class="chapter" data-level="6.6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#feedback_w06"><i class="fa fa-check"></i><b>6.6</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="geostatistics.html"><a href="geostatistics.html"><i class="fa fa-check"></i><b>7</b> Geostatistics</a>
-<ul>
+<li class="chapter" data-level="7" data-path="geostatistics.html"><a href="geostatistics.html"><i class="fa fa-check"></i><b>7</b> Geostatistics</a><ul>
 <li class="chapter" data-level="7.1" data-path="geostatistics.html"><a href="geostatistics.html#feedback_w07"><i class="fa fa-check"></i><b>7.1</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="cluster-analysis.html"><a href="cluster-analysis.html"><i class="fa fa-check"></i><b>8</b> Cluster analysis</a>
-<ul>
+<li class="chapter" data-level="8" data-path="cluster-analysis.html"><a href="cluster-analysis.html"><i class="fa fa-check"></i><b>8</b> Cluster analysis</a><ul>
 <li class="chapter" data-level="8.1" data-path="cluster-analysis.html"><a href="cluster-analysis.html#feedback_w08"><i class="fa fa-check"></i><b>8.1</b> Feedback</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="bayesian-modelling.html"><a href="bayesian-modelling.html"><i class="fa fa-check"></i><b>9</b> Bayesian modelling</a></li>
@@ -243,18 +225,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exploratory-spatial-data-analysis" class="section level1" number="5">
+<div id="exploratory-spatial-data-analysis" class="section level1">
 <h1><span class="header-section-number">5</span> Exploratory spatial data analysis</h1>
-<div id="introduction_w05" class="section level2" number="5.1">
+<div id="introduction_w05" class="section level2">
 <h2><span class="header-section-number">5.1</span> Introduction</h2>
 <p>This week, we focus on the second of the two key properties of spatial data: spatial heterogeneity. With the underlying process (or processes) that govern a spatial variable likely to vary across space, a single global relationship for an entire region of study may not adequately model the process that governs outcomes in any given location of the study region. As a result, multiple methods have been developed to incorporate ‘space’ into traditional regression models, including spatial lag models, spatial error models, and Geographical Weighted Regression.</p>
 <p>This week provides the building blocks to conducting a statistical and spatial investigation into the relationships between spatial variables, looking at the concept of <strong>Exploratory Spatial Data Analysis (ESDA)</strong>. We then look at the two of the three types of spatial regression models in turn to understand their methodology and potential advantages and limitations in accounting for space when modelling relationships. However, before we move on to ESDA, we will look into some aspects of data preparation, data cleaning, and creating a <strong>tidy dataset</strong>.</p>
 <p>In the first part of this week’s session we will start by creating a <strong>tidy dataset</strong> using some data from the <a href="https://www.ons.gov.uk/census/2011census">UK 2011 Census of Population</a>. In the second part of this week’s session we will explore potential factors that may contribute to bicycle theft in London. We conduct an ESDA of these variables, followed by statistical and spatial regression analysis to determine whether our variables contribute to bicycle theft in our area of study.</p>
 <p>This week is structured by <strong>three</strong> short lecture videos, <strong>two</strong> <a href="exploratory-spatial-data-analysis.html#assignment_w05">assignments</a> that you need to do in preparation for Friday’s seminar, and the practical material. As always, this <a href="https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&amp;login=1">week’s reading list</a> is available on the UCL library reading list page for the course.</p>
 <div class="note">
-<p>Please be aware that you will need to <a href="exploratory-spatial-data-analysis.html#map-submission">submit the result</a> of the second assignment <strong>before Friday morning 09h00&amp;</strong> UK time (GMT+0).</p>
+<p>Please be aware that you will need to <a href="exploratory-spatial-data-analysis.html#map-submission">submit the result</a> of the second assignment <strong>before Friday morning 09h00</strong> UK time (GMT+0).</p>
 </div>
-<div id="overview_w05" class="section level3" number="5.1.1">
+<div id="overview_w05" class="section level3">
 <h3><span class="header-section-number">5.1.1</span> Video: Overview</h3>
 <p><div class="vembedr" align="left">
 <div>
@@ -264,14 +246,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 [Lecture slides] <a href="https://web.microsoftstream.com/video/9ba75497-60e1-40c2-99c4-ac6057acbd27?list=studio">[Watch on MS stream]</a></p>
 </div>
 </div>
-<div id="tidy-data" class="section level2" number="5.2">
+<div id="tidy-data" class="section level2">
 <h2><span class="header-section-number">5.2</span> Tidy data</h2>
 <p>Over the past weeks a lot of information has come your way, diving deep into the world of Spatial Data Science. However, whilst you are slowly becoming proficient in using R and Python to solve complex (spatial) problems, it is now a good moment to start thinking about data themselves and how they are organised. This is crucial for when you are moving on to working on your own projects where you have to source data yourselves: the vast majority of the data you will find in the public domain (or private domain for that matter) will be <strong>dirty data</strong>. With dirty data we mean data that needs some form of pre-processing, cleaning, and linkage before you can use it for your analysis. Exploratory Spatial Data Analysis very much starts with your data preparation .</p>
 <p>In the following, you will learn a consistent way to structure your data in R: <strong>tidy data</strong>. Tidy data, as formalised by <a href="http://hadley.nz/">R Wizard Hadley Wickham</a> in his contribution to the <a href="http://www.jstatsoft.org/v59/i10/paper">Journal of Statistical Software</a> is not only very much at the core of the <code>tidyverse</code> R package, but also of general importance when organising your data. In the words, of <a href="https://r4ds.had.co.nz/tidy-data.html">the Wizard</a>:</p>
 <blockquote>
 <p>Once you have tidy data and the tidy tools provided by packages in the tidyverse, you will spend much less time munging data from one representation to another, allowing you to spend more time on the analytic questions at hand.</p>
 </blockquote>
-<div id="video-tidy-data" class="section level3" number="5.2.1">
+<div id="video-tidy-data" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Video: Tidy data</h3>
 <p><div class="vembedr" align="left">
 <div>
@@ -280,13 +262,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <a href="https://github.com/jtvandijk/GEOG0114/tree/master/slides/w05/w05_01_tidy_data.pdf">[Lecture slides]</a> <a href="https://web.microsoftstream.com/video/ae00eeb4-4558-4f95-8e26-9a16d970bbd1?list=studio">[Watch on MS stream]</a></p>
 </div>
-<div id="what-do-tidy-data-look-like" class="section level3" number="5.2.2">
+<div id="what-do-tidy-data-look-like" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> What do tidy data look like?</h3>
 <p>You can represent the same underlying data in multiple ways. The example below, taken from the the <code>tidyverse</code> package and described in the <a href="https://r4ds.had.co.nz/tidy-data.html">R for Data Science</a> book, shows that the same data can organised in four different ways.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="exploratory-spatial-data-analysis.html#cb66-1" aria-hidden="true"></a><span class="co"># load the tidyverse </span></span>
-<span id="cb66-2"><a href="exploratory-spatial-data-analysis.html#cb66-2" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="co"># load the tidyverse </span></a>
+<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>Table <strong>1</strong>:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="exploratory-spatial-data-analysis.html#cb67-1" aria-hidden="true"></a>table1</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">table1</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   country      year  cases population
 ##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
@@ -297,7 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 China        1999 212258 1272915272
 ## 6 China        2000 213766 1280428583</code></pre>
 <p>Table <strong>2</strong>:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="exploratory-spatial-data-analysis.html#cb69-1" aria-hidden="true"></a>table2</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">table2</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 4
 ##    country      year type            count
 ##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;           &lt;int&gt;
@@ -314,7 +296,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 11 China        2000 cases          213766
 ## 12 China        2000 population 1280428583</code></pre>
 <p>Table <strong>3</strong>:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="exploratory-spatial-data-analysis.html#cb71-1" aria-hidden="true"></a>table3</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">table3</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   country      year rate             
 ## * &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            
@@ -325,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 China        1999 212258/1272915272
 ## 6 China        2000 213766/1280428583</code></pre>
 <p>Table <strong>4a</strong>:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="exploratory-spatial-data-analysis.html#cb73-1" aria-hidden="true"></a>table4a</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">table4a</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   country     `1999` `2000`
 ## * &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
@@ -333,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 Brazil       37737  80488
 ## 3 China       212258 213766</code></pre>
 <p>Table <strong>4b</strong>:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="exploratory-spatial-data-analysis.html#cb75-1" aria-hidden="true"></a>table4b</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">table4b</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   country         `1999`     `2000`
 ## * &lt;chr&gt;            &lt;int&gt;      &lt;int&gt;
@@ -400,10 +382,10 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </tbody>
 </table>
 <div class="note">
-<p>Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through <code>?name_of_function</code>, e.g. <code>?pivot_longer</code>. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.</p>
+<p>Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through <code>?name_of_function</code>, e.g. <code>?pivot_longer</code>. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.</p>
 </div>
 </div>
-<div id="example-creating-tidy-data" class="section level3" number="5.2.3">
+<div id="example-creating-tidy-data" class="section level3">
 <h3><span class="header-section-number">5.2.3</span> Example: Creating tidy data</h3>
 <p>Now we know what consitute <strong>tidy data</strong>, we can put this into practice with an example using some data from the <a href="https://www.ons.gov.uk/">Office for National Statistics</a>. Let’s say we are asked by our bosses to analyse some data on the ethnic background of the UK population, for instance, because we want to get some insights into the relationship between <a href="https://www.theguardian.com/world/2020/oct/09/bame-groups-hit-hard-again-covid-second-wave-grips-uk-nations">COVID-19 and ethnic background</a>. Our assignment is to calculate the relative proportions of each ethnic group within the administrative geography of the <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates">Middle layer Super Output Area (MSOA)</a>. In order to do this, we have been given a file that contains data on ethnicity by age group at the MSOA-level of every person in the 2011 UK Census who is 16 year or older. Download the file to your own computer and <a href="spatial-autocorrelation.html#setting-up-the-environment">set up your data directory</a> in the same fashion as you did last week. You can also decide on setting up your own folder structure, no problem, just make sure that you update the file paths in the practical to match the file paths on your own computer.</p>
 <div class="note">
@@ -428,40 +410,40 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </tbody>
 </table>
 <p>We start by making sure our <code>tidyverse</code> is loaded into R and using the <code>read_csv()</code> function to read our <code>csv</code> file.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="exploratory-spatial-data-analysis.html#cb77-1" aria-hidden="true"></a><span class="co"># load the tidyverse </span></span>
-<span id="cb77-2"><a href="exploratory-spatial-data-analysis.html#cb77-2" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb77-3"><a href="exploratory-spatial-data-analysis.html#cb77-3" aria-hidden="true"></a></span>
-<span id="cb77-4"><a href="exploratory-spatial-data-analysis.html#cb77-4" aria-hidden="true"></a><span class="co"># read data into dataframe</span></span>
-<span id="cb77-5"><a href="exploratory-spatial-data-analysis.html#cb77-5" aria-hidden="true"></a>df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/population/msoa_eth2011_ew_16plus.csv&#39;</span>)</span>
-<span id="cb77-6"><a href="exploratory-spatial-data-analysis.html#cb77-6" aria-hidden="true"></a>  </span>
-<span id="cb77-7"><a href="exploratory-spatial-data-analysis.html#cb77-7" aria-hidden="true"></a><span class="co"># inspect the dataframe: number of columns</span></span>
-<span id="cb77-8"><a href="exploratory-spatial-data-analysis.html#cb77-8" aria-hidden="true"></a><span class="kw">ncol</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="co"># load the tidyverse </span></a>
+<a class="sourceLine" id="cb77-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb77-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb77-4" data-line-number="4"><span class="co"># read data into dataframe</span></a>
+<a class="sourceLine" id="cb77-5" data-line-number="5">df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/population/msoa_eth2011_ew_16plus.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb77-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb77-7" data-line-number="7"><span class="co"># inspect the dataframe: number of columns</span></a>
+<a class="sourceLine" id="cb77-8" data-line-number="8"><span class="kw">ncol</span>(df)</a></code></pre></div>
 <pre><code>## [1] 385</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="exploratory-spatial-data-analysis.html#cb79-1" aria-hidden="true"></a><span class="co"># inspect the dataframe: number of rows</span></span>
-<span id="cb79-2"><a href="exploratory-spatial-data-analysis.html#cb79-2" aria-hidden="true"></a><span class="kw">nrow</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="co"># inspect the dataframe: number of rows</span></a>
+<a class="sourceLine" id="cb79-2" data-line-number="2"><span class="kw">nrow</span>(df)</a></code></pre></div>
 <pre><code>## [1] 7201</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="exploratory-spatial-data-analysis.html#cb81-1" aria-hidden="true"></a><span class="co"># inspect the dataframe: sneak peak</span></span>
-<span id="cb81-2"><a href="exploratory-spatial-data-analysis.html#cb81-2" aria-hidden="true"></a><span class="kw">print</span>(df, <span class="dt">n_extra=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="co"># inspect the dataframe: sneak peak</span></a>
+<a class="sourceLine" id="cb81-2" data-line-number="2"><span class="kw">print</span>(df, <span class="dt">n_extra=</span><span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 385
-##    msoa11cd `Sex: All perso~ `Sex: All perso~ `Sex: All perso~ `Sex: All perso~
+##    msoa11cd `Sex: All perso… `Sex: All perso… `Sex: All perso… `Sex: All perso…
 ##    &lt;chr&gt;               &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;
-##  1 E020025~              215              206              204                0
-##  2 E020025~              175              170              168                1
-##  3 E020025~              140              128              128                0
-##  4 E020025~              160              155              154                0
-##  5 E020025~              132              130              130                0
-##  6 E020025~              270              263              261                0
-##  7 E020025~              124              119              117                0
-##  8 E020025~              150              125              117                0
-##  9 E020025~              178              166              159                0
-## 10 E020025~              162              159              157                0
-## # ... with 7,191 more rows, and 380 more variables: `Sex: All persons; Age: Age
+##  1 E020025…              215              206              204                0
+##  2 E020025…              175              170              168                1
+##  3 E020025…              140              128              128                0
+##  4 E020025…              160              155              154                0
+##  5 E020025…              132              130              130                0
+##  6 E020025…              270              263              261                0
+##  7 E020025…              124              119              117                0
+##  8 E020025…              150              125              117                0
+##  9 E020025…              178              166              159                0
+## 10 E020025…              162              159              157                0
+## # … with 7,191 more rows, and 380 more variables: `Sex: All persons; Age: Age
 ## #   16 to 17; Ethnic Group: White: Gypsy or Irish Traveller; measures:
 ## #   Value` &lt;dbl&gt;, `Sex: All persons; Age: Age 16 to 17; Ethnic Group: White:
-## #   Other White; measures: Value` &lt;dbl&gt;, ...</code></pre>
+## #   Other White; measures: Value` &lt;dbl&gt;, …</code></pre>
 <p>Because the data are split out over multiple columns, it is clear that the data are not directly suitable to establish the proportion of each ethnic group within the population of each MSOA. Let’s inspect the names of the columns to get a better idea of the structure of our data set.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="exploratory-spatial-data-analysis.html#cb83-1" aria-hidden="true"></a><span class="co"># inspect the dataframe: column names</span></span>
-<span id="cb83-2"><a href="exploratory-spatial-data-analysis.html#cb83-2" aria-hidden="true"></a><span class="kw">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="co"># inspect the dataframe: column names</span></a>
+<a class="sourceLine" id="cb83-2" data-line-number="2"><span class="kw">names</span>(df)</a></code></pre></div>
 <pre><code>##  [1] &quot;msoa11cd&quot;                                                                                                                  
 ##  [2] &quot;Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categories: Ethnic group; measures: Value&quot;                          
 ##  [3] &quot;Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Total; measures: Value&quot;                                          
@@ -498,18 +480,18 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <p>You can also try using <code>View(df)</code> or use any other form of spreadsheet software (e.g. Microsoft Excel) to <strong>browse</strong> through the dataset to get a better idea of what is happening and get a better idea of the structure of the data. You first will need to understand the structure of your dataset before you can start reorganising your dataset.</p>
 </div>
 <p>Although the data is messy and we will need to reorganise our data set, it does look there is some form of structure present that we can exploit: the various columns with population counts for each ethnic group are repeated for each of the different age groups. This means that we can go through the data frame in steps of equal size to select the data we want: starting from column 2 (column 1 only contains the reference to the adminsitrative geography) we want to select all 24 columns of data for that particular age group. We can create a <code>for</code> loop that does exactly that:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="exploratory-spatial-data-analysis.html#cb85-1" aria-hidden="true"></a><span class="co"># loop through the columns of our data set</span></span>
-<span id="cb85-2"><a href="exploratory-spatial-data-analysis.html#cb85-2" aria-hidden="true"></a><span class="cf">for</span> (column <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">2</span>,<span class="kw">ncol</span>(df),<span class="dv">24</span>)) {</span>
-<span id="cb85-3"><a href="exploratory-spatial-data-analysis.html#cb85-3" aria-hidden="true"></a>    </span>
-<span id="cb85-4"><a href="exploratory-spatial-data-analysis.html#cb85-4" aria-hidden="true"></a>  <span class="co"># index number of start column of age group</span></span>
-<span id="cb85-5"><a href="exploratory-spatial-data-analysis.html#cb85-5" aria-hidden="true"></a>  start &lt;-<span class="st"> </span>column</span>
-<span id="cb85-6"><a href="exploratory-spatial-data-analysis.html#cb85-6" aria-hidden="true"></a>  </span>
-<span id="cb85-7"><a href="exploratory-spatial-data-analysis.html#cb85-7" aria-hidden="true"></a>  <span class="co"># index number of end column of age group</span></span>
-<span id="cb85-8"><a href="exploratory-spatial-data-analysis.html#cb85-8" aria-hidden="true"></a>  stop &lt;-<span class="st"> </span>column <span class="op">+</span><span class="st"> </span><span class="dv">23</span> </span>
-<span id="cb85-9"><a href="exploratory-spatial-data-analysis.html#cb85-9" aria-hidden="true"></a>  </span>
-<span id="cb85-10"><a href="exploratory-spatial-data-analysis.html#cb85-10" aria-hidden="true"></a>  <span class="co"># print results</span></span>
-<span id="cb85-11"><a href="exploratory-spatial-data-analysis.html#cb85-11" aria-hidden="true"></a>  <span class="kw">print</span>(<span class="kw">c</span>(start,stop))</span>
-<span id="cb85-12"><a href="exploratory-spatial-data-analysis.html#cb85-12" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="co"># loop through the columns of our data set</span></a>
+<a class="sourceLine" id="cb85-2" data-line-number="2"><span class="cf">for</span> (column <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">2</span>,<span class="kw">ncol</span>(df),<span class="dv">24</span>)) {</a>
+<a class="sourceLine" id="cb85-3" data-line-number="3">    </a>
+<a class="sourceLine" id="cb85-4" data-line-number="4">  <span class="co"># index number of start column of age group</span></a>
+<a class="sourceLine" id="cb85-5" data-line-number="5">  start &lt;-<span class="st"> </span>column</a>
+<a class="sourceLine" id="cb85-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb85-7" data-line-number="7">  <span class="co"># index number of end column of age group</span></a>
+<a class="sourceLine" id="cb85-8" data-line-number="8">  stop &lt;-<span class="st"> </span>column <span class="op">+</span><span class="st"> </span><span class="dv">23</span> </a>
+<a class="sourceLine" id="cb85-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb85-10" data-line-number="10">  <span class="co"># print results</span></a>
+<a class="sourceLine" id="cb85-11" data-line-number="11">  <span class="kw">print</span>(<span class="kw">c</span>(start,stop))</a>
+<a class="sourceLine" id="cb85-12" data-line-number="12">}</a></code></pre></div>
 <pre><code>## [1]  2 25
 ## [1] 26 49
 ## [1] 50 73
@@ -527,10 +509,10 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## [1] 338 361
 ## [1] 362 385</code></pre>
 <p>For each age group in our data, the printed values should <strong>(!)</strong> correspond with the index number of the start column of the age group and the index number of the end column of the age group, respectively. Let’s do a sanity check.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="exploratory-spatial-data-analysis.html#cb87-1" aria-hidden="true"></a><span class="co"># sanity check: age group 16-17 (start column)</span></span>
-<span id="cb87-2"><a href="exploratory-spatial-data-analysis.html#cb87-2" aria-hidden="true"></a>df[,<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="co"># sanity check: age group 16-17 (start column)</span></a>
+<a class="sourceLine" id="cb87-2" data-line-number="2">df[,<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 1
-##    `Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categories: Ethnic g~
+##    `Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categories: Ethnic g…
 ##                                                                            &lt;dbl&gt;
 ##  1                                                                           215
 ##  2                                                                           175
@@ -542,11 +524,11 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  8                                                                           150
 ##  9                                                                           178
 ## 10                                                                           162
-## # ... with 7,191 more rows</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="exploratory-spatial-data-analysis.html#cb89-1" aria-hidden="true"></a><span class="co"># sanity check: age group 16-17 (end column)</span></span>
-<span id="cb89-2"><a href="exploratory-spatial-data-analysis.html#cb89-2" aria-hidden="true"></a>df[,<span class="dv">25</span>]</span></code></pre></div>
+## # … with 7,191 more rows</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="co"># sanity check: age group 16-17 (end column)</span></a>
+<a class="sourceLine" id="cb89-2" data-line-number="2">df[,<span class="dv">25</span>]</a></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 1
-##    `Sex: All persons; Age: Age 16 to 17; Ethnic Group: Other ethnic group: Any ~
+##    `Sex: All persons; Age: Age 16 to 17; Ethnic Group: Other ethnic group: Any …
 ##                                                                            &lt;dbl&gt;
 ##  1                                                                             0
 ##  2                                                                             0
@@ -558,11 +540,11 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  8                                                                             0
 ##  9                                                                             0
 ## 10                                                                             0
-## # ... with 7,191 more rows</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="exploratory-spatial-data-analysis.html#cb91-1" aria-hidden="true"></a><span class="co"># sanity check: age group 18-19 (start column)</span></span>
-<span id="cb91-2"><a href="exploratory-spatial-data-analysis.html#cb91-2" aria-hidden="true"></a>df[,<span class="dv">26</span>]</span></code></pre></div>
+## # … with 7,191 more rows</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="co"># sanity check: age group 18-19 (start column)</span></a>
+<a class="sourceLine" id="cb91-2" data-line-number="2">df[,<span class="dv">26</span>]</a></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 1
-##    `Sex: All persons; Age: Age 18 to 19; Ethnic Group: All categories: Ethnic g~
+##    `Sex: All persons; Age: Age 18 to 19; Ethnic Group: All categories: Ethnic g…
 ##                                                                            &lt;dbl&gt;
 ##  1                                                                           157
 ##  2                                                                           129
@@ -574,11 +556,11 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  8                                                                           231
 ##  9                                                                           175
 ## 10                                                                            95
-## # ... with 7,191 more rows</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="exploratory-spatial-data-analysis.html#cb93-1" aria-hidden="true"></a><span class="co"># sanity check: age group 18-19 (end column)</span></span>
-<span id="cb93-2"><a href="exploratory-spatial-data-analysis.html#cb93-2" aria-hidden="true"></a>df[,<span class="dv">49</span>]</span></code></pre></div>
+## # … with 7,191 more rows</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="co"># sanity check: age group 18-19 (end column)</span></a>
+<a class="sourceLine" id="cb93-2" data-line-number="2">df[,<span class="dv">49</span>]</a></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 1
-##    `Sex: All persons; Age: Age 18 to 19; Ethnic Group: Other ethnic group: Any ~
+##    `Sex: All persons; Age: Age 18 to 19; Ethnic Group: Other ethnic group: Any …
 ##                                                                            &lt;dbl&gt;
 ##  1                                                                             1
 ##  2                                                                             0
@@ -590,122 +572,122 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  8                                                                             1
 ##  9                                                                             0
 ## 10                                                                             0
-## # ... with 7,191 more rows</code></pre>
+## # … with 7,191 more rows</code></pre>
 <p>All seems to be correct and we have successfully identified our columns. This is great, however, we still cannot work with our data as everything is spread out over different columns. Let’s fix this by manipulating the shape of our data by turning columns into rows.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="exploratory-spatial-data-analysis.html#cb95-1" aria-hidden="true"></a><span class="co"># create function</span></span>
-<span id="cb95-2"><a href="exploratory-spatial-data-analysis.html#cb95-2" aria-hidden="true"></a>columns_to_rows &lt;-<span class="st"> </span><span class="cf">function</span>(df, start, stop) {</span>
-<span id="cb95-3"><a href="exploratory-spatial-data-analysis.html#cb95-3" aria-hidden="true"></a>  </span>
-<span id="cb95-4"><a href="exploratory-spatial-data-analysis.html#cb95-4" aria-hidden="true"></a>  <span class="co"># columns we are interested in</span></span>
-<span id="cb95-5"><a href="exploratory-spatial-data-analysis.html#cb95-5" aria-hidden="true"></a>  col_sub &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,start<span class="op">:</span>stop)</span>
-<span id="cb95-6"><a href="exploratory-spatial-data-analysis.html#cb95-6" aria-hidden="true"></a>  </span>
-<span id="cb95-7"><a href="exploratory-spatial-data-analysis.html#cb95-7" aria-hidden="true"></a>  <span class="co"># subset the dataframe </span></span>
-<span id="cb95-8"><a href="exploratory-spatial-data-analysis.html#cb95-8" aria-hidden="true"></a>  df_sub &lt;-<span class="st"> </span><span class="kw">select</span>(df,col_sub)</span>
-<span id="cb95-9"><a href="exploratory-spatial-data-analysis.html#cb95-9" aria-hidden="true"></a>  </span>
-<span id="cb95-10"><a href="exploratory-spatial-data-analysis.html#cb95-10" aria-hidden="true"></a>  <span class="co"># pivot the columns in the dataframe, exclude the MSOA code column </span></span>
-<span id="cb95-11"><a href="exploratory-spatial-data-analysis.html#cb95-11" aria-hidden="true"></a>  df_piv &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(df_sub,<span class="op">-</span>msoa11cd)</span>
-<span id="cb95-12"><a href="exploratory-spatial-data-analysis.html#cb95-12" aria-hidden="true"></a>  </span>
-<span id="cb95-13"><a href="exploratory-spatial-data-analysis.html#cb95-13" aria-hidden="true"></a>  <span class="co"># rename columns</span></span>
-<span id="cb95-14"><a href="exploratory-spatial-data-analysis.html#cb95-14" aria-hidden="true"></a>  <span class="kw">names</span>(df_piv) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;msoa11cd&#39;</span>,<span class="st">&#39;age_group&#39;</span>,<span class="st">&#39;count&#39;</span>)</span>
-<span id="cb95-15"><a href="exploratory-spatial-data-analysis.html#cb95-15" aria-hidden="true"></a>  <span class="kw">return</span>(df_piv)</span>
-<span id="cb95-16"><a href="exploratory-spatial-data-analysis.html#cb95-16" aria-hidden="true"></a>}</span>
-<span id="cb95-17"><a href="exploratory-spatial-data-analysis.html#cb95-17" aria-hidden="true"></a></span>
-<span id="cb95-18"><a href="exploratory-spatial-data-analysis.html#cb95-18" aria-hidden="true"></a><span class="co"># test</span></span>
-<span id="cb95-19"><a href="exploratory-spatial-data-analysis.html#cb95-19" aria-hidden="true"></a><span class="kw">columns_to_rows</span>(df,<span class="dv">2</span>,<span class="dv">25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="co"># create function</span></a>
+<a class="sourceLine" id="cb95-2" data-line-number="2">columns_to_rows &lt;-<span class="st"> </span><span class="cf">function</span>(df, start, stop) {</a>
+<a class="sourceLine" id="cb95-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb95-4" data-line-number="4">  <span class="co"># columns we are interested in</span></a>
+<a class="sourceLine" id="cb95-5" data-line-number="5">  col_sub &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,start<span class="op">:</span>stop)</a>
+<a class="sourceLine" id="cb95-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb95-7" data-line-number="7">  <span class="co"># subset the dataframe </span></a>
+<a class="sourceLine" id="cb95-8" data-line-number="8">  df_sub &lt;-<span class="st"> </span><span class="kw">select</span>(df,col_sub)</a>
+<a class="sourceLine" id="cb95-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb95-10" data-line-number="10">  <span class="co"># pivot the columns in the dataframe, exclude the MSOA code column </span></a>
+<a class="sourceLine" id="cb95-11" data-line-number="11">  df_piv &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(df_sub,<span class="op">-</span>msoa11cd)</a>
+<a class="sourceLine" id="cb95-12" data-line-number="12">  </a>
+<a class="sourceLine" id="cb95-13" data-line-number="13">  <span class="co"># rename columns</span></a>
+<a class="sourceLine" id="cb95-14" data-line-number="14">  <span class="kw">names</span>(df_piv) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;msoa11cd&#39;</span>,<span class="st">&#39;age_group&#39;</span>,<span class="st">&#39;count&#39;</span>)</a>
+<a class="sourceLine" id="cb95-15" data-line-number="15">  <span class="kw">return</span>(df_piv)</a>
+<a class="sourceLine" id="cb95-16" data-line-number="16">}</a>
+<a class="sourceLine" id="cb95-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb95-18" data-line-number="18"><span class="co"># test</span></a>
+<a class="sourceLine" id="cb95-19" data-line-number="19"><span class="kw">columns_to_rows</span>(df,<span class="dv">2</span>,<span class="dv">25</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 172,824 x 3
 ##    msoa11cd  age_group                                                     count
 ##    &lt;chr&gt;     &lt;chr&gt;                                                         &lt;dbl&gt;
-##  1 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categ~   215
-##  2 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: To~   206
-##  3 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: En~   204
-##  4 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ir~     0
-##  5 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Gy~     2
-##  6 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ot~     0
-##  7 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     4
-##  8 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     1
-##  9 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     2
-## 10 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     1
-## # ... with 172,814 more rows</code></pre>
+##  1 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categ…   215
+##  2 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: To…   206
+##  3 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: En…   204
+##  4 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ir…     0
+##  5 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Gy…     2
+##  6 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ot…     0
+##  7 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     4
+##  8 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     1
+##  9 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     2
+## 10 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     1
+## # … with 172,814 more rows</code></pre>
 <p>This looks much better. Now let’s combine our loop with our newly created function to apply this to all of our data.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="exploratory-spatial-data-analysis.html#cb97-1" aria-hidden="true"></a><span class="co"># create an empty list to store our result from the loop</span></span>
-<span id="cb97-2"><a href="exploratory-spatial-data-analysis.html#cb97-2" aria-hidden="true"></a>df_lst &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
-<span id="cb97-3"><a href="exploratory-spatial-data-analysis.html#cb97-3" aria-hidden="true"></a></span>
-<span id="cb97-4"><a href="exploratory-spatial-data-analysis.html#cb97-4" aria-hidden="true"></a><span class="co"># loop through the columns of our data set</span></span>
-<span id="cb97-5"><a href="exploratory-spatial-data-analysis.html#cb97-5" aria-hidden="true"></a><span class="cf">for</span> (column <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">2</span>,<span class="kw">ncol</span>(df),<span class="dv">24</span>)) {</span>
-<span id="cb97-6"><a href="exploratory-spatial-data-analysis.html#cb97-6" aria-hidden="true"></a>    </span>
-<span id="cb97-7"><a href="exploratory-spatial-data-analysis.html#cb97-7" aria-hidden="true"></a>  <span class="co"># index number of start column of age group</span></span>
-<span id="cb97-8"><a href="exploratory-spatial-data-analysis.html#cb97-8" aria-hidden="true"></a>  start &lt;-<span class="st"> </span>column</span>
-<span id="cb97-9"><a href="exploratory-spatial-data-analysis.html#cb97-9" aria-hidden="true"></a>  </span>
-<span id="cb97-10"><a href="exploratory-spatial-data-analysis.html#cb97-10" aria-hidden="true"></a>  <span class="co"># index number of end column of age group</span></span>
-<span id="cb97-11"><a href="exploratory-spatial-data-analysis.html#cb97-11" aria-hidden="true"></a>  stop &lt;-<span class="st"> </span>column <span class="op">+</span><span class="st"> </span><span class="dv">23</span> </span>
-<span id="cb97-12"><a href="exploratory-spatial-data-analysis.html#cb97-12" aria-hidden="true"></a>  </span>
-<span id="cb97-13"><a href="exploratory-spatial-data-analysis.html#cb97-13" aria-hidden="true"></a>  <span class="co"># call our function and assign it to the list</span></span>
-<span id="cb97-14"><a href="exploratory-spatial-data-analysis.html#cb97-14" aria-hidden="true"></a>  df_lst[[<span class="kw">length</span>(df_lst)<span class="op">+</span><span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="kw">columns_to_rows</span>(df,<span class="dt">start=</span>start,<span class="dt">stop=</span>stop)</span>
-<span id="cb97-15"><a href="exploratory-spatial-data-analysis.html#cb97-15" aria-hidden="true"></a>}</span>
-<span id="cb97-16"><a href="exploratory-spatial-data-analysis.html#cb97-16" aria-hidden="true"></a></span>
-<span id="cb97-17"><a href="exploratory-spatial-data-analysis.html#cb97-17" aria-hidden="true"></a><span class="co"># paste all elements from the list underneath one another</span></span>
-<span id="cb97-18"><a href="exploratory-spatial-data-analysis.html#cb97-18" aria-hidden="true"></a><span class="co"># do.call executes the function &#39;rbind&#39; for all elements in our list</span></span>
-<span id="cb97-19"><a href="exploratory-spatial-data-analysis.html#cb97-19" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(<span class="kw">do.call</span>(rbind,df_lst))</span>
-<span id="cb97-20"><a href="exploratory-spatial-data-analysis.html#cb97-20" aria-hidden="true"></a></span>
-<span id="cb97-21"><a href="exploratory-spatial-data-analysis.html#cb97-21" aria-hidden="true"></a><span class="co"># and the result</span></span>
-<span id="cb97-22"><a href="exploratory-spatial-data-analysis.html#cb97-22" aria-hidden="true"></a>df_reformatted</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="co"># create an empty list to store our result from the loop</span></a>
+<a class="sourceLine" id="cb97-2" data-line-number="2">df_lst &lt;-<span class="st"> </span><span class="kw">list</span>()</a>
+<a class="sourceLine" id="cb97-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb97-4" data-line-number="4"><span class="co"># loop through the columns of our data set</span></a>
+<a class="sourceLine" id="cb97-5" data-line-number="5"><span class="cf">for</span> (column <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">2</span>,<span class="kw">ncol</span>(df),<span class="dv">24</span>)) {</a>
+<a class="sourceLine" id="cb97-6" data-line-number="6">    </a>
+<a class="sourceLine" id="cb97-7" data-line-number="7">  <span class="co"># index number of start column of age group</span></a>
+<a class="sourceLine" id="cb97-8" data-line-number="8">  start &lt;-<span class="st"> </span>column</a>
+<a class="sourceLine" id="cb97-9" data-line-number="9">  </a>
+<a class="sourceLine" id="cb97-10" data-line-number="10">  <span class="co"># index number of end column of age group</span></a>
+<a class="sourceLine" id="cb97-11" data-line-number="11">  stop &lt;-<span class="st"> </span>column <span class="op">+</span><span class="st"> </span><span class="dv">23</span> </a>
+<a class="sourceLine" id="cb97-12" data-line-number="12">  </a>
+<a class="sourceLine" id="cb97-13" data-line-number="13">  <span class="co"># call our function and assign it to the list</span></a>
+<a class="sourceLine" id="cb97-14" data-line-number="14">  df_lst[[<span class="kw">length</span>(df_lst)<span class="op">+</span><span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="kw">columns_to_rows</span>(df,<span class="dt">start=</span>start,<span class="dt">stop=</span>stop)</a>
+<a class="sourceLine" id="cb97-15" data-line-number="15">}</a>
+<a class="sourceLine" id="cb97-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb97-17" data-line-number="17"><span class="co"># paste all elements from the list underneath one another</span></a>
+<a class="sourceLine" id="cb97-18" data-line-number="18"><span class="co"># do.call executes the function &#39;rbind&#39; for all elements in our list</span></a>
+<a class="sourceLine" id="cb97-19" data-line-number="19">df_reformatted &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(<span class="kw">do.call</span>(rbind,df_lst))</a>
+<a class="sourceLine" id="cb97-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb97-21" data-line-number="21"><span class="co"># and the result</span></a>
+<a class="sourceLine" id="cb97-22" data-line-number="22">df_reformatted</a></code></pre></div>
 <pre><code>## # A tibble: 2,765,184 x 3
 ##    msoa11cd  age_group                                                     count
 ##    &lt;chr&gt;     &lt;chr&gt;                                                         &lt;dbl&gt;
-##  1 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categ~   215
-##  2 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: To~   206
-##  3 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: En~   204
-##  4 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ir~     0
-##  5 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Gy~     2
-##  6 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ot~     0
-##  7 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     4
-##  8 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     1
-##  9 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     2
-## 10 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul~     1
-## # ... with 2,765,174 more rows</code></pre>
+##  1 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: All categ…   215
+##  2 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: To…   206
+##  3 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: En…   204
+##  4 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ir…     0
+##  5 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Gy…     2
+##  6 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: White: Ot…     0
+##  7 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     4
+##  8 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     1
+##  9 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     2
+## 10 E02002559 Sex: All persons; Age: Age 16 to 17; Ethnic Group: Mixed/mul…     1
+## # … with 2,765,174 more rows</code></pre>
 <p>Now the data is in a much more manageable format, we can move on with preparing the data further. We will start by filtering out the columns (now rows!) that contain <em>all categories</em> and the <em>within group totals</em>. We will do this by cleverly filtering our data set on only a part of the text string that is contained in the <em>age_group</em> column of our dataframe using a <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a>. We further truncate the information that is contained in the <em>age_group</em> column to make all a little more readable.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="exploratory-spatial-data-analysis.html#cb99-1" aria-hidden="true"></a><span class="co"># filter rows</span></span>
-<span id="cb99-2"><a href="exploratory-spatial-data-analysis.html#cb99-2" aria-hidden="true"></a><span class="co"># this can be a little slow because of the regular expression!</span></span>
-<span id="cb99-3"><a href="exploratory-spatial-data-analysis.html#cb99-3" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">filter</span>(df_reformatted,<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&#39;*All categories*&#39;</span>,age_group))</span>
-<span id="cb99-4"><a href="exploratory-spatial-data-analysis.html#cb99-4" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">filter</span>(df_reformatted,<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&#39;*Total*&#39;</span>,age_group))</span>
-<span id="cb99-5"><a href="exploratory-spatial-data-analysis.html#cb99-5" aria-hidden="true"></a></span>
-<span id="cb99-6"><a href="exploratory-spatial-data-analysis.html#cb99-6" aria-hidden="true"></a><span class="co"># create variable that flags the 85 and over category</span></span>
-<span id="cb99-7"><a href="exploratory-spatial-data-analysis.html#cb99-7" aria-hidden="true"></a><span class="co"># this can be a little slow because of the regular expression!</span></span>
-<span id="cb99-8"><a href="exploratory-spatial-data-analysis.html#cb99-8" aria-hidden="true"></a>df_reformatted<span class="op">$</span>g &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&#39;85&#39;</span>,<span class="kw">as.character</span>(df_reformatted<span class="op">$</span>age_group)),<span class="dv">1</span>,<span class="dv">0</span>)</span>
-<span id="cb99-9"><a href="exploratory-spatial-data-analysis.html#cb99-9" aria-hidden="true"></a></span>
-<span id="cb99-10"><a href="exploratory-spatial-data-analysis.html#cb99-10" aria-hidden="true"></a><span class="co"># select information from character 41 (85 and over category) or from character 38</span></span>
-<span id="cb99-11"><a href="exploratory-spatial-data-analysis.html#cb99-11" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">mutate</span>(df_reformatted,<span class="dt">group =</span> <span class="kw">ifelse</span>(g<span class="op">==</span><span class="dv">0</span>,<span class="kw">substr</span>(<span class="kw">as.character</span>(age_group),<span class="dv">38</span>,<span class="dv">500</span>),</span>
-<span id="cb99-12"><a href="exploratory-spatial-data-analysis.html#cb99-12" aria-hidden="true"></a>                                                            <span class="kw">substr</span>(<span class="kw">as.character</span>(age_group),<span class="dv">41</span>,<span class="dv">500</span>))) </span>
-<span id="cb99-13"><a href="exploratory-spatial-data-analysis.html#cb99-13" aria-hidden="true"></a></span>
-<span id="cb99-14"><a href="exploratory-spatial-data-analysis.html#cb99-14" aria-hidden="true"></a><span class="co"># remove unnecessary columns</span></span>
-<span id="cb99-15"><a href="exploratory-spatial-data-analysis.html#cb99-15" aria-hidden="true"></a>df_reformatted &lt;-<span class="st"> </span><span class="kw">select</span>(df_reformatted, <span class="op">-</span>age_group, <span class="op">-</span>g)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="co"># filter rows</span></a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="co"># this can be a little slow because of the regular expression!</span></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3">df_reformatted &lt;-<span class="st"> </span><span class="kw">filter</span>(df_reformatted,<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&#39;*All categories*&#39;</span>,age_group))</a>
+<a class="sourceLine" id="cb99-4" data-line-number="4">df_reformatted &lt;-<span class="st"> </span><span class="kw">filter</span>(df_reformatted,<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&#39;*Total*&#39;</span>,age_group))</a>
+<a class="sourceLine" id="cb99-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb99-6" data-line-number="6"><span class="co"># create variable that flags the 85 and over category</span></a>
+<a class="sourceLine" id="cb99-7" data-line-number="7"><span class="co"># this can be a little slow because of the regular expression!</span></a>
+<a class="sourceLine" id="cb99-8" data-line-number="8">df_reformatted<span class="op">$</span>g &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&#39;85&#39;</span>,<span class="kw">as.character</span>(df_reformatted<span class="op">$</span>age_group)),<span class="dv">1</span>,<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb99-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb99-10" data-line-number="10"><span class="co"># select information from character 41 (85 and over category) or from character 38</span></a>
+<a class="sourceLine" id="cb99-11" data-line-number="11">df_reformatted &lt;-<span class="st"> </span><span class="kw">mutate</span>(df_reformatted,<span class="dt">group =</span> <span class="kw">ifelse</span>(g<span class="op">==</span><span class="dv">0</span>,<span class="kw">substr</span>(<span class="kw">as.character</span>(age_group),<span class="dv">38</span>,<span class="dv">500</span>),</a>
+<a class="sourceLine" id="cb99-12" data-line-number="12">                                                            <span class="kw">substr</span>(<span class="kw">as.character</span>(age_group),<span class="dv">41</span>,<span class="dv">500</span>))) </a>
+<a class="sourceLine" id="cb99-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb99-14" data-line-number="14"><span class="co"># remove unnecessary columns</span></a>
+<a class="sourceLine" id="cb99-15" data-line-number="15">df_reformatted &lt;-<span class="st"> </span><span class="kw">select</span>(df_reformatted, <span class="op">-</span>age_group, <span class="op">-</span>g)</a></code></pre></div>
 <p>We are now really getting somewhere, although in order for our data to be tidy each variable must have its own column. We also want, within each ethnic group, to aggregate the individual values within each age group.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="exploratory-spatial-data-analysis.html#cb100-1" aria-hidden="true"></a><span class="co"># pivot table and aggregate values</span></span>
-<span id="cb100-2"><a href="exploratory-spatial-data-analysis.html#cb100-2" aria-hidden="true"></a>df_clean &lt;-<span class="st"> </span><span class="kw">pivot_wider</span>(df_reformatted,<span class="dt">names_from=</span>group,<span class="dt">values_from=</span>count,<span class="dt">values_fn=</span>sum)</span>
-<span id="cb100-3"><a href="exploratory-spatial-data-analysis.html#cb100-3" aria-hidden="true"></a></span>
-<span id="cb100-4"><a href="exploratory-spatial-data-analysis.html#cb100-4" aria-hidden="true"></a><span class="co"># rename columns</span></span>
-<span id="cb100-5"><a href="exploratory-spatial-data-analysis.html#cb100-5" aria-hidden="true"></a><span class="co"># names are assigned based on index values, so make sure that the current columnnames match the</span></span>
-<span id="cb100-6"><a href="exploratory-spatial-data-analysis.html#cb100-6" aria-hidden="true"></a><span class="co"># order of the new columnames otherwise our whole analysis will be wrong!</span></span>
-<span id="cb100-7"><a href="exploratory-spatial-data-analysis.html#cb100-7" aria-hidden="true"></a><span class="kw">names</span>(df_clean) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;msoa11cd&#39;</span>,<span class="st">&#39;white_british&#39;</span>,<span class="st">&#39;white_irish&#39;</span>,<span class="st">&#39;white_traveller&#39;</span>,<span class="st">&#39;white_other&#39;</span>,<span class="st">&#39;mixed_white_black_caribbean&#39;</span>,</span>
-<span id="cb100-8"><a href="exploratory-spatial-data-analysis.html#cb100-8" aria-hidden="true"></a>                     <span class="st">&#39;mixed_white_black_african&#39;</span>,<span class="st">&#39;mixed_white_asian&#39;</span>,<span class="st">&#39;mixed_other&#39;</span>,<span class="st">&#39;asian_indian&#39;</span>,<span class="st">&#39;asian_pakistani&#39;</span>,</span>
-<span id="cb100-9"><a href="exploratory-spatial-data-analysis.html#cb100-9" aria-hidden="true"></a>                     <span class="st">&#39;asian_bangladeshi&#39;</span>,<span class="st">&#39;asian_chinese&#39;</span>,<span class="st">&#39;asian_other&#39;</span>,<span class="st">&#39;black_african&#39;</span>,<span class="st">&#39;black_caribbean&#39;</span>,<span class="st">&#39;black_other&#39;</span>,</span>
-<span id="cb100-10"><a href="exploratory-spatial-data-analysis.html#cb100-10" aria-hidden="true"></a>                     <span class="st">&#39;other_arab&#39;</span>,<span class="st">&#39;other_other&#39;</span>)</span>
-<span id="cb100-11"><a href="exploratory-spatial-data-analysis.html#cb100-11" aria-hidden="true"></a></span>
-<span id="cb100-12"><a href="exploratory-spatial-data-analysis.html#cb100-12" aria-hidden="true"></a><span class="co"># tidy data</span></span>
-<span id="cb100-13"><a href="exploratory-spatial-data-analysis.html#cb100-13" aria-hidden="true"></a>df_clean</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="co"># pivot table and aggregate values</span></a>
+<a class="sourceLine" id="cb100-2" data-line-number="2">df_clean &lt;-<span class="st"> </span><span class="kw">pivot_wider</span>(df_reformatted,<span class="dt">names_from=</span>group,<span class="dt">values_from=</span>count,<span class="dt">values_fn=</span>sum)</a>
+<a class="sourceLine" id="cb100-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb100-4" data-line-number="4"><span class="co"># rename columns</span></a>
+<a class="sourceLine" id="cb100-5" data-line-number="5"><span class="co"># names are assigned based on index values, so make sure that the current columnnames match the</span></a>
+<a class="sourceLine" id="cb100-6" data-line-number="6"><span class="co"># order of the new columnames otherwise our whole analysis will be wrong!</span></a>
+<a class="sourceLine" id="cb100-7" data-line-number="7"><span class="kw">names</span>(df_clean) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;msoa11cd&#39;</span>,<span class="st">&#39;white_british&#39;</span>,<span class="st">&#39;white_irish&#39;</span>,<span class="st">&#39;white_traveller&#39;</span>,<span class="st">&#39;white_other&#39;</span>,<span class="st">&#39;mixed_white_black_caribbean&#39;</span>,</a>
+<a class="sourceLine" id="cb100-8" data-line-number="8">                     <span class="st">&#39;mixed_white_black_african&#39;</span>,<span class="st">&#39;mixed_white_asian&#39;</span>,<span class="st">&#39;mixed_other&#39;</span>,<span class="st">&#39;asian_indian&#39;</span>,<span class="st">&#39;asian_pakistani&#39;</span>,</a>
+<a class="sourceLine" id="cb100-9" data-line-number="9">                     <span class="st">&#39;asian_bangladeshi&#39;</span>,<span class="st">&#39;asian_chinese&#39;</span>,<span class="st">&#39;asian_other&#39;</span>,<span class="st">&#39;black_african&#39;</span>,<span class="st">&#39;black_caribbean&#39;</span>,<span class="st">&#39;black_other&#39;</span>,</a>
+<a class="sourceLine" id="cb100-10" data-line-number="10">                     <span class="st">&#39;other_arab&#39;</span>,<span class="st">&#39;other_other&#39;</span>)</a>
+<a class="sourceLine" id="cb100-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb100-12" data-line-number="12"><span class="co"># tidy data</span></a>
+<a class="sourceLine" id="cb100-13" data-line-number="13">df_clean</a></code></pre></div>
 <pre><code>## # A tibble: 7,201 x 19
 ##    msoa11cd white_british white_irish white_traveller white_other
 ##    &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-##  1 E020025~          6775          17              27          51
-##  2 E020025~          4688          11               8          31
-##  3 E020025~          4609          20               3          55
-##  4 E020025~          4653           4               6         131
-##  5 E020025~          4369          13               2          38
-##  6 E020025~          7320          11               3          73
-##  7 E020025~          4274          16               2          96
-##  8 E020025~          4713          33              24         308
-##  9 E020025~          5344          17              42         111
-## 10 E020025~          4583          29               6         100
-## # ... with 7,191 more rows, and 14 more variables:
+##  1 E020025…          6775          17              27          51
+##  2 E020025…          4688          11               8          31
+##  3 E020025…          4609          20               3          55
+##  4 E020025…          4653           4               6         131
+##  5 E020025…          4369          13               2          38
+##  6 E020025…          7320          11               3          73
+##  7 E020025…          4274          16               2          96
+##  8 E020025…          4713          33              24         308
+##  9 E020025…          5344          17              42         111
+## 10 E020025…          4583          29               6         100
+## # … with 7,191 more rows, and 14 more variables:
 ## #   mixed_white_black_caribbean &lt;dbl&gt;, mixed_white_black_african &lt;dbl&gt;,
 ## #   mixed_white_asian &lt;dbl&gt;, mixed_other &lt;dbl&gt;, asian_indian &lt;dbl&gt;,
 ## #   asian_pakistani &lt;dbl&gt;, asian_bangladeshi &lt;dbl&gt;, asian_chinese &lt;dbl&gt;,
@@ -714,7 +696,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <p>Finally. We now have a <strong>tidy dataset</strong> that we can work with!</p>
 </div>
 </div>
-<div id="assignment_w05" class="section level3" number="5.2.4">
+<div id="assignment_w05" class="section level3">
 <h3><span class="header-section-number">5.2.4</span> Assignments</h3>
 <div id="assignment-1" class="section level4 unnumbered">
 <h4>Assignment 1</h4>
@@ -795,10 +777,10 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </div>
 </div>
 </div>
-<div id="exploratory-spatial-data-analysis-in-r" class="section level2" number="5.3">
+<div id="exploratory-spatial-data-analysis-in-r" class="section level2">
 <h2><span class="header-section-number">5.3</span> Exploratory spatial data analysis in R</h2>
 <p>Exploratory Data Analysis got introduced in the the late 1970s by the American mathematician <a href="https://en.wikipedia.org/wiki/John_Tukey">John Tukey</a>. Tukey thought that in much data analysis there was much emphasis on statistical hypothesis testing and very little development of new hypotheses. He therefore made a distinction between <strong>confirmatory data analysis</strong> and <strong>exploratory data analysis (EDA)</strong>. EDA is a collection of descriptive techniques used to detect patterns, identify outliers, and form hypotheses from the data. An EDA typically involves descriptive statistics and data visualisation. Exploratory techniques generally stay ‘close’ to the original data. <strong>Exploratory spatial data analysis (ESDA)</strong> is the extension of exploratory data analysis (EDA) to the spatial realm.</p>
-<div id="video-exploratory-spatial-data-analysis" class="section level3" number="5.3.1">
+<div id="video-exploratory-spatial-data-analysis" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Video: Exploratory spatial data analysis</h3>
 <p><div class="vembedr" align="left">
 <div>
@@ -807,7 +789,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </div>
 <a href="https://github.com/jtvandijk/GEOG0114/tree/master/slides/w05/w05_02_esda.pdf">[Lecture slides]</a> <a href="https://web.microsoftstream.com/video/1a534d23-24e2-4f4a-aa38-f85a029ba19b?list=studio">[Watch on MS stream]</a></p>
 </div>
-<div id="example-exploring-our-dataset" class="section level3" number="5.3.2">
+<div id="example-exploring-our-dataset" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Example: Exploring our dataset</h3>
 <p>After successfully creating the maps that we were requested to make, our bosses got so happy that they directly gave us a new assignment. This time they want us to look at bicycle theft in London, specifically they want to know which factors contribute to bicycle theft in London’s central boroughs of Southwark, Lambeth, Camden, Westminster, Tower Hamlets, City of London, and Hackney. For this assignment, we have access to two <strong>open</strong> datasets. The first one contains the English <a href="https://www.gov.uk/government/statistics/english-indices-of-deprivation-2019">Index of Multiple Deprivation (IMD)</a> for 2019. The English indices of deprivation measure relative deprivation in small areas in England called Lower-layer Super Output Areas (LSOAs) The index of multiple deprivation is the most widely used of these indices. The second dataset contains some of the input data that have been used to create the <a href="https://data.cdrc.ac.uk/dataset/access-healthy-assets-hazards-ahah">Access to Healthy Assets and Hazards (AHAH)</a>. AHAH is a multi-dimensional index developed by the <a href="https://www.cdrc.ac.uk/">Consumer Data Research Centre (CDRC)</a> for Great Britain measuring how ‘healthy’ neighbourhoods are. We also have access to the LSOAs for London. Further to these two open datasets, we have a shapefile with all of London’s LSOAs as well as a <code>csv</code> file that contains the coordinates of all tube stations.</p>
 <div id="file-download-2" class="section level4 unnumbered">
@@ -849,30 +831,30 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </tbody>
 </table>
 <p>Download the individual files to your own computer and again make sure <a href="spatial-autocorrelation.html#setting-up-the-environment">your data directory</a> is set up correctly and the data are unzipped. Then load the libraries and the data into R.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="exploratory-spatial-data-analysis.html#cb102-1" aria-hidden="true"></a><span class="co"># load libraries</span></span>
-<span id="cb102-2"><a href="exploratory-spatial-data-analysis.html#cb102-2" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb102-3"><a href="exploratory-spatial-data-analysis.html#cb102-3" aria-hidden="true"></a><span class="kw">library</span>(sf)</span>
-<span id="cb102-4"><a href="exploratory-spatial-data-analysis.html#cb102-4" aria-hidden="true"></a><span class="kw">library</span>(tmap)</span>
-<span id="cb102-5"><a href="exploratory-spatial-data-analysis.html#cb102-5" aria-hidden="true"></a><span class="kw">library</span>(Rfast)</span>
-<span id="cb102-6"><a href="exploratory-spatial-data-analysis.html#cb102-6" aria-hidden="true"></a></span>
-<span id="cb102-7"><a href="exploratory-spatial-data-analysis.html#cb102-7" aria-hidden="true"></a><span class="co"># load spatial data</span></span>
-<span id="cb102-8"><a href="exploratory-spatial-data-analysis.html#cb102-8" aria-hidden="true"></a>lsoa &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;raw/boundaries/london_lsoa_2011/lsoa_london_2011_sel.shp&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb102-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb102-4" data-line-number="4"><span class="kw">library</span>(tmap)</a>
+<a class="sourceLine" id="cb102-5" data-line-number="5"><span class="kw">library</span>(Rfast)</a>
+<a class="sourceLine" id="cb102-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb102-7" data-line-number="7"><span class="co"># load spatial data</span></a>
+<a class="sourceLine" id="cb102-8" data-line-number="8">lsoa &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;raw/boundaries/london_lsoa_2011/lsoa_london_2011_sel.shp&#39;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `lsoa_london_2011_sel&#39; from data source `/Users/Tycho/Dropbox/UCL/Web/jtvandijk.github.io/GEOG0114/raw/boundaries/london_lsoa_2011/lsoa_london_2011_sel.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 1020 features and 1 field
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
 ## bbox:           xmin: 523847.7 ymin: 169650 xmax: 539533.3 ymax: 188327.4
 ## CRS:            27700</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="exploratory-spatial-data-analysis.html#cb104-1" aria-hidden="true"></a><span class="kw">names</span>(lsoa) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;lsoa11cd&#39;</span>,<span class="st">&#39;geometry&#39;</span>)</span>
-<span id="cb104-2"><a href="exploratory-spatial-data-analysis.html#cb104-2" aria-hidden="true"></a></span>
-<span id="cb104-3"><a href="exploratory-spatial-data-analysis.html#cb104-3" aria-hidden="true"></a><span class="co"># load data</span></span>
-<span id="cb104-4"><a href="exploratory-spatial-data-analysis.html#cb104-4" aria-hidden="true"></a>crime &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/crime/2019_london_bicycle_theft.csv&#39;</span>)</span>
-<span id="cb104-5"><a href="exploratory-spatial-data-analysis.html#cb104-5" aria-hidden="true"></a>imd &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/index/imd_ew_2019.csv&#39;</span>)</span>
-<span id="cb104-6"><a href="exploratory-spatial-data-analysis.html#cb104-6" aria-hidden="true"></a>ahah &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/index/ahah_input_gb_2016.csv&#39;</span>)</span>
-<span id="cb104-7"><a href="exploratory-spatial-data-analysis.html#cb104-7" aria-hidden="true"></a>tube &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/locations/london_underground_stations.csv&#39;</span>)</span>
-<span id="cb104-8"><a href="exploratory-spatial-data-analysis.html#cb104-8" aria-hidden="true"></a></span>
-<span id="cb104-9"><a href="exploratory-spatial-data-analysis.html#cb104-9" aria-hidden="true"></a><span class="co"># inspect crime data</span></span>
-<span id="cb104-10"><a href="exploratory-spatial-data-analysis.html#cb104-10" aria-hidden="true"></a><span class="kw">head</span>(crime)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="kw">names</span>(lsoa) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;lsoa11cd&#39;</span>,<span class="st">&#39;geometry&#39;</span>)</a>
+<a class="sourceLine" id="cb104-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="co"># load data</span></a>
+<a class="sourceLine" id="cb104-4" data-line-number="4">crime &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/crime/2019_london_bicycle_theft.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb104-5" data-line-number="5">imd &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/index/imd_ew_2019.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb104-6" data-line-number="6">ahah &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/index/ahah_input_gb_2016.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb104-7" data-line-number="7">tube &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/locations/london_underground_stations.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb104-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb104-9" data-line-number="9"><span class="co"># inspect crime data</span></a>
+<a class="sourceLine" id="cb104-10" data-line-number="10"><span class="kw">head</span>(crime)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   month      long   lat type         
 ##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        
@@ -882,8 +864,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## 4 2019-03 -0.0930  51.5 Bicycle theft
 ## 5 2019-03 -0.0941  51.5 Bicycle theft
 ## 6 2019-03 -0.0930  51.5 Bicycle theft</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="exploratory-spatial-data-analysis.html#cb106-1" aria-hidden="true"></a><span class="co"># inspect imd data</span></span>
-<span id="cb106-2"><a href="exploratory-spatial-data-analysis.html#cb106-2" aria-hidden="true"></a><span class="kw">head</span>(imd)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="co"># inspect imd data</span></a>
+<a class="sourceLine" id="cb106-2" data-line-number="2"><span class="kw">head</span>(imd)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   lsoa11cd  imd_rank imd_dec
 ##   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;
@@ -893,8 +875,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## 4 E01000005 8 678          3
 ## 5 E01000006 14 486         5
 ## 6 E01000007 7 256          3</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="exploratory-spatial-data-analysis.html#cb108-1" aria-hidden="true"></a><span class="co"># inspect ahah data</span></span>
-<span id="cb108-2"><a href="exploratory-spatial-data-analysis.html#cb108-2" aria-hidden="true"></a><span class="kw">head</span>(ahah)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="co"># inspect ahah data</span></a>
+<a class="sourceLine" id="cb108-2" data-line-number="2"><span class="kw">head</span>(ahah)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   lsoa11cd  gamb_dist pubs_dist off_dist
 ##   &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
@@ -904,8 +886,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## 4 E01000005     0.280     0.228    0.617
 ## 5 E01000006     0.599     0.611    0.648
 ## 6 E01000007     0.377     0.621    0.734</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="exploratory-spatial-data-analysis.html#cb110-1" aria-hidden="true"></a><span class="co"># inspect tube location data</span></span>
-<span id="cb110-2"><a href="exploratory-spatial-data-analysis.html#cb110-2" aria-hidden="true"></a><span class="kw">head</span>(tube)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="co"># inspect tube location data</span></a>
+<a class="sourceLine" id="cb110-2" data-line-number="2"><span class="kw">head</span>(tube)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   station             lat     long
 ##   &lt;chr&gt;             &lt;dbl&gt;    &lt;dbl&gt;
@@ -917,14 +899,14 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## 6 Addington Village  51.4 -0.0327</code></pre>
 <p>Looking at the data you will notice that both the bike theft data and the tube location data exist of longitudes and latitudes. The IMD dataset has an <em>lsoa11cd</em> column, an IMD rank column, and an IMD decile column. The AHAH dataset has an <em>lsoa11cd</em> column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The <a href="https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1">technical report of the AHAH index</a> suggests these distances represent the mean distance (kilometres) by car of all postcodes within each LSOA to the nearest outlet. Good to know!</p>
 <p>Let’s start by linking the IMD dataset and the AHAH dataset to the spatial dataset. Since we are using <code>sf</code> for our spatial data, we can very easily join them together using the common variable in these datasets: <em>lsoa11cd</em>.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="exploratory-spatial-data-analysis.html#cb112-1" aria-hidden="true"></a><span class="co"># join imd data</span></span>
-<span id="cb112-2"><a href="exploratory-spatial-data-analysis.html#cb112-2" aria-hidden="true"></a>lsoa_join &lt;-<span class="st"> </span><span class="kw">left_join</span>(lsoa,imd,<span class="dt">by=</span><span class="kw">c</span>(<span class="st">&#39;lsoa11cd&#39;</span>))</span>
-<span id="cb112-3"><a href="exploratory-spatial-data-analysis.html#cb112-3" aria-hidden="true"></a></span>
-<span id="cb112-4"><a href="exploratory-spatial-data-analysis.html#cb112-4" aria-hidden="true"></a><span class="co"># join ahah data</span></span>
-<span id="cb112-5"><a href="exploratory-spatial-data-analysis.html#cb112-5" aria-hidden="true"></a>lsoa_join &lt;-<span class="st"> </span><span class="kw">left_join</span>(lsoa_join,ahah,<span class="dt">by=</span><span class="kw">c</span>(<span class="st">&#39;lsoa11cd&#39;</span>))</span>
-<span id="cb112-6"><a href="exploratory-spatial-data-analysis.html#cb112-6" aria-hidden="true"></a></span>
-<span id="cb112-7"><a href="exploratory-spatial-data-analysis.html#cb112-7" aria-hidden="true"></a><span class="co"># inspect the result</span></span>
-<span id="cb112-8"><a href="exploratory-spatial-data-analysis.html#cb112-8" aria-hidden="true"></a><span class="kw">head</span>(lsoa_join)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="co"># join imd data</span></a>
+<a class="sourceLine" id="cb112-2" data-line-number="2">lsoa_join &lt;-<span class="st"> </span><span class="kw">left_join</span>(lsoa,imd,<span class="dt">by=</span><span class="kw">c</span>(<span class="st">&#39;lsoa11cd&#39;</span>))</a>
+<a class="sourceLine" id="cb112-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb112-4" data-line-number="4"><span class="co"># join ahah data</span></a>
+<a class="sourceLine" id="cb112-5" data-line-number="5">lsoa_join &lt;-<span class="st"> </span><span class="kw">left_join</span>(lsoa_join,ahah,<span class="dt">by=</span><span class="kw">c</span>(<span class="st">&#39;lsoa11cd&#39;</span>))</a>
+<a class="sourceLine" id="cb112-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb112-7" data-line-number="7"><span class="co"># inspect the result</span></a>
+<a class="sourceLine" id="cb112-8" data-line-number="8"><span class="kw">head</span>(lsoa_join)</a></code></pre></div>
 <pre><code>## Simple feature collection with 6 features and 6 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -942,56 +924,56 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## 4 MULTIPOLYGON (((525406.7 18...
 ##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 2 rows ]</code></pre>
 <p>This is all looking fine. Let’s now turn our turn our bike theft location dataset into a spatial dataset using the longitude and latitude values and get total bike theft counts within each of our available LSOAs.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="exploratory-spatial-data-analysis.html#cb114-1" aria-hidden="true"></a><span class="co"># filter out points without a longitude and/or latitude value</span></span>
-<span id="cb114-2"><a href="exploratory-spatial-data-analysis.html#cb114-2" aria-hidden="true"></a>crime &lt;-<span class="st"> </span><span class="kw">filter</span>(crime,<span class="op">!</span><span class="kw">is.na</span>(long) <span class="op">|</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(lat))</span>
-<span id="cb114-3"><a href="exploratory-spatial-data-analysis.html#cb114-3" aria-hidden="true"></a>crime_points &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(crime, <span class="dt">coords=</span><span class="kw">c</span>(<span class="st">&#39;long&#39;</span>,<span class="st">&#39;lat&#39;</span>),<span class="dt">crs=</span><span class="dv">4326</span>)</span>
-<span id="cb114-4"><a href="exploratory-spatial-data-analysis.html#cb114-4" aria-hidden="true"></a></span>
-<span id="cb114-5"><a href="exploratory-spatial-data-analysis.html#cb114-5" aria-hidden="true"></a><span class="co"># project into british national grid (epsg 27700)</span></span>
-<span id="cb114-6"><a href="exploratory-spatial-data-analysis.html#cb114-6" aria-hidden="true"></a>crime_points &lt;-<span class="st"> </span><span class="kw">st_transform</span>(crime_points,<span class="dv">27700</span>)</span>
-<span id="cb114-7"><a href="exploratory-spatial-data-analysis.html#cb114-7" aria-hidden="true"></a></span>
-<span id="cb114-8"><a href="exploratory-spatial-data-analysis.html#cb114-8" aria-hidden="true"></a><span class="co"># count the number of points intersecting within each of London&#39;s LSOAs</span></span>
-<span id="cb114-9"><a href="exploratory-spatial-data-analysis.html#cb114-9" aria-hidden="true"></a>lsoa_join<span class="op">$</span>n_crime &lt;-<span class="st"> </span><span class="kw">lengths</span>(<span class="kw">st_intersects</span>(lsoa_join,crime_points))</span>
-<span id="cb114-10"><a href="exploratory-spatial-data-analysis.html#cb114-10" aria-hidden="true"></a></span>
-<span id="cb114-11"><a href="exploratory-spatial-data-analysis.html#cb114-11" aria-hidden="true"></a><span class="co"># inspect the result</span></span>
-<span id="cb114-12"><a href="exploratory-spatial-data-analysis.html#cb114-12" aria-hidden="true"></a><span class="kw">tm_shape</span>(lsoa_join) <span class="op">+</span></span>
-<span id="cb114-13"><a href="exploratory-spatial-data-analysis.html#cb114-13" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&#39;n_crime&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="co"># filter out points without a longitude and/or latitude value</span></a>
+<a class="sourceLine" id="cb114-2" data-line-number="2">crime &lt;-<span class="st"> </span><span class="kw">filter</span>(crime,<span class="op">!</span><span class="kw">is.na</span>(long) <span class="op">|</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(lat))</a>
+<a class="sourceLine" id="cb114-3" data-line-number="3">crime_points &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(crime, <span class="dt">coords=</span><span class="kw">c</span>(<span class="st">&#39;long&#39;</span>,<span class="st">&#39;lat&#39;</span>),<span class="dt">crs=</span><span class="dv">4326</span>)</a>
+<a class="sourceLine" id="cb114-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb114-5" data-line-number="5"><span class="co"># project into british national grid (epsg 27700)</span></a>
+<a class="sourceLine" id="cb114-6" data-line-number="6">crime_points &lt;-<span class="st"> </span><span class="kw">st_transform</span>(crime_points,<span class="dv">27700</span>)</a>
+<a class="sourceLine" id="cb114-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb114-8" data-line-number="8"><span class="co"># count the number of points intersecting within each of London&#39;s LSOAs</span></a>
+<a class="sourceLine" id="cb114-9" data-line-number="9">lsoa_join<span class="op">$</span>n_crime &lt;-<span class="st"> </span><span class="kw">lengths</span>(<span class="kw">st_intersects</span>(lsoa_join,crime_points))</a>
+<a class="sourceLine" id="cb114-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb114-11" data-line-number="11"><span class="co"># inspect the result</span></a>
+<a class="sourceLine" id="cb114-12" data-line-number="12"><span class="kw">tm_shape</span>(lsoa_join) <span class="op">+</span></a>
+<a class="sourceLine" id="cb114-13" data-line-number="13"><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&#39;n_crime&#39;</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-points-to-lsoa-1.png" width="672" /></p>
 <p>This all looks good. We can see, however, that the the number of times bike theft was reported are highly skewed by Central London. It is now a good idea to explore the bike theft data a bit further to see how the data are distributed non-spatially by plotting them.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="exploratory-spatial-data-analysis.html#cb115-1" aria-hidden="true"></a><span class="co"># summary</span></span>
-<span id="cb115-2"><a href="exploratory-spatial-data-analysis.html#cb115-2" aria-hidden="true"></a><span class="kw">summary</span>(lsoa_join<span class="op">$</span>n_crime)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="co"># summary</span></a>
+<a class="sourceLine" id="cb115-2" data-line-number="2"><span class="kw">summary</span>(lsoa_join<span class="op">$</span>n_crime)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   0.000   2.000   4.000   8.993  10.000 260.000</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="exploratory-spatial-data-analysis.html#cb117-1" aria-hidden="true"></a><span class="co"># histogram</span></span>
-<span id="cb117-2"><a href="exploratory-spatial-data-analysis.html#cb117-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>n_crime)) <span class="op">+</span></span>
-<span id="cb117-3"><a href="exploratory-spatial-data-analysis.html#cb117-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span>.<span class="dv">5</span>, <span class="dt">colour=</span><span class="st">&#39;black&#39;</span>, <span class="dt">fill=</span><span class="st">&#39;white&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="co"># histogram</span></a>
+<a class="sourceLine" id="cb117-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>n_crime)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb117-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span>.<span class="dv">5</span>, <span class="dt">colour=</span><span class="st">&#39;black&#39;</span>, <span class="dt">fill=</span><span class="st">&#39;white&#39;</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-crime-data-1.png" width="672" /></p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="exploratory-spatial-data-analysis.html#cb118-1" aria-hidden="true"></a><span class="co"># boxplot</span></span>
-<span id="cb118-2"><a href="exploratory-spatial-data-analysis.html#cb118-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>n_crime))<span class="op">+</span></span>
-<span id="cb118-3"><a href="exploratory-spatial-data-analysis.html#cb118-3" aria-hidden="true"></a><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="co"># boxplot</span></a>
+<a class="sourceLine" id="cb118-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>n_crime))<span class="op">+</span></a>
+<a class="sourceLine" id="cb118-3" data-line-number="3"><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-crime-data-2.png" width="672" /></p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="exploratory-spatial-data-analysis.html#cb119-1" aria-hidden="true"></a><span class="co"># as the data is very skewed, let&#39;s cube transform the bike theft data </span></span>
-<span id="cb119-2"><a href="exploratory-spatial-data-analysis.html#cb119-2" aria-hidden="true"></a><span class="co"># and inspect the transformed data again</span></span>
-<span id="cb119-3"><a href="exploratory-spatial-data-analysis.html#cb119-3" aria-hidden="true"></a>lsoa_join<span class="op">$</span>n_crime_cube &lt;-<span class="st"> </span><span class="kw">abs</span>(lsoa_join<span class="op">$</span>n_crime)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb119-4"><a href="exploratory-spatial-data-analysis.html#cb119-4" aria-hidden="true"></a></span>
-<span id="cb119-5"><a href="exploratory-spatial-data-analysis.html#cb119-5" aria-hidden="true"></a><span class="co"># summary</span></span>
-<span id="cb119-6"><a href="exploratory-spatial-data-analysis.html#cb119-6" aria-hidden="true"></a><span class="kw">summary</span>(lsoa_join<span class="op">$</span>n_crime_cube)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1"><span class="co"># as the data is very skewed, let&#39;s cube transform the bike theft data </span></a>
+<a class="sourceLine" id="cb119-2" data-line-number="2"><span class="co"># and inspect the transformed data again</span></a>
+<a class="sourceLine" id="cb119-3" data-line-number="3">lsoa_join<span class="op">$</span>n_crime_cube &lt;-<span class="st"> </span><span class="kw">abs</span>(lsoa_join<span class="op">$</span>n_crime)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb119-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb119-5" data-line-number="5"><span class="co"># summary</span></a>
+<a class="sourceLine" id="cb119-6" data-line-number="6"><span class="kw">summary</span>(lsoa_join<span class="op">$</span>n_crime_cube)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   0.000   1.260   1.587   1.666   2.154   6.383</code></pre>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="exploratory-spatial-data-analysis.html#cb121-1" aria-hidden="true"></a><span class="co"># histogram</span></span>
-<span id="cb121-2"><a href="exploratory-spatial-data-analysis.html#cb121-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>n_crime_cube)) <span class="op">+</span></span>
-<span id="cb121-3"><a href="exploratory-spatial-data-analysis.html#cb121-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span>.<span class="dv">5</span>, <span class="dt">colour=</span><span class="st">&#39;black&#39;</span>, <span class="dt">fill=</span><span class="st">&#39;white&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="co"># histogram</span></a>
+<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>n_crime_cube)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb121-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span>.<span class="dv">5</span>, <span class="dt">colour=</span><span class="st">&#39;black&#39;</span>, <span class="dt">fill=</span><span class="st">&#39;white&#39;</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-crime-data-3.png" width="672" /></p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="exploratory-spatial-data-analysis.html#cb122-1" aria-hidden="true"></a><span class="co"># boxplot</span></span>
-<span id="cb122-2"><a href="exploratory-spatial-data-analysis.html#cb122-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>n_crime_cube))<span class="op">+</span></span>
-<span id="cb122-3"><a href="exploratory-spatial-data-analysis.html#cb122-3" aria-hidden="true"></a><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1"><span class="co"># boxplot</span></a>
+<a class="sourceLine" id="cb122-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>n_crime_cube))<span class="op">+</span></a>
+<a class="sourceLine" id="cb122-3" data-line-number="3"><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-crime-data-4.png" width="672" /></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="exploratory-spatial-data-analysis.html#cb123-1" aria-hidden="true"></a><span class="co"># inspect the result</span></span>
-<span id="cb123-2"><a href="exploratory-spatial-data-analysis.html#cb123-2" aria-hidden="true"></a><span class="kw">tm_shape</span>(lsoa_join) <span class="op">+</span></span>
-<span id="cb123-3"><a href="exploratory-spatial-data-analysis.html#cb123-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&#39;n_crime_cube&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="co"># inspect the result</span></a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="kw">tm_shape</span>(lsoa_join) <span class="op">+</span></a>
+<a class="sourceLine" id="cb123-3" data-line-number="3"><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&#39;n_crime_cube&#39;</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-crime-data-5.png" width="672" /></p>
 <p>This does look much better, although there are clearly several outliers in our data set with some areas that have a higher number of cases of bike theft. Let’s now also inspect our input data before we start to see whether there is a relationship between our independent variables and our dependent variable (i.e. the number of cases of bike theft).</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="exploratory-spatial-data-analysis.html#cb124-1" aria-hidden="true"></a><span class="co"># summary imd deciles</span></span>
-<span id="cb124-2"><a href="exploratory-spatial-data-analysis.html#cb124-2" aria-hidden="true"></a><span class="kw">summary</span>(lsoa_join[,<span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="co"># summary imd deciles</span></a>
+<a class="sourceLine" id="cb124-2" data-line-number="2"><span class="kw">summary</span>(lsoa_join[,<span class="dv">4</span>])</a></code></pre></div>
 <pre><code>##    gamb_dist               geometry   
 ##  Min.   :0.1230   MULTIPOLYGON :1020  
 ##  1st Qu.:0.3362   epsg:27700   :   0  
@@ -999,12 +981,12 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  Mean   :0.5189                       
 ##  3rd Qu.:0.6268                       
 ##  Max.   :3.8188</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="exploratory-spatial-data-analysis.html#cb126-1" aria-hidden="true"></a><span class="co"># boxplot imd deciles</span></span>
-<span id="cb126-2"><a href="exploratory-spatial-data-analysis.html#cb126-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>imd_dec))<span class="op">+</span></span>
-<span id="cb126-3"><a href="exploratory-spatial-data-analysis.html#cb126-3" aria-hidden="true"></a><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="co"># boxplot imd deciles</span></a>
+<a class="sourceLine" id="cb126-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>imd_dec))<span class="op">+</span></a>
+<a class="sourceLine" id="cb126-3" data-line-number="3"><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-input-data-1.png" width="672" /></p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="exploratory-spatial-data-analysis.html#cb127-1" aria-hidden="true"></a><span class="co"># summary ahah</span></span>
-<span id="cb127-2"><a href="exploratory-spatial-data-analysis.html#cb127-2" aria-hidden="true"></a><span class="kw">summary</span>(lsoa_join[,<span class="dv">5</span><span class="op">:</span><span class="dv">7</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="co"># summary ahah</span></a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="kw">summary</span>(lsoa_join[,<span class="dv">5</span><span class="op">:</span><span class="dv">7</span>])</a></code></pre></div>
 <pre><code>##    pubs_dist          off_dist               geometry   
 ##  Min.   :0.06364   Min.   :0.1574   MULTIPOLYGON :1020  
 ##  1st Qu.:0.22088   1st Qu.:0.4110   epsg:27700   :   0  
@@ -1012,78 +994,78 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  Mean   :0.37230   Mean   :0.6586                       
 ##  3rd Qu.:0.47544   3rd Qu.:0.8262                       
 ##  Max.   :1.59219   Max.   :2.0869</code></pre>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="exploratory-spatial-data-analysis.html#cb129-1" aria-hidden="true"></a><span class="co"># boplot ahah pub distance</span></span>
-<span id="cb129-2"><a href="exploratory-spatial-data-analysis.html#cb129-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>gamb_dist))<span class="op">+</span></span>
-<span id="cb129-3"><a href="exploratory-spatial-data-analysis.html#cb129-3" aria-hidden="true"></a><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="co"># boplot ahah pub distance</span></a>
+<a class="sourceLine" id="cb129-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>gamb_dist))<span class="op">+</span></a>
+<a class="sourceLine" id="cb129-3" data-line-number="3"><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-input-data-2.png" width="672" /></p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="exploratory-spatial-data-analysis.html#cb130-1" aria-hidden="true"></a><span class="co"># boplot ahah off license distance</span></span>
-<span id="cb130-2"><a href="exploratory-spatial-data-analysis.html#cb130-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>off_dist))<span class="op">+</span></span>
-<span id="cb130-3"><a href="exploratory-spatial-data-analysis.html#cb130-3" aria-hidden="true"></a><span class="st"> </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="co"># boplot ahah off license distance</span></a>
+<a class="sourceLine" id="cb130-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join, <span class="kw">aes</span>(<span class="dt">x=</span>off_dist))<span class="op">+</span></a>
+<a class="sourceLine" id="cb130-3" data-line-number="3"><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-input-data-3.png" width="672" /></p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="exploratory-spatial-data-analysis.html#cb131-1" aria-hidden="true"></a><span class="co"># gambling distance vs bike theft </span></span>
-<span id="cb131-2"><a href="exploratory-spatial-data-analysis.html#cb131-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>gamb_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></span>
-<span id="cb131-3"><a href="exploratory-spatial-data-analysis.html#cb131-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="co"># gambling distance vs bike theft </span></a>
+<a class="sourceLine" id="cb131-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>gamb_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb131-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-inspect-the-input-data-4.png" width="672" /></p>
 <p>The input data look good. There are no real strange and unexpected outliers or missing values. At the same time there is enough <a href="https://en.wikipedia.org/wiki/Homogeneity_and_heterogeneity">heterogeneity</a> in our data. This is important because if the input data have very similar values for al LSOAs they would not be very useful in trying to explain the differences in bike theft. However, we have not touched our tube locations dataset just yet. Perhaps bicycle theft happens more around tube stations? Let’s do some quick spatial analysis and add for each LSOA the distance to the nearest tube station to our dataset.</p>
 <div class="note">
 <p>Please note: the following operation requires some computing power as for all of our selected LSOAs in London we are going to calculate the euclidean distance from its centroid to all tube stations and create a <strong>distance matrix</strong>. In case the calculation takes too much time on your computer, you can download the <a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/dist_matrix.zip">distance matrix</a> instead and use <code>dist_matrix &lt;- data.matrix(read_csv('path_to_file'))</code> to continue with the practical.</p>
 </div>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="exploratory-spatial-data-analysis.html#cb132-1" aria-hidden="true"></a><span class="co"># create a point dataset from the tube csv file</span></span>
-<span id="cb132-2"><a href="exploratory-spatial-data-analysis.html#cb132-2" aria-hidden="true"></a>tube_points &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(tube, <span class="dt">coords=</span><span class="kw">c</span>(<span class="st">&#39;long&#39;</span>,<span class="st">&#39;lat&#39;</span>),<span class="dt">crs=</span><span class="dv">4326</span>)</span>
-<span id="cb132-3"><a href="exploratory-spatial-data-analysis.html#cb132-3" aria-hidden="true"></a></span>
-<span id="cb132-4"><a href="exploratory-spatial-data-analysis.html#cb132-4" aria-hidden="true"></a><span class="co"># project into british national grid (epsg 27700)</span></span>
-<span id="cb132-5"><a href="exploratory-spatial-data-analysis.html#cb132-5" aria-hidden="true"></a>tube_points &lt;-<span class="st"> </span><span class="kw">st_transform</span>(tube_points,<span class="dv">27700</span>)</span>
-<span id="cb132-6"><a href="exploratory-spatial-data-analysis.html#cb132-6" aria-hidden="true"></a></span>
-<span id="cb132-7"><a href="exploratory-spatial-data-analysis.html#cb132-7" aria-hidden="true"></a><span class="co"># create a distance matrix</span></span>
-<span id="cb132-8"><a href="exploratory-spatial-data-analysis.html#cb132-8" aria-hidden="true"></a>dist_matrix &lt;-<span class="st"> </span><span class="kw">st_distance</span>(<span class="kw">st_centroid</span>(lsoa_join),tube_points)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="co"># create a point dataset from the tube csv file</span></a>
+<a class="sourceLine" id="cb132-2" data-line-number="2">tube_points &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(tube, <span class="dt">coords=</span><span class="kw">c</span>(<span class="st">&#39;long&#39;</span>,<span class="st">&#39;lat&#39;</span>),<span class="dt">crs=</span><span class="dv">4326</span>)</a>
+<a class="sourceLine" id="cb132-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb132-4" data-line-number="4"><span class="co"># project into british national grid (epsg 27700)</span></a>
+<a class="sourceLine" id="cb132-5" data-line-number="5">tube_points &lt;-<span class="st"> </span><span class="kw">st_transform</span>(tube_points,<span class="dv">27700</span>)</a>
+<a class="sourceLine" id="cb132-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb132-7" data-line-number="7"><span class="co"># create a distance matrix</span></a>
+<a class="sourceLine" id="cb132-8" data-line-number="8">dist_matrix &lt;-<span class="st"> </span><span class="kw">st_distance</span>(<span class="kw">st_centroid</span>(lsoa_join),tube_points)</a></code></pre></div>
 <pre><code>## Warning in st_centroid.sf(lsoa_join): st_centroid assumes attributes are
 ## constant over geometries of x</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="exploratory-spatial-data-analysis.html#cb134-1" aria-hidden="true"></a><span class="co"># assign the distance of the closes tube station </span></span>
-<span id="cb134-2"><a href="exploratory-spatial-data-analysis.html#cb134-2" aria-hidden="true"></a>lsoa_join<span class="op">$</span>tube_dist &lt;-<span class="st"> </span><span class="kw">rowMins</span>(dist_matrix,<span class="dt">value=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="co"># assign the distance of the closes tube station </span></a>
+<a class="sourceLine" id="cb134-2" data-line-number="2">lsoa_join<span class="op">$</span>tube_dist &lt;-<span class="st"> </span><span class="kw">rowMins</span>(dist_matrix,<span class="dt">value=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <p>Great. So, now we can continue. Let’s start by seeing if there is any visual relationship between our input (independent) variables and our output (dependent) variable by plotting them against each other.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="exploratory-spatial-data-analysis.html#cb135-1" aria-hidden="true"></a><span class="co"># imd decile vs bike theft </span></span>
-<span id="cb135-2"><a href="exploratory-spatial-data-analysis.html#cb135-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>imd_dec, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></span>
-<span id="cb135-3"><a href="exploratory-spatial-data-analysis.html#cb135-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="co"># imd decile vs bike theft </span></a>
+<a class="sourceLine" id="cb135-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>imd_dec, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb135-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-lets-scatterplot-1.png" width="672" /></p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="exploratory-spatial-data-analysis.html#cb136-1" aria-hidden="true"></a><span class="co"># pub distance vs bike theft </span></span>
-<span id="cb136-2"><a href="exploratory-spatial-data-analysis.html#cb136-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>pubs_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></span>
-<span id="cb136-3"><a href="exploratory-spatial-data-analysis.html#cb136-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="co"># pub distance vs bike theft </span></a>
+<a class="sourceLine" id="cb136-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>pubs_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb136-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-lets-scatterplot-2.png" width="672" /></p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="exploratory-spatial-data-analysis.html#cb137-1" aria-hidden="true"></a><span class="co"># gambling outlets distance vs bike theft </span></span>
-<span id="cb137-2"><a href="exploratory-spatial-data-analysis.html#cb137-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>gamb_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></span>
-<span id="cb137-3"><a href="exploratory-spatial-data-analysis.html#cb137-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="co"># gambling outlets distance vs bike theft </span></a>
+<a class="sourceLine" id="cb137-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>gamb_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb137-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-lets-scatterplot-3.png" width="672" /></p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="exploratory-spatial-data-analysis.html#cb138-1" aria-hidden="true"></a><span class="co"># off license distance vs bike theft </span></span>
-<span id="cb138-2"><a href="exploratory-spatial-data-analysis.html#cb138-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>off_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></span>
-<span id="cb138-3"><a href="exploratory-spatial-data-analysis.html#cb138-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="co"># off license distance vs bike theft </span></a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>off_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb138-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-lets-scatterplot-4.png" width="672" /></p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="exploratory-spatial-data-analysis.html#cb139-1" aria-hidden="true"></a><span class="co"># tube station distance vs bike theft </span></span>
-<span id="cb139-2"><a href="exploratory-spatial-data-analysis.html#cb139-2" aria-hidden="true"></a><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>tube_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></span>
-<span id="cb139-3"><a href="exploratory-spatial-data-analysis.html#cb139-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1"><span class="co"># tube station distance vs bike theft </span></a>
+<a class="sourceLine" id="cb139-2" data-line-number="2"><span class="kw">ggplot</span>(lsoa_join,<span class="kw">aes</span>(<span class="dt">x=</span>tube_dist, <span class="dt">y=</span>n_crime_cube)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb139-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-lets-scatterplot-5.png" width="672" /></p>
 <p>The IMD deciles, which are in fact categorical data, do not show any obvious pattern, however, the distance to the various outlets do show some pattern. Let’s correlate.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="exploratory-spatial-data-analysis.html#cb140-1" aria-hidden="true"></a><span class="co"># imd decile vs bike theft</span></span>
-<span id="cb140-2"><a href="exploratory-spatial-data-analysis.html#cb140-2" aria-hidden="true"></a><span class="kw">cor</span>(lsoa_join<span class="op">$</span>imd_dec,lsoa_join<span class="op">$</span>n_crime_cube)</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="co"># imd decile vs bike theft</span></a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="kw">cor</span>(lsoa_join<span class="op">$</span>imd_dec,lsoa_join<span class="op">$</span>n_crime_cube)</a></code></pre></div>
 <pre><code>## [1] 0.05715025</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="exploratory-spatial-data-analysis.html#cb142-1" aria-hidden="true"></a><span class="co"># gambling outlet distance vs bike theft</span></span>
-<span id="cb142-2"><a href="exploratory-spatial-data-analysis.html#cb142-2" aria-hidden="true"></a><span class="kw">cor</span>(lsoa_join<span class="op">$</span>gamb_dist,lsoa_join<span class="op">$</span>n_crime_cube)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="co"># gambling outlet distance vs bike theft</span></a>
+<a class="sourceLine" id="cb142-2" data-line-number="2"><span class="kw">cor</span>(lsoa_join<span class="op">$</span>gamb_dist,lsoa_join<span class="op">$</span>n_crime_cube)</a></code></pre></div>
 <pre><code>## [1] -0.2768482</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="exploratory-spatial-data-analysis.html#cb144-1" aria-hidden="true"></a><span class="co"># pub distance vs bike theft</span></span>
-<span id="cb144-2"><a href="exploratory-spatial-data-analysis.html#cb144-2" aria-hidden="true"></a><span class="kw">cor</span>(lsoa_join<span class="op">$</span>pubs_dist,lsoa_join<span class="op">$</span>n_crime_cube)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="co"># pub distance vs bike theft</span></a>
+<a class="sourceLine" id="cb144-2" data-line-number="2"><span class="kw">cor</span>(lsoa_join<span class="op">$</span>pubs_dist,lsoa_join<span class="op">$</span>n_crime_cube)</a></code></pre></div>
 <pre><code>## [1] -0.4175234</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="exploratory-spatial-data-analysis.html#cb146-1" aria-hidden="true"></a><span class="co"># off license distance vs bike theft</span></span>
-<span id="cb146-2"><a href="exploratory-spatial-data-analysis.html#cb146-2" aria-hidden="true"></a><span class="kw">cor</span>(lsoa_join<span class="op">$</span>off_dist,lsoa_join<span class="op">$</span>n_crime_cube)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="co"># off license distance vs bike theft</span></a>
+<a class="sourceLine" id="cb146-2" data-line-number="2"><span class="kw">cor</span>(lsoa_join<span class="op">$</span>off_dist,lsoa_join<span class="op">$</span>n_crime_cube)</a></code></pre></div>
 <pre><code>## [1] -0.1750449</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="exploratory-spatial-data-analysis.html#cb148-1" aria-hidden="true"></a><span class="co"># tube location distance vs bike theft</span></span>
-<span id="cb148-2"><a href="exploratory-spatial-data-analysis.html#cb148-2" aria-hidden="true"></a><span class="kw">cor</span>(lsoa_join<span class="op">$</span>off_dist,lsoa_join<span class="op">$</span>n_crime_cube)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="co"># tube location distance vs bike theft</span></a>
+<a class="sourceLine" id="cb148-2" data-line-number="2"><span class="kw">cor</span>(lsoa_join<span class="op">$</span>off_dist,lsoa_join<span class="op">$</span>n_crime_cube)</a></code></pre></div>
 <pre><code>## [1] -0.1750449</code></pre>
 <p>So, looking at these correlations there seems to be some relationship between our explanatory (independent) variables and our dependent variables. It is time to form a hypothesis: LSOAs that are in a less deprived IMD decile, LSOAs with a lower mean distance to one of our outlets of interest, and LSOAs that are closer to a tube station, experience more bike theft. The null hypothesis then becomes: this relationship <strong>does not</strong> exist.</p>
 <p>Let’s see if we can test this hypothesis using an Ordinary Least Squares (OLS) regression model. In R, models are typically fitted by calling a model-fitting function, in our case <code>lm()</code> (linear model). The <code>lm()</code> function returns a fitted model which we can inspect by calling <code>summary()</code> on the object.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="exploratory-spatial-data-analysis.html#cb150-1" aria-hidden="true"></a><span class="co"># linear model</span></span>
-<span id="cb150-2"><a href="exploratory-spatial-data-analysis.html#cb150-2" aria-hidden="true"></a>crime_model &lt;-<span class="st"> </span><span class="kw">lm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>gamb_dist <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>off_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join)</span>
-<span id="cb150-3"><a href="exploratory-spatial-data-analysis.html#cb150-3" aria-hidden="true"></a></span>
-<span id="cb150-4"><a href="exploratory-spatial-data-analysis.html#cb150-4" aria-hidden="true"></a><span class="co"># get the results</span></span>
-<span id="cb150-5"><a href="exploratory-spatial-data-analysis.html#cb150-5" aria-hidden="true"></a><span class="kw">summary</span>(crime_model)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="co"># linear model</span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2">crime_model &lt;-<span class="st"> </span><span class="kw">lm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>gamb_dist <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>off_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join)</a>
+<a class="sourceLine" id="cb150-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb150-4" data-line-number="4"><span class="co"># get the results</span></a>
+<a class="sourceLine" id="cb150-5" data-line-number="5"><span class="kw">summary</span>(crime_model)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = n_crime_cube ~ imd_dec + gamb_dist + pubs_dist + 
@@ -1121,10 +1103,10 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </div>
 </div>
 </div>
-<div id="spatial-heterogeneity" class="section level2" number="5.4">
+<div id="spatial-heterogeneity" class="section level2">
 <h2><span class="header-section-number">5.4</span> Spatial heterogeneity</h2>
 <p>We now have established a relationship between IMD deciles, access to gambling outlets, access to pubs, access to off licenses, access to the nearest tube stations, and the occurrence of bike theft. However, our data are very spatial and we did not incorporate this spatial distribution into our model. So if we want to develop a regression model for bike theft in London we may have to recognise this spatial component. On top of this, a regression model assumes independence of observations: what happens in LSOA001 is not related to what happens in LSOA002 or any other LSOA. However, we know from last weeks content that this is not always the case because of spatial autocorrelation.</p>
-<div id="video-spatial-heterogeneity" class="section level3" number="5.4.1">
+<div id="video-spatial-heterogeneity" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Video: Spatial heterogeneity</h3>
 <p><div class="vembedr" align="left">
 <div>
@@ -1133,24 +1115,24 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </div>
 <a href="https://github.com/jtvandijk/GEOG0114/tree/master/slides/w05/w05_03_spatial_models.pdf">[Lecture slides]</a> <a href="https://web.microsoftstream.com/video/454ff23d-4d5c-4ae4-9f3c-323a71c42b67?list=studio">[Watch on MS stream]</a></p>
 </div>
-<div id="example-accounting-for-spatial-heterogeneity" class="section level3" number="5.4.2">
+<div id="example-accounting-for-spatial-heterogeneity" class="section level3">
 <h3><span class="header-section-number">5.4.2</span> Example: Accounting for spatial heterogeneity</h3>
 <p>Let’s start by exploring wether autocorrelation is an issue in our current analysis. Make sure the following libraries are loaded:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="exploratory-spatial-data-analysis.html#cb152-1" aria-hidden="true"></a><span class="co"># load libraries</span></span>
-<span id="cb152-2"><a href="exploratory-spatial-data-analysis.html#cb152-2" aria-hidden="true"></a><span class="kw">library</span>(sf)</span>
-<span id="cb152-3"><a href="exploratory-spatial-data-analysis.html#cb152-3" aria-hidden="true"></a><span class="kw">library</span>(tmap)</span>
-<span id="cb152-4"><a href="exploratory-spatial-data-analysis.html#cb152-4" aria-hidden="true"></a><span class="kw">library</span>(sp)</span>
-<span id="cb152-5"><a href="exploratory-spatial-data-analysis.html#cb152-5" aria-hidden="true"></a><span class="kw">library</span>(spdep)</span>
-<span id="cb152-6"><a href="exploratory-spatial-data-analysis.html#cb152-6" aria-hidden="true"></a><span class="kw">library</span>(spatialreg)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb152-2" data-line-number="2"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb152-3" data-line-number="3"><span class="kw">library</span>(tmap)</a>
+<a class="sourceLine" id="cb152-4" data-line-number="4"><span class="kw">library</span>(sp)</a>
+<a class="sourceLine" id="cb152-5" data-line-number="5"><span class="kw">library</span>(spdep)</a>
+<a class="sourceLine" id="cb152-6" data-line-number="6"><span class="kw">library</span>(spatialreg)</a></code></pre></div>
 <p>Now we are ready to go again, we are going to start by having a closer look at the residuals of our model. In other words, the residuals represent the distance between the observed values of the dependent variable and the predicted values of our dependent variables in our linear model. Residuals should be randomly distributed over space, otherwise we may be dealing with spatial autocorrelation. Strange words coming from a geographer, but right now we do <strong>not</strong> want to see any spatial patterning.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="exploratory-spatial-data-analysis.html#cb153-1" aria-hidden="true"></a><span class="co"># extract the residuals from the model and assign to our spatial dataset</span></span>
-<span id="cb153-2"><a href="exploratory-spatial-data-analysis.html#cb153-2" aria-hidden="true"></a>lsoa_join<span class="op">$</span>residuals &lt;-<span class="st"> </span><span class="kw">residuals</span>(crime_model)</span>
-<span id="cb153-3"><a href="exploratory-spatial-data-analysis.html#cb153-3" aria-hidden="true"></a></span>
-<span id="cb153-4"><a href="exploratory-spatial-data-analysis.html#cb153-4" aria-hidden="true"></a><span class="co"># extract the predicted values from the model and assign to our spatial dataset</span></span>
-<span id="cb153-5"><a href="exploratory-spatial-data-analysis.html#cb153-5" aria-hidden="true"></a>lsoa_join<span class="op">$</span>predicted &lt;-<span class="st"> </span><span class="kw">fitted</span>(crime_model)</span>
-<span id="cb153-6"><a href="exploratory-spatial-data-analysis.html#cb153-6" aria-hidden="true"></a></span>
-<span id="cb153-7"><a href="exploratory-spatial-data-analysis.html#cb153-7" aria-hidden="true"></a><span class="co"># example observed, residual, predicted of first LSOA in our data</span></span>
-<span id="cb153-8"><a href="exploratory-spatial-data-analysis.html#cb153-8" aria-hidden="true"></a>lsoa_join[<span class="dv">1</span>,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">12</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="co"># extract the residuals from the model and assign to our spatial dataset</span></a>
+<a class="sourceLine" id="cb153-2" data-line-number="2">lsoa_join<span class="op">$</span>residuals &lt;-<span class="st"> </span><span class="kw">residuals</span>(crime_model)</a>
+<a class="sourceLine" id="cb153-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb153-4" data-line-number="4"><span class="co"># extract the predicted values from the model and assign to our spatial dataset</span></a>
+<a class="sourceLine" id="cb153-5" data-line-number="5">lsoa_join<span class="op">$</span>predicted &lt;-<span class="st"> </span><span class="kw">fitted</span>(crime_model)</a>
+<a class="sourceLine" id="cb153-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb153-7" data-line-number="7"><span class="co"># example observed, residual, predicted of first LSOA in our data</span></a>
+<a class="sourceLine" id="cb153-8" data-line-number="8">lsoa_join[<span class="dv">1</span>,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">12</span>)]</a></code></pre></div>
 <pre><code>## Simple feature collection with 1 feature and 4 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -1159,24 +1141,24 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##    lsoa11cd n_crime_cube  residuals predicted                       geometry
 ## 1 E01004665     1.587401 -0.2261528  1.813554 MULTIPOLYGON (((529040.9 17...</code></pre>
 <p>Now we have our residuals assigned to their spatial units, we can plot the residuals in number of standard deviations from the mean.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="exploratory-spatial-data-analysis.html#cb155-1" aria-hidden="true"></a><span class="co"># standardise</span></span>
-<span id="cb155-2"><a href="exploratory-spatial-data-analysis.html#cb155-2" aria-hidden="true"></a>lsoa_join<span class="op">$</span>sd_mean &lt;-<span class="st"> </span>(lsoa_join<span class="op">$</span>predicted <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(lsoa_join<span class="op">$</span>predicted)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(lsoa_join<span class="op">$</span>predicted)</span>
-<span id="cb155-3"><a href="exploratory-spatial-data-analysis.html#cb155-3" aria-hidden="true"></a></span>
-<span id="cb155-4"><a href="exploratory-spatial-data-analysis.html#cb155-4" aria-hidden="true"></a><span class="co"># inspect the result</span></span>
-<span id="cb155-5"><a href="exploratory-spatial-data-analysis.html#cb155-5" aria-hidden="true"></a>breaks &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">14</span>,<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">14</span>)</span>
-<span id="cb155-6"><a href="exploratory-spatial-data-analysis.html#cb155-6" aria-hidden="true"></a><span class="kw">tm_shape</span>(lsoa_join) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb155-7"><a href="exploratory-spatial-data-analysis.html#cb155-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="st">&#39;sd_mean&#39;</span>, <span class="dt">style=</span><span class="st">&#39;fixed&#39;</span>, <span class="dt">breaks=</span>breaks, <span class="dt">palette=</span><span class="st">&#39;-RdBu&#39;</span>) <span class="op">+</span></span>
-<span id="cb155-8"><a href="exploratory-spatial-data-analysis.html#cb155-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_borders</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1"><span class="co"># standardise</span></a>
+<a class="sourceLine" id="cb155-2" data-line-number="2">lsoa_join<span class="op">$</span>sd_mean &lt;-<span class="st"> </span>(lsoa_join<span class="op">$</span>predicted <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(lsoa_join<span class="op">$</span>predicted)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(lsoa_join<span class="op">$</span>predicted)</a>
+<a class="sourceLine" id="cb155-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb155-4" data-line-number="4"><span class="co"># inspect the result</span></a>
+<a class="sourceLine" id="cb155-5" data-line-number="5">breaks &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">14</span>,<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">14</span>)</a>
+<a class="sourceLine" id="cb155-6" data-line-number="6"><span class="kw">tm_shape</span>(lsoa_join) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb155-7" data-line-number="7"><span class="st">  </span><span class="kw">tm_fill</span>(<span class="st">&#39;sd_mean&#39;</span>, <span class="dt">style=</span><span class="st">&#39;fixed&#39;</span>, <span class="dt">breaks=</span>breaks, <span class="dt">palette=</span><span class="st">&#39;-RdBu&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb155-8" data-line-number="8"><span class="st">  </span><span class="kw">tm_borders</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) </a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/05-standardise-and-plot-yeah-1.png" width="672" /></p>
 <p>You can see the spatial patterning of areas of over-prediction in the centre of Greater London with areas of under-prediction concentrating on the edges of the study area. We could be dealing with some spatial autocorrelation, so we need to test for it again. We will be using a Global Moran’s I for this. Remember with a global Moran’s I we can test how ‘random’ the spatial distribution of these values is. Global Moran’s I is a metric between -1 and 1. -1 is a completely even spatial distribution of values, 0 is a ‘random’ distribution, and 1 is a ‘non-random’ distribution of clearly defined clusters.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="exploratory-spatial-data-analysis.html#cb156-1" aria-hidden="true"></a><span class="co"># force sf to sp</span></span>
-<span id="cb156-2"><a href="exploratory-spatial-data-analysis.html#cb156-2" aria-hidden="true"></a>lsoa_join_sp &lt;-<span class="st"> </span><span class="kw">as_Spatial</span>(lsoa_join, <span class="dt">IDs=</span>lsoa_join<span class="op">$</span>lsoa11cd)</span>
-<span id="cb156-3"><a href="exploratory-spatial-data-analysis.html#cb156-3" aria-hidden="true"></a></span>
-<span id="cb156-4"><a href="exploratory-spatial-data-analysis.html#cb156-4" aria-hidden="true"></a><span class="co"># create a list of neighbours using the &#39;queen&#39; criteria</span></span>
-<span id="cb156-5"><a href="exploratory-spatial-data-analysis.html#cb156-5" aria-hidden="true"></a>lsoa_nb &lt;-<span class="st"> </span><span class="kw">poly2nb</span>(lsoa_join_sp, <span class="dt">row.names=</span>lsoa_join_sp<span class="op">$</span>lsoa11cd, <span class="dt">queen=</span><span class="ot">TRUE</span>)</span>
-<span id="cb156-6"><a href="exploratory-spatial-data-analysis.html#cb156-6" aria-hidden="true"></a></span>
-<span id="cb156-7"><a href="exploratory-spatial-data-analysis.html#cb156-7" aria-hidden="true"></a><span class="co"># check neighbours</span></span>
-<span id="cb156-8"><a href="exploratory-spatial-data-analysis.html#cb156-8" aria-hidden="true"></a><span class="kw">summary</span>(lsoa_nb)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="co"># force sf to sp</span></a>
+<a class="sourceLine" id="cb156-2" data-line-number="2">lsoa_join_sp &lt;-<span class="st"> </span><span class="kw">as_Spatial</span>(lsoa_join, <span class="dt">IDs=</span>lsoa_join<span class="op">$</span>lsoa11cd)</a>
+<a class="sourceLine" id="cb156-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb156-4" data-line-number="4"><span class="co"># create a list of neighbours using the &#39;queen&#39; criteria</span></a>
+<a class="sourceLine" id="cb156-5" data-line-number="5">lsoa_nb &lt;-<span class="st"> </span><span class="kw">poly2nb</span>(lsoa_join_sp, <span class="dt">row.names=</span>lsoa_join_sp<span class="op">$</span>lsoa11cd, <span class="dt">queen=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb156-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb156-7" data-line-number="7"><span class="co"># check neighbours</span></a>
+<a class="sourceLine" id="cb156-8" data-line-number="8"><span class="kw">summary</span>(lsoa_nb)</a></code></pre></div>
 <pre><code>## Neighbour list object:
 ## Number of regions: 1020 
 ## Number of nonzero links: 5800 
@@ -1190,12 +1172,12 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## E01001823 E01004720 E01004677 E01003143 E01033596 E01033710 E01004692 E01004218 E01003030 E01003142 E01001813 E01032775 E01004739 E01004732 with 2 links
 ## 2 most connected regions:
 ## E01000946 E01000953 with 13 links</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="exploratory-spatial-data-analysis.html#cb158-1" aria-hidden="true"></a><span class="co"># generate the row standardised spatial weight matrix</span></span>
-<span id="cb158-2"><a href="exploratory-spatial-data-analysis.html#cb158-2" aria-hidden="true"></a>wm &lt;-<span class="st"> </span><span class="kw">nb2mat</span>(lsoa_nb, <span class="dt">style=</span><span class="st">&#39;B&#39;</span>)</span>
-<span id="cb158-3"><a href="exploratory-spatial-data-analysis.html#cb158-3" aria-hidden="true"></a>rwm &lt;-<span class="st"> </span><span class="kw">nb2listw</span>(lsoa_nb, <span class="dt">style=</span><span class="st">&#39;W&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="co"># generate the row standardised spatial weight matrix</span></a>
+<a class="sourceLine" id="cb158-2" data-line-number="2">wm &lt;-<span class="st"> </span><span class="kw">nb2mat</span>(lsoa_nb, <span class="dt">style=</span><span class="st">&#39;B&#39;</span>)</a>
+<a class="sourceLine" id="cb158-3" data-line-number="3">rwm &lt;-<span class="st"> </span><span class="kw">nb2listw</span>(lsoa_nb, <span class="dt">style=</span><span class="st">&#39;W&#39;</span>)</a></code></pre></div>
 <p>Now we can execute a Moran’s test <strong>for the regression residuals</strong>. We use <code>lm.morantest()</code> for this. This is important because this function takes into account that the input data are residuals, something which the ‘normal’ Moran’s I test does not do.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="exploratory-spatial-data-analysis.html#cb159-1" aria-hidden="true"></a><span class="co"># Moran&#39;s I</span></span>
-<span id="cb159-2"><a href="exploratory-spatial-data-analysis.html#cb159-2" aria-hidden="true"></a><span class="kw">lm.morantest</span>(crime_model, rwm, <span class="dt">alternative=</span><span class="st">&#39;two.sided&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="co"># Moran&#39;s I</span></a>
+<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="kw">lm.morantest</span>(crime_model, rwm, <span class="dt">alternative=</span><span class="st">&#39;two.sided&#39;</span>)</a></code></pre></div>
 <pre><code>## 
 ## 	Global Moran I for regression residuals
 ## 
@@ -1211,8 +1193,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##     0.3439158982    -0.0035656704     0.0003556032</code></pre>
 <p>Not surprisingly, the test is significant: we are indeed dealing with spatial autocorrelation. This means that our OLS regression may not be the best way to respresent our data as currently our regression line will per definition under-predict or over-predict in areas that are close to one another. There are two ways of taking this spatial dependence into account: by means of a <strong>spatial error</strong> model or by means of a <strong>spatially lagged</strong> model. These methods are quite different as they treat spatial autocorrelation in different ways. In the first case, the observed spatial dependence <em>is not</em> considered as an actual spatial process but is an effect of spatial clustering. In the second case, spatial dependence <em>is</em> considered as an actual spatial process and ‘space’ should be incorporated as an explanation in the model.</p>
 <p>How do we now decide which model to use? Well, first, as with any model, the relationship between independent and dependent variables must make sense. So, for instance, if you think that the spatial dependence is just an artefact of the data distribution rather than a truly spatial process, you should go with a spatial error model. Vice versa, if you think that the spatial dependence is the result of a spatial process, you should consider the spatially lagged model. In less clear cut cases, we can also get a little help by making use of the <strong>Lagrange Multiplier test statistics</strong>. We can these run these tests as follows:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="exploratory-spatial-data-analysis.html#cb161-1" aria-hidden="true"></a><span class="co"># lagrange mulitplier</span></span>
-<span id="cb161-2"><a href="exploratory-spatial-data-analysis.html#cb161-2" aria-hidden="true"></a><span class="kw">lm.LMtests</span>(crime_model, rwm, <span class="dt">test =</span> <span class="kw">c</span>(<span class="st">&#39;LMerr&#39;</span>,<span class="st">&#39;LMlag&#39;</span>,<span class="st">&#39;RLMerr&#39;</span>,<span class="st">&#39;RLMlag&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="co"># lagrange mulitplier</span></a>
+<a class="sourceLine" id="cb161-2" data-line-number="2"><span class="kw">lm.LMtests</span>(crime_model, rwm, <span class="dt">test =</span> <span class="kw">c</span>(<span class="st">&#39;LMerr&#39;</span>,<span class="st">&#39;LMlag&#39;</span>,<span class="st">&#39;RLMerr&#39;</span>,<span class="st">&#39;RLMlag&#39;</span>))</a></code></pre></div>
 <pre><code>## 
 ## 	Lagrange multiplier diagnostics for spatial dependence
 ## 
@@ -1254,12 +1236,12 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## RLMlag = 29.348, df = 1, p-value = 6.049e-08</code></pre>
 <p>How dow we use this information? The output of the test is split into two groups: the standard tests (<strong>LMerr</strong> and <strong>LMlag</strong>) and the robust versions of these tests (<strong>RLMerr</strong> and <strong>RMlag</strong>).</p>
 <p>The robust version should be used only if both of the standard tests are significant (i.e. below the .05 level). If only one of the standard tests comes back signficant, but the other one is not, then it becomes very easy to decide between the spatial error and the spatially lagged model: choose the one that is significant! In case both the standard tests are significant we would need to look at the outcomes of the robust tests and make a decision. In such a situation, the best suggestion is to compare the <em>p-values</em> of both tests and select the model that is ‘more significant’ than the other. In our case the situation is very clear and we should go with a spatially lagged model rather than a spatial error model. Let’s do that using the <code>lagsarlm()</code> function. Also, let’s remove the distance to the neareast off license as that variable was not significant to begin with.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="exploratory-spatial-data-analysis.html#cb163-1" aria-hidden="true"></a><span class="co"># execute the spatially lagged model</span></span>
-<span id="cb163-2"><a href="exploratory-spatial-data-analysis.html#cb163-2" aria-hidden="true"></a><span class="co"># this can take a little bit of time, be patient!</span></span>
-<span id="cb163-3"><a href="exploratory-spatial-data-analysis.html#cb163-3" aria-hidden="true"></a>crime_model_lag &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>gamb_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join, <span class="dt">listw=</span>rwm)</span>
-<span id="cb163-4"><a href="exploratory-spatial-data-analysis.html#cb163-4" aria-hidden="true"></a></span>
-<span id="cb163-5"><a href="exploratory-spatial-data-analysis.html#cb163-5" aria-hidden="true"></a><span class="co"># let&#39;s inspet the results</span></span>
-<span id="cb163-6"><a href="exploratory-spatial-data-analysis.html#cb163-6" aria-hidden="true"></a><span class="kw">summary</span>(crime_model_lag)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1"><span class="co"># execute the spatially lagged model</span></a>
+<a class="sourceLine" id="cb163-2" data-line-number="2"><span class="co"># this can take a little bit of time, be patient!</span></a>
+<a class="sourceLine" id="cb163-3" data-line-number="3">crime_model_lag &lt;-<span class="st"> </span><span class="kw">lagsarlm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>gamb_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join, <span class="dt">listw=</span>rwm)</a>
+<a class="sourceLine" id="cb163-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb163-5" data-line-number="5"><span class="co"># let&#39;s inspet the results</span></a>
+<a class="sourceLine" id="cb163-6" data-line-number="6"><span class="kw">summary</span>(crime_model_lag)</a></code></pre></div>
 <pre><code>## 
 ## Call:lagsarlm(formula = n_crime_cube ~ imd_dec + pubs_dist + gamb_dist + 
 ##     tube_dist, data = lsoa_join, listw = rwm)
@@ -1294,12 +1276,12 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <p>Be careful <strong>not</strong> to compare the regression coefficients of the spatially lagged model to the regression coefficients of the original OLS model because their meaning now has changed. Whilst in the OLS model the coefficient of any of the independent variables measures the overall impact of these variables, this is not the case in the spatially lagged model: by including the spatial lag, the effect that X has on Y depends also (indirectly) on the effect that X has on Y in its neighbours.</p>
 </div>
 <p>Although we probably should not, let’s also run a spatial error model. Just for the sake of running it and see how it looks.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="exploratory-spatial-data-analysis.html#cb165-1" aria-hidden="true"></a><span class="co"># execute the spatially lagged model</span></span>
-<span id="cb165-2"><a href="exploratory-spatial-data-analysis.html#cb165-2" aria-hidden="true"></a><span class="co"># this can take a little bit of time, be patient!</span></span>
-<span id="cb165-3"><a href="exploratory-spatial-data-analysis.html#cb165-3" aria-hidden="true"></a>crime_model_err &lt;-<span class="st"> </span><span class="kw">errorsarlm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>gamb_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join, <span class="dt">listw=</span>rwm)</span>
-<span id="cb165-4"><a href="exploratory-spatial-data-analysis.html#cb165-4" aria-hidden="true"></a></span>
-<span id="cb165-5"><a href="exploratory-spatial-data-analysis.html#cb165-5" aria-hidden="true"></a><span class="co"># let&#39;s inspect the results</span></span>
-<span id="cb165-6"><a href="exploratory-spatial-data-analysis.html#cb165-6" aria-hidden="true"></a><span class="kw">summary</span>(crime_model_err)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="co"># execute the spatially lagged model</span></a>
+<a class="sourceLine" id="cb165-2" data-line-number="2"><span class="co"># this can take a little bit of time, be patient!</span></a>
+<a class="sourceLine" id="cb165-3" data-line-number="3">crime_model_err &lt;-<span class="st"> </span><span class="kw">errorsarlm</span>(n_crime_cube <span class="op">~</span><span class="st"> </span>imd_dec <span class="op">+</span><span class="st"> </span>pubs_dist <span class="op">+</span><span class="st"> </span>gamb_dist <span class="op">+</span><span class="st"> </span>tube_dist, <span class="dt">data=</span>lsoa_join, <span class="dt">listw=</span>rwm)</a>
+<a class="sourceLine" id="cb165-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb165-5" data-line-number="5"><span class="co"># let&#39;s inspect the results</span></a>
+<a class="sourceLine" id="cb165-6" data-line-number="6"><span class="kw">summary</span>(crime_model_err)</a></code></pre></div>
 <pre><code>## 
 ## Call:errorsarlm(formula = n_crime_cube ~ imd_dec + pubs_dist + gamb_dist + 
 ##     tube_dist, data = lsoa_join, listw = rwm)
@@ -1332,16 +1314,16 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <p>This time you could actually compare the regression coefficients from the spatial error model with those from the OLS model!</p>
 </div>
 </div>
-<div id="geographically-weighted-regression" class="section level3" number="5.4.3">
+<div id="geographically-weighted-regression" class="section level3">
 <h3><span class="header-section-number">5.4.3</span> Geographically Weighted Regression</h3>
 <p>As mentioned in the short lecture video, another option to take ‘space’ into account is by executing a Geographically Weighted Regression (GWR). However, as this week’s content is already getting very long as well as that GWR will be covered in your <a href="https://andrewmaclachlan.github.io/CASA0005repo/gwr-and-spatially-lagged-regression.html">CASA005 module</a>, we will not cover this now. Do have a look at the article by <a href="https://onlinelibrary.wiley.com/doi/10.1111/gean.12259">Shabrian et al. 2020</a> that is part of this week’s essential reading to see GWR in action.</p>
 </div>
 </div>
-<div id="take-home-message" class="section level2" number="5.5">
+<div id="take-home-message" class="section level2">
 <h2><span class="header-section-number">5.5</span> Take home message</h2>
 <p>Exploratory (Spatial) Data Analysis is at the core of any analysis. After you cleaned and prepared your data, you first want to inspect your data through simple and visual methods to get acquainted with the data. Then you can start looking for relationships, and, if any relationships are found you are going to want to ask the question to what extent these relationships are real or to what extent other (spatial) processes, such as spatial dependence, play a role in shaping these relationships. That is it for this week! Next week we will move to point pattern analysis, but that is next week so for now we can <a href="https://www.youtube.com/watch?v=d8Fmu3RLEOY">celebrate the successful completion</a> of this week’s material.</p>
 </div>
-<div id="attributions_w05" class="section level2" number="5.6">
+<div id="attributions_w05" class="section level2">
 <h2><span class="header-section-number">5.6</span> Attributions</h2>
 <p>This week’s content and practical uses content and inspiration from:</p>
 <ul>
@@ -1349,7 +1331,7 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 <li>Medina, J, Solymosi, R. 2019. Crime Mapping in R. <a href="https://maczokni.github.io/crimemapping_textbook_bookdown/" class="uri">https://maczokni.github.io/crimemapping_textbook_bookdown/</a></li>
 </ul>
 </div>
-<div id="feedback_w05" class="section level2" number="5.7">
+<div id="feedback_w05" class="section level2">
 <h2><span class="header-section-number">5.7</span> Feedback</h2>
 <p>Please take a moment to give us some <a href="https://forms.gle/BYbZySVSHeoUEkJh9">feedback on this week’s content</a>.</p>
 
