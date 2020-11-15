@@ -17,7 +17,7 @@ In addition, each week will have its own reading list or additional 'recommended
 | 6             | 16/11/2020    | Mapping clusters with point pattern analysis |
 | 7             | 23/11/2020    | Geostatistics, interpolation and raster analysis |
 | 8             | 30/11/2020    | DBScan and cluster analysis for urban applications |
-| 9             | 09/12/2020    | *To be confirmed * |
+| 9             | 09/12/2020    | Using geodemographics for mobility and accessibility analysis |
 | 10            | 04/12/2020    | Creating reproducible research and module recap |
 
 ## Learning objectives {-}
