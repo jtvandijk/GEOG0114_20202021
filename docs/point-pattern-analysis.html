@@ -24,7 +24,7 @@
 <meta name="author" content="Justin van Dijk and Joanna Wilkin" />
 
 
-<meta name="date" content="2020-11-05" />
+<meta name="date" content="2020-11-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="exploratory-spatial-data-analysis.html"/>
 <link rel="next" href="geostatistics.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,25 +55,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -134,11 +136,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#get-in-touch"><i class="fa fa-check"></i>Get in touch</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#noticed-a-mistake-in-this-resource"><i class="fa fa-check"></i>Noticed a mistake in this resource?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a><ul>
+<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a>
+<ul>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#module-structure"><i class="fa fa-check"></i>Module structure</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#weekly-topics"><i class="fa fa-check"></i>Weekly topics</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
@@ -149,33 +153,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="spatial-analysis-for-data-science.html"><a href="spatial-analysis-for-data-science.html"><i class="fa fa-check"></i><b>1</b> Spatial analysis for data science</a></li>
 <li class="chapter" data-level="2" data-path="geographical-representation.html"><a href="geographical-representation.html"><i class="fa fa-check"></i><b>2</b> Geographical representation</a></li>
 <li class="chapter" data-level="3" data-path="spatial-properties-and-relationships.html"><a href="spatial-properties-and-relationships.html"><i class="fa fa-check"></i><b>3</b> Spatial properties and relationships</a></li>
-<li class="chapter" data-level="4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Spatial autocorrelation</a><ul>
-<li class="chapter" data-level="4.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#neighbours"><i class="fa fa-check"></i><b>4.1</b> Neighbours</a><ul>
+<li class="chapter" data-level="4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Spatial autocorrelation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#neighbours"><i class="fa fa-check"></i><b>4.1</b> Neighbours</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#setting-up-the-environment"><i class="fa fa-check"></i><b>4.1.1</b> Setting up the environment</a></li>
 <li class="chapter" data-level="4.1.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#euclidean-neighbours"><i class="fa fa-check"></i><b>4.1.2</b> Euclidean neighbours</a></li>
 <li class="chapter" data-level="4.1.3" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#shared-boundary-neighbours"><i class="fa fa-check"></i><b>4.1.3</b> Shared boundary neighbours</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#quantifying-difference-over-space"><i class="fa fa-check"></i><b>4.2</b> Quantifying difference over space</a><ul>
+<li class="chapter" data-level="4.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#quantifying-difference-over-space"><i class="fa fa-check"></i><b>4.2</b> Quantifying difference over space</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#our-property-is-theft."><i class="fa fa-check"></i><b>4.2.1</b> Our property is theft.</a></li>
 <li class="chapter" data-level="4.2.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#global-morans-i"><i class="fa fa-check"></i><b>4.2.2</b> Global Moran’s I</a></li>
 <li class="chapter" data-level="4.2.3" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#local-morans-i"><i class="fa fa-check"></i><b>4.2.3</b> Local Moran’s I</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory spatial data analysis</a><ul>
-<li class="chapter" data-level="5.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#introduction_w05"><i class="fa fa-check"></i><b>5.1</b> Introduction</a><ul>
+<li class="chapter" data-level="5" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory spatial data analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#introduction_w05"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#overview_w05"><i class="fa fa-check"></i><b>5.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#tidy-data"><i class="fa fa-check"></i><b>5.2</b> Tidy data</a><ul>
+<li class="chapter" data-level="5.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#tidy-data"><i class="fa fa-check"></i><b>5.2</b> Tidy data</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-tidy-data"><i class="fa fa-check"></i><b>5.2.1</b> Video: Tidy data</a></li>
 <li class="chapter" data-level="5.2.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#what-do-tidy-data-look-like"><i class="fa fa-check"></i><b>5.2.2</b> What do tidy data look like?</a></li>
 <li class="chapter" data-level="5.2.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-creating-tidy-data"><i class="fa fa-check"></i><b>5.2.3</b> Example: Creating tidy data</a></li>
 <li class="chapter" data-level="5.2.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#assignment_w05"><i class="fa fa-check"></i><b>5.2.4</b> Assignments</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r"><i class="fa fa-check"></i><b>5.3</b> Exploratory spatial data analysis in R</a><ul>
+<li class="chapter" data-level="5.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r"><i class="fa fa-check"></i><b>5.3</b> Exploratory spatial data analysis in R</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-exploratory-spatial-data-analysis"><i class="fa fa-check"></i><b>5.3.1</b> Video: Exploratory spatial data analysis</a></li>
 <li class="chapter" data-level="5.3.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-exploring-our-dataset"><i class="fa fa-check"></i><b>5.3.2</b> Example: Exploring our dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4</b> Spatial heterogeneity</a><ul>
+<li class="chapter" data-level="5.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4</b> Spatial heterogeneity</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4.1</b> Video: Spatial heterogeneity</a></li>
 <li class="chapter" data-level="5.4.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-accounting-for-spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4.2</b> Example: Accounting for spatial heterogeneity</a></li>
 <li class="chapter" data-level="5.4.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#geographically-weighted-regression"><i class="fa fa-check"></i><b>5.4.3</b> Geographically Weighted Regression</a></li>
@@ -184,26 +196,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#attributions_w05"><i class="fa fa-check"></i><b>5.6</b> Attributions</a></li>
 <li class="chapter" data-level="5.7" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#feedback_w05"><i class="fa fa-check"></i><b>5.7</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a><ul>
-<li class="chapter" data-level="6.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#introduction_w06"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#introduction_w06"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#overview_w06"><i class="fa fa-check"></i><b>6.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#basic-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2</b> Basic point pattern analysis</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-basic-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.1</b> Video: Basic point pattern analysis</a></li>
-<li class="chapter" data-level="6.2.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-basic-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.2</b> Example: Basic point pattern analysis</a></li>
+<li class="chapter" data-level="6.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#point-pattern-analysis-1"><i class="fa fa-check"></i><b>6.2</b> Point pattern analysis</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.1</b> Video: Point pattern analysis</a></li>
+<li class="chapter" data-level="6.2.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.2</b> Example: Point pattern analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#advanced-point-pattern-analysis"><i class="fa fa-check"></i><b>6.3</b> Advanced Point Pattern Analysis</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-advanced-point-pattern-analaysis-data"><i class="fa fa-check"></i><b>6.3.1</b> Video: Advanced point pattern analaysis data</a></li>
-<li class="chapter" data-level="6.3.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-advanced-point-pattern-analysis"><i class="fa fa-check"></i><b>6.3.2</b> Example: Advanced Point Pattern Analysis</a></li>
+<li class="chapter" data-level="6.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3</b> Point pattern analysis in practice</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3.1</b> Video: Point pattern analysis in practice</a></li>
+<li class="chapter" data-level="6.3.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3.2</b> Example: Point Pattern Analysis in practice</a></li>
+<li class="chapter" data-level="6.3.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#assignment_w06"><i class="fa fa-check"></i><b>6.3.3</b> Assignments</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#take-home-message"><i class="fa fa-check"></i><b>6.4</b> Take home message</a></li>
 <li class="chapter" data-level="6.5" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#attributions_w06"><i class="fa fa-check"></i><b>6.5</b> Attributions</a></li>
 <li class="chapter" data-level="6.6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#feedback_w06"><i class="fa fa-check"></i><b>6.6</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="geostatistics.html"><a href="geostatistics.html"><i class="fa fa-check"></i><b>7</b> Geostatistics</a><ul>
+<li class="chapter" data-level="7" data-path="geostatistics.html"><a href="geostatistics.html"><i class="fa fa-check"></i><b>7</b> Geostatistics</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="geostatistics.html"><a href="geostatistics.html#feedback_w07"><i class="fa fa-check"></i><b>7.1</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="cluster-analysis.html"><a href="cluster-analysis.html"><i class="fa fa-check"></i><b>8</b> Cluster analysis</a><ul>
+<li class="chapter" data-level="8" data-path="cluster-analysis.html"><a href="cluster-analysis.html"><i class="fa fa-check"></i><b>8</b> Cluster analysis</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="cluster-analysis.html"><a href="cluster-analysis.html#feedback_w08"><i class="fa fa-check"></i><b>8.1</b> Feedback</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="bayesian-modelling.html"><a href="bayesian-modelling.html"><i class="fa fa-check"></i><b>9</b> Bayesian modelling</a></li>
@@ -225,32 +244,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="point-pattern-analysis" class="section level1">
+<div id="point-pattern-analysis" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Point pattern analysis</h1>
-<div id="introduction_w06" class="section level2">
+<div id="introduction_w06" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Introduction</h2>
-<p>In our previous practicals, we have aggregated our event data into areal units, primarily using administrative geographies, to enable its easy comparison with other datasets provided at the same spatial scale, such as the census data used in the previous week, as well as to conduct spatial autocorrelation tests. However, when locations are precisely known, spatial point data can be used with a variety of spatial analytic techniques that go beyond the methods typically applied to areal data. The set of methods unique to point data are often referred to as point pattern analysis and geostatistics.</p>
-<p>This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look first at basic forms of point pattern analysis, including mean centers and the standard deviational ellipse, and then more powerful analysis methods, including kernel density estimation and Ripley’s K function. These latter functions help determine and/or show whether points have a random, dispersed or clustered distribution pattern at a certain scale.
-This week is structured by <strong>two</strong> short lecture videos, <strong>one</strong> <a href="">assignment</a> that you need to do in preparation for Friday’s seminar, and the practical material. As always, this <a href="https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&amp;login=1">week’s reading list</a> is available on the UCL library reading list page for the course.</p>
-<div class="note">
-<p>Please be aware that you will need to <a href="">submit the result</a> of the assignment <strong>before Friday morning 09h00</strong> UK time (GMT+0).</p>
-</div>
-<div id="overview_w06" class="section level3">
+<p>In our previous practicals, we have aggregated our point data into areal units, primarily using administrative geographies, to enable its easy comparison with other datasets provided at the same spatial scale, such as the census data used in the previous week, as well as to conduct spatial autocorrelation tests. However, when locations are precisely known, spatial point data can be used with a variety of spatial analytic techniques that go beyond the methods typically applied to areal data. The set of methods unique to point data are often referred to as point pattern analysis and geostatistics.</p>
+<p>This week, we focus on point pattern analysis, whilst next week we will look at geostatistics. Within point pattern analysis, we look to detect patterns across a set of locations, including measuring density, dispersion and homogeneity in our point structures. We will look at both distance-based methods, by employing Ripley’s K function, as well as density-based methods, particularly Kernel Density Estimation.</p>
+<p>This week is structured by <strong>two</strong> short lecture videos, <strong>two</strong> <a href="point-pattern-analysis.html#assignment_w06">assignments</a> that you need to do in preparation for Friday’s seminar, and the practical material. As always, this <a href="https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&amp;login=1">week’s reading list</a> is available on the UCL library reading list page for the course.</p>
+<div id="overview_w06" class="section level3" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Video: Overview</h3>
-<p>[Lecture slides] <a href="">[Watch on MS stream]</a></p>
+<p><div class="vembedr" align="left">
+<div>
+<iframe src="https://web.microsoftstream.com/embed/video/0c605bb0-59f2-44ec-aaa1-d09c2d22bc2e?autoplay=false&amp;showinfo=true" width="533" height="300" style="border:none;"></iframe>
 </div>
 </div>
-<div id="basic-point-pattern-analysis" class="section level2">
-<h2><span class="header-section-number">6.2</span> Basic point pattern analysis</h2>
-<p>In the previous weeks, we have aggregated our event data into areal units. In R we could do this very easily by identifying all points that fall within a polygon using the <code>st_intersects()</code> function from the <code>sf</code> package to and we used this method to
-<a href="spatial-autocorrelation.html#our-property-is-theft.">aggregate ‘theft from persons’ in Camden in 2019</a> as well as to <a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r">aggregate ‘bicycle theft’ in four of London’s boroughs</a>. However, depending on what you are trying to find out, points do not necessarily have to be aggregateda and there are many applications in which you want to work with the point locations directly. In fact, the R package <code>spatstat</code> for spatial statistics is predominantly designed for analysing spatial point patterns. The mere fact that the <a href="https://cran.r-project.org/web/packages/spatstat/spatstat.pdf"><code>spatstat</code> documentation</a> has almost 1,800 pages should give you a good idea about the genearl importance of point pattern analysis.</p>
-<div id="video-basic-point-pattern-analysis" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Video: Basic point pattern analysis</h3>
-<p><a href="">[Lecture slides]</a> <a href="">[Watch on MS stream]</a></p>
+[Lecture slides] <a href="https://web.microsoftstream.com/video/0c605bb0-59f2-44ec-aaa1-d09c2d22bc2e?list=studio">[Watch on MS stream]</a></p>
 </div>
-<div id="example-basic-point-pattern-analysis" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> Example: Basic point pattern analysis</h3>
-<p>After last week’s success, we got a follow-up assignment to study bicycle theft. This time our assignment is to analyse the pattern of bicycle theft for the whole of <a href="https://en.wikipedia.org/wiki/Greater_London">Greater London</a>. We also have access to London’s <a href="https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography">Middle Layer super Output Areas</a> (MSOAs) as well as the boundaries of the <a href="https://en.wikipedia.org/wiki/London_boroughs">London boroughs</a>. Even though we are going to analyses the points, we still need some administrative boundaries even if it was only to give some context to our maps!</p>
+</div>
+<div id="point-pattern-analysis-1" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Point pattern analysis</h2>
+<p>In the previous weeks, we have aggregated our event data into areal units. In R we could do this very easily by identifying all points that fall within a polygon using the <code>st_intersects()</code> function from the <code>sf</code> package. We used this method to
+<a href="spatial-autocorrelation.html#our-property-is-theft.">aggregate ‘theft from persons’ in Camden in 2019</a> as well as to <a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r">aggregate ‘bicycle theft’ in four of London’s boroughs</a>. However, depending on your research problem and aim, points do not necessarily have to be aggregated and there are many applications in which you want to work with the point locations directly. In fact, the R package <code>spatstat</code> for spatial statistics is predominantly designed for analysing spatial point patterns. The mere fact that the <a href="https://cran.r-project.org/web/packages/spatstat/spatstat.pdf"><code>spatstat</code> documentation</a> has almost 1,800 pages should give you a good idea about the general importance of point pattern analysis within the domain of Social and Geographic Data Science.</p>
+<div id="video-point-pattern-analysis" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Video: Point pattern analysis</h3>
+<p><div class="vembedr" align="left">
+<div>
+<iframe src="https://web.microsoftstream.com/embed/video/c2e8d774-2506-454a-9a92-d5c18d0c6064?autoplay=false&amp;showinfo=true" width="533" height="300" style="border:none;"></iframe>
+</div>
+</div>
+<a href="https://github.com/jtvandijk/GEOG0114/tree/master/slides/w06/w06_01_point_pattern_analysis.pdf">[Lecture slides]</a> <a href="https://web.microsoftstream.com/video/c2e8d774-2506-454a-9a92-d5c18d0c6064?list=studio">[Watch on MS stream]</a></p>
+</div>
+<div id="example-point-pattern-analysis" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Example: Point pattern analysis</h3>
+<p>After last week’s success in analysing spatial autocorrelation and running two spatial models, we got a follow-up assignment to look further into bicycle theft. This time our assignment is to analyse the pattern of bicycle theft for the whole of <a href="https://en.wikipedia.org/wiki/Greater_London">Greater London</a> in November 2019. We also have access to the boundaries of the 33 <a href="https://en.wikipedia.org/wiki/London_boroughs">London boroughs</a>.</p>
 <div id="file-download" class="section level4 unnumbered">
 <h4>File download</h4>
 <table>
@@ -263,46 +289,301 @@ This week is structured by <strong>two</strong> short lecture videos, <strong>on
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Middle-layer Super Output Areas London 2011</td>
-<td align="left"><code>shp</code></td>
-<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/msoa_london_2011.zip">Download</a></td>
-</tr>
-<tr class="even">
 <td align="left">Local Authorithy Districts London 2020</td>
 <td align="left"><code>csv</code></td>
-<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/lad_london_2011.zip">Download</a></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/london_lad_2020.zip">Download</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Bicycle theft data London 2019</td>
 <td align="left"><code>csv</code></td>
 <td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/2019_london_bicycle_theft.zip">Download</a></td>
 </tr>
 </tbody>
 </table>
-<p>Download the individual files to your own computer and as usal make sure <a href="spatial-autocorrelation.html#setting-up-the-environment">your data directory</a> is set up correctly and the data are unzipped.</p>
+<p>Download the individual files to your own computer and as usual make sure <a href="spatial-autocorrelation.html#setting-up-the-environment">your data directory</a> is set up correctly and the data are unzipped.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="point-pattern-analysis.html#cb167-1" aria-hidden="true"></a><span class="co"># load libraries</span></span>
+<span id="cb167-2"><a href="point-pattern-analysis.html#cb167-2" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb167-3"><a href="point-pattern-analysis.html#cb167-3" aria-hidden="true"></a><span class="kw">library</span>(spatstat)</span>
+<span id="cb167-4"><a href="point-pattern-analysis.html#cb167-4" aria-hidden="true"></a><span class="kw">library</span>(tmap)</span>
+<span id="cb167-5"><a href="point-pattern-analysis.html#cb167-5" aria-hidden="true"></a><span class="kw">library</span>(sf)</span>
+<span id="cb167-6"><a href="point-pattern-analysis.html#cb167-6" aria-hidden="true"></a><span class="kw">library</span>(maptools)</span>
+<span id="cb167-7"><a href="point-pattern-analysis.html#cb167-7" aria-hidden="true"></a></span>
+<span id="cb167-8"><a href="point-pattern-analysis.html#cb167-8" aria-hidden="true"></a><span class="co"># load spatial data</span></span>
+<span id="cb167-9"><a href="point-pattern-analysis.html#cb167-9" aria-hidden="true"></a>lad &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;raw/boundaries/london_lad_2020/london_lad_2020.shp&#39;</span>)</span></code></pre></div>
+<pre><code>## Reading layer `london_lad_2020&#39; from data source `/Users/Tycho/Dropbox/UCL/Web/jtvandijk.github.io/GEOG0114/raw/boundaries/london_lad_2020/london_lad_2020.shp&#39; using driver `ESRI Shapefile&#39;
+## Simple feature collection with 33 features and 1 field
+## geometry type:  POLYGON
+## dimension:      XY
+## bbox:           xmin: 503568.2 ymin: 155850.8 xmax: 561957.5 ymax: 200933.9
+## CRS:            27700</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="point-pattern-analysis.html#cb169-1" aria-hidden="true"></a><span class="co"># load data</span></span>
+<span id="cb169-2"><a href="point-pattern-analysis.html#cb169-2" aria-hidden="true"></a>crime &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/crime/2019_london_bicycle_theft.csv&#39;</span>)</span>
+<span id="cb169-3"><a href="point-pattern-analysis.html#cb169-3" aria-hidden="true"></a></span>
+<span id="cb169-4"><a href="point-pattern-analysis.html#cb169-4" aria-hidden="true"></a><span class="co"># inspect</span></span>
+<span id="cb169-5"><a href="point-pattern-analysis.html#cb169-5" aria-hidden="true"></a><span class="kw">head</span>(crime)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   month      long   lat type         
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        
+## 1 2019-03 -0.0981  51.5 Bicycle theft
+## 2 2019-03 -0.0981  51.5 Bicycle theft
+## 3 2019-03 -0.0976  51.5 Bicycle theft
+## 4 2019-03 -0.0930  51.5 Bicycle theft
+## 5 2019-03 -0.0941  51.5 Bicycle theft
+## 6 2019-03 -0.0930  51.5 Bicycle theft</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="point-pattern-analysis.html#cb171-1" aria-hidden="true"></a><span class="co"># filter crime data, create point layer, and project into british national grid (epsg 27700)</span></span>
+<span id="cb171-2"><a href="point-pattern-analysis.html#cb171-2" aria-hidden="true"></a>crime_dec &lt;-<span class="st"> </span>crime[crime<span class="op">$</span>month<span class="op">==</span><span class="st">&#39;2019-11&#39;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(crime<span class="op">$</span>long) <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(crime<span class="op">$</span>lat),]</span>
+<span id="cb171-3"><a href="point-pattern-analysis.html#cb171-3" aria-hidden="true"></a>crime_points &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(crime_dec, <span class="dt">coords=</span><span class="kw">c</span>(<span class="st">&#39;long&#39;</span>,<span class="st">&#39;lat&#39;</span>),<span class="dt">crs=</span><span class="dv">4326</span>)</span>
+<span id="cb171-4"><a href="point-pattern-analysis.html#cb171-4" aria-hidden="true"></a>crime_points &lt;-<span class="st"> </span><span class="kw">st_transform</span>(crime_points,<span class="dv">27700</span>)</span>
+<span id="cb171-5"><a href="point-pattern-analysis.html#cb171-5" aria-hidden="true"></a></span>
+<span id="cb171-6"><a href="point-pattern-analysis.html#cb171-6" aria-hidden="true"></a><span class="co"># ensure all points are within the boundaries of Greater London</span></span>
+<span id="cb171-7"><a href="point-pattern-analysis.html#cb171-7" aria-hidden="true"></a>crime_london &lt;-<span class="st"> </span><span class="kw">st_intersects</span>(lad, crime_points)</span>
+<span id="cb171-8"><a href="point-pattern-analysis.html#cb171-8" aria-hidden="true"></a>crime_points &lt;-<span class="st"> </span>crime_points[<span class="kw">unlist</span>(crime_london),]</span>
+<span id="cb171-9"><a href="point-pattern-analysis.html#cb171-9" aria-hidden="true"></a></span>
+<span id="cb171-10"><a href="point-pattern-analysis.html#cb171-10" aria-hidden="true"></a><span class="co"># inspect</span></span>
+<span id="cb171-11"><a href="point-pattern-analysis.html#cb171-11" aria-hidden="true"></a><span class="kw">tm_shape</span>(lad) <span class="op">+</span></span>
+<span id="cb171-12"><a href="point-pattern-analysis.html#cb171-12" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>() <span class="op">+</span></span>
+<span id="cb171-13"><a href="point-pattern-analysis.html#cb171-13" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(crime_points) <span class="op">+</span></span>
+<span id="cb171-14"><a href="point-pattern-analysis.html#cb171-14" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_dots</span>()</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-load-libraries-and%20data-1.png" width="672" /></p>
+<p>Where we are now somehow familiar with the <code>sf</code> and <code>sp</code> packages, the <code>spatstat</code> package expects point data to be in yet another format: <code>ppp</code>. An object of the class <code>ppp</code> represents a two-dimensional point dataset within a pre-defined area, the window of observation. Because <code>spatstat</code> predates <code>sf</code> we do need to take several steps to transform our simple features object to a <code>ppp</code> object.</p>
+<div class="note">
+<p>As we are looking at a <em>point pattern</em>, a <code>ppp</code> object does not necessarily have to have attributes associated with the <strong>events</strong> (as point data are called within <code>spatstat</code>). Within the <code>spatstat</code> environment, attributes are referred to as <strong>marks</strong>. Be aware that some functions do require these marks to be present.</p>
+</div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="point-pattern-analysis.html#cb172-1" aria-hidden="true"></a><span class="co"># transform sf to sp</span></span>
+<span id="cb172-2"><a href="point-pattern-analysis.html#cb172-2" aria-hidden="true"></a>lad_sp &lt;-<span class="st"> </span><span class="kw">as</span>(lad,<span class="st">&#39;Spatial&#39;</span>)</span>
+<span id="cb172-3"><a href="point-pattern-analysis.html#cb172-3" aria-hidden="true"></a></span>
+<span id="cb172-4"><a href="point-pattern-analysis.html#cb172-4" aria-hidden="true"></a><span class="co"># get the window of observation using maptools package</span></span>
+<span id="cb172-5"><a href="point-pattern-analysis.html#cb172-5" aria-hidden="true"></a>window &lt;-<span class="st"> </span><span class="kw">as.owin.SpatialPolygons</span>(lad_sp)</span>
+<span id="cb172-6"><a href="point-pattern-analysis.html#cb172-6" aria-hidden="true"></a></span>
+<span id="cb172-7"><a href="point-pattern-analysis.html#cb172-7" aria-hidden="true"></a><span class="co"># inspect</span></span>
+<span id="cb172-8"><a href="point-pattern-analysis.html#cb172-8" aria-hidden="true"></a>window</span></code></pre></div>
+<pre><code>## window: polygonal boundary
+## enclosing rectangle: [503568.2, 561957.5] x [155850.8, 200933.9] units</code></pre>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="point-pattern-analysis.html#cb174-1" aria-hidden="true"></a><span class="co"># get coordinates from sf object</span></span>
+<span id="cb174-2"><a href="point-pattern-analysis.html#cb174-2" aria-hidden="true"></a>crime_points_coords &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">unlist</span>(crime_points<span class="op">$</span>geometry),<span class="dt">ncol=</span><span class="dv">2</span>,<span class="dt">byrow=</span>T)</span>
+<span id="cb174-3"><a href="point-pattern-analysis.html#cb174-3" aria-hidden="true"></a></span>
+<span id="cb174-4"><a href="point-pattern-analysis.html#cb174-4" aria-hidden="true"></a><span class="co"># inspect</span></span>
+<span id="cb174-5"><a href="point-pattern-analysis.html#cb174-5" aria-hidden="true"></a>crime_points_coords</span></code></pre></div>
+<pre><code>##           [,1]     [,2]
+##    [1,] 532209 181564.0
+##    [2,] 532403 181853.0
+##    [3,] 532715 181698.0
+##    [4,] 532593 181777.0
+##    [5,] 533501 181453.0
+##    [6,] 532351 180811.0
+##    [7,] 531664 181051.0
+##    [8,] 532349 180863.9
+##    [9,] 533348 181246.0
+##   [10,] 533270 181288.0
+##   [11,] 533157 181016.0
+##   [12,] 533198 181921.0
+##   [13,] 532679 180833.0
+##   [14,] 533117 180851.0
+##   [15,] 532970 180879.0
+##  [ reached getOption(&quot;max.print&quot;) -- omitted 1239 rows ]</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="point-pattern-analysis.html#cb176-1" aria-hidden="true"></a><span class="co"># create ppp object</span></span>
+<span id="cb176-2"><a href="point-pattern-analysis.html#cb176-2" aria-hidden="true"></a>crime_ppp &lt;-<span class="st"> </span><span class="kw">ppp</span>(<span class="dt">x=</span>crime_points_coords[,<span class="dv">1</span>],<span class="dt">y=</span>crime_points_coords[,<span class="dv">2</span>],<span class="dt">window=</span>window,<span class="dt">check=</span>T)</span></code></pre></div>
+<pre><code>## Warning: data contain duplicated points</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="point-pattern-analysis.html#cb178-1" aria-hidden="true"></a><span class="co"># inspect</span></span>
+<span id="cb178-2"><a href="point-pattern-analysis.html#cb178-2" aria-hidden="true"></a><span class="kw">plot</span>(crime_ppp)</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-make-some-ppp-objects-1.png" width="672" /></p>
+<p>Note the messages <strong>data contain duplicated points</strong>. This is an issue in spatial point pattern analysis as one of the assumptions underlying many analytical methods is that all events are unique; some statistical procedures actually may return very wrong results if duplicate points are found within the data. Long story short: we will need to deal with duplicates points. Although the way you do this is not always straightforward, you basically have two options:</p>
+<ol style="list-style-type: decimal">
+<li>Remove the duplicates and pretend they are not there. However, only do this when you are sure that your research problem allows for this and you are happy to ‘ignore’ some of the data. For some functions (such as Kernel Density Estimation) it is also possible to assign weights to points so that, for instance, instead of having point <strong>event A</strong> and point <strong>event B</strong> at the same location you create a point <strong>event C</strong> with a <strong>mark</strong> (attribute) that specifies that this event should be weighted double.</li>
+<li>Force all points to be unique. For instance, if you know that the locations are not ‘actual’ event locations but rather the centroids of an administrative geography, we can slightly adjust all coordinates (jitter) so that the event locations do not exactly coincide anymore. This way we effectively deduplicate our point data without having to get rid off data points.</li>
+</ol>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="point-pattern-analysis.html#cb179-1" aria-hidden="true"></a><span class="co"># check for duplicates</span></span>
+<span id="cb179-2"><a href="point-pattern-analysis.html#cb179-2" aria-hidden="true"></a><span class="kw">any</span>(<span class="kw">duplicated</span>(crime_ppp))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="point-pattern-analysis.html#cb181-1" aria-hidden="true"></a><span class="co"># count the number of duplicated points</span></span>
+<span id="cb181-2"><a href="point-pattern-analysis.html#cb181-2" aria-hidden="true"></a><span class="kw">sum</span>(<span class="kw">multiplicity</span>(crime_ppp) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] 291</code></pre>
+<p>This means we have 291 duplicated points. This seems a lot to simply remove. As these are crime data the exact locations are not revealed for privacy and safety reasions, meaning that all crimes get <a href="https://data.police.uk/about/#anonymisation">‘snapped’ to a predefined point location</a>! Let’s shift all our coordinates slighlty to ‘remove’ our duplicates and enforce all points to be unique.</p>
+<div class="note">
+<p>Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through <code>?name_of_function</code>, e.g. <code>?multiplicity</code> or <code>rjitter</code>. For almost any R package, the documentation contains a list of arguments that the function takes, what these arguments mean / do, in which format the functions expects these arguments, as well as a set of usage examples.</p>
+</div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="point-pattern-analysis.html#cb183-1" aria-hidden="true"></a><span class="co"># add some jitter to our points</span></span>
+<span id="cb183-2"><a href="point-pattern-analysis.html#cb183-2" aria-hidden="true"></a>crime_ppp_jitter &lt;-<span class="st"> </span><span class="kw">rjitter</span>(crime_ppp,<span class="dt">retry=</span><span class="ot">TRUE</span>,<span class="dt">nsim=</span><span class="dv">1</span>,<span class="dt">drop=</span><span class="ot">TRUE</span>)</span>
+<span id="cb183-3"><a href="point-pattern-analysis.html#cb183-3" aria-hidden="true"></a></span>
+<span id="cb183-4"><a href="point-pattern-analysis.html#cb183-4" aria-hidden="true"></a><span class="co"># count the number of duplicated points</span></span>
+<span id="cb183-5"><a href="point-pattern-analysis.html#cb183-5" aria-hidden="true"></a><span class="kw">any</span>(<span class="kw">duplicated</span>(crime_ppp_jitter))</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="point-pattern-analysis.html#cb185-1" aria-hidden="true"></a><span class="co"># inspect</span></span>
+<span id="cb185-2"><a href="point-pattern-analysis.html#cb185-2" aria-hidden="true"></a><span class="kw">plot</span>(crime_ppp_jitter)</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-jitter-jitter-jitter-1.png" width="672" /></p>
+</div>
+<div id="distance-based-methods" class="section level4" number="6.2.2.1">
+<h4><span class="header-section-number">6.2.2.1</span> Distance-based methods</h4>
+<p>One way of looking at a point pattern is by describing the overall distribution of the pattern using distance-based methods. With an average nearest neighbor (ANN) analysis, for instance, we can measure the average distance from each point in the study area to its nearest point. If we then plot ANN values for different order neighbours, we will get an insight into the spatial ordering of all our points relative to one another. Let’s try it.</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="point-pattern-analysis.html#cb186-1" aria-hidden="true"></a><span class="co"># get the average distance to the first nearest neighbour</span></span>
+<span id="cb186-2"><a href="point-pattern-analysis.html#cb186-2" aria-hidden="true"></a><span class="kw">mean</span>(<span class="kw">nndist</span>(crime_ppp_jitter, <span class="dt">k=</span><span class="dv">1</span>))</span></code></pre></div>
+<pre><code>## [1] 324.9561</code></pre>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="point-pattern-analysis.html#cb188-1" aria-hidden="true"></a><span class="co"># get the average distance to the second nearest neighbour</span></span>
+<span id="cb188-2"><a href="point-pattern-analysis.html#cb188-2" aria-hidden="true"></a><span class="kw">mean</span>(<span class="kw">nndist</span>(crime_ppp_jitter, <span class="dt">k=</span><span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## [1] 519.0652</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="point-pattern-analysis.html#cb190-1" aria-hidden="true"></a><span class="co"># get the average distance to the third nearest neighbour</span></span>
+<span id="cb190-2"><a href="point-pattern-analysis.html#cb190-2" aria-hidden="true"></a><span class="kw">mean</span>(<span class="kw">nndist</span>(crime_ppp_jitter, <span class="dt">k=</span><span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## [1] 669.1802</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="point-pattern-analysis.html#cb192-1" aria-hidden="true"></a><span class="co"># get the average distance to the first, second, ..., the hundredth, nearest neighbour</span></span>
+<span id="cb192-2"><a href="point-pattern-analysis.html#cb192-2" aria-hidden="true"></a>crime_ann &lt;-<span class="st"> </span><span class="kw">apply</span>(<span class="kw">nndist</span>(crime_ppp_jitter, <span class="dt">k=</span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span>),<span class="dv">2</span>,<span class="dt">FUN=</span>mean)</span>
+<span id="cb192-3"><a href="point-pattern-analysis.html#cb192-3" aria-hidden="true"></a></span>
+<span id="cb192-4"><a href="point-pattern-analysis.html#cb192-4" aria-hidden="true"></a><span class="co"># plot the results</span></span>
+<span id="cb192-5"><a href="point-pattern-analysis.html#cb192-5" aria-hidden="true"></a><span class="kw">plot</span>(crime_ann <span class="op">~</span><span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>))</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-average-nearest-neighbours-1.png" width="672" /></p>
+<p>For point patterns that are highly clusters one would expect the average distances between points to be very short. However, this is based on the important assumption that the point pattern is <strong>stationary</strong> throughout the study area. Further to this, the size and shape of the study area also have a very strong effect on this metric. In our case, the plot does not reveal anything interesting in particular except that higher order points seem to be slightly closer than lower order points.</p>
+<p>Rather than to look at the average distances of different orders neighbours, we can also look at the distance between a point and ‘all distances’ to other points and compare this to a point pattern that is generated in a random manner; i.e. compare our point distribution to a theoretical distribution that has been generated in a spatial random manner. This can be done with <strong>Ripley’s K</strong> function. Ripley’s K- function essentially summarises the distance between points for all distances using radial distance bands. The calculation is relatively straightforward:</p>
+<ol style="list-style-type: decimal">
+<li>For point <strong>event A</strong>, count the number of points inside a buffer (radius) of a certain size. Then count the number of points inside a slightly larger buffer (radius).</li>
+<li>Repeat this for every point event in the dataset.</li>
+<li>Compute the average number of points in each buffer (radius) and divide this to the overall point density.</li>
+<li>Repeat this using points drawn from a Poisson random model for the same set of buffers.</li>
+<li>Compare the observed distribution with the distribution with the Poisson distribution.</li>
+</ol>
+<p>We can conduct a Ripley’s K test on our data very simply with the spatstat package using the <code>Kest()</code> function.</p>
+<div class="note">
+<p>Be careful with running Ripley’s K on large datasets as the function is essentially a series of nested loops, meaning that calculation time will increase exponentially with an increasing number of points.</p>
+</div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="point-pattern-analysis.html#cb193-1" aria-hidden="true"></a><span class="co"># calculate Ripley&#39;s K for our bicycle theft locations, maximum radius of 4 kilometres</span></span>
+<span id="cb193-2"><a href="point-pattern-analysis.html#cb193-2" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">Kest</span>(crime_ppp_jitter,<span class="dt">correction=</span><span class="st">&#39;border&#39;</span>,<span class="dt">rmax=</span><span class="dv">4000</span>))</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-ripley-and-his-k-1.png" width="672" /></p>
+<p>The <em>Kpois(r)</em> line shows the theoretical value of K for each distance radius (r) under a Poisson assumption of Complete Spatial Randomness. K values greater than the expected K, indicate clustering of points at a given distance band. In our example, bicycle theft seems to be more clustered than expected at distance below 1500 metres. In the same fashion as the Average Nearest Neighbour Analysis, Ripley’s K assumes a stationary underlying point process.</p>
+<p>The maximum radius of four kilometres is, in this case, simply to zoom the plot as the line with the K values does not go beyond this distance. This is due to the <em>border</em> correction that we apply, which is necessary otherwise our Ripley’s K function will run for a very long time! This border correction is also for a theorethical reason important: when analysing spatial point patterns we do not have any informatin abou the points that are situated close to the boundaries of our observation window. This means that the neighbours (which we do not know about!) of these points cannot be taken into account in the metric. This can lead to significant bias in the estimates. One way of dealing with this border effect is by using the ‘border method’ (<a href="https://doi.org/10.2307/2529938">Diggle 1979</a>, <a href="https://ucl-new-primo.hosted.exlibrisgroup.com/permalink/f/1klfcc3/TN_cdi_cambridge_cbo_10_1017_CBO9780511624131">Ripley 1988</a>), which takes out all points that are closer to the border of the observation window than they are to their nearest neighbour.</p>
+</div>
+<div id="density-based-methods" class="section level4" number="6.2.2.2">
+<h4><span class="header-section-number">6.2.2.2</span> Density-based methods</h4>
+<p>Although distance-based methods can give us an idea of the distribution of the underlying point pattern and suggest that some of the data are clustered, it does not tell us <strong>where</strong> the clustering is happening. Density-based methods can help us out here.
+We will start with a simple quadrat count by dividing the observation window into section and counting the number of bicycle thefts within each quadrant.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="point-pattern-analysis.html#cb194-1" aria-hidden="true"></a><span class="co"># quadratcount in a 15 x 15 grid across the observational window</span></span>
+<span id="cb194-2"><a href="point-pattern-analysis.html#cb194-2" aria-hidden="true"></a>crime_quadrat &lt;-<span class="st"> </span><span class="kw">quadratcount</span>(crime_ppp_jitter,<span class="dt">nx=</span><span class="dv">15</span>,<span class="dt">ny=</span><span class="dv">15</span>)</span>
+<span id="cb194-3"><a href="point-pattern-analysis.html#cb194-3" aria-hidden="true"></a></span>
+<span id="cb194-4"><a href="point-pattern-analysis.html#cb194-4" aria-hidden="true"></a><span class="co"># inspect</span></span>
+<span id="cb194-5"><a href="point-pattern-analysis.html#cb194-5" aria-hidden="true"></a><span class="kw">plot</span>(crime_quadrat)</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-quadrat-count-1.png" width="672" /></p>
+<p>As we want to know whether or not there is any kind of spatial pattern present in our bicycle theft data, we need to look at our data and ask again whether the pattern is generated in a random manner; i.e. whether the distribution of points in our study area differs from <strong>complete spatial randomness</strong> (CSR) or whether there are some clusters present. Looking at our quadrat analysis, and with the results of our Ripley’s K in the back of our minds, it is aready quite clear that some quadrats have higher counts than others, however, we can once again generate a point dataset that adheres to the principles of complete spatial randomness and compare it to our dataset. We can do that again using a <em>Poisson point process</em>.</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="point-pattern-analysis.html#cb195-1" aria-hidden="true"></a><span class="co"># create and plot a completely spatially random point pattern of the same size as our bicycle theft data</span></span>
+<span id="cb195-2"><a href="point-pattern-analysis.html#cb195-2" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">rpoispp</span>(<span class="dv">1254</span>))</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-random-points-poisson-1.png" width="672" /></p>
+<p>The first thing you will see is tha the points are not uniformly distributed. Furthermore, every time you run the function the outcome will be slightly different than the previous time because the points are sampled from a Poisson distribution. To check whether our bicycle theft points differ from complete spatial randomness (i.e. there is no clustering or dispersal of points) we can run a [Chi-Squared test] with the null hypotheses that our point data have been generated under complete spatial randomness.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="point-pattern-analysis.html#cb196-1" aria-hidden="true"></a><span class="co"># chi-square between observed pattern and Poisson sampled points</span></span>
+<span id="cb196-2"><a href="point-pattern-analysis.html#cb196-2" aria-hidden="true"></a><span class="kw">quadrat.test</span>(crime_ppp_jitter,<span class="dt">nx=</span><span class="dv">15</span>,<span class="dt">ny=</span><span class="dv">15</span>)</span></code></pre></div>
+<pre><code>## Warning: Some expected counts are small; chi^2 approximation may be inaccurate</code></pre>
+<pre><code>## 
+## 	Chi-squared test of CSR using quadrat counts
+## 
+## data:  crime_ppp_jitter
+## X2 = 5089.8, df = 164, p-value &lt; 2.2e-16
+## alternative hypothesis: two.sided
+## 
+## Quadrats: 165 tiles (irregular windows)</code></pre>
+<p>The p value is well below 0.05 (or 0.01 for that matter), and we can reject the null hypothesis: our point pattern was not generated in a random matter. Not very suprising.</p>
+<p>Instead of looking at the distribution of our bicycle theft with the boundaries of our quadrats (or any other tessellation we could pick), we can also analyse our points using a <strong>Kernel Density Estimation</strong> (KDE). As was explained in the short lecture video, a KDE is a statistical technique to generate a smooth continuous surface representing the density of the underlying pattern. The resulting surface is created by placing a search window (kernel) over each point and attributing the sum of kernel values to a grid.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="point-pattern-analysis.html#cb199-1" aria-hidden="true"></a><span class="co"># kernel density estimation with a 100 metre bandwidth</span></span>
+<span id="cb199-2"><a href="point-pattern-analysis.html#cb199-2" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">density.ppp</span>(crime_ppp_jitter,<span class="dt">sigma=</span><span class="dv">100</span>))</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-kernel-density-estimation-1.png" width="672" /></p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="point-pattern-analysis.html#cb200-1" aria-hidden="true"></a><span class="co"># kernel density estimation with a 500 metre bandwidth</span></span>
+<span id="cb200-2"><a href="point-pattern-analysis.html#cb200-2" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">density.ppp</span>(crime_ppp_jitter,<span class="dt">sigma=</span><span class="dv">500</span>))</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-kernel-density-estimation-2.png" width="672" /></p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="point-pattern-analysis.html#cb201-1" aria-hidden="true"></a><span class="co"># kernel density estimation with a 1000 metre bandwidth</span></span>
+<span id="cb201-2"><a href="point-pattern-analysis.html#cb201-2" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">density.ppp</span>(crime_ppp_jitter,<span class="dt">sigma=</span><span class="dv">1000</span>))</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-kernel-density-estimation-3.png" width="672" /></p>
+<p>Notice the importance of the bandwidth that is selected. Larger bandwidths lead to a smoother surface, but there is a danger of oversmoothing your data! Smaller bandwidths lead to a more irregular shaped surface, but there is then the danger of undersmoothing. There are automated functions (e.g. based on <a href="https://www.youtube.com/watch?v=XepXtl9YKwc">maximum-likelihood estimations</a>) that can help you with selecting an appropriate bandwidth, but in the end you will have to make a decision.</p>
+<p>Although bandwidth typically has a more pronounced effect upon the density estimation than the type of kernel used, kernel types can affect the result too. Also here applies: the selection of the kernel depends on how much you want to weigh near points relative to far points (even though this is <strong>also</strong> influenced by the bandwidth!).</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="point-pattern-analysis.html#cb202-1" aria-hidden="true"></a><span class="co"># kernel density estimation with a Gaussian Kernel</span></span>
+<span id="cb202-2"><a href="point-pattern-analysis.html#cb202-2" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">density.ppp</span>(crime_ppp_jitter,<span class="dt">sigma=</span><span class="dv">500</span>,<span class="dt">kernel=</span><span class="st">&#39;gaussian&#39;</span>))</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-kernel-density-estimation-kernels-1.png" width="672" /></p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="point-pattern-analysis.html#cb203-1" aria-hidden="true"></a><span class="co"># kernel density estimation with a Quartic Kernel</span></span>
+<span id="cb203-2"><a href="point-pattern-analysis.html#cb203-2" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">density.ppp</span>(crime_ppp_jitter,<span class="dt">sigma=</span><span class="dv">500</span>,<span class="dt">kernel=</span><span class="st">&#39;quartic&#39;</span>))</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-kernel-density-estimation-kernels-2.png" width="672" /></p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="point-pattern-analysis.html#cb204-1" aria-hidden="true"></a><span class="co"># kernel density estimation with an Epanechnikov Kernel</span></span>
+<span id="cb204-2"><a href="point-pattern-analysis.html#cb204-2" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">density.ppp</span>(crime_ppp_jitter,<span class="dt">sigma=</span><span class="dv">500</span>,<span class="dt">kernel=</span><span class="st">&#39;epanechnikov&#39;</span>))</span></code></pre></div>
+<p><img src="GEOG0114_files/figure-html/06-kernel-density-estimation-kernels-3.png" width="672" /></p>
+<p>Bandwidth (h) typically has a more marked effect upon the density estimation than kernel type and is defined as the extent of the area around each grid cell from which the occurrences, and their respective kernels, are drawn. Do have a look at the article by <a href="https://www.tandfonline.com/doi/full/10.1080/13658810902950625">Shi 2008</a> that is part of this week’s essential reading for some further considerations and deliberations when selection bandwidths.</p>
+<p>For now, however, no matter which kernel or which bandwidth (within reason, of course) we use, we can be quite confident in stating that bicycle theft in London in November 2019 is <strong>not</strong> a spatially random process and we can clearly see the areas where bicycle theft is most concentrated.</p>
 </div>
 </div>
 </div>
-<div id="advanced-point-pattern-analysis" class="section level2">
-<h2><span class="header-section-number">6.3</span> Advanced Point Pattern Analysis</h2>
-<div id="video-advanced-point-pattern-analaysis-data" class="section level3">
-<h3><span class="header-section-number">6.3.1</span> Video: Advanced point pattern analaysis data</h3>
+<div id="point-pattern-analysis-in-practice" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Point pattern analysis in practice</h2>
+<p>Now we have an understanding on what constitutes point pattern analysis and which methods one can employ, we will move to some more practical examples of point pattern analysis as point data come in many shapes and forms.</p>
+<div id="video-point-pattern-analysis-in-practice" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Video: Point pattern analysis in practice</h3>
+<p><div class="vembedr" align="left">
+<div>
+<iframe src="https://web.microsoftstream.com/embed/video/b78d3d72-6a6f-4f9b-b019-d81836d31d9a?autoplay=false&amp;showinfo=true" width="533" height="300" style="border:none;"></iframe>
 </div>
-<div id="example-advanced-point-pattern-analysis" class="section level3">
-<h3><span class="header-section-number">6.3.2</span> Example: Advanced Point Pattern Analysis</h3>
+</div>
+<a href="https://github.com/jtvandijk/GEOG0114/tree/master/slides/w06/w06_02_point_pattern_analysis_in_practice.pdf">[Lecture slides]</a> <a href="https://web.microsoftstream.com/video/b78d3d72-6a6f-4f9b-b019-d81836d31d9a?list=studio">[Watch on MS stream]</a></p>
+</div>
+<div id="example-point-pattern-analysis-in-practice" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Example: Point Pattern Analysis in practice</h3>
+<p>The short lecture video showed several examples of point pattern analysis, with a particular focus on movement (spatiotemporal) data. Spatiotemporal data bring additional challenges for their analysis because there is a temporal element involved: points are part of a trajectory. Nonetheless, there are some strategies related to ‘stationary’ point pattern analysis that can be employed.</p>
+<p>A great example of a company having to deal with massive spatial point datasets is <a href="https://www.uber.com/gb/en/">Uber</a>. In fact, in order to anaylse, visualise and explore their spatial point data, Uber developed a grid-based system called <strong>H3</strong> (is it already reminding you of our quadrat count somehow?!). Watch the YouTube video to see how Uber leverages hierachically nested hexagons for geospatial indexing and why this is so important in their use case.</p>
+<div class="vembedr" align="left">
+<div>
+<iframe src="https://www.youtube.com/embed/ay2uwtRO3QE" width="533" height="300" frameborder="1" allowfullscreen=""></iframe>
 </div>
 </div>
-<div id="take-home-message" class="section level2">
+<p>Another example of point pattern analysis in practice, is Consumer Data Research Centre <a href="https://apps.cdrc.ac.uk/gbnames/">GBNames</a> website. By using the residential locations of the bearers of surnames for different time periods, GBNames explores the generational and inter-generational residential movements of family groups across Great Britain. One way to analyse and compare individual surname distributions over time without being hindered by changing administrative areas is, in fact, by point pattern analysis. This is done by assign every individual found in the historic census data to the centroid of the parish with which they are associated. Similarly, all individuals found in the contemporary <a href="https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/rssa.12476">Consumer Registers</a> are geocoded directly through the coordinates associated with each postcode.</p>
+<p>Try to execute some surname searches and see if you can find any interesting patterns or differences between surnames. Also, try to understand what the additional Consumer Statistics mean - these are already a small bridge to the material of W09 which will involve a closer look at geodemographics!</p>
+</div>
+<div id="assignment_w06" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Assignments</h3>
+<div id="assignment-1" class="section level4" number="6.3.3.1">
+<h4><span class="header-section-number">6.3.3.1</span> Assignment 1</h4>
+<p>Now you have seen the GBNames website and you know how to execute a Kernel Density Estimation, it is time you try it yourself. Below are three datasets with the locations of the bearers of three different surnames (Longley, Wilkins, Van Dijk). Each dataset contains a surname, a x-coordinate and a y-coordinate (both already projected in <a href="">EPSG 27700</a>). Your task for Friday is to analyse these three surname distributions using Kernel Density Estimation.</p>
+<div class="note">
+<p><strong>For privacy reasons the surname data you will be using are not actual data but are made to closely represent the actual data!</strong></p>
+</div>
+<p>This will involve you having to make some decisions: Which kernel to use? Which bandwidth to use? Why? Do you differ the bandwidth between different surname searches? Also, whilst we have been using <code>spatstat</code> for creating our KDE, there are also other packages available (such as <code>sparr</code>). If you are up for a challenge, feel free to see if you can create your KDE maps using a different package!</p>
+<p>We will discuss your choices and results in <strong>Friday’s seminar</strong>, so make sure to ‘bring’ your maps along.</p>
+</div>
+<div id="file-download-1" class="section level4 unnumbered">
+<h4>File download</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">File</th>
+<th align="left">Type</th>
+<th align="left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Surname bearer files (Longley, Wilkins, Van Dijk)</td>
+<td align="left"><code>csv</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/surname_bearers.zip">Download</a></td>
+</tr>
+<tr class="even">
+<td align="left">Simplified boundaries of Great Britain</td>
+<td align="left"><code>shp</code></td>
+<td align="left"><a href="https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/gb_outline.zip">Download</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="assignment-2" class="section level4 unnumbered">
+<h4>Assignment 2</h4>
+<p>During Friday’s seminar we will be having a guest talk by <a href="https://nombumurage.github.io/">Nombuyiselo Murage</a>. Nombuyiselo just finished her Master’s at the University of Liverpool and her work involved dealing with a massive point dataset. In preparation for her talk, read <a href="https://www.cdrc.ac.uk/wp-content/uploads/sites/72/2020/11/7.-Nombuyiselo-Murage.pdf">the abstract of her Master’s Dissertation</a> carefully and formulate at least <strong>two</strong> questions that you can ask her during the seminar.</p>
+<p>Use this opportunity to also ask questions about her experience with the <a href="https://www.cdrc.ac.uk/education-and-training/masters-dissertation-scheme/">CDRC Master’s Dissertation Programme</a> in which she participated, what issues she encountered during her research, what tools she would advise you to get comfortable with quickly, etc.</p>
+<div class="note">
+<p><strong>Keep in mind that in several months time you will be writing a Master’s Dissertation yourself and this is an excellent opportunity to gain some invaluable insights from someone who has seen it through!</strong></p>
+</div>
+</div>
+</div>
+</div>
+<div id="take-home-message" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Take home message</h2>
+<p>Point pattern analysis comes in many shapes and forms. You know have been introduced to some of the most well-known techniques such as <strong>Ripley’s K</strong> and <strong>Kernel Density Estimation</strong> to analyse point patterns as well as a variety of implementations. Keep in mind that there is not really ‘one method’, which methods are suitable for your research problem depend on the questions you want answered as much as they depend on the underlying point distribution. That it is for this week! Next week we will be moving on with our <a href="https://www.youtube.com/watch?v=NE2AvbROl5k">exploration of space</a> by looking at geostatistics.</p>
 </div>
-<div id="attributions_w06" class="section level2">
+<div id="attributions_w06" class="section level2" number="6.5">
 <h2><span class="header-section-number">6.5</span> Attributions</h2>
 <p>This week’s content and practical uses content and inspiration from:</p>
 <ul>
 <li>Gimond, M. 2020. Geodesic geometry. <a href="https://mgimond.github.io/Spatial/index.html" class="uri">https://mgimond.github.io/Spatial/index.html</a></li>
+<li>Medina, J, Solymosi, R. 2019. Crime Mapping in R. <a href="https://maczokni.github.io/crimemapping_textbook_bookdown/" class="uri">https://maczokni.github.io/crimemapping_textbook_bookdown/</a></li>
 </ul>
 </div>
-<div id="feedback_w06" class="section level2">
+<div id="feedback_w06" class="section level2" number="6.6">
 <h2><span class="header-section-number">6.6</span> Feedback</h2>
 <p>Please take a moment to give us some <a href="https://forms.gle/BYbZySVSHeoUEkJh9">feedback on this week’s content</a>.</p>
 
