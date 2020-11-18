@@ -6,3 +6,12 @@ Following on from Week 3 and in conjunction with this week in your CASA005 modul
 
 ## Feedback {#feedback_w07}
 Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).
+
+
+#londonair
+https://davidcarslaw.github.io/openair/
+library(openair)
+install.packages(devtools)
+
+t <- importMeta(source='kcl',all=FALSE)
+s <- importKCL(site=c(t$code),year=2019,pollutant='no2',meta=TRUE)
