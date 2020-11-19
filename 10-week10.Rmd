@@ -2,4 +2,4 @@
 
 In our final week of PSA, we will recap the main principles of spatial analysis that you have learnt over the last nine weeks. We will then look to tidy one of our projects from the previous week to use it within CodeOcean, an online platform that hosts code and data to create "reproducible runs" and "capsules" of research projects. The platform (alongside others!) enables you to create an anonymized version of your project, ready for its submission to journals as part of their increasing requirement to pass reproducibility and openness tests, e.g. the International Journal of Geographic Information Science. The live session of this week will be extended to present the two pieces of coursework you will assessed on as part of this module, as well as to answer any questions you may have on these assessments.
 
-<center>**This week's content will be made [available on Moodle](https://moodle.ucl.ac.uk/) on 09/12.**</center>
+<center>**This week's content will be made on 14/12.**</center>

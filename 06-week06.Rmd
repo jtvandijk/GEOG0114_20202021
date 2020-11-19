@@ -31,7 +31,7 @@ After last week's success in analysing spatial autocorrelation and running two s
 #### File download {-}
 | File                                        | Type         | Link |
 | :------                                     | :------      | :------ |
-| Local Authorithy Districts London 2020      | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/london_lad_2020.zip) |
+| Local Authorithy Districts London 2020      | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/london_lad_2020.zip) |
 | Bicycle theft data London 2019              | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/2019_london_bicycle_theft.zip) |
 
 Download the individual files to your own computer and as usual make sure [your data directory](spatial-autocorrelation.html#setting-up-the-environment) is set up correctly and the data are unzipped. 
@@ -265,20 +265,24 @@ Try to execute some surname searches and see if you can find any interesting pat
 ### Assignments {#assignment_w06}
 
 #### Assignment 1 {}
-Now you have seen the GBNames website and you know how to execute a Kernel Density Estimation, it is time you try it yourself. Below are three datasets with the locations of the bearers of three different surnames (Longley, Wilkins, Van Dijk). Each dataset contains a surname, a x-coordinate and a y-coordinate (both already projected in [EPSG 27700]()). Your task for Friday is to analyse these three surname distributions using Kernel Density Estimation. 
+Now you have seen the GBNames website and you know how to execute a Kernel Density Estimation, it is time you try it yourself. Below are three datasets with the locations of the bearers of three different surnames (Longley, Wilkins, Van Dijk). Each dataset contains a surname, a x-coordinate and a y-coordinate (both already projected in [EPSG 27700](https://epsg.io/27700)). Your task for Friday is to analyse these three surname distributions using Kernel Density Estimation. 
 
 <div class="note">
 **For privacy reasons the surname data you will be using are not actual data but are made to closely represent the actual data!**
 </div>
 
-This will involve you having to make some decisions: Which kernel to use? Which bandwidth to use? Why? Do you differ the bandwidth between different surname searches? Also, whilst we have been using `spatstat` for creating our KDE, there are also other packages available (such as `sparr`). If you are up for a challenge, feel free to see if you can create your KDE maps using a different package! 
+This will involve you having to make some decisions: Which **kernel** to use? Which **bandwidth** to use? Why? Do you differ the bandwidth *between* different surname searches or do you keep them the same? 
+
+<div class ="note">
+Whilst we have been using `spatstat` for creating our KDE, there are also other packages available (such as `sparr`). If you are up for a challenge, feel free to see if you can create your KDE maps using a different package! 
+</div>
 
 We will discuss your choices and results in **Friday's seminar**, so make sure to 'bring' your maps along.
 
 #### File download {-}
 | File                                                 | Type           | Link |
 | :------                                              | :------        | :------ |
-| Surname bearer files (Longley, Wilkins, Van Dijk)     | `csv`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/surname_bearers.zip) |
+| Surname bearer files (Longley, Wilkins, Van Dijk)    | `csv`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/surname_bearers.zip) |
 | Simplified boundaries of Great Britain               | `shp`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/gb_outline.zip) |
 
 #### Assignment 2 {-}
@@ -291,7 +295,7 @@ Use this opportunity to also ask questions about her experience with the [CDRC M
 </div>
 
 ## Take home message
-Point pattern analysis comes in many shapes and forms. You know have been introduced to some of the most well-known techniques such as **Ripley's K** and **Kernel Density Estimation** to analyse point patterns as well as a variety of implementations. Keep in mind that there is not really 'one method', which methods are suitable for your research problem depend on the questions you want answered as much as they depend on the underlying point distribution. That it is for this week! Next week we will be moving on with our [exploration of space](https://www.youtube.com/watch?v=NE2AvbROl5k) by looking at geostatistics.
+Point pattern analysis comes in many shapes and forms. You now have been introduced to some of the most well-known techniques such as **Ripley's K** and **Kernel Density Estimation** to analyse point patterns as well as a variety of implementations. Keep in mind that there is not really 'one method', which methods are suitable for your research problem depend on the questions you want answered as much as they depend on the underlying point distribution. That it is for this week! Next week we will be moving on with our [exploration of space](https://www.youtube.com/watch?v=NE2AvbROl5k) by looking at geostatistics.
 
 ## Attributions {#attributions_w06}
 This week's content and practical uses content and inspiration from:
