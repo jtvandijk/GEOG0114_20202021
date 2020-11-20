@@ -334,7 +334,7 @@ tm_shape(mask(raster_idw,lad)) +
 #### Question {-}
 1. Do you got any idea where the *var1.pred* variable in the `tm_raster()` function is coming from that we use to plot the results of the IDW?
 
-The main parameter in the IDW is the power function. How do you know whether you interpolation results are accurate? You can choose the power function based on literature, but you can also perform a *leave one out cross validation* (LOOCV). The idea is simple: you remove one data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. Then you remove another data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. And so on for all points in the dataset. You then can compare the interpolated point values with the actual values from the ommited points. The performance of the interpolation can be summarised using the [root-mean-square error](https://en.wikipedia.org/wiki/Root-mean-square_deviation) (RMSE) which you in effect try to minimise!
+The main parameter in the IDW is the power function. How do you know whether you interpolation results are accurate? You can choose the power function based on literature, but you can also perform a *leave one out cross validation* (LOOCV). The idea is simple: you remove one data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. Then you remove another data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. And so on for all points in the dataset. You then can compare the interpolated point values with the actual values from the ommitted points. The performance of the interpolation can be summarised using the [root-mean-square error](https://en.wikipedia.org/wiki/Root-mean-square_deviation) (RMSE) which you in effect try to minimise!
 
 ```{r 07-leave-one-out-idw-validation, warnings=FALSE, message=FALSE, results=FALSE}
 # create an empty vector of the same length as our pollution monitoring sites
@@ -355,7 +355,7 @@ idw.pred
 idw.com <- as.data.frame(cbind('predicted'=idw.pred,'observed'=pol_points$no2))
 
 # plot the predicted values against the observed values
-# black line: if all points are on this line the predicted values are idential to the observed values
+# black line: if all points are on this line the predicted values are identical to the observed values
 # blue line: shows the basic linear model of the scatter plot 
 ggplot(idw.com) +
   geom_abline() +
