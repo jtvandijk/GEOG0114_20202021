@@ -41,7 +41,7 @@ For the first part of this week practical material we will be using raster datas
 | :------                                     | :------      | :------ |
 | Population surface GB 2001 - Age 30-44      | `asc`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/raster/5a_ascii_grid2001_Age_Age30_44.asc) |
 | Population surface GB 2011 - Age 30-44      | `asc`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/raster/5a_ascii_grid2011_Age_Age30_44.asc) |
-| Local Authorithy Districts London 2020      | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/london_lad_2020.zip) |
+| Local Authority Districts London 2020      | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/london_lad_2020.zip) |
 
 If you did not download two dataset directly from the [PopChange](https://www.liverpool.ac.uk/geography-and-planning/research/popchange/introduction/) data resource, download the individual files above to your own computer and as usual make sure [your data directory](spatial-autocorrelation.html#setting-up-the-environment) is set up correctly and the data are unzipped where necessary. 
 
@@ -181,8 +181,9 @@ knitr::include_graphics('images/week07/07_london_air.png')
 
 We could manually download `csv` files from the Londonair website for all the monitoring sites we are interested in, however, there is also a [R package](https://davidcarslaw.github.io/openair/) that makes things much easier. Have a look at the [documentation of the openair package](https://cloud.r-project.org/web/packages/openair/openair.pdf) so that you get an idea why we use the `importMeta()` and `importKCL()` functions below!
 
-#### Important {-}
+<div class="note">
 Because `openair` contains **C++** code, a compiler is needed. For Windows, for example, [Rtools](https://cran.r-project.org/bin/windows/Rtools/) is needed. Depending on your system and configuration this can sometimes be a hassle. Fortunately, evenhough packed with functionality, we will only use `openair` to download all the air pollution data we are interested in: in case you cannot get `openair` to work on your computer you can download a copy of the dataset instead.
+</div>
 
 #### File download {-}
 | File                                        | Type         | Link |
@@ -310,7 +311,7 @@ library(xts)
 grid <-spsample(pol_points, type ='regular', n=100000)
 
 # runs the idw for the no2 variable with a power value of 2
-idw <- idw(pol_points$no2 ~ 1, pol_points, newdata= grid, idp=15)
+idw <- idw(pol_points$no2 ~ 1, pol_points, newdata= grid, idp=2)
 
 # specify spatial data as being gridded
 gridded(idw) <- TRUE
@@ -435,7 +436,7 @@ krg.pred
 krg.com <- as.data.frame(cbind('predicted'=krg.pred,'observed'=pol_points$no2))
 
 # plot the predicted values against the observed values
-# black line: if all points are on this line the predicted values are idential to the observed values
+# black line: if all points are on this line the predicted values are identical to the observed values
 # blue line: shows the basic linear model of the scatter plot 
 ggplot(krg.com) +
   geom_abline() +
@@ -450,6 +451,8 @@ sqrt(sum((krg.pred - pol_points$no2)^2) / length(pol_points))
 
 #### Question {-}
 1. Which method gives a better performance: IDW or our quick attempt to kriging?
+
+That's it. Using ordinary kriging we predicted the average value of Nitrogen Dioxide (in $\mu$g/m^3^) in 2019 for every location in Greater London.
 
 ## Take home message
 Although in many instances you will be working with vector data, especially where government statistics and administrative boundaries are involved, there are also plenty of use cases in which you will be working with raster data. You now know the basics of working with raster datasets as well as that you can create your own raster datasets by using interpolation and geostatistical methods such as kriging to predict a given phenomenon in unmeasured locations. [That it is for this week](https://www.youtube.com/watch?v=C7dPqrmDWxs)!
