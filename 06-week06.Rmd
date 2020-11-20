@@ -31,7 +31,7 @@ After last week's success in analysing spatial autocorrelation and running two s
 #### File download {-}
 | File                                        | Type         | Link |
 | :------                                     | :------      | :------ |
-| Local Authorithy Districts London 2020      | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/london_lad_2020.zip) |
+| Local Authority Districts London 2020      | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/london_lad_2020.zip) |
 | Bicycle theft data London 2019              | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/2019_london_bicycle_theft.zip) |
 
 Download the individual files to your own computer and as usual make sure [your data directory](spatial-autocorrelation.html#setting-up-the-environment) is set up correctly and the data are unzipped. 
@@ -115,7 +115,7 @@ any(duplicated(crime_ppp))
 sum(multiplicity(crime_ppp) > 1)
 ```
 
-This means we have 291 duplicated points. This seems a lot to simply remove. As these are crime data the exact locations are not revealed for privacy and safety reasions, meaning that all crimes get ['snapped' to a predefined point location](https://data.police.uk/about/#anonymisation)! Let's shift all our coordinates slighlty to 'remove' our duplicates and enforce all points to be unique.
+This means we have 291 duplicated points. This seems a lot to simply remove. As these are crime data the exact locations are not revealed for privacy and safety reasons, meaning that all crimes get ['snapped' to a predefined point location](https://data.police.uk/about/#anonymisation)! Let's shift all our coordinates slighlty to 'remove' our duplicates and enforce all points to be unique.
 
 <div class="note">
 Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through `?name_of_function`, e.g. `?multiplicity` or `rjitter`. For almost any R package, the documentation contains a list of arguments that the function takes, what these arguments mean / do, in which format the functions expects these arguments, as well as a set of usage examples. 
@@ -133,7 +133,7 @@ plot(crime_ppp_jitter)
 ```
 
 #### Distance-based methods
-One way of looking at a point pattern is by describing the overall distribution of the pattern using distance-based methods. With an average nearest neighbor (ANN) analysis, for instance, we can measure the average distance from each point in the study area to its nearest point. If we then plot ANN values for different order neighbours, we will get an insight into the spatial ordering of all our points relative to one another. Let's try it.
+One way of looking at a point pattern is by describing the overall distribution of the pattern using distance-based methods. With an average nearest neighbour (ANN) analysis, for instance, we can measure the average distance from each point in the study area to its nearest point. If we then plot ANN values for different order neighbours, we will get an insight into the spatial ordering of all our points relative to one another. Let's try it.
 
 ```{r 06-average-nearest-neighbours, warnings=FALSE, message=FALSE}
 # get the average distance to the first nearest neighbour
@@ -197,7 +197,7 @@ As we want to know whether or not there is any kind of spatial pattern present i
 plot(rpoispp(1254))
 ```
 
-The first thing you will see is tha the points are not uniformly distributed. Furthermore, every time you run the function the outcome will be slightly different than the previous time because the points are sampled from a Poisson distribution. To check whether our bicycle theft points differ from complete spatial randomness (i.e. there is no clustering or dispersal of points) we can run a [Chi-Squared test] with the null hypotheses that our point data have been generated under complete spatial randomness.
+The first thing you will see is that the points are not uniformly distributed. Furthermore, every time you run the function the outcome will be slightly different than the previous time because the points are sampled from a Poisson distribution. To check whether our bicycle theft points differ from complete spatial randomness (i.e. there is no clustering or dispersal of points) we can run a [Chi-Squared test] with the null hypotheses that our point data have been generated under complete spatial randomness.
 
 ```{r 06-chi-square-it, warnings=FALSE, message=FALSE}
 # chi-square between observed pattern and Poisson sampled points
@@ -234,7 +234,7 @@ plot(density.ppp(crime_ppp_jitter,sigma=500,kernel='quartic'))
 plot(density.ppp(crime_ppp_jitter,sigma=500,kernel='epanechnikov'))
 ```
 
-Bandwidth (h) typically has a more marked effect upon the density estimation than kernel type and is defined as the extent of the area around each grid cell from which the occurrences, and their respective kernels, are drawn. Do have a look at the article by [Shi 2008](https://www.tandfonline.com/doi/full/10.1080/13658810902950625) that is part of this week’s essential reading for some further considerations and deliberations when selection bandwidths. 
+Bandwidth typically has a more marked effect upon the density estimation than kernel type and is defined as the extent of the area around each grid cell from which the occurrences, and their respective kernels, are drawn. Do have a look at the article by [Shi 2008](https://www.tandfonline.com/doi/full/10.1080/13658810902950625) that is part of this week’s essential reading for some further considerations and deliberations when selection bandwidths. 
 
 For now, however, no matter which kernel or which bandwidth (within reason, of course) we use, we can be quite confident in stating that bicycle theft in London in November 2019 is **not** a spatially random process and we can clearly see the areas where bicycle theft is most concentrated.
 
@@ -250,8 +250,7 @@ embed_msstream('b78d3d72-6a6f-4f9b-b019-d81836d31d9a') %>% use_align('left')
 
 ### Example: Point Pattern Analysis in practice
 The short lecture video showed several examples of point pattern analysis, with a particular focus on movement (spatiotemporal) data. Spatiotemporal data bring additional challenges for their analysis because there is a temporal element involved: points are part of a trajectory. Nonetheless, there are some strategies related to 'stationary' point pattern analysis that can be employed. 
-
-A great example of a company having to deal with massive spatial point datasets is [Uber](https://www.uber.com/gb/en/). In fact, in order to anaylse, visualise and explore their spatial point data, Uber developed a grid-based system called **H3** (is it already reminding you of our quadrat count somehow?!). Watch the YouTube video to see how Uber leverages hierachically nested hexagons for geospatial indexing and why this is so important in their use case.
+A great example of a company having to deal with massive spatial point datasets is [Uber](https://www.uber.com/gb/en/). In fact, in order to analyse, visualise and explore their spatial point data, Uber developed a grid-based system called **H3** (is it already reminding you of our quadrat count somehow?!). Watch the YouTube video to see how Uber leverages hierachically nested hexagons for geospatial indexing and why this is so important in their use case.
 
 ```{r 05-uber-h3-index,echo=FALSE}
 library(vembedr)

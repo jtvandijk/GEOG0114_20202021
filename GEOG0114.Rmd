@@ -1,3 +1,82 @@
+--- 
+title: "GEOG0114: Principles of Spatial Analysis"
+author: Justin van Dijk^[Department of Geography, https://www.mappingdutchman.com/] and Joanna Wilkin^[Department of Geography, https://www.geog.ucl.ac.uk/people/academic-staff/joanna-wilkin]
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+link-citations: yes
+github-repo: "jtvandijk/GEOG0114"
+description: "GEOG114: Principles of Spatial Analysis handbook."
+url: 'https\://jtvandijk.github.io/GEOG0114/'
+---
+
+# Welcome {-}
+
+Placeholder
+
+
+## Get in touch {-}
+## Noticed a mistake in this resource? {-}
+
+<!--chapter:end:index.Rmd-->
+
+
+# Course information {-}
+
+Placeholder
+
+
+## Module structure {-}
+## Weekly topics {-}
+## Learning objectives {-}
+## Reading list {-}
+## Module assessment details {-}
+## Useful additional resources {-}
+
+<!--chapter:end:00-course-info.Rmd-->
+
+# Spatial analysis for data science
+
+The first week of PSA will introduce how geography and Geographical Information Science (GIScience) fits within the wider data science discipline and why there is a need to specialise in spatial and social analysis for data science. 
+
+To provide this understanding, you will first work your way through a short document written specifically for this week to provide an extensive overview to why a geographical understanding to data science is critical to accurate and valid data analysis. 
+Next, through a recorded lecture, you'll be given a short introduction to Geographical Information Systems (GIS) tools for spatial data science and an explanation to how these tools have changed over the last decade, including a shift from traditional GIS software towards programming-based analysis in research applications. 
+
+We’ll then show you examples of different types of GIS software through a recorded tutorial. To gain a practical basic understanding of the differences across these software, including their ease of use, the recorded tutorial will show you the steps and processing to create a simple choropleth map of population and population density in London. This week plays a formative role in providing everyone with baseline from which to not only pursue this module, but the other technical modules on the MSc. 
+
+<center>**This week's content is [available on Moodle](https://moodle.ucl.ac.uk/).**</center>
+
+<!--chapter:end:01-week01.Rmd-->
+
+# Geographical representation
+
+The first part of this week will look at spatial representation data models, i.e. how we transform geographic features and phenomena into geographic data for use within GIS. We will then explore the role of scale and geography within spatial analysis and provide you with a critical understanding of how both can impact and effect the analysis of data, particularly when looking at ‘event’ type data, i.e. the occurrence of a specific phenomenon over space. 
+
+We will then introduce you to the role and usage of administrative geographies and discuss how they are subject to the Modifiable Area Unit Problem as well as its the consequences, including ecological fallacies. We will then discuss methods to account for these issues, including population standardization, as well as highlight alternative methods for representing data beyond traditional choropleth maps. The interactive lecture will also introduce the role of projections and what considerations you should make when choosing the projection for your analysis; projections are further discussed in Week 3 of CASA0005. 
+
+The practical component of the week puts these issues into practice with an analysis of crime data from the UK and its various administrative geographies, as well as voting patterns in the USA. The practical component also introduces the two types of data joining primarily used in spatial analysis: attribute and spatial joins.
+
+<center>**This week's content is [available on Moodle](https://moodle.ucl.ac.uk/).**</center>
+
+
+<!--chapter:end:02-week02.Rmd-->
+
+# Spatial properties and relationships
+
+Understanding spatial properties, relationships and how they are used within spatial operations are the building blocks to spatial data processing and analysis. This week, we look to provide you with a thorough introduction into using spatial operations (and the properties and relationships associated with them) through an introductory lecture, a research-based analysis (with demo and practical) and then a research task which we will look at during this week's seminar.
+
+Within the lecture, we will highlight the different ways of conceptualizing key spatial properties, such as distance, and the impact this may have on measurement.  We then focus on their application within spatial operations, and how they can be used for the selection, subset and validation of data. We then look at the core terminology used to define spatial relationships and how they can be used to process datasets, using the operations previously mentioned. 
+
+The practical utilises these concepts to investigate the accessibility of greenspace for schools across London. Recent research (Bijnens et al, 2020) has shown that children brought up in proximity to greenspace have a higher IQ and fewer behavioral problems, irrespective of socio-economic background. Here we will look to understand whether there are geographical patterns to schools that have high versus low access of greenspace and where a lack of greenspace needs to be addressed.
+
+For the practical, we provide an introduction to the research problem and outline how we devise a research methodology to be able to investigate our research questions. We then look at the required processing steps to create the final dataset that can be used in our analysis. This is followed by a short demo in which Jo will demonstrate the analysis visually in QGIS. We then ask you to recreate the analysis by creating a script in R-Studio (code provided) - this will allow you to replicate the analysis for other cities within the U.K, or even further afield if you can extract the same data. Finally, in preparation for this week's seminar, we ask you to watch a five minute video from a local news channel in Jo's hometown - ready to discuss as a possible research task in Friday's seminar.
+
+<center>**This week's content is [available on Moodle](https://moodle.ucl.ac.uk/).**</center>
+
+
+<!--chapter:end:03-week03.Rmd-->
+
 # Raster data and geostatistics
 
 ## Introduction {#introduction_w07}
@@ -462,3 +541,26 @@ This week's content and practical uses content and inspiration from:
 
 ## Feedback {#feedback_w07}
 Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).
+
+<!--chapter:end:07-week07.Rmd-->
+
+# DBScan and cluster analysis
+
+<center>**This week's content will be made available on 30/11.**</center>
+
+<!--chapter:end:08-week08.Rmd-->
+
+# Geodemographics
+
+<center>**This week's content will be made available on 07/12.**</center>
+
+<!--chapter:end:09-week09.Rmd-->
+
+# Reproducible research
+
+In our final week of PSA, we will recap the main principles of spatial analysis that you have learnt over the last nine weeks. We will then look to tidy one of our projects from the previous week to use it within CodeOcean, an online platform that hosts code and data to create "reproducible runs" and "capsules" of research projects. The platform (alongside others!) enables you to create an anonymized version of your project, ready for its submission to journals as part of their increasing requirement to pass reproducibility and openness tests, e.g. the International Journal of Geographic Information Science. The live session of this week will be extended to present the two pieces of coursework you will assessed on as part of this module, as well as to answer any questions you may have on these assessments.
+
+<center>**This week's content will be made on 14/12.**</center>
+
+<!--chapter:end:10-week10.Rmd-->
+

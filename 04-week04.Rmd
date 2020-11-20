@@ -599,7 +599,7 @@ tm_shape(camden_oas_moran_stats) +
 
 As our data are so spatially clustered we can't see any outlier places (once we have ignored the non-significant results. This suggests that the pattern of theft from persons is not highly concentrated in very small areas or particular Output Areas, and instead is spread on a larger scale than we have used here.
 
-To go further than we have today it would be possibe to run the exact same code but using a larger scale, perhaps LSOA, or Ward, and compare how this changes the Moran's I statistics globally and locally.
+To go further than we have today it would be possible to run the exact same code but using a larger scale, perhaps LSOA, or Ward, and compare how this changes the Moran's I statistics globally and locally.
 
 Or, to gain statistical significance in looking at the difference between areas getting more data perhaps over a longer timescale, where there are less areas with 0 thefts.
 
