@@ -352,7 +352,7 @@ head(ahah)
 head(tube)
 ```
 
-Looking at the data you will notice that both the bike theft data and the tube location data exist of longitudes and latitudes. The IMD dataset has an *lsoa11cd* column, an IMD rank column, and an IMD decile column. The AHAH dataset has an *lsoa11cd* column, a distance to the nearest gamling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The [technical report of the AHAH index](https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1) suggests these distances represent the mean distance (kilometres) by car of all postcodes within each LSOA to the nearest outlet. Good to know!
+Looking at the data you will notice that both the bike theft data and the tube location data exist of longitudes and latitudes. The IMD dataset has an *lsoa11cd* column, an IMD rank column, and an IMD decile column. The AHAH dataset has an *lsoa11cd* column, a distance to the nearest gambling outlet column, a distance to the nearest pub column, and a distance to the nearest off license column. The [technical report of the AHAH index](https://figshare.com/articles/Access_to_Healthy_Assets_and_Hazards_AHAH_-_Updated_version_2017/8295842/1) suggests these distances represent the mean distance (kilometres) by car of all postcodes within each LSOA to the nearest outlet. Good to know!
 
 Let's start by linking the IMD dataset and the AHAH dataset to the spatial dataset. Since we are using `sf` for our spatial data, we can very easily join them together using the common variable in these datasets: *lsoa11cd*.
 

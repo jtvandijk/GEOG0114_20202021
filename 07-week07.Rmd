@@ -119,9 +119,9 @@ plot(lon11_3044)
 
 **Zonal** operations and functions aggregate the cells of an input raster based on some zonal definition, for instance, an administrative unit. In a way these operations and functions are similar to the **focal** operations, but the zonal definition comes from 'outside' the input raster.
 
-**Global** operations and functions use some or all input cells to create an output raster. An example is the calculation of the shortest distance between a source point and every other cell in the input raster. The input raster here provides the resistance of the surface. A good example would be a raster dataset containg slope data where one would want to calculate what the path of least resistance ([a least-cost path](https://pro.arcgis.com/en/pro-app/tool-reference/spatial-analyst/creating-the-least-cost-path.htm#:~:text=The%20least%2Dcost%20path%20travels,into%20the%20weighted%2Ddistance%20tool.)) is when moving from point A to point B.
+**Global** operations and functions use some or all input cells to create an output raster. An example is the calculation of the shortest distance between a source point and every other cell in the input raster. The input raster here provides the resistance of the surface. A good example would be a raster dataset containing slope data where one would want to calculate what the path of least resistance ([a least-cost path](https://pro.arcgis.com/en/pro-app/tool-reference/spatial-analyst/creating-the-least-cost-path.htm#:~:text=The%20least%2Dcost%20path%20travels,into%20the%20weighted%2Ddistance%20tool.)) is when moving from point A to point B.
 
-Since we have two population surfaces, the **local**, **focal**, and **zonal** methods make most sense to use. Let's calculate population change, smooth this population change, and lastly aggregate our population of 30-44 year to an administrative geography. If you wonder what some of the parameters in the functions do or mean, check the documenation for these functions! E.g. `?focal` or `?zonal`.
+Since we have two population surfaces, the **local**, **focal**, and **zonal** methods make most sense to use. Let's calculate population change, smooth this population change, and lastly aggregate our population of 30-44 year to an administrative geography. If you wonder what some of the parameters in the functions do or mean, check the documentation for these functions! E.g. `?focal` or `?zonal`.
 
 ```{r 07-local-is-lekker, warnings=FALSE, message=FALSE}
 # example of local statistics: population change
@@ -147,7 +147,7 @@ lon_agg1 <- aggregate(lon_change,fact=2, fun=mean)
 plot(lon_agg1)
 
 # example of zonal statistics: aggregate to administrative geography
-# please note: the output is vector that is forced to a SpatialPolygons object
+# please note: the output is a vector that is forced to a SpatialPolygons object
 lon_agg2 <- raster::extract(lon_change, lad, fun=mean, sp=TRUE)
 
 # inspect
@@ -205,7 +205,7 @@ knitr::include_graphics('images/week07/07_london_air.png')
 We could manually download `csv` files from the Londonair website for all the monitoring sites we are interested in, however, there is also a [R package](https://davidcarslaw.github.io/openair/) that makes things much easier. Have a look at the [documentation of the openair package](https://cloud.r-project.org/web/packages/openair/openair.pdf) so that you get an idea why we use the `importMeta()` and `importKCL()` functions below!
 
 <div class="note">
-Because `openair` contains **C++** code, a compiler is needed. For Windows, for example, [Rtools](https://cran.r-project.org/bin/windows/Rtools/) is needed. Depending on your system and configuration this can sometimes be a hassle. Fortunately, evenhough packed with functionality, we will only use `openair` to download all the air pollution data we are interested in: in case you cannot get `openair` to work on your computer you can download a copy of the dataset instead.
+Because `openair` contains **C++** code, a compiler is needed. For Windows, for example, [Rtools](https://cran.r-project.org/bin/windows/Rtools/) is needed. Depending on your system and configuration this can sometimes be a hassle. Fortunately, even though packed with functionality, we will only use `openair` to download all the air pollution data we are interested in: in case you cannot get `openair` to work on your computer you can download a copy of the dataset instead.
 </div>
 
 #### File download {-}
@@ -261,7 +261,7 @@ avg_pol <- pollution %>% group_by(latitude,longitude) %>%
 avg_pol
 ```
 
-Spatial interpolation models of point data can be roughly divided into two categories: **deterministic models** and **geostatistical models**. We will start by trying two deterministic models: Thiessen Polygons and Inverse Distance Weighting (IDW). Before we can continue, however, there is still a litte bit of work to do to get our data right: we need to make sure that we only have monitoring sites in Greater London. We can do this in the same way as we did last week for our [crime location data](point-pattern-analysis.html#example-point-pattern-analysis).
+Spatial interpolation models of point data can be roughly divided into two categories: **deterministic models** and **geostatistical models**. We will start by trying two deterministic models: Thiessen Polygons and Inverse Distance Weighting (IDW). Before we can continue, however, there is still a little bit of work to do to get our data right: we need to make sure that we only have monitoring sites in Greater London. We can do this in the same way as we did last week for our [crime location data](point-pattern-analysis.html#example-point-pattern-analysis).
 
 ``` {r 07-prepare-air-pol-data-further, warnings=FALSE, message=FALSE}
 # load libraries
@@ -286,7 +286,7 @@ tm_shape(lad) +
 ```
 
 ### Thiessen Polygons
-The first step we can take to interpolate the data across space is to create Thiessen polygons. Thiessen polygons are formed to assign boundaries of the areas closest to each unique point. Therefore, for every point in a dataset, it has a corresponding Thiessen polygon. The `spatstat` package provides the functionality to produce Thiessen polygons via its dirichelet tesselllation of spatial point patterns function (`dirichlet()`). As we are using `spatstat` again, we also need to first convert the data to a `ppp` object. [Let's tesselate](https://www.youtube.com/watch?v=Qg6BwvDcANg).
+The first step we can take to interpolate the data across space is to create Thiessen polygons. Thiessen polygons are formed to assign boundaries of the areas closest to each unique point. Therefore, for every point in a dataset, it has a corresponding Thiessen polygon. The `spatstat` package provides the functionality to produce Thiessen polygons via its dirichlet tesselation of spatial point patterns function (`dirichlet()`). As we are using `spatstat` again, we also need to first convert the data to a `ppp` object. [Let's tesselate](https://www.youtube.com/watch?v=Qg6BwvDcANg).
 
 ```{r 07-thiessen-pols, warnings=FALSE, message=FALSE}
 # load libraries
@@ -357,7 +357,7 @@ tm_shape(mask(raster_idw,lad)) +
 #### Question {-}
 1. Do you got any idea where the *var1.pred* variable in the `tm_raster()` function is coming from that we use to plot the results of the IDW?
 
-The main parameter in the IDW is the power function. How do you know whether you interpolation results are accurate? You can choose the power function based on literature, but you can also perform a *leave one out cross validation* (LOOCV). The idea is simple: you remove one data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. Then you remove another data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. And so on for all points in the dataset. You then can compare the interpolated point values with the actual values from the ommitted points. The performance of the interpolation can be summarised using the [root-mean-square error](https://en.wikipedia.org/wiki/Root-mean-square_deviation) (RMSE) which you in effect try to minimise!
+The main parameter in the IDW is the power function. How do you know whether you interpolation results are accurate? You can choose the power function based on literature, but you can also perform a *leave one out cross validation* (LOOCV). The idea is simple: you remove one data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. Then you remove another data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. And so on for all points in the dataset. You then can compare the interpolated point values with the actual values from the omitted points. The performance of the interpolation can be summarised using the [root-mean-square error](https://en.wikipedia.org/wiki/Root-mean-square_deviation) (RMSE) which you in effect try to minimise!
 
 ```{r 07-leave-one-out-idw-validation, warnings=FALSE, message=FALSE, results=FALSE}
 # create an empty vector of the same length as our pollution monitoring sites
