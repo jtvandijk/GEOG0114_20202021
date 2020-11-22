@@ -8,9 +8,9 @@ This week is structured around **two** short lecture videos, **one** [assignment
 ### Video: Overview {#overview_w07}
 ```{r 07-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-#embed_msstream('0c605bb0-59f2-44ec-aaa1-d09c2d22bc2e') %>% use_align('left')
+embed_msstream('64e6a9e8-4a05-42ad-bfc2-a67008dd9c5f') %>% use_align('left')
 ```
-[Lecture slides] [[Watch on MS stream]]()
+[Lecture slides] [[Watch on MS stream]](https://web.microsoftstream.com/video/64e6a9e8-4a05-42ad-bfc2-a67008dd9c5f?list=studio)
 
 ## Raster data and map algebra
 In the previous weeks, we have predominantly worked with **vector data**. However, depending on the nature of your research problem, you may also encounter **raster data**. Each of these GIS models has its own advantages and disadvantages. 
@@ -26,9 +26,9 @@ Within R, we can use the functions from the `raster` package for reading, writin
 ### Video: Raster data and map algebra
 ```{r 07-raster-data-and-map-algebra, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-#embed_msstream('c2e8d774-2506-454a-9a92-d5c18d0c6064') %>% use_align('left')
+embed_msstream('14b64e5f-e633-4cf0-b0eb-c25498516f3b') %>% use_align('left')
 ```
-[[Lecture slides]]() [[Watch on MS stream]]()
+[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w07/w07_01_raster_data.pdf) [[Watch on MS stream]](https://web.microsoftstream.com/video/14b64e5f-e633-4cf0-b0eb-c25498516f3b?list=studio)
 
 ### Example: Raster data and map algebra
 For the first part of this week practical material we will be using raster datasets from the [Population Change and Geographic Inequalities in the UK, 1971-2011 (PopChange)](https://www.liverpool.ac.uk/geography-and-planning/research/popchange/introduction/) project. In this [ESRC-funded project](https://esrc.ukri.org/research/our-research/secondary-data-analysis-initiative/), researchers from the University of Liverpool created raster population surfaces from publicly available Census data (1971, 1981, 1991, 2001, 2011). Population surfaces are estimates of counts of people for regular grids, for example, population in a certain subgroup over 1km by 1km grid cells. In the example below, we will be using the 2001 and 2011 Age 30-44 years population surfaces but feel free to choose and download two different datasets through to https://popchange-data.liverpool.ac.uk/.
@@ -159,15 +159,38 @@ tm_shape(lon_agg2) +
 Many packages share the same function names. This can be a problem when these packages are loaded in a same R session. For instance `extract` is not only the name of a function in the `raster` package, but also the name of functions in the `magrittr` and `tidyr` packages. To ensure you are using the function that you think you are using, you can specify the package: `tidyr::extract` or `raster::extract`.
 </div>
 
+### Assignment {#assignment_w07}
+So far we have worked with raster data and made use of local, focal, and zonal statistics - but we have not yet looked at global statistics and functions. In this assignment you will work with global statistics and functions by executing a least-cost path analysis.
+
+Below you will find a raster datasets containing (fake!) elevation data which will act as your [cost surface](https://pro.arcgis.com/en/pro-app/tool-reference/spatial-analyst/creating-a-cost-surface-raster.htm). Your task is to **calculate and map** the [least-cost path](https://pro.arcgis.com/en/pro-app/tool-reference/spatial-analyst/creating-the-least-cost-path.htm) between a given start and end point using the elevation data as your cost surface.
+
+#### Coordinates {-}
+- coordinates of the start point (XY): **515000, 160000**
+- coordinates of the end point (XY): **540000, 190000**
+
+No further instructions are provided and you will have to figure out on your own how to do this! We will discuss your choices and results in **Friday's seminar**, so make sure to 'bring' your results along.
+
+#### Tips {-}
+- Google is your friend. 
+- You are in charge of deciding what software you want to use.
+- For the pupose of this assignment, you can use the elevation data directly as your cost surface.
+- If you need to specify a coordinate system use the British National Grid.
+
+#### File download {-}
+
+| File                                                 | Type           | Link |
+| :------                                              | :------        | :------ |
+| Elevation cost surface                               | `asc`          | [Download](raster/elevation_cost_surface.asc) |
+
 ## Interpolation and geostatistics
 Now we know how to work with raster data, we can move on to point data interpolation and geostatistics. There are many reasons why we may wish to interpolate point data across a map. It could be because we are trying to predict a variable across space, including in areas where there are little to no data. We might also want to smooth the data across space so that we cannot interpret the results of individuals, but still identify the general trends from the data. This is particularly useful when the data corresponds to individual persons and disclosing their locations is unethical. 
 
 ### Video: Interpolation and geostatistics
 ```{r 07-interpolation-and-geostatistics, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-#embed_msstream('c2e8d774-2506-454a-9a92-d5c18d0c6064') %>% use_align('left')
+embed_msstream('14b64e5f-e633-4cf0-b0eb-c25498516f3b') %>% use_align('left')
 ```
-[[Lecture slides]]() [[Watch on MS stream]]()
+[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w07/w07_02_interpolation_geostatistics.pdf) [[Watch on MS stream]](https://web.microsoftstream.com/video/14b64e5f-e633-4cf0-b0eb-c25498516f3b?list=studio)
 
 ### Example: Interpolation and geostatistics
 Spatial interpolation is the prediction of a given phenomenon in unmeasured locations. For that, we need a set of procedures to calculate predicted values of the variable of interest, given calibration data. We will explore several methods by looking at air pollution in London by getting data from the [Londonair](https://www.londonair.org.uk/LondonAir/General/about.aspx) website. Londonair is the website of the London Air Quality Network (LAQN), and shows air pollution in London and south east England that is provided by the [Environmental Research Group](https://www.imperial.ac.uk/school-public-health/environmental-research-group/) of Imperial College London. The data are captured by hundreds of sensors at various continuous monitoring sites in London and the south east of England. The best of it all? The data are publicly available for download!
@@ -378,7 +401,7 @@ sqrt(sum((idw.pred - pol_points$no2)^2) / length(pol_points))
 An IDW is not the only means of interpolating point data across space. A range of geostatistical techniques have also been devised. One of the most commonly used is kriging. Whilst an IDW is created by looking at just known values and their linear distances, a kriging also considers spatial autocorrelation. The approach is therefore more appropriate is there is a known spatial or directional bias in the data. Kriging is a statistical model which uses variograms to calculate the autocorrelation between points and distance. Like an IDW the the values across space are estimated from weighted averages formed by the nearest points and considers the influence of distance.
 
 <div class="note">
-There are various different ways of running a kriging, some are quite complex given that the method requires an experimental variogram of the data in order to run. If you want to know more, there is some excellent material [available here](https://mgimond.github.io/Spatial/spatial-interpolation.html) but it is out of the scope of this course to go further into detail.
+There are various different ways of running a kriging, some are quite complex given that the method requires an experimental variogram of the data in order to run. If you want to know more, there is some excellent material [available here](https://mgimond.github.io/Spatial/spatial-interpolation.html) but it is out of the scope of this course to go into much further detail.
 </div>
 
 ```{r 07-lets-krig-it, warnings=FALSE, message=FALSE}
@@ -399,7 +422,7 @@ gridded(grid) <- TRUE
 fullgrid(grid) <- TRUE
 proj4string(grid) <- proj4string(pol_points)
 
-# execute the kriging interpolation on a regular grid
+# execute the kriging interpolation on a regular grid using the variogram as input
 dat.krg <- krige(no2 ~ 1, pol_points, grid, var.mod)
 
 # convert to raster and mask
@@ -410,7 +433,7 @@ plot(rst.krg)
 
 # plot prettyish
 tm_shape(mask(rst.krg,lad)) + 
-  tm_raster('var1.pred', style='quantile', n=100, palette='Reds', legend.show=FALSE) +
+  tm_raster('var1.pred', style='quantile', n=50, palette='Reds', legend.show=FALSE) +
   tm_shape(pol_points) +
   tm_dots() +
   tm_shape(lad) +
@@ -450,7 +473,7 @@ sqrt(sum((krg.pred - pol_points$no2)^2) / length(pol_points))
 ```
 
 #### Question {-}
-1. Which method gives a better performance: IDW or our quick attempt to kriging?
+1. Which method gives a better performance: IDW or our quick attempt to kriging? Why do you say so?
 
 That's it. Using ordinary kriging we predicted the average value of Nitrogen Dioxide (in $\mu$g/m^3^) in 2019 for every location in Greater London.
 
