@@ -180,7 +180,7 @@ No further instructions are provided and you will have to figure out on your own
 
 | File                                                 | Type           | Link |
 | :------                                              | :------        | :------ |
-| Elevation cost surface                               | `asc`          | [Download](raster/elevation_cost_surface.asc) |
+| Elevation cost surface                               | `asc`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/raster/elevation_cost_surface.asc) |
 
 ## Interpolation and geostatistics
 Now we know how to work with raster data, we can move on to point data interpolation and geostatistics. There are many reasons why we may wish to interpolate point data across a map. It could be because we are trying to predict a variable across space, including in areas where there are little to no data. We might also want to smooth the data across space so that we cannot interpret the results of individuals, but still identify the general trends from the data. This is particularly useful when the data corresponds to individual persons and disclosing their locations is unethical. 
