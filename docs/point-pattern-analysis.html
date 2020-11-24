@@ -414,13 +414,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>One way of looking at a point pattern is by describing the overall distribution of the pattern using distance-based methods. With an average nearest neighbour (ANN) analysis, for instance, we can measure the average distance from each point in the study area to its nearest point. If we then plot ANN values for different order neighbours, we will get an insight into the spatial ordering of all our points relative to one another. Let’s try it.</p>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1"><span class="co"># get the average distance to the first nearest neighbour</span></a>
 <a class="sourceLine" id="cb186-2" data-line-number="2"><span class="kw">mean</span>(<span class="kw">nndist</span>(crime_ppp_jitter, <span class="dt">k=</span><span class="dv">1</span>))</a></code></pre></div>
-<pre><code>## [1] 327.5654</code></pre>
+<pre><code>## [1] 323.7656</code></pre>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1"><span class="co"># get the average distance to the second nearest neighbour</span></a>
 <a class="sourceLine" id="cb188-2" data-line-number="2"><span class="kw">mean</span>(<span class="kw">nndist</span>(crime_ppp_jitter, <span class="dt">k=</span><span class="dv">2</span>))</a></code></pre></div>
-<pre><code>## [1] 521.8487</code></pre>
+<pre><code>## [1] 520.7342</code></pre>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1"><span class="co"># get the average distance to the third nearest neighbour</span></a>
 <a class="sourceLine" id="cb190-2" data-line-number="2"><span class="kw">mean</span>(<span class="kw">nndist</span>(crime_ppp_jitter, <span class="dt">k=</span><span class="dv">3</span>))</a></code></pre></div>
-<pre><code>## [1] 668.0951</code></pre>
+<pre><code>## [1] 669.624</code></pre>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="co"># get the average distance to the first, second, ..., the hundredth, nearest neighbour</span></a>
 <a class="sourceLine" id="cb192-2" data-line-number="2">crime_ann &lt;-<span class="st"> </span><span class="kw">apply</span>(<span class="kw">nndist</span>(crime_ppp_jitter, <span class="dt">k=</span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span>),<span class="dv">2</span>,<span class="dt">FUN=</span>mean)</a>
 <a class="sourceLine" id="cb192-3" data-line-number="3"></a>
@@ -468,7 +468,7 @@ We will start with a simple quadrat count by dividing the observation window int
 ## 	Chi-squared test of CSR using quadrat counts
 ## 
 ## data:  crime_ppp_jitter
-## X2 = 5111.8, df = 164, p-value &lt; 2.2e-16
+## X2 = 5067.8, df = 164, p-value &lt; 2.2e-16
 ## alternative hypothesis: two.sided
 ## 
 ## Quadrats: 165 tiles (irregular windows)</code></pre>
