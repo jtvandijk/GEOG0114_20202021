@@ -39,8 +39,8 @@ For the first part of this week practical material we will be using raster datas
 #### File download {-}
 | File                                        | Type         | Link |
 | :------                                     | :------      | :------ |
-| Population surface GB 2001 - Age 30-44      | `asc`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/raster/5a_ascii_grid2001_Age_Age30_44.asc) |
-| Population surface GB 2011 - Age 30-44      | `asc`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/raster/5a_ascii_grid2011_Age_Age30_44.asc) |
+| Population surface GB 2001 - Age 30-44      | `asc`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/zip/raster/5a_ascii_grid2001_Age_Age30_44.zip) |
+| Population surface GB 2011 - Age 30-44      | `asc`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/5a_ascii_grid2011_Age_Age30_44.zip) |
 | Local Authority Districts London 2020      | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/london_lad_2020.zip) |
 
 If you did not download two dataset directly from the [PopChange](https://www.liverpool.ac.uk/geography-and-planning/research/popchange/introduction/) data resource, download the individual files above to your own computer and as usual make sure [your data directory](spatial-autocorrelation.html#setting-up-the-environment) is set up correctly and the data are unzipped where necessary. 
@@ -180,7 +180,7 @@ No further instructions are provided and you will have to figure out on your own
 
 | File                                                 | Type           | Link |
 | :------                                              | :------        | :------ |
-| Elevation cost surface                               | `asc`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/raster/elevation_cost_surface.asc) |
+| Elevation cost surface                               | `asc`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/elevation_cost_surface.zip) |
 
 ## Interpolation and geostatistics
 Now we know how to work with raster data, we can move on to point data interpolation and geostatistics. There are many reasons why we may wish to interpolate point data across a map. It could be because we are trying to predict a variable across space, including in areas where there are little to no data. We might also want to smooth the data across space so that we cannot interpret the results of individuals, but still identify the general trends from the data. This is particularly useful when the data corresponds to individual persons and disclosing their locations is unethical. 
@@ -237,10 +237,12 @@ pollution <- filter(pollution,!is.na(no2))
 ```
 
 ```{r 07-get-data-from-zip, warnings=FALSE, message=FALSE}
+# option 2: using downloaded csv file
+
 # libraries
 library(tidyverse)
 
-# option 2: read in downloaded data // the file is quite large so we read directly from zip
+# read in downloaded data // the file is quite large so we read directly from zip
 pollution <- read_csv('raw/zip/no2_london_2019.zip')
 ```
 
