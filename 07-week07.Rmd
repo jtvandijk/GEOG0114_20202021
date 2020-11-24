@@ -39,7 +39,7 @@ For the first part of this week practical material we will be using raster datas
 #### File download {-}
 | File                                        | Type         | Link |
 | :------                                     | :------      | :------ |
-| Population surface GB 2001 - Age 30-44      | `asc`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/zip/5a_ascii_grid2001_Age_Age30_44.zip) |
+| Population surface GB 2001 - Age 30-44      | `asc`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/5a_ascii_grid2001_Age_Age30_44.zip) |
 | Population surface GB 2011 - Age 30-44      | `asc`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/5a_ascii_grid2011_Age_Age30_44.zip) |
 | Local Authority Districts London 2020      | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/london_lad_2020.zip) |
 
