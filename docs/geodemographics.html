@@ -24,7 +24,7 @@
 <meta name="author" content="Justin van Dijk and Joanna Wilkin" />
 
 
-<meta name="date" content="2020-11-22" />
+<meta name="date" content="2020-11-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 <link rel="prev" href="dbscan-and-cluster-analysis.html"/>
 <link rel="next" href="reproducible-research.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,26 +54,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -83,9 +81,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,13 +134,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
-<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#get-in-touch"><i class="fa fa-check"></i>Get in touch</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#noticed-a-mistake-in-this-resource"><i class="fa fa-check"></i>Noticed a mistake in this resource?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a>
-<ul>
+<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a><ul>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#module-structure"><i class="fa fa-check"></i>Module structure</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#weekly-topics"><i class="fa fa-check"></i>Weekly topics</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
@@ -153,41 +149,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="spatial-analysis-for-data-science.html"><a href="spatial-analysis-for-data-science.html"><i class="fa fa-check"></i><b>1</b> Spatial analysis for data science</a></li>
 <li class="chapter" data-level="2" data-path="geographical-representation.html"><a href="geographical-representation.html"><i class="fa fa-check"></i><b>2</b> Geographical representation</a></li>
 <li class="chapter" data-level="3" data-path="spatial-properties-and-relationships.html"><a href="spatial-properties-and-relationships.html"><i class="fa fa-check"></i><b>3</b> Spatial properties and relationships</a></li>
-<li class="chapter" data-level="4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Spatial autocorrelation</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#neighbours"><i class="fa fa-check"></i><b>4.1</b> Neighbours</a>
-<ul>
+<li class="chapter" data-level="4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Spatial autocorrelation</a><ul>
+<li class="chapter" data-level="4.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#neighbours"><i class="fa fa-check"></i><b>4.1</b> Neighbours</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#setting-up-the-environment"><i class="fa fa-check"></i><b>4.1.1</b> Setting up the environment</a></li>
 <li class="chapter" data-level="4.1.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#euclidean-neighbours"><i class="fa fa-check"></i><b>4.1.2</b> Euclidean neighbours</a></li>
 <li class="chapter" data-level="4.1.3" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#shared-boundary-neighbours"><i class="fa fa-check"></i><b>4.1.3</b> Shared boundary neighbours</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#quantifying-difference-over-space"><i class="fa fa-check"></i><b>4.2</b> Quantifying difference over space</a>
-<ul>
+<li class="chapter" data-level="4.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#quantifying-difference-over-space"><i class="fa fa-check"></i><b>4.2</b> Quantifying difference over space</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#our-property-is-theft."><i class="fa fa-check"></i><b>4.2.1</b> Our property is theft.</a></li>
 <li class="chapter" data-level="4.2.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#global-morans-i"><i class="fa fa-check"></i><b>4.2.2</b> Global Moran’s I</a></li>
 <li class="chapter" data-level="4.2.3" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#local-morans-i"><i class="fa fa-check"></i><b>4.2.3</b> Local Moran’s I</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory spatial data analysis</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#introduction_w05"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="5" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory spatial data analysis</a><ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#introduction_w05"><i class="fa fa-check"></i><b>5.1</b> Introduction</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#overview_w05"><i class="fa fa-check"></i><b>5.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#tidy-data"><i class="fa fa-check"></i><b>5.2</b> Tidy data</a>
-<ul>
+<li class="chapter" data-level="5.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#tidy-data"><i class="fa fa-check"></i><b>5.2</b> Tidy data</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-tidy-data"><i class="fa fa-check"></i><b>5.2.1</b> Video: Tidy data</a></li>
 <li class="chapter" data-level="5.2.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#what-do-tidy-data-look-like"><i class="fa fa-check"></i><b>5.2.2</b> What do tidy data look like?</a></li>
 <li class="chapter" data-level="5.2.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-creating-tidy-data"><i class="fa fa-check"></i><b>5.2.3</b> Example: Creating tidy data</a></li>
 <li class="chapter" data-level="5.2.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#assignment_w05"><i class="fa fa-check"></i><b>5.2.4</b> Assignments</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r"><i class="fa fa-check"></i><b>5.3</b> Exploratory spatial data analysis in R</a>
-<ul>
+<li class="chapter" data-level="5.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r"><i class="fa fa-check"></i><b>5.3</b> Exploratory spatial data analysis in R</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-exploratory-spatial-data-analysis"><i class="fa fa-check"></i><b>5.3.1</b> Video: Exploratory spatial data analysis</a></li>
 <li class="chapter" data-level="5.3.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-exploring-our-dataset"><i class="fa fa-check"></i><b>5.3.2</b> Example: Exploring our dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4</b> Spatial heterogeneity</a>
-<ul>
+<li class="chapter" data-level="5.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4</b> Spatial heterogeneity</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4.1</b> Video: Spatial heterogeneity</a></li>
 <li class="chapter" data-level="5.4.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-accounting-for-spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4.2</b> Example: Accounting for spatial heterogeneity</a></li>
 <li class="chapter" data-level="5.4.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#geographically-weighted-regression"><i class="fa fa-check"></i><b>5.4.3</b> Geographically Weighted Regression</a></li>
@@ -196,19 +184,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#attributions_w05"><i class="fa fa-check"></i><b>5.6</b> Attributions</a></li>
 <li class="chapter" data-level="5.7" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#feedback_w05"><i class="fa fa-check"></i><b>5.7</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#introduction_w06"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a><ul>
+<li class="chapter" data-level="6.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#introduction_w06"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#overview_w06"><i class="fa fa-check"></i><b>6.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#point-pattern-analysis-1"><i class="fa fa-check"></i><b>6.2</b> Point pattern analysis</a>
-<ul>
+<li class="chapter" data-level="6.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#point-pattern-analysis-1"><i class="fa fa-check"></i><b>6.2</b> Point pattern analysis</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.1</b> Video: Point pattern analysis</a></li>
 <li class="chapter" data-level="6.2.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.2</b> Example: Point pattern analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3</b> Point pattern analysis in practice</a>
-<ul>
+<li class="chapter" data-level="6.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3</b> Point pattern analysis in practice</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3.1</b> Video: Point pattern analysis in practice</a></li>
 <li class="chapter" data-level="6.3.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3.2</b> Example: Point Pattern Analysis in practice</a></li>
 <li class="chapter" data-level="6.3.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#assignment_w06"><i class="fa fa-check"></i><b>6.3.3</b> Assignments</a></li>
@@ -217,20 +201,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#attributions_w06"><i class="fa fa-check"></i><b>6.5</b> Attributions</a></li>
 <li class="chapter" data-level="6.6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#feedback_w06"><i class="fa fa-check"></i><b>6.6</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html"><i class="fa fa-check"></i><b>7</b> Raster data and geostatistics</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#introduction_w07"><i class="fa fa-check"></i><b>7.1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="7" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html"><i class="fa fa-check"></i><b>7</b> Raster data and geostatistics</a><ul>
+<li class="chapter" data-level="7.1" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#introduction_w07"><i class="fa fa-check"></i><b>7.1</b> Introduction</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#overview_w07"><i class="fa fa-check"></i><b>7.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#raster-data-and-map-algebra"><i class="fa fa-check"></i><b>7.2</b> Raster data and map algebra</a>
-<ul>
+<li class="chapter" data-level="7.2" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#raster-data-and-map-algebra"><i class="fa fa-check"></i><b>7.2</b> Raster data and map algebra</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#video-raster-data-and-map-algebra"><i class="fa fa-check"></i><b>7.2.1</b> Video: Raster data and map algebra</a></li>
 <li class="chapter" data-level="7.2.2" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#example-raster-data-and-map-algebra"><i class="fa fa-check"></i><b>7.2.2</b> Example: Raster data and map algebra</a></li>
 <li class="chapter" data-level="7.2.3" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#assignment_w07"><i class="fa fa-check"></i><b>7.2.3</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#interpolation-and-geostatistics"><i class="fa fa-check"></i><b>7.3</b> Interpolation and geostatistics</a>
-<ul>
+<li class="chapter" data-level="7.3" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#interpolation-and-geostatistics"><i class="fa fa-check"></i><b>7.3</b> Interpolation and geostatistics</a><ul>
 <li class="chapter" data-level="7.3.1" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#video-interpolation-and-geostatistics"><i class="fa fa-check"></i><b>7.3.1</b> Video: Interpolation and geostatistics</a></li>
 <li class="chapter" data-level="7.3.2" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#example-interpolation-and-geostatistics"><i class="fa fa-check"></i><b>7.3.2</b> Example: Interpolation and geostatistics</a></li>
 <li class="chapter" data-level="7.3.3" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#thiessen-polygons"><i class="fa fa-check"></i><b>7.3.3</b> Thiessen Polygons</a></li>
@@ -261,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="geodemographics" class="section level1" number="9">
+<div id="geodemographics" class="section level1">
 <h1><span class="header-section-number">9</span> Geodemographics</h1>
 <center>
 <strong>This week’s content will be made available on 07/12.</strong>
