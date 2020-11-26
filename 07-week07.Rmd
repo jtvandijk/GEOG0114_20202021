@@ -26,9 +26,9 @@ Within R, we can use the functions from the `raster` package for reading, writin
 ### Video: Raster data and map algebra
 ```{r 07-raster-data-and-map-algebra, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-embed_msstream('14b64e5f-e633-4cf0-b0eb-c25498516f3b') %>% use_align('left')
+embed_msstream('7854a8dc-f24f-4a3d-908c-9a10adb4b085') %>% use_align('left')
 ```
-[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w07/w07_01_raster_data.pdf) [[Watch on MS stream]](https://web.microsoftstream.com/video/14b64e5f-e633-4cf0-b0eb-c25498516f3b?list=studio)
+[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w07/w07_01_raster_data.pdf) [[Watch on MS stream]](https://web.microsoftstream.com/video/7854a8dc-f24f-4a3d-908c-9a10adb4b085?list=studio)
 
 ### Example: Raster data and map algebra
 For the first part of this week practical material we will be using raster datasets from the [Population Change and Geographic Inequalities in the UK, 1971-2011 (PopChange)](https://www.liverpool.ac.uk/geography-and-planning/research/popchange/introduction/) project. In this [ESRC-funded project](https://esrc.ukri.org/research/our-research/secondary-data-analysis-initiative/), researchers from the University of Liverpool created raster population surfaces from publicly available Census data (1971, 1981, 1991, 2001, 2011). Population surfaces are estimates of counts of people for regular grids, for example, population in a certain subgroup over 1km by 1km grid cells. In the example below, we will be using the 2001 and 2011 Age 30-44 years population surfaces but feel free to choose and download two different datasets through to https://popchange-data.liverpool.ac.uk/.

@@ -33,7 +33,6 @@
   
 <link rel="prev" href="point-pattern-analysis.html"/>
 <link rel="next" href="dbscan-and-cluster-analysis.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -55,26 +54,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -83,9 +81,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,13 +134,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
-<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#get-in-touch"><i class="fa fa-check"></i>Get in touch</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#noticed-a-mistake-in-this-resource"><i class="fa fa-check"></i>Noticed a mistake in this resource?</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a>
-<ul>
+<li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html"><i class="fa fa-check"></i>Course information</a><ul>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#module-structure"><i class="fa fa-check"></i>Module structure</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#weekly-topics"><i class="fa fa-check"></i>Weekly topics</a></li>
 <li class="chapter" data-level="" data-path="course-information.html"><a href="course-information.html#learning-objectives"><i class="fa fa-check"></i>Learning objectives</a></li>
@@ -153,41 +149,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="spatial-analysis-for-data-science.html"><a href="spatial-analysis-for-data-science.html"><i class="fa fa-check"></i><b>1</b> Spatial analysis for data science</a></li>
 <li class="chapter" data-level="2" data-path="geographical-representation.html"><a href="geographical-representation.html"><i class="fa fa-check"></i><b>2</b> Geographical representation</a></li>
 <li class="chapter" data-level="3" data-path="spatial-properties-and-relationships.html"><a href="spatial-properties-and-relationships.html"><i class="fa fa-check"></i><b>3</b> Spatial properties and relationships</a></li>
-<li class="chapter" data-level="4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Spatial autocorrelation</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#neighbours"><i class="fa fa-check"></i><b>4.1</b> Neighbours</a>
-<ul>
+<li class="chapter" data-level="4" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html"><i class="fa fa-check"></i><b>4</b> Spatial autocorrelation</a><ul>
+<li class="chapter" data-level="4.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#neighbours"><i class="fa fa-check"></i><b>4.1</b> Neighbours</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#setting-up-the-environment"><i class="fa fa-check"></i><b>4.1.1</b> Setting up the environment</a></li>
 <li class="chapter" data-level="4.1.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#euclidean-neighbours"><i class="fa fa-check"></i><b>4.1.2</b> Euclidean neighbours</a></li>
 <li class="chapter" data-level="4.1.3" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#shared-boundary-neighbours"><i class="fa fa-check"></i><b>4.1.3</b> Shared boundary neighbours</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#quantifying-difference-over-space"><i class="fa fa-check"></i><b>4.2</b> Quantifying difference over space</a>
-<ul>
+<li class="chapter" data-level="4.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#quantifying-difference-over-space"><i class="fa fa-check"></i><b>4.2</b> Quantifying difference over space</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#our-property-is-theft."><i class="fa fa-check"></i><b>4.2.1</b> Our property is theft.</a></li>
 <li class="chapter" data-level="4.2.2" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#global-morans-i"><i class="fa fa-check"></i><b>4.2.2</b> Global Moran’s I</a></li>
 <li class="chapter" data-level="4.2.3" data-path="spatial-autocorrelation.html"><a href="spatial-autocorrelation.html#local-morans-i"><i class="fa fa-check"></i><b>4.2.3</b> Local Moran’s I</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory spatial data analysis</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#introduction_w05"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="5" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html"><i class="fa fa-check"></i><b>5</b> Exploratory spatial data analysis</a><ul>
+<li class="chapter" data-level="5.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#introduction_w05"><i class="fa fa-check"></i><b>5.1</b> Introduction</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#overview_w05"><i class="fa fa-check"></i><b>5.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#tidy-data"><i class="fa fa-check"></i><b>5.2</b> Tidy data</a>
-<ul>
+<li class="chapter" data-level="5.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#tidy-data"><i class="fa fa-check"></i><b>5.2</b> Tidy data</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-tidy-data"><i class="fa fa-check"></i><b>5.2.1</b> Video: Tidy data</a></li>
 <li class="chapter" data-level="5.2.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#what-do-tidy-data-look-like"><i class="fa fa-check"></i><b>5.2.2</b> What do tidy data look like?</a></li>
 <li class="chapter" data-level="5.2.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-creating-tidy-data"><i class="fa fa-check"></i><b>5.2.3</b> Example: Creating tidy data</a></li>
 <li class="chapter" data-level="5.2.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#assignment_w05"><i class="fa fa-check"></i><b>5.2.4</b> Assignments</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r"><i class="fa fa-check"></i><b>5.3</b> Exploratory spatial data analysis in R</a>
-<ul>
+<li class="chapter" data-level="5.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r"><i class="fa fa-check"></i><b>5.3</b> Exploratory spatial data analysis in R</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-exploratory-spatial-data-analysis"><i class="fa fa-check"></i><b>5.3.1</b> Video: Exploratory spatial data analysis</a></li>
 <li class="chapter" data-level="5.3.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-exploring-our-dataset"><i class="fa fa-check"></i><b>5.3.2</b> Example: Exploring our dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4</b> Spatial heterogeneity</a>
-<ul>
+<li class="chapter" data-level="5.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4</b> Spatial heterogeneity</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#video-spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4.1</b> Video: Spatial heterogeneity</a></li>
 <li class="chapter" data-level="5.4.2" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#example-accounting-for-spatial-heterogeneity"><i class="fa fa-check"></i><b>5.4.2</b> Example: Accounting for spatial heterogeneity</a></li>
 <li class="chapter" data-level="5.4.3" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#geographically-weighted-regression"><i class="fa fa-check"></i><b>5.4.3</b> Geographically Weighted Regression</a></li>
@@ -196,19 +184,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#attributions_w05"><i class="fa fa-check"></i><b>5.6</b> Attributions</a></li>
 <li class="chapter" data-level="5.7" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#feedback_w05"><i class="fa fa-check"></i><b>5.7</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#introduction_w06"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html"><i class="fa fa-check"></i><b>6</b> Point pattern analysis</a><ul>
+<li class="chapter" data-level="6.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#introduction_w06"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#overview_w06"><i class="fa fa-check"></i><b>6.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#point-pattern-analysis-1"><i class="fa fa-check"></i><b>6.2</b> Point pattern analysis</a>
-<ul>
+<li class="chapter" data-level="6.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#point-pattern-analysis-1"><i class="fa fa-check"></i><b>6.2</b> Point pattern analysis</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.1</b> Video: Point pattern analysis</a></li>
 <li class="chapter" data-level="6.2.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-point-pattern-analysis"><i class="fa fa-check"></i><b>6.2.2</b> Example: Point pattern analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3</b> Point pattern analysis in practice</a>
-<ul>
+<li class="chapter" data-level="6.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3</b> Point pattern analysis in practice</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#video-point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3.1</b> Video: Point pattern analysis in practice</a></li>
 <li class="chapter" data-level="6.3.2" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#example-point-pattern-analysis-in-practice"><i class="fa fa-check"></i><b>6.3.2</b> Example: Point Pattern Analysis in practice</a></li>
 <li class="chapter" data-level="6.3.3" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#assignment_w06"><i class="fa fa-check"></i><b>6.3.3</b> Assignments</a></li>
@@ -217,20 +201,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#attributions_w06"><i class="fa fa-check"></i><b>6.5</b> Attributions</a></li>
 <li class="chapter" data-level="6.6" data-path="point-pattern-analysis.html"><a href="point-pattern-analysis.html#feedback_w06"><i class="fa fa-check"></i><b>6.6</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html"><i class="fa fa-check"></i><b>7</b> Raster data and geostatistics</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#introduction_w07"><i class="fa fa-check"></i><b>7.1</b> Introduction</a>
-<ul>
+<li class="chapter" data-level="7" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html"><i class="fa fa-check"></i><b>7</b> Raster data and geostatistics</a><ul>
+<li class="chapter" data-level="7.1" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#introduction_w07"><i class="fa fa-check"></i><b>7.1</b> Introduction</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#overview_w07"><i class="fa fa-check"></i><b>7.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#raster-data-and-map-algebra"><i class="fa fa-check"></i><b>7.2</b> Raster data and map algebra</a>
-<ul>
+<li class="chapter" data-level="7.2" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#raster-data-and-map-algebra"><i class="fa fa-check"></i><b>7.2</b> Raster data and map algebra</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#video-raster-data-and-map-algebra"><i class="fa fa-check"></i><b>7.2.1</b> Video: Raster data and map algebra</a></li>
 <li class="chapter" data-level="7.2.2" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#example-raster-data-and-map-algebra"><i class="fa fa-check"></i><b>7.2.2</b> Example: Raster data and map algebra</a></li>
 <li class="chapter" data-level="7.2.3" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#assignment_w07"><i class="fa fa-check"></i><b>7.2.3</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#interpolation-and-geostatistics"><i class="fa fa-check"></i><b>7.3</b> Interpolation and geostatistics</a>
-<ul>
+<li class="chapter" data-level="7.3" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#interpolation-and-geostatistics"><i class="fa fa-check"></i><b>7.3</b> Interpolation and geostatistics</a><ul>
 <li class="chapter" data-level="7.3.1" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#video-interpolation-and-geostatistics"><i class="fa fa-check"></i><b>7.3.1</b> Video: Interpolation and geostatistics</a></li>
 <li class="chapter" data-level="7.3.2" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#example-interpolation-and-geostatistics"><i class="fa fa-check"></i><b>7.3.2</b> Example: Interpolation and geostatistics</a></li>
 <li class="chapter" data-level="7.3.3" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#thiessen-polygons"><i class="fa fa-check"></i><b>7.3.3</b> Thiessen Polygons</a></li>
@@ -261,13 +241,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="raster-data-and-geostatistics" class="section level1" number="7">
+<div id="raster-data-and-geostatistics" class="section level1">
 <h1><span class="header-section-number">7</span> Raster data and geostatistics</h1>
-<div id="introduction_w07" class="section level2" number="7.1">
+<div id="introduction_w07" class="section level2">
 <h2><span class="header-section-number">7.1</span> Introduction</h2>
 <p>During this week, we will continue to work with point data by providing you with a more in-depth and detailed explanation behind the geostatistics methods of interpolation of point data, looking at various deterministic and geostatistical techniques. Because some of these techniques yield a raster dataset as an output, we will start by focusing on raster data and its applications.</p>
 <p>This week is structured around <strong>two</strong> short lecture videos, <strong>one</strong> <a href="raster-data-and-geostatistics.html#assignment_w07">assignments</a> that you need to do in preparation for Friday’s seminar, and the practical material. As always, this <a href="https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&amp;login=1">week’s reading list</a> is available on the UCL library reading list page for the course.</p>
-<div id="overview_w07" class="section level3" number="7.1.1">
+<div id="overview_w07" class="section level3">
 <h3><span class="header-section-number">7.1.1</span> Video: Overview</h3>
 <p><div class="vembedr" align="left">
 <div>
@@ -277,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 [Lecture slides] <a href="https://web.microsoftstream.com/video/64e6a9e8-4a05-42ad-bfc2-a67008dd9c5f?list=studio">[Watch on MS stream]</a></p>
 </div>
 </div>
-<div id="raster-data-and-map-algebra" class="section level2" number="7.2">
+<div id="raster-data-and-map-algebra" class="section level2">
 <h2><span class="header-section-number">7.2</span> Raster data and map algebra</h2>
 <p>In the previous weeks, we have predominantly worked with <strong>vector data</strong>. However, depending on the nature of your research problem, you may also encounter <strong>raster data</strong>. Each of these GIS models has its own advantages and disadvantages.</p>
 <div class="figure" style="text-align: center"><span id="fig:07-raster-as-text"></span>
@@ -288,16 +268,16 @@ Figure 7.1: A hypothetical raster and a vector model of landuse (<a href="https:
 </div>
 <p>The main difference between vector and raster model is that raster datasets are composed of pixels (or grid cells), while vector dataset are composed of geometric points and lines (paths). This means that a raster dataset represent a geographic phenomemon by dividing the world into discrete rectangular cells laid out in a grid. Each cell holds one value that represents some characteristic of that gric cell’s location. Probably one of the most common or well-known types of raster data is land cover derived from satellite imagery, however, there are many situations in which raster datasets are used.</p>
 <p>Within R, we can use the functions from the <code>raster</code> package for reading, writing, manipulating, analysing, and modelling raster data; however, before we do that let’s first dive a little deeper into raster data and <strong>map algebra</strong>.</p>
-<div id="video-raster-data-and-map-algebra" class="section level3" number="7.2.1">
+<div id="video-raster-data-and-map-algebra" class="section level3">
 <h3><span class="header-section-number">7.2.1</span> Video: Raster data and map algebra</h3>
 <p><div class="vembedr" align="left">
 <div>
-<iframe src="https://web.microsoftstream.com/embed/video/14b64e5f-e633-4cf0-b0eb-c25498516f3b?autoplay=false&amp;showinfo=true" width="533" height="300" style="border:none;"></iframe>
+<iframe src="https://web.microsoftstream.com/embed/video/7854a8dc-f24f-4a3d-908c-9a10adb4b085?autoplay=false&amp;showinfo=true" width="533" height="300" style="border:none;"></iframe>
 </div>
 </div>
-<a href="https://github.com/jtvandijk/GEOG0114/tree/master/slides/w07/w07_01_raster_data.pdf">[Lecture slides]</a> <a href="https://web.microsoftstream.com/video/14b64e5f-e633-4cf0-b0eb-c25498516f3b?list=studio">[Watch on MS stream]</a></p>
+<a href="https://github.com/jtvandijk/GEOG0114/tree/master/slides/w07/w07_01_raster_data.pdf">[Lecture slides]</a> <a href="https://web.microsoftstream.com/video/7854a8dc-f24f-4a3d-908c-9a10adb4b085?list=studio">[Watch on MS stream]</a></p>
 </div>
-<div id="example-raster-data-and-map-algebra" class="section level3" number="7.2.2">
+<div id="example-raster-data-and-map-algebra" class="section level3">
 <h3><span class="header-section-number">7.2.2</span> Example: Raster data and map algebra</h3>
 <p>For the first part of this week practical material we will be using raster datasets from the <a href="https://www.liverpool.ac.uk/geography-and-planning/research/popchange/introduction/">Population Change and Geographic Inequalities in the UK, 1971-2011 (PopChange)</a> project. In this <a href="https://esrc.ukri.org/research/our-research/secondary-data-analysis-initiative/">ESRC-funded project</a>, researchers from the University of Liverpool created raster population surfaces from publicly available Census data (1971, 1981, 1991, 2001, 2011). Population surfaces are estimates of counts of people for regular grids, for example, population in a certain subgroup over 1km by 1km grid cells. In the example below, we will be using the 2001 and 2011 Age 30-44 years population surfaces but feel free to choose and download two different datasets through to <a href="https://popchange-data.liverpool.ac.uk/" class="uri">https://popchange-data.liverpool.ac.uk/</a>.</p>
 <div id="question" class="section level4 unnumbered">
@@ -348,27 +328,27 @@ Figure 7.2: Raster or plain text?
 <ol style="list-style-type: decimal">
 <li>Any idea on what the first few lines of the <code>asc</code> file, when opened with a texteditor, mean?</li>
 </ol>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="raster-data-and-geostatistics.html#cb205-1" aria-hidden="true"></a><span class="co"># load libraries</span></span>
-<span id="cb205-2"><a href="raster-data-and-geostatistics.html#cb205-2" aria-hidden="true"></a><span class="kw">library</span>(raster)</span>
-<span id="cb205-3"><a href="raster-data-and-geostatistics.html#cb205-3" aria-hidden="true"></a><span class="kw">library</span>(RColorBrewer)</span>
-<span id="cb205-4"><a href="raster-data-and-geostatistics.html#cb205-4" aria-hidden="true"></a><span class="kw">library</span>(rgdal)</span>
-<span id="cb205-5"><a href="raster-data-and-geostatistics.html#cb205-5" aria-hidden="true"></a><span class="kw">library</span>(tmap)</span>
-<span id="cb205-6"><a href="raster-data-and-geostatistics.html#cb205-6" aria-hidden="true"></a></span>
-<span id="cb205-7"><a href="raster-data-and-geostatistics.html#cb205-7" aria-hidden="true"></a><span class="co"># load data</span></span>
-<span id="cb205-8"><a href="raster-data-and-geostatistics.html#cb205-8" aria-hidden="true"></a>pop01_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;raw/raster/5a_ascii_grid2001_Age_Age30_44.asc&#39;</span>)</span>
-<span id="cb205-9"><a href="raster-data-and-geostatistics.html#cb205-9" aria-hidden="true"></a>pop11_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;raw/raster/5a_ascii_grid2011_Age_Age30_44.asc&#39;</span>)</span>
-<span id="cb205-10"><a href="raster-data-and-geostatistics.html#cb205-10" aria-hidden="true"></a></span>
-<span id="cb205-11"><a href="raster-data-and-geostatistics.html#cb205-11" aria-hidden="true"></a><span class="co"># inspect 2001 // this can be a little slow, especially for large raster</span></span>
-<span id="cb205-12"><a href="raster-data-and-geostatistics.html#cb205-12" aria-hidden="true"></a><span class="kw">plot</span>(pop01_<span class="dv">3044</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="kw">library</span>(raster)</a>
+<a class="sourceLine" id="cb205-3" data-line-number="3"><span class="kw">library</span>(RColorBrewer)</a>
+<a class="sourceLine" id="cb205-4" data-line-number="4"><span class="kw">library</span>(rgdal)</a>
+<a class="sourceLine" id="cb205-5" data-line-number="5"><span class="kw">library</span>(tmap)</a>
+<a class="sourceLine" id="cb205-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb205-7" data-line-number="7"><span class="co"># load data</span></a>
+<a class="sourceLine" id="cb205-8" data-line-number="8">pop01_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;raw/raster/5a_ascii_grid2001_Age_Age30_44.asc&#39;</span>)</a>
+<a class="sourceLine" id="cb205-9" data-line-number="9">pop11_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;raw/raster/5a_ascii_grid2011_Age_Age30_44.asc&#39;</span>)</a>
+<a class="sourceLine" id="cb205-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb205-11" data-line-number="11"><span class="co"># inspect 2001 // this can be a little slow, especially for large raster</span></a>
+<a class="sourceLine" id="cb205-12" data-line-number="12"><span class="kw">plot</span>(pop01_<span class="dv">3044</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-load-libraries-and%20data-1.png" width="672" /></p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="raster-data-and-geostatistics.html#cb206-1" aria-hidden="true"></a><span class="co"># plot 2011 // this can be a little slow, especially for large rasters</span></span>
-<span id="cb206-2"><a href="raster-data-and-geostatistics.html#cb206-2" aria-hidden="true"></a><span class="kw">plot</span>(pop11_<span class="dv">3044</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1"><span class="co"># plot 2011 // this can be a little slow, especially for large rasters</span></a>
+<a class="sourceLine" id="cb206-2" data-line-number="2"><span class="kw">plot</span>(pop11_<span class="dv">3044</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-load-libraries-and%20data-2.png" width="672" /></p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="raster-data-and-geostatistics.html#cb207-1" aria-hidden="true"></a><span class="co"># plot pretty 2001 // this can be a little slow, especially for large rasters</span></span>
-<span id="cb207-2"><a href="raster-data-and-geostatistics.html#cb207-2" aria-hidden="true"></a><span class="kw">plot</span>(pop01_<span class="dv">3044</span>,<span class="dt">col=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>,<span class="st">&#39;Blues&#39;</span>),<span class="dt">main=</span><span class="st">&#39;Popolation surface age 30 - 44 in 2011&#39;</span>,<span class="dt">axes=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="co"># plot pretty 2001 // this can be a little slow, especially for large rasters</span></a>
+<a class="sourceLine" id="cb207-2" data-line-number="2"><span class="kw">plot</span>(pop01_<span class="dv">3044</span>,<span class="dt">col=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>,<span class="st">&#39;Blues&#39;</span>),<span class="dt">main=</span><span class="st">&#39;Popolation surface age 30 - 44 in 2011&#39;</span>,<span class="dt">axes=</span><span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-load-libraries-and%20data-3.png" width="672" /></p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="raster-data-and-geostatistics.html#cb208-1" aria-hidden="true"></a><span class="co"># plot pretty 2011 // this can be a little slow, especially for large rasters</span></span>
-<span id="cb208-2"><a href="raster-data-and-geostatistics.html#cb208-2" aria-hidden="true"></a><span class="kw">plot</span>(pop11_<span class="dv">3044</span>,<span class="dt">col=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>,<span class="st">&#39;Blues&#39;</span>),<span class="dt">main=</span><span class="st">&#39;Popolation surface age 30 - 44 in 2011&#39;</span>,<span class="dt">axes=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1"><span class="co"># plot pretty 2011 // this can be a little slow, especially for large rasters</span></a>
+<a class="sourceLine" id="cb208-2" data-line-number="2"><span class="kw">plot</span>(pop11_<span class="dv">3044</span>,<span class="dt">col=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>,<span class="st">&#39;Blues&#39;</span>),<span class="dt">main=</span><span class="st">&#39;Popolation surface age 30 - 44 in 2011&#39;</span>,<span class="dt">axes=</span><span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-load-libraries-and%20data-4.png" width="672" /></p>
 </div>
 <div id="question-2" class="section level4 unnumbered">
@@ -378,18 +358,18 @@ Figure 7.2: Raster or plain text?
 </ol>
 <p>Now all data are loaded, we have been able to quickly make a halfway decent map, we are ready to look a bit better at our raster dataset. In a way a raster dataset (or any raster image for that matter), can be thought of as a big matrix of <em>n_rows</em> by <em>n_columns</em>. Every cell in the matrix holds a value - because of this many standard descriptive techniques can be applied onto raster data. In very fact, we can do some algebra with these datasets!</p>
 <p><strong>Map algebra</strong> is a set-based algebra for manipulating geographic data, coined by <a href="https://en.wikipedia.org/wiki/Dana_Tomlin">Dana Tomlin</a> in the early 1980s. Map algebra operations and functions are typically broken down into four groups: local, focal, zonal and global. We will explore them briefly in the remainder of this section. Let’s start, however, by confining our area to Greater London rather than using the whole of Great Britain.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="raster-data-and-geostatistics.html#cb209-1" aria-hidden="true"></a><span class="co"># load data</span></span>
-<span id="cb209-2"><a href="raster-data-and-geostatistics.html#cb209-2" aria-hidden="true"></a>lad &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="dt">dsn=</span><span class="st">&#39;raw/boundaries/london_lad_2020/london_lad_2020.shp&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1"><span class="co"># load data</span></a>
+<a class="sourceLine" id="cb209-2" data-line-number="2">lad &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="dt">dsn=</span><span class="st">&#39;raw/boundaries/london_lad_2020/london_lad_2020.shp&#39;</span>)</a></code></pre></div>
 <pre><code>## OGR data source with driver: ESRI Shapefile 
 ## Source: &quot;/Users/Tycho/Dropbox/UCL/Web/jtvandijk.github.io/GEOG0114/raw/boundaries/london_lad_2020/london_lad_2020.shp&quot;, layer: &quot;london_lad_2020&quot;
 ## with 33 features
 ## It has 1 fields</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="raster-data-and-geostatistics.html#cb211-1" aria-hidden="true"></a><span class="co"># clip raster to extent greater london</span></span>
-<span id="cb211-2"><a href="raster-data-and-geostatistics.html#cb211-2" aria-hidden="true"></a>lon01_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">crop</span>(pop01_<span class="dv">3044</span>,<span class="kw">extent</span>(lad))</span>
-<span id="cb211-3"><a href="raster-data-and-geostatistics.html#cb211-3" aria-hidden="true"></a>lon11_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">crop</span>(pop11_<span class="dv">3044</span>,<span class="kw">extent</span>(lad))</span>
-<span id="cb211-4"><a href="raster-data-and-geostatistics.html#cb211-4" aria-hidden="true"></a></span>
-<span id="cb211-5"><a href="raster-data-and-geostatistics.html#cb211-5" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb211-6"><a href="raster-data-and-geostatistics.html#cb211-6" aria-hidden="true"></a>lon01_<span class="dv">3044</span></span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1"><span class="co"># clip raster to extent greater london</span></a>
+<a class="sourceLine" id="cb211-2" data-line-number="2">lon01_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">crop</span>(pop01_<span class="dv">3044</span>,<span class="kw">extent</span>(lad))</a>
+<a class="sourceLine" id="cb211-3" data-line-number="3">lon11_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">crop</span>(pop11_<span class="dv">3044</span>,<span class="kw">extent</span>(lad))</a>
+<a class="sourceLine" id="cb211-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb211-5" data-line-number="5"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb211-6" data-line-number="6">lon01_<span class="dv">3044</span></a></code></pre></div>
 <pre><code>## class      : RasterLayer 
 ## dimensions : 45, 58, 2610  (nrow, ncol, ncell)
 ## resolution : 1000, 1000  (x, y)
@@ -398,8 +378,8 @@ Figure 7.2: Raster or plain text?
 ## source     : memory
 ## names      : X5a_ascii_grid2001_Age_Age30_44 
 ## values     : 0, 6015.774  (min, max)</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="raster-data-and-geostatistics.html#cb213-1" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb213-2"><a href="raster-data-and-geostatistics.html#cb213-2" aria-hidden="true"></a>lon11_<span class="dv">3044</span></span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb213-2" data-line-number="2">lon11_<span class="dv">3044</span></a></code></pre></div>
 <pre><code>## class      : RasterLayer 
 ## dimensions : 45, 58, 2610  (nrow, ncol, ncell)
 ## resolution : 1000, 1000  (x, y)
@@ -408,53 +388,53 @@ Figure 7.2: Raster or plain text?
 ## source     : memory
 ## names      : X5a_ascii_grid2011_Age_Age30_44 
 ## values     : 0, 6836.724  (min, max)</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="raster-data-and-geostatistics.html#cb215-1" aria-hidden="true"></a><span class="co"># transfer values raster values to shape of greater london</span></span>
-<span id="cb215-2"><a href="raster-data-and-geostatistics.html#cb215-2" aria-hidden="true"></a>lon01_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">rasterize</span>(lad, lon01_<span class="dv">3044</span>, <span class="dt">mask=</span><span class="ot">TRUE</span>)</span>
-<span id="cb215-3"><a href="raster-data-and-geostatistics.html#cb215-3" aria-hidden="true"></a>lon11_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">rasterize</span>(lad, lon11_<span class="dv">3044</span>, <span class="dt">mask=</span><span class="ot">TRUE</span>)</span>
-<span id="cb215-4"><a href="raster-data-and-geostatistics.html#cb215-4" aria-hidden="true"></a></span>
-<span id="cb215-5"><a href="raster-data-and-geostatistics.html#cb215-5" aria-hidden="true"></a><span class="co"># plot</span></span>
-<span id="cb215-6"><a href="raster-data-and-geostatistics.html#cb215-6" aria-hidden="true"></a><span class="kw">plot</span>(lon01_<span class="dv">3044</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="co"># transfer values raster values to shape of greater london</span></a>
+<a class="sourceLine" id="cb215-2" data-line-number="2">lon01_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">rasterize</span>(lad, lon01_<span class="dv">3044</span>, <span class="dt">mask=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb215-3" data-line-number="3">lon11_<span class="dv">3044</span> &lt;-<span class="st"> </span><span class="kw">rasterize</span>(lad, lon11_<span class="dv">3044</span>, <span class="dt">mask=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb215-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb215-5" data-line-number="5"><span class="co"># plot</span></a>
+<a class="sourceLine" id="cb215-6" data-line-number="6"><span class="kw">plot</span>(lon01_<span class="dv">3044</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-confine-that-area-yall-1.png" width="672" /></p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="raster-data-and-geostatistics.html#cb216-1" aria-hidden="true"></a><span class="co"># plot </span></span>
-<span id="cb216-2"><a href="raster-data-and-geostatistics.html#cb216-2" aria-hidden="true"></a><span class="kw">plot</span>(lon11_<span class="dv">3044</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="co"># plot </span></a>
+<a class="sourceLine" id="cb216-2" data-line-number="2"><span class="kw">plot</span>(lon11_<span class="dv">3044</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-confine-that-area-yall-2.png" width="672" /></p>
 <p><strong>Local</strong> operations and functions are applied to each individual cell. In case of one raster this could be a reclassification of values. In case of multiple rasters the operations applied to each individual cell only involve the cells that share the same location. You can use mathematical operators to execute addition, substraction, division, etc., but you can also use boolean (or logical) operators such as <strong>AND</strong>, <strong>OR</strong>, or <strong>NOT</strong>. Boolean operators are particularly useful when combining multiple input rasters and you are trying to get an output raster that is conditioned on the input rasters.</p>
 <p><strong>Focal</strong> operations and functions assign the output of some neighbourhood function to each individual cell. For instance, the cell in the output raster could be the average of all 9 neighbouring cells. Focal operations require a <strong>kernel</strong>, that is a search window, to define the neighbourhood.</p>
 <p><strong>Zonal</strong> operations and functions aggregate the cells of an input raster based on some zonal definition, for instance, an administrative unit. In a way these operations and functions are similar to the <strong>focal</strong> operations, but the zonal definition comes from ‘outside’ the input raster.</p>
 <p><strong>Global</strong> operations and functions use some or all input cells to create an output raster. An example is the calculation of the shortest distance between a source point and every other cell in the input raster. The input raster here provides the resistance of the surface. A good example would be a raster dataset containing slope data where one would want to calculate what the path of least resistance (<a href="https://pro.arcgis.com/en/pro-app/tool-reference/spatial-analyst/creating-the-least-cost-path.htm#:~:text=The%20least%2Dcost%20path%20travels,into%20the%20weighted%2Ddistance%20tool.">a least-cost path</a>) is when moving from point A to point B.</p>
 <p>Since we have two population surfaces, the <strong>local</strong>, <strong>focal</strong>, and <strong>zonal</strong> methods make most sense to use. Let’s calculate population change, smooth this population change, and lastly aggregate our population of 30-44 year to an administrative geography. If you wonder what some of the parameters in the functions do or mean, check the documentation for these functions! E.g. <code>?focal</code> or <code>?zonal</code>.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="raster-data-and-geostatistics.html#cb217-1" aria-hidden="true"></a><span class="co"># example of local statistics: population change</span></span>
-<span id="cb217-2"><a href="raster-data-and-geostatistics.html#cb217-2" aria-hidden="true"></a>lon_change &lt;-<span class="st"> </span>lon11_<span class="dv">3044</span> <span class="op">-</span><span class="st"> </span>lon01_<span class="dv">3044</span></span>
-<span id="cb217-3"><a href="raster-data-and-geostatistics.html#cb217-3" aria-hidden="true"></a></span>
-<span id="cb217-4"><a href="raster-data-and-geostatistics.html#cb217-4" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb217-5"><a href="raster-data-and-geostatistics.html#cb217-5" aria-hidden="true"></a><span class="kw">plot</span>(lon_change)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="co"># example of local statistics: population change</span></a>
+<a class="sourceLine" id="cb217-2" data-line-number="2">lon_change &lt;-<span class="st"> </span>lon11_<span class="dv">3044</span> <span class="op">-</span><span class="st"> </span>lon01_<span class="dv">3044</span></a>
+<a class="sourceLine" id="cb217-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb217-4" data-line-number="4"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb217-5" data-line-number="5"><span class="kw">plot</span>(lon_change)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-local-is-lekker-1.png" width="672" /></p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="raster-data-and-geostatistics.html#cb218-1" aria-hidden="true"></a><span class="co"># example of focal statistics: mean of 9 neighbours</span></span>
-<span id="cb218-2"><a href="raster-data-and-geostatistics.html#cb218-2" aria-hidden="true"></a>lon_smooth &lt;-<span class="st"> </span><span class="kw">focal</span>(lon_change,<span class="dt">w=</span><span class="kw">matrix</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>),<span class="dt">fun=</span>mean)</span>
-<span id="cb218-3"><a href="raster-data-and-geostatistics.html#cb218-3" aria-hidden="true"></a></span>
-<span id="cb218-4"><a href="raster-data-and-geostatistics.html#cb218-4" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb218-5"><a href="raster-data-and-geostatistics.html#cb218-5" aria-hidden="true"></a><span class="kw">plot</span>(lon_smooth)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="co"># example of focal statistics: mean of 9 neighbours</span></a>
+<a class="sourceLine" id="cb218-2" data-line-number="2">lon_smooth &lt;-<span class="st"> </span><span class="kw">focal</span>(lon_change,<span class="dt">w=</span><span class="kw">matrix</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>),<span class="dt">fun=</span>mean)</a>
+<a class="sourceLine" id="cb218-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb218-4" data-line-number="4"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb218-5" data-line-number="5"><span class="kw">plot</span>(lon_smooth)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-focus-on-the-hood-1.png" width="672" /></p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="raster-data-and-geostatistics.html#cb219-1" aria-hidden="true"></a><span class="co"># example of zonal statistics: aggregate by raster cells</span></span>
-<span id="cb219-2"><a href="raster-data-and-geostatistics.html#cb219-2" aria-hidden="true"></a>lon_agg1 &lt;-<span class="st"> </span><span class="kw">aggregate</span>(lon_change,<span class="dt">fact=</span><span class="dv">2</span>, <span class="dt">fun=</span>mean)</span>
-<span id="cb219-3"><a href="raster-data-and-geostatistics.html#cb219-3" aria-hidden="true"></a></span>
-<span id="cb219-4"><a href="raster-data-and-geostatistics.html#cb219-4" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb219-5"><a href="raster-data-and-geostatistics.html#cb219-5" aria-hidden="true"></a><span class="kw">plot</span>(lon_agg1)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="co"># example of zonal statistics: aggregate by raster cells</span></a>
+<a class="sourceLine" id="cb219-2" data-line-number="2">lon_agg1 &lt;-<span class="st"> </span><span class="kw">aggregate</span>(lon_change,<span class="dt">fact=</span><span class="dv">2</span>, <span class="dt">fun=</span>mean)</a>
+<a class="sourceLine" id="cb219-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb219-4" data-line-number="4"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb219-5" data-line-number="5"><span class="kw">plot</span>(lon_agg1)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-I-am-in-the-zone-1.png" width="672" /></p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="raster-data-and-geostatistics.html#cb220-1" aria-hidden="true"></a><span class="co"># example of zonal statistics: aggregate to administrative geography</span></span>
-<span id="cb220-2"><a href="raster-data-and-geostatistics.html#cb220-2" aria-hidden="true"></a><span class="co"># please note: the output is a vector that is forced to a SpatialPolygons object</span></span>
-<span id="cb220-3"><a href="raster-data-and-geostatistics.html#cb220-3" aria-hidden="true"></a>lon_agg2 &lt;-<span class="st"> </span>raster<span class="op">::</span><span class="kw">extract</span>(lon_change, lad, <span class="dt">fun=</span>mean, <span class="dt">sp=</span><span class="ot">TRUE</span>)</span>
-<span id="cb220-4"><a href="raster-data-and-geostatistics.html#cb220-4" aria-hidden="true"></a></span>
-<span id="cb220-5"><a href="raster-data-and-geostatistics.html#cb220-5" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb220-6"><a href="raster-data-and-geostatistics.html#cb220-6" aria-hidden="true"></a><span class="kw">tm_shape</span>(lon_agg2) <span class="op">+</span></span>
-<span id="cb220-7"><a href="raster-data-and-geostatistics.html#cb220-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="dt">col=</span><span class="st">&#39;layer&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1"><span class="co"># example of zonal statistics: aggregate to administrative geography</span></a>
+<a class="sourceLine" id="cb220-2" data-line-number="2"><span class="co"># please note: the output is a vector that is forced to a SpatialPolygons object</span></a>
+<a class="sourceLine" id="cb220-3" data-line-number="3">lon_agg2 &lt;-<span class="st"> </span>raster<span class="op">::</span><span class="kw">extract</span>(lon_change, lad, <span class="dt">fun=</span>mean, <span class="dt">sp=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb220-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb220-5" data-line-number="5"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb220-6" data-line-number="6"><span class="kw">tm_shape</span>(lon_agg2) <span class="op">+</span></a>
+<a class="sourceLine" id="cb220-7" data-line-number="7"><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="dt">col=</span><span class="st">&#39;layer&#39;</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-I-am-in-the-zone-2.png" width="672" /></p>
 <div class="note">
 <p>Many packages share the same function names. This can be a problem when these packages are loaded in a same R session. For instance <code>extract</code> is not only the name of a function in the <code>raster</code> package, but also the name of functions in the <code>magrittr</code> and <code>tidyr</code> packages. To ensure you are using the function that you think you are using, you can specify the package: <code>tidyr::extract</code> or <code>raster::extract</code>.</p>
 </div>
 </div>
 </div>
-<div id="assignment_w07" class="section level3" number="7.2.3">
+<div id="assignment_w07" class="section level3">
 <h3><span class="header-section-number">7.2.3</span> Assignment</h3>
 <p>So far we have worked with raster data and made use of local, focal, and zonal statistics - but we have not yet looked at global statistics and functions. In this assignment you will work with global statistics and functions by executing a least-cost path analysis.</p>
 <p>Below you will find a raster datasets containing (fake!) elevation data which will act as your <a href="https://pro.arcgis.com/en/pro-app/tool-reference/spatial-analyst/creating-a-cost-surface-raster.htm">cost surface</a>. Your task is to <strong>calculate and map</strong> the <a href="https://pro.arcgis.com/en/pro-app/tool-reference/spatial-analyst/creating-the-least-cost-path.htm">least-cost path</a> between a given start and end point using the elevation data as your cost surface.</p>
@@ -496,10 +476,10 @@ Figure 7.2: Raster or plain text?
 </div>
 </div>
 </div>
-<div id="interpolation-and-geostatistics" class="section level2" number="7.3">
+<div id="interpolation-and-geostatistics" class="section level2">
 <h2><span class="header-section-number">7.3</span> Interpolation and geostatistics</h2>
 <p>Now we know how to work with raster data, we can move on to point data interpolation and geostatistics. There are many reasons why we may wish to interpolate point data across a map. It could be because we are trying to predict a variable across space, including in areas where there are little to no data. We might also want to smooth the data across space so that we cannot interpret the results of individuals, but still identify the general trends from the data. This is particularly useful when the data corresponds to individual persons and disclosing their locations is unethical.</p>
-<div id="video-interpolation-and-geostatistics" class="section level3" number="7.3.1">
+<div id="video-interpolation-and-geostatistics" class="section level3">
 <h3><span class="header-section-number">7.3.1</span> Video: Interpolation and geostatistics</h3>
 <p><div class="vembedr" align="left">
 <div>
@@ -508,7 +488,7 @@ Figure 7.2: Raster or plain text?
 </div>
 <a href="https://github.com/jtvandijk/GEOG0114/tree/master/slides/w07/w07_02_interpolation_geostatistics.pdf">[Lecture slides]</a> <a href="https://web.microsoftstream.com/video/14b64e5f-e633-4cf0-b0eb-c25498516f3b?list=studio">[Watch on MS stream]</a></p>
 </div>
-<div id="example-interpolation-and-geostatistics" class="section level3" number="7.3.2">
+<div id="example-interpolation-and-geostatistics" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> Example: Interpolation and geostatistics</h3>
 <p>Spatial interpolation is the prediction of a given phenomenon in unmeasured locations. For that, we need a set of procedures to calculate predicted values of the variable of interest, given calibration data. We will explore several methods by looking at air pollution in London by getting data from the <a href="https://www.londonair.org.uk/LondonAir/General/about.aspx">Londonair</a> website. Londonair is the website of the London Air Quality Network (LAQN), and shows air pollution in London and south east England that is provided by the <a href="https://www.imperial.ac.uk/school-public-health/environmental-research-group/">Environmental Research Group</a> of Imperial College London. The data are captured by hundreds of sensors at various continuous monitoring sites in London and the south east of England. The best of it all? The data are publicly available for download!</p>
 <div class="figure" style="text-align: center"><span id="fig:07-monitoring-in-london"></span>
@@ -546,33 +526,33 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
 </tbody>
 </table>
 <p>In what follows, we will be looking at Nitrogen Dioxide (NO<sub>2</sub>) in London for 2019. Let’s get started by importing our data using the functionality provided by <code>openair</code> or, alternatively, reading in the data you downloaded above.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="raster-data-and-geostatistics.html#cb221-1" aria-hidden="true"></a><span class="co"># option 1: using openair package</span></span>
-<span id="cb221-2"><a href="raster-data-and-geostatistics.html#cb221-2" aria-hidden="true"></a></span>
-<span id="cb221-3"><a href="raster-data-and-geostatistics.html#cb221-3" aria-hidden="true"></a><span class="co"># libraries</span></span>
-<span id="cb221-4"><a href="raster-data-and-geostatistics.html#cb221-4" aria-hidden="true"></a><span class="kw">library</span>(openair)</span>
-<span id="cb221-5"><a href="raster-data-and-geostatistics.html#cb221-5" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb221-6"><a href="raster-data-and-geostatistics.html#cb221-6" aria-hidden="true"></a></span>
-<span id="cb221-7"><a href="raster-data-and-geostatistics.html#cb221-7" aria-hidden="true"></a><span class="co"># import all monitoring sites</span></span>
-<span id="cb221-8"><a href="raster-data-and-geostatistics.html#cb221-8" aria-hidden="true"></a>sites &lt;-<span class="st"> </span><span class="kw">importMeta</span>(<span class="dt">source=</span><span class="st">&#39;kcl&#39;</span>,<span class="dt">all=</span><span class="ot">FALSE</span>)</span>
-<span id="cb221-9"><a href="raster-data-and-geostatistics.html#cb221-9" aria-hidden="true"></a></span>
-<span id="cb221-10"><a href="raster-data-and-geostatistics.html#cb221-10" aria-hidden="true"></a><span class="co"># import pollution data for 2019 for all monitoring sites // this will take a few minutes</span></span>
-<span id="cb221-11"><a href="raster-data-and-geostatistics.html#cb221-11" aria-hidden="true"></a>pollution &lt;-<span class="st"> </span><span class="kw">importKCL</span>(<span class="dt">site=</span><span class="kw">c</span>(sites<span class="op">$</span>code),<span class="dt">year=</span><span class="dv">2019</span>,<span class="dt">pollutant=</span><span class="st">&#39;no2&#39;</span>,<span class="dt">meta=</span><span class="ot">TRUE</span>)</span>
-<span id="cb221-12"><a href="raster-data-and-geostatistics.html#cb221-12" aria-hidden="true"></a></span>
-<span id="cb221-13"><a href="raster-data-and-geostatistics.html#cb221-13" aria-hidden="true"></a><span class="co"># you can ignore the &#39;XXX_2019 does not exist&#39; messages: </span></span>
-<span id="cb221-14"><a href="raster-data-and-geostatistics.html#cb221-14" aria-hidden="true"></a><span class="co"># we just forcing a download for all possible sites</span></span>
-<span id="cb221-15"><a href="raster-data-and-geostatistics.html#cb221-15" aria-hidden="true"></a><span class="co"># irrespective of whether the monitoring site was active in 2019</span></span>
-<span id="cb221-16"><a href="raster-data-and-geostatistics.html#cb221-16" aria-hidden="true"></a></span>
-<span id="cb221-17"><a href="raster-data-and-geostatistics.html#cb221-17" aria-hidden="true"></a><span class="co"># filter NA values for nitrogen dioxide</span></span>
-<span id="cb221-18"><a href="raster-data-and-geostatistics.html#cb221-18" aria-hidden="true"></a>pollution &lt;-<span class="st"> </span><span class="kw">filter</span>(pollution,<span class="op">!</span><span class="kw">is.na</span>(no2))</span></code></pre></div>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="raster-data-and-geostatistics.html#cb222-1" aria-hidden="true"></a><span class="co"># option 2: using downloaded csv file</span></span>
-<span id="cb222-2"><a href="raster-data-and-geostatistics.html#cb222-2" aria-hidden="true"></a></span>
-<span id="cb222-3"><a href="raster-data-and-geostatistics.html#cb222-3" aria-hidden="true"></a><span class="co"># libraries</span></span>
-<span id="cb222-4"><a href="raster-data-and-geostatistics.html#cb222-4" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb222-5"><a href="raster-data-and-geostatistics.html#cb222-5" aria-hidden="true"></a></span>
-<span id="cb222-6"><a href="raster-data-and-geostatistics.html#cb222-6" aria-hidden="true"></a><span class="co"># read in downloaded data // the file is quite large so we read directly from zip</span></span>
-<span id="cb222-7"><a href="raster-data-and-geostatistics.html#cb222-7" aria-hidden="true"></a>pollution &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/zip/no2_london_2019.zip&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="raster-data-and-geostatistics.html#cb223-1" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb223-2"><a href="raster-data-and-geostatistics.html#cb223-2" aria-hidden="true"></a><span class="kw">head</span>(pollution)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1"><span class="co"># option 1: using openair package</span></a>
+<a class="sourceLine" id="cb221-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb221-3" data-line-number="3"><span class="co"># libraries</span></a>
+<a class="sourceLine" id="cb221-4" data-line-number="4"><span class="kw">library</span>(openair)</a>
+<a class="sourceLine" id="cb221-5" data-line-number="5"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb221-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb221-7" data-line-number="7"><span class="co"># import all monitoring sites</span></a>
+<a class="sourceLine" id="cb221-8" data-line-number="8">sites &lt;-<span class="st"> </span><span class="kw">importMeta</span>(<span class="dt">source=</span><span class="st">&#39;kcl&#39;</span>,<span class="dt">all=</span><span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb221-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb221-10" data-line-number="10"><span class="co"># import pollution data for 2019 for all monitoring sites // this will take a few minutes</span></a>
+<a class="sourceLine" id="cb221-11" data-line-number="11">pollution &lt;-<span class="st"> </span><span class="kw">importKCL</span>(<span class="dt">site=</span><span class="kw">c</span>(sites<span class="op">$</span>code),<span class="dt">year=</span><span class="dv">2019</span>,<span class="dt">pollutant=</span><span class="st">&#39;no2&#39;</span>,<span class="dt">meta=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb221-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb221-13" data-line-number="13"><span class="co"># you can ignore the &#39;XXX_2019 does not exist&#39; messages: </span></a>
+<a class="sourceLine" id="cb221-14" data-line-number="14"><span class="co"># we just forcing a download for all possible sites</span></a>
+<a class="sourceLine" id="cb221-15" data-line-number="15"><span class="co"># irrespective of whether the monitoring site was active in 2019</span></a>
+<a class="sourceLine" id="cb221-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb221-17" data-line-number="17"><span class="co"># filter NA values for nitrogen dioxide</span></a>
+<a class="sourceLine" id="cb221-18" data-line-number="18">pollution &lt;-<span class="st"> </span><span class="kw">filter</span>(pollution,<span class="op">!</span><span class="kw">is.na</span>(no2))</a></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1"><span class="co"># option 2: using downloaded csv file</span></a>
+<a class="sourceLine" id="cb222-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb222-3" data-line-number="3"><span class="co"># libraries</span></a>
+<a class="sourceLine" id="cb222-4" data-line-number="4"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb222-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb222-6" data-line-number="6"><span class="co"># read in downloaded data // the file is quite large so we read directly from zip</span></a>
+<a class="sourceLine" id="cb222-7" data-line-number="7">pollution &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;raw/zip/no2_london_2019.zip&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb223-2" data-line-number="2"><span class="kw">head</span>(pollution)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 7
 ##   date                  no2 site              code  latitude longitude site_type
 ##   &lt;dttm&gt;              &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    
@@ -583,13 +563,13 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
 ## 5 2019-07-01 16:00:00  19.7 Southwark - Towe… SK8       51.5   -0.0782 Roadside 
 ## 6 2019-07-01 17:00:00  17.5 Southwark - Towe… SK8       51.5   -0.0782 Roadside</code></pre>
 <p>Oof. That is quite a large data set. Let’s quickly make it more useable by aggregating the data and get the average NO<sub>2</sub> value for each monitoring site. Let’s also make sure that we retain the latitude and longitude of our monitoring sites.</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="raster-data-and-geostatistics.html#cb225-1" aria-hidden="true"></a><span class="co"># aggregate data to unique latitude and longitude combinations, remove monitoring sites without coordinates</span></span>
-<span id="cb225-2"><a href="raster-data-and-geostatistics.html#cb225-2" aria-hidden="true"></a>avg_pol &lt;-<span class="st"> </span>pollution <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(latitude,longitude) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb225-3"><a href="raster-data-and-geostatistics.html#cb225-3" aria-hidden="true"></a><span class="st">                         </span><span class="kw">summarise</span>(<span class="dt">no2=</span><span class="kw">mean</span>(no2)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb225-4"><a href="raster-data-and-geostatistics.html#cb225-4" aria-hidden="true"></a><span class="st">                         </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(latitude <span class="op">|</span><span class="st"> </span>longitude))</span>
-<span id="cb225-5"><a href="raster-data-and-geostatistics.html#cb225-5" aria-hidden="true"></a></span>
-<span id="cb225-6"><a href="raster-data-and-geostatistics.html#cb225-6" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb225-7"><a href="raster-data-and-geostatistics.html#cb225-7" aria-hidden="true"></a>avg_pol</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1"><span class="co"># aggregate data to unique latitude and longitude combinations, remove monitoring sites without coordinates</span></a>
+<a class="sourceLine" id="cb225-2" data-line-number="2">avg_pol &lt;-<span class="st"> </span>pollution <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(latitude,longitude) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb225-3" data-line-number="3"><span class="st">                         </span><span class="kw">summarise</span>(<span class="dt">no2=</span><span class="kw">mean</span>(no2)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb225-4" data-line-number="4"><span class="st">                         </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(latitude <span class="op">|</span><span class="st"> </span>longitude))</a>
+<a class="sourceLine" id="cb225-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb225-6" data-line-number="6"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb225-7" data-line-number="7">avg_pol</a></code></pre></div>
 <pre><code>## # A tibble: 192 x 3
 ## # Groups:   latitude [192]
 ##    latitude longitude   no2
@@ -606,103 +586,103 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
 ## 10     50.8    -0.380 33.0 
 ## # … with 182 more rows</code></pre>
 <p>Spatial interpolation models of point data can be roughly divided into two categories: <strong>deterministic models</strong> and <strong>geostatistical models</strong>. We will start by trying two deterministic models: Thiessen Polygons and Inverse Distance Weighting (IDW). Before we can continue, however, there is still a little bit of work to do to get our data right: we need to make sure that we only have monitoring sites in Greater London. We can do this in the same way as we did last week for our <a href="point-pattern-analysis.html#example-point-pattern-analysis">crime location data</a>.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="raster-data-and-geostatistics.html#cb227-1" aria-hidden="true"></a><span class="co"># load libraries</span></span>
-<span id="cb227-2"><a href="raster-data-and-geostatistics.html#cb227-2" aria-hidden="true"></a><span class="kw">library</span>(sf)</span>
-<span id="cb227-3"><a href="raster-data-and-geostatistics.html#cb227-3" aria-hidden="true"></a></span>
-<span id="cb227-4"><a href="raster-data-and-geostatistics.html#cb227-4" aria-hidden="true"></a><span class="co"># load lad as sf</span></span>
-<span id="cb227-5"><a href="raster-data-and-geostatistics.html#cb227-5" aria-hidden="true"></a>lad &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;raw/boundaries/london_lad_2020/london_lad_2020.shp&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb227-2" data-line-number="2"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb227-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb227-4" data-line-number="4"><span class="co"># load lad as sf</span></a>
+<a class="sourceLine" id="cb227-5" data-line-number="5">lad &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;raw/boundaries/london_lad_2020/london_lad_2020.shp&#39;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `london_lad_2020&#39; from data source `/Users/Tycho/Dropbox/UCL/Web/jtvandijk.github.io/GEOG0114/raw/boundaries/london_lad_2020/london_lad_2020.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 33 features and 1 field
 ## geometry type:  POLYGON
 ## dimension:      XY
 ## bbox:           xmin: 503568.2 ymin: 155850.8 xmax: 561957.5 ymax: 200933.9
 ## CRS:            27700</code></pre>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="raster-data-and-geostatistics.html#cb229-1" aria-hidden="true"></a><span class="co"># create point layer and project into british national grid (epsg 27700)</span></span>
-<span id="cb229-2"><a href="raster-data-and-geostatistics.html#cb229-2" aria-hidden="true"></a>pol_points &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(avg_pol,<span class="dt">coords=</span><span class="kw">c</span>(<span class="st">&#39;longitude&#39;</span>,<span class="st">&#39;latitude&#39;</span>),<span class="dt">crs=</span><span class="dv">4326</span>)[,<span class="dv">1</span>]</span>
-<span id="cb229-3"><a href="raster-data-and-geostatistics.html#cb229-3" aria-hidden="true"></a>pol_points &lt;-<span class="st"> </span><span class="kw">st_transform</span>(pol_points,<span class="dv">27700</span>)</span>
-<span id="cb229-4"><a href="raster-data-and-geostatistics.html#cb229-4" aria-hidden="true"></a></span>
-<span id="cb229-5"><a href="raster-data-and-geostatistics.html#cb229-5" aria-hidden="true"></a><span class="co"># ensure all points are within the boundaries of Greater London</span></span>
-<span id="cb229-6"><a href="raster-data-and-geostatistics.html#cb229-6" aria-hidden="true"></a>lon_points &lt;-<span class="st"> </span><span class="kw">st_intersects</span>(lad, pol_points)</span>
-<span id="cb229-7"><a href="raster-data-and-geostatistics.html#cb229-7" aria-hidden="true"></a>pol_points &lt;-<span class="st"> </span>pol_points[<span class="kw">unlist</span>(lon_points),]</span>
-<span id="cb229-8"><a href="raster-data-and-geostatistics.html#cb229-8" aria-hidden="true"></a></span>
-<span id="cb229-9"><a href="raster-data-and-geostatistics.html#cb229-9" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb229-10"><a href="raster-data-and-geostatistics.html#cb229-10" aria-hidden="true"></a><span class="kw">tm_shape</span>(lad) <span class="op">+</span></span>
-<span id="cb229-11"><a href="raster-data-and-geostatistics.html#cb229-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>() <span class="op">+</span></span>
-<span id="cb229-12"><a href="raster-data-and-geostatistics.html#cb229-12" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(pol_points) <span class="op">+</span></span>
-<span id="cb229-13"><a href="raster-data-and-geostatistics.html#cb229-13" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_dots</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1"><span class="co"># create point layer and project into british national grid (epsg 27700)</span></a>
+<a class="sourceLine" id="cb229-2" data-line-number="2">pol_points &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(avg_pol,<span class="dt">coords=</span><span class="kw">c</span>(<span class="st">&#39;longitude&#39;</span>,<span class="st">&#39;latitude&#39;</span>),<span class="dt">crs=</span><span class="dv">4326</span>)[,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb229-3" data-line-number="3">pol_points &lt;-<span class="st"> </span><span class="kw">st_transform</span>(pol_points,<span class="dv">27700</span>)</a>
+<a class="sourceLine" id="cb229-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb229-5" data-line-number="5"><span class="co"># ensure all points are within the boundaries of Greater London</span></a>
+<a class="sourceLine" id="cb229-6" data-line-number="6">lon_points &lt;-<span class="st"> </span><span class="kw">st_intersects</span>(lad, pol_points)</a>
+<a class="sourceLine" id="cb229-7" data-line-number="7">pol_points &lt;-<span class="st"> </span>pol_points[<span class="kw">unlist</span>(lon_points),]</a>
+<a class="sourceLine" id="cb229-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb229-9" data-line-number="9"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb229-10" data-line-number="10"><span class="kw">tm_shape</span>(lad) <span class="op">+</span></a>
+<a class="sourceLine" id="cb229-11" data-line-number="11"><span class="st">  </span><span class="kw">tm_fill</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb229-12" data-line-number="12"><span class="st">  </span><span class="kw">tm_shape</span>(pol_points) <span class="op">+</span></a>
+<a class="sourceLine" id="cb229-13" data-line-number="13"><span class="st">  </span><span class="kw">tm_dots</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-prepare-air-pol-data-further-1.png" width="672" /></p>
 </div>
 </div>
-<div id="thiessen-polygons" class="section level3" number="7.3.3">
+<div id="thiessen-polygons" class="section level3">
 <h3><span class="header-section-number">7.3.3</span> Thiessen Polygons</h3>
 <p>The first step we can take to interpolate the data across space is to create Thiessen polygons. Thiessen polygons are formed to assign boundaries of the areas closest to each unique point. Therefore, for every point in a dataset, it has a corresponding Thiessen polygon. The <code>spatstat</code> package provides the functionality to produce Thiessen polygons via its dirichlet tesselation of spatial point patterns function (<code>dirichlet()</code>). As we are using <code>spatstat</code> again, we also need to first convert the data to a <code>ppp</code> object. <a href="https://www.youtube.com/watch?v=Qg6BwvDcANg">Let’s tesselate</a>.</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="raster-data-and-geostatistics.html#cb230-1" aria-hidden="true"></a><span class="co"># load libraries</span></span>
-<span id="cb230-2"><a href="raster-data-and-geostatistics.html#cb230-2" aria-hidden="true"></a><span class="kw">library</span>(spatstat)  </span>
-<span id="cb230-3"><a href="raster-data-and-geostatistics.html#cb230-3" aria-hidden="true"></a><span class="kw">library</span>(maptools) </span>
-<span id="cb230-4"><a href="raster-data-and-geostatistics.html#cb230-4" aria-hidden="true"></a></span>
-<span id="cb230-5"><a href="raster-data-and-geostatistics.html#cb230-5" aria-hidden="true"></a><span class="co"># to sp</span></span>
-<span id="cb230-6"><a href="raster-data-and-geostatistics.html#cb230-6" aria-hidden="true"></a>pol_points &lt;-<span class="st"> </span><span class="kw">as</span>(pol_points,<span class="st">&#39;Spatial&#39;</span>)</span>
-<span id="cb230-7"><a href="raster-data-and-geostatistics.html#cb230-7" aria-hidden="true"></a>lad &lt;-<span class="st"> </span><span class="kw">as</span>(lad,<span class="st">&#39;Spatial&#39;</span>)</span>
-<span id="cb230-8"><a href="raster-data-and-geostatistics.html#cb230-8" aria-hidden="true"></a></span>
-<span id="cb230-9"><a href="raster-data-and-geostatistics.html#cb230-9" aria-hidden="true"></a><span class="co"># update bounding box so that points on boundaries do not get excluded</span></span>
-<span id="cb230-10"><a href="raster-data-and-geostatistics.html#cb230-10" aria-hidden="true"></a>pol_points<span class="op">@</span>bbox &lt;-<span class="st"> </span>lad<span class="op">@</span>bbox</span>
-<span id="cb230-11"><a href="raster-data-and-geostatistics.html#cb230-11" aria-hidden="true"></a></span>
-<span id="cb230-12"><a href="raster-data-and-geostatistics.html#cb230-12" aria-hidden="true"></a><span class="co"># let&#39;s tesselate</span></span>
-<span id="cb230-13"><a href="raster-data-and-geostatistics.html#cb230-13" aria-hidden="true"></a>lon_th &lt;-<span class="st"> </span><span class="kw">as</span>(<span class="kw">dirichlet</span>(<span class="kw">as.ppp</span>(pol_points)), <span class="st">&#39;SpatialPolygons&#39;</span>)</span>
-<span id="cb230-14"><a href="raster-data-and-geostatistics.html#cb230-14" aria-hidden="true"></a></span>
-<span id="cb230-15"><a href="raster-data-and-geostatistics.html#cb230-15" aria-hidden="true"></a><span class="co"># set projection</span></span>
-<span id="cb230-16"><a href="raster-data-and-geostatistics.html#cb230-16" aria-hidden="true"></a><span class="kw">proj4string</span>(lon_th) &lt;-<span class="st"> </span><span class="kw">CRS</span>(<span class="st">&#39;+init=epsg:27700&#39;</span>)</span>
-<span id="cb230-17"><a href="raster-data-and-geostatistics.html#cb230-17" aria-hidden="true"></a><span class="kw">proj4string</span>(pol_points) &lt;-<span class="st"> </span><span class="kw">CRS</span>(<span class="st">&#39;+init=epsg:27700&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb230-2" data-line-number="2"><span class="kw">library</span>(spatstat)  </a>
+<a class="sourceLine" id="cb230-3" data-line-number="3"><span class="kw">library</span>(maptools) </a>
+<a class="sourceLine" id="cb230-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb230-5" data-line-number="5"><span class="co"># to sp</span></a>
+<a class="sourceLine" id="cb230-6" data-line-number="6">pol_points &lt;-<span class="st"> </span><span class="kw">as</span>(pol_points,<span class="st">&#39;Spatial&#39;</span>)</a>
+<a class="sourceLine" id="cb230-7" data-line-number="7">lad &lt;-<span class="st"> </span><span class="kw">as</span>(lad,<span class="st">&#39;Spatial&#39;</span>)</a>
+<a class="sourceLine" id="cb230-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb230-9" data-line-number="9"><span class="co"># update bounding box so that points on boundaries do not get excluded</span></a>
+<a class="sourceLine" id="cb230-10" data-line-number="10">pol_points<span class="op">@</span>bbox &lt;-<span class="st"> </span>lad<span class="op">@</span>bbox</a>
+<a class="sourceLine" id="cb230-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb230-12" data-line-number="12"><span class="co"># let&#39;s tesselate</span></a>
+<a class="sourceLine" id="cb230-13" data-line-number="13">lon_th &lt;-<span class="st"> </span><span class="kw">as</span>(<span class="kw">dirichlet</span>(<span class="kw">as.ppp</span>(pol_points)), <span class="st">&#39;SpatialPolygons&#39;</span>)</a>
+<a class="sourceLine" id="cb230-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb230-15" data-line-number="15"><span class="co"># set projection</span></a>
+<a class="sourceLine" id="cb230-16" data-line-number="16"><span class="kw">proj4string</span>(lon_th) &lt;-<span class="st"> </span><span class="kw">CRS</span>(<span class="st">&#39;+init=epsg:27700&#39;</span>)</a>
+<a class="sourceLine" id="cb230-17" data-line-number="17"><span class="kw">proj4string</span>(pol_points) &lt;-<span class="st"> </span><span class="kw">CRS</span>(<span class="st">&#39;+init=epsg:27700&#39;</span>)</a></code></pre></div>
 <pre><code>## Warning in `proj4string&lt;-`(`*tmp*`, value = new(&quot;CRS&quot;, projargs = &quot;+init=epsg:27700 +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +datum=OSGB36 +units=m +no_defs +ellps=airy +towgs84=446.448,-125.157,542.060,0.1502,0.2470,0.8421,-20.4894&quot;)): A new CRS was assigned to an object with an existing CRS:
 ## +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs
 ## without reprojecting.
 ## For reprojection, use function spTransform</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="raster-data-and-geostatistics.html#cb232-1" aria-hidden="true"></a><span class="co"># the tesselation does not keep the attribute information from the point data</span></span>
-<span id="cb232-2"><a href="raster-data-and-geostatistics.html#cb232-2" aria-hidden="true"></a><span class="co"># so we will need to add this manually using a spatial join</span></span>
-<span id="cb232-3"><a href="raster-data-and-geostatistics.html#cb232-3" aria-hidden="true"></a>lon_th.z &lt;-<span class="st"> </span><span class="kw">over</span>(lon_th, pol_points,<span class="dt">fn=</span>mean)</span>
-<span id="cb232-4"><a href="raster-data-and-geostatistics.html#cb232-4" aria-hidden="true"></a>lon_th.spdf &lt;-<span class="st"> </span><span class="kw">SpatialPolygonsDataFrame</span>(lon_th, lon_th.z)</span>
-<span id="cb232-5"><a href="raster-data-and-geostatistics.html#cb232-5" aria-hidden="true"></a></span>
-<span id="cb232-6"><a href="raster-data-and-geostatistics.html#cb232-6" aria-hidden="true"></a><span class="co"># clip to Greater London boundaries</span></span>
-<span id="cb232-7"><a href="raster-data-and-geostatistics.html#cb232-7" aria-hidden="true"></a>lon_th.clp &lt;-<span class="st"> </span><span class="kw">crop</span>(lon_th.spdf,lad)</span>
-<span id="cb232-8"><a href="raster-data-and-geostatistics.html#cb232-8" aria-hidden="true"></a></span>
-<span id="cb232-9"><a href="raster-data-and-geostatistics.html#cb232-9" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb232-10"><a href="raster-data-and-geostatistics.html#cb232-10" aria-hidden="true"></a><span class="kw">tm_shape</span>(lon_th.clp) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb232-11"><a href="raster-data-and-geostatistics.html#cb232-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&#39;no2&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="co"># the tesselation does not keep the attribute information from the point data</span></a>
+<a class="sourceLine" id="cb232-2" data-line-number="2"><span class="co"># so we will need to add this manually using a spatial join</span></a>
+<a class="sourceLine" id="cb232-3" data-line-number="3">lon_th.z &lt;-<span class="st"> </span><span class="kw">over</span>(lon_th, pol_points,<span class="dt">fn=</span>mean)</a>
+<a class="sourceLine" id="cb232-4" data-line-number="4">lon_th.spdf &lt;-<span class="st"> </span><span class="kw">SpatialPolygonsDataFrame</span>(lon_th, lon_th.z)</a>
+<a class="sourceLine" id="cb232-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb232-6" data-line-number="6"><span class="co"># clip to Greater London boundaries</span></a>
+<a class="sourceLine" id="cb232-7" data-line-number="7">lon_th.clp &lt;-<span class="st"> </span><span class="kw">crop</span>(lon_th.spdf,lad)</a>
+<a class="sourceLine" id="cb232-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb232-9" data-line-number="9"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb232-10" data-line-number="10"><span class="kw">tm_shape</span>(lon_th.clp) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb232-11" data-line-number="11"><span class="st">  </span><span class="kw">tm_fill</span>(<span class="dt">col=</span><span class="st">&#39;no2&#39;</span>)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-thiessen-pols-1.png" width="672" /></p>
 <p>That’s it. Every borough in Greater London now got assigned the average value of Nitrogen Dioxide (in <span class="math inline">\(\mu\)</span>g/m<sup>3</sup>) for 2019 provided by the closest monitoring site.</p>
 </div>
-<div id="inverse-distance-weighting" class="section level3" number="7.3.4">
+<div id="inverse-distance-weighting" class="section level3">
 <h3><span class="header-section-number">7.3.4</span> Inverse Distance Weighting</h3>
 <div class="note">
 <p>It has come to light that in some cases the below code does not work when you are running a more recent version of <code>rgdal</code> which migrated to using <code>gdal 3</code> and <code>proj 6</code>. It looks like the <code>gstat</code> package has not yet accommodated this change. If you run into errors, just read through the assignments and results. In case you want to use <strong>IDW</strong> at some point in the future, other packages, such as the <code>spatstat</code> package, also offers IDW functionality!</p>
 </div>
 <p>A second deterministic method to interpolate point data is <strong>Inverse Distance Weighting</strong> (IDW). An IDW is a means of converting point data of numerical values into a continuous surface to visualise how the data may be distributed across space. The technique interpolates point data by using a weighted average of a variable from nearby points to predict the value of that variable for each location. The weighting of the points is determined by their inverse distances drawing on <a href="https://en.wikipedia.org/wiki/Tobler%27s_first_law_of_geography#:~:text=The%20First%20Law%20of%20Geography,specifically%20for%20the%20inverse%20distance">Tobler’s first law of geography</a> that “everything is related to everything else, but near things are more related than distant thing”. The distance weighting is done by a power function: the larger the power coefficient, the stronger the weight of nearby point. The output is most commonly represented as a raster surface.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="raster-data-and-geostatistics.html#cb233-1" aria-hidden="true"></a><span class="co"># load libraries</span></span>
-<span id="cb233-2"><a href="raster-data-and-geostatistics.html#cb233-2" aria-hidden="true"></a><span class="kw">library</span>(gstat)  </span>
-<span id="cb233-3"><a href="raster-data-and-geostatistics.html#cb233-3" aria-hidden="true"></a><span class="kw">library</span>(xts) </span>
-<span id="cb233-4"><a href="raster-data-and-geostatistics.html#cb233-4" aria-hidden="true"></a></span>
-<span id="cb233-5"><a href="raster-data-and-geostatistics.html#cb233-5" aria-hidden="true"></a><span class="co"># create empty raster grid over which to interpolate the pollution values  </span></span>
-<span id="cb233-6"><a href="raster-data-and-geostatistics.html#cb233-6" aria-hidden="true"></a>grid &lt;-<span class="kw">spsample</span>(pol_points, <span class="dt">type =</span><span class="st">&#39;regular&#39;</span>, <span class="dt">n=</span><span class="dv">100000</span>)</span>
-<span id="cb233-7"><a href="raster-data-and-geostatistics.html#cb233-7" aria-hidden="true"></a></span>
-<span id="cb233-8"><a href="raster-data-and-geostatistics.html#cb233-8" aria-hidden="true"></a><span class="co"># runs the idw for the no2 variable with a power value of 2</span></span>
-<span id="cb233-9"><a href="raster-data-and-geostatistics.html#cb233-9" aria-hidden="true"></a>idw &lt;-<span class="st"> </span><span class="kw">idw</span>(pol_points<span class="op">$</span>no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points, <span class="dt">newdata=</span> grid, <span class="dt">idp=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb233-2" data-line-number="2"><span class="kw">library</span>(gstat)  </a>
+<a class="sourceLine" id="cb233-3" data-line-number="3"><span class="kw">library</span>(xts) </a>
+<a class="sourceLine" id="cb233-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb233-5" data-line-number="5"><span class="co"># create empty raster grid over which to interpolate the pollution values  </span></a>
+<a class="sourceLine" id="cb233-6" data-line-number="6">grid &lt;-<span class="kw">spsample</span>(pol_points, <span class="dt">type =</span><span class="st">&#39;regular&#39;</span>, <span class="dt">n=</span><span class="dv">100000</span>)</a>
+<a class="sourceLine" id="cb233-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb233-8" data-line-number="8"><span class="co"># runs the idw for the no2 variable with a power value of 2</span></a>
+<a class="sourceLine" id="cb233-9" data-line-number="9">idw &lt;-<span class="st"> </span><span class="kw">idw</span>(pol_points<span class="op">$</span>no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points, <span class="dt">newdata=</span> grid, <span class="dt">idp=</span><span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [inverse distance weighted interpolation]</code></pre>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="raster-data-and-geostatistics.html#cb235-1" aria-hidden="true"></a><span class="co"># specify spatial data as being gridded</span></span>
-<span id="cb235-2"><a href="raster-data-and-geostatistics.html#cb235-2" aria-hidden="true"></a><span class="kw">gridded</span>(idw) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb235-3"><a href="raster-data-and-geostatistics.html#cb235-3" aria-hidden="true"></a></span>
-<span id="cb235-4"><a href="raster-data-and-geostatistics.html#cb235-4" aria-hidden="true"></a><span class="co"># coerce to raster</span></span>
-<span id="cb235-5"><a href="raster-data-and-geostatistics.html#cb235-5" aria-hidden="true"></a>raster_idw &lt;-<span class="st"> </span><span class="kw">raster</span>(idw)</span>
-<span id="cb235-6"><a href="raster-data-and-geostatistics.html#cb235-6" aria-hidden="true"></a></span>
-<span id="cb235-7"><a href="raster-data-and-geostatistics.html#cb235-7" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb235-8"><a href="raster-data-and-geostatistics.html#cb235-8" aria-hidden="true"></a><span class="kw">plot</span>(raster_idw)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1"><span class="co"># specify spatial data as being gridded</span></a>
+<a class="sourceLine" id="cb235-2" data-line-number="2"><span class="kw">gridded</span>(idw) &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb235-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb235-4" data-line-number="4"><span class="co"># coerce to raster</span></a>
+<a class="sourceLine" id="cb235-5" data-line-number="5">raster_idw &lt;-<span class="st"> </span><span class="kw">raster</span>(idw)</a>
+<a class="sourceLine" id="cb235-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb235-7" data-line-number="7"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb235-8" data-line-number="8"><span class="kw">plot</span>(raster_idw)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-inverse-distance-weights-1.png" width="672" /></p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="raster-data-and-geostatistics.html#cb236-1" aria-hidden="true"></a><span class="co"># plot prettyish</span></span>
-<span id="cb236-2"><a href="raster-data-and-geostatistics.html#cb236-2" aria-hidden="true"></a><span class="kw">tm_shape</span>(<span class="kw">mask</span>(raster_idw,lad)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb236-3"><a href="raster-data-and-geostatistics.html#cb236-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="st">&#39;var1.pred&#39;</span>, <span class="dt">style=</span><span class="st">&#39;quantile&#39;</span>, <span class="dt">n=</span><span class="dv">100</span>, <span class="dt">palette=</span><span class="st">&#39;Reds&#39;</span>, <span class="dt">legend.show=</span><span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb236-4"><a href="raster-data-and-geostatistics.html#cb236-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(pol_points) <span class="op">+</span></span>
-<span id="cb236-5"><a href="raster-data-and-geostatistics.html#cb236-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_dots</span>() <span class="op">+</span></span>
-<span id="cb236-6"><a href="raster-data-and-geostatistics.html#cb236-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(lad) <span class="op">+</span></span>
-<span id="cb236-7"><a href="raster-data-and-geostatistics.html#cb236-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_borders</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="co"># plot prettyish</span></a>
+<a class="sourceLine" id="cb236-2" data-line-number="2"><span class="kw">tm_shape</span>(<span class="kw">mask</span>(raster_idw,lad)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb236-3" data-line-number="3"><span class="st">  </span><span class="kw">tm_raster</span>(<span class="st">&#39;var1.pred&#39;</span>, <span class="dt">style=</span><span class="st">&#39;quantile&#39;</span>, <span class="dt">n=</span><span class="dv">100</span>, <span class="dt">palette=</span><span class="st">&#39;Reds&#39;</span>, <span class="dt">legend.show=</span><span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb236-4" data-line-number="4"><span class="st">  </span><span class="kw">tm_shape</span>(pol_points) <span class="op">+</span></a>
+<a class="sourceLine" id="cb236-5" data-line-number="5"><span class="st">  </span><span class="kw">tm_dots</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb236-6" data-line-number="6"><span class="st">  </span><span class="kw">tm_shape</span>(lad) <span class="op">+</span></a>
+<a class="sourceLine" id="cb236-7" data-line-number="7"><span class="st">  </span><span class="kw">tm_borders</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-inverse-distance-weights-2.png" width="672" /></p>
 <div id="question-4" class="section level4 unnumbered">
 <h4>Question</h4>
@@ -710,36 +690,36 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
 <li>Do you got any idea where the <em>var1.pred</em> variable in the <code>tm_raster()</code> function is coming from that we use to plot the results of the IDW?</li>
 </ol>
 <p>The main parameter in the IDW is the power function. How do you know whether you interpolation results are accurate? You can choose the power function based on literature, but you can also perform a <em>leave one out cross validation</em> (LOOCV). The idea is simple: you remove one data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. Then you remove another data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. And so on for all points in the dataset. You then can compare the interpolated point values with the actual values from the omitted points. The performance of the interpolation can be summarised using the <a href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">root-mean-square error</a> (RMSE) which you in effect try to minimise!</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="raster-data-and-geostatistics.html#cb237-1" aria-hidden="true"></a><span class="co"># create an empty vector of the same length as our pollution monitoring sites</span></span>
-<span id="cb237-2"><a href="raster-data-and-geostatistics.html#cb237-2" aria-hidden="true"></a>idw.pred &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">length =</span> <span class="kw">length</span>(pol_points))</span>
-<span id="cb237-3"><a href="raster-data-and-geostatistics.html#cb237-3" aria-hidden="true"></a></span>
-<span id="cb237-4"><a href="raster-data-and-geostatistics.html#cb237-4" aria-hidden="true"></a><span class="co"># loop through all points every time leaving one of our pollution monitoring sites out</span></span>
-<span id="cb237-5"><a href="raster-data-and-geostatistics.html#cb237-5" aria-hidden="true"></a><span class="co"># assign the predicted result to the empty vector we created</span></span>
-<span id="cb237-6"><a href="raster-data-and-geostatistics.html#cb237-6" aria-hidden="true"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(pol_points)) {</span>
-<span id="cb237-7"><a href="raster-data-and-geostatistics.html#cb237-7" aria-hidden="true"></a>  idw.pred[i] &lt;-<span class="st"> </span><span class="kw">idw</span>(no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points[<span class="op">-</span>i,], pol_points[i,], <span class="dt">idp=</span><span class="dv">2</span>)<span class="op">$</span>var1.pred</span>
-<span id="cb237-8"><a href="raster-data-and-geostatistics.html#cb237-8" aria-hidden="true"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="raster-data-and-geostatistics.html#cb238-1" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb238-2"><a href="raster-data-and-geostatistics.html#cb238-2" aria-hidden="true"></a>idw.pred</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1"><span class="co"># create an empty vector of the same length as our pollution monitoring sites</span></a>
+<a class="sourceLine" id="cb237-2" data-line-number="2">idw.pred &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">length =</span> <span class="kw">length</span>(pol_points))</a>
+<a class="sourceLine" id="cb237-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb237-4" data-line-number="4"><span class="co"># loop through all points every time leaving one of our pollution monitoring sites out</span></a>
+<a class="sourceLine" id="cb237-5" data-line-number="5"><span class="co"># assign the predicted result to the empty vector we created</span></a>
+<a class="sourceLine" id="cb237-6" data-line-number="6"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(pol_points)) {</a>
+<a class="sourceLine" id="cb237-7" data-line-number="7">  idw.pred[i] &lt;-<span class="st"> </span><span class="kw">idw</span>(no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points[<span class="op">-</span>i,], pol_points[i,], <span class="dt">idp=</span><span class="dv">2</span>)<span class="op">$</span>var1.pred</a>
+<a class="sourceLine" id="cb237-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb238-2" data-line-number="2">idw.pred</a></code></pre></div>
 <pre><code>##  [1] 45.29822 51.50944 49.37564 32.66893 36.90722 31.76426 27.84861 29.81761
 ##  [9] 39.33103 44.79641 39.05047 55.17399 37.55353 49.04103 54.16264 42.28412
 ## [17] 49.98915 44.58587 40.07231 35.33835 38.26626 42.12244 46.30520 42.16079
 ## [25] 42.65499 37.37300 36.89304 37.34105 36.14922 31.98460
 ##  [ reached getOption(&quot;max.print&quot;) -- omitted 66 entries ]</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="raster-data-and-geostatistics.html#cb240-1" aria-hidden="true"></a><span class="co"># combine predicted values with observed values</span></span>
-<span id="cb240-2"><a href="raster-data-and-geostatistics.html#cb240-2" aria-hidden="true"></a>idw.com &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(<span class="st">&#39;predicted&#39;</span>=idw.pred,<span class="st">&#39;observed&#39;</span>=pol_points<span class="op">$</span>no2))</span>
-<span id="cb240-3"><a href="raster-data-and-geostatistics.html#cb240-3" aria-hidden="true"></a></span>
-<span id="cb240-4"><a href="raster-data-and-geostatistics.html#cb240-4" aria-hidden="true"></a><span class="co"># plot the predicted values against the observed values</span></span>
-<span id="cb240-5"><a href="raster-data-and-geostatistics.html#cb240-5" aria-hidden="true"></a><span class="co"># black line: if all points are on this line the predicted values are identical to the observed values</span></span>
-<span id="cb240-6"><a href="raster-data-and-geostatistics.html#cb240-6" aria-hidden="true"></a><span class="co"># blue line: shows the basic linear model of the scatter plot </span></span>
-<span id="cb240-7"><a href="raster-data-and-geostatistics.html#cb240-7" aria-hidden="true"></a><span class="kw">ggplot</span>(idw.com) <span class="op">+</span></span>
-<span id="cb240-8"><a href="raster-data-and-geostatistics.html#cb240-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_abline</span>() <span class="op">+</span></span>
-<span id="cb240-9"><a href="raster-data-and-geostatistics.html#cb240-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&#39;lm&#39;</span>,<span class="kw">aes</span>(<span class="dt">x=</span>observed,<span class="dt">y=</span>predicted),<span class="dt">se=</span><span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb240-10"><a href="raster-data-and-geostatistics.html#cb240-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>observed,<span class="dt">y=</span>predicted),<span class="dt">colour=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.5</span>)) <span class="op">+</span></span>
-<span id="cb240-11"><a href="raster-data-and-geostatistics.html#cb240-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>)) <span class="op">+</span></span>
-<span id="cb240-12"><a href="raster-data-and-geostatistics.html#cb240-12" aria-hidden="true"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1"><span class="co"># combine predicted values with observed values</span></a>
+<a class="sourceLine" id="cb240-2" data-line-number="2">idw.com &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(<span class="st">&#39;predicted&#39;</span>=idw.pred,<span class="st">&#39;observed&#39;</span>=pol_points<span class="op">$</span>no2))</a>
+<a class="sourceLine" id="cb240-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb240-4" data-line-number="4"><span class="co"># plot the predicted values against the observed values</span></a>
+<a class="sourceLine" id="cb240-5" data-line-number="5"><span class="co"># black line: if all points are on this line the predicted values are identical to the observed values</span></a>
+<a class="sourceLine" id="cb240-6" data-line-number="6"><span class="co"># blue line: shows the basic linear model of the scatter plot </span></a>
+<a class="sourceLine" id="cb240-7" data-line-number="7"><span class="kw">ggplot</span>(idw.com) <span class="op">+</span></a>
+<a class="sourceLine" id="cb240-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_abline</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb240-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&#39;lm&#39;</span>,<span class="kw">aes</span>(<span class="dt">x=</span>observed,<span class="dt">y=</span>predicted),<span class="dt">se=</span><span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb240-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>observed,<span class="dt">y=</span>predicted),<span class="dt">colour=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.5</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb240-11" data-line-number="11"><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb240-12" data-line-number="12"><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>))</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-leave-one-out-idw-validation-with-tha-plots-1.png" width="672" /></p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="raster-data-and-geostatistics.html#cb241-1" aria-hidden="true"></a><span class="co"># calculate the RMSE</span></span>
-<span id="cb241-2"><a href="raster-data-and-geostatistics.html#cb241-2" aria-hidden="true"></a><span class="kw">sqrt</span>(<span class="kw">sum</span>((idw.pred <span class="op">-</span><span class="st"> </span>pol_points<span class="op">$</span>no2)<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(pol_points))</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1"><span class="co"># calculate the RMSE</span></a>
+<a class="sourceLine" id="cb241-2" data-line-number="2"><span class="kw">sqrt</span>(<span class="kw">sum</span>((idw.pred <span class="op">-</span><span class="st"> </span>pol_points<span class="op">$</span>no2)<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(pol_points))</a></code></pre></div>
 <pre><code>## [1] 13.05302</code></pre>
 </div>
 <div id="question-5" class="section level4 unnumbered">
@@ -752,7 +732,7 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
 </ol>
 </div>
 </div>
-<div id="kriging" class="section level3" number="7.3.5">
+<div id="kriging" class="section level3">
 <h3><span class="header-section-number">7.3.5</span> Kriging</h3>
 <div class="note">
 <p>It has come to light that in some cases the below code does not work when you are running a more recent version of <code>rgdal</code> which migrated to using <code>gdal 3</code> and <code>proj 6</code>. It looks like the <code>gstat</code> package has not yet accommodated this change. If you run into errors, just read through the assignments and results. In case you want to use <strong>kriging</strong> at some point in the future, other packages, such as the <code>kriging</code> package, also offers this functionality!</p>
@@ -761,70 +741,70 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
 <div class="note">
 <p>There are various different ways of running a kriging, some are quite complex given that the method requires an experimental variogram of the data in order to run. If you want to know more, there is some excellent material <a href="https://mgimond.github.io/Spatial/spatial-interpolation.html">available here</a> but it is out of the scope of this course to go into much further detail.</p>
 </div>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="raster-data-and-geostatistics.html#cb243-1" aria-hidden="true"></a><span class="co"># create a variogram</span></span>
-<span id="cb243-2"><a href="raster-data-and-geostatistics.html#cb243-2" aria-hidden="true"></a>var.pol &lt;-<span class="st"> </span><span class="kw">variogram</span>(no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points, <span class="dt">cloud=</span><span class="ot">FALSE</span>, <span class="dt">width=</span><span class="dv">1000</span>)</span>
-<span id="cb243-3"><a href="raster-data-and-geostatistics.html#cb243-3" aria-hidden="true"></a></span>
-<span id="cb243-4"><a href="raster-data-and-geostatistics.html#cb243-4" aria-hidden="true"></a><span class="co"># compute the variogram model</span></span>
-<span id="cb243-5"><a href="raster-data-and-geostatistics.html#cb243-5" aria-hidden="true"></a>var.mod &lt;-<span class="st"> </span><span class="kw">fit.variogram</span>(var.pol, <span class="kw">vgm</span>(<span class="dt">psill=</span><span class="dv">100</span>, <span class="dt">model=</span><span class="st">&#39;Exp&#39;</span>,<span class="dt">nugget=</span><span class="dv">160</span>))</span>
-<span id="cb243-6"><a href="raster-data-and-geostatistics.html#cb243-6" aria-hidden="true"></a></span>
-<span id="cb243-7"><a href="raster-data-and-geostatistics.html#cb243-7" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb243-8"><a href="raster-data-and-geostatistics.html#cb243-8" aria-hidden="true"></a><span class="kw">plot</span>(var.pol, var.mod)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1"><span class="co"># create a variogram</span></a>
+<a class="sourceLine" id="cb243-2" data-line-number="2">var.pol &lt;-<span class="st"> </span><span class="kw">variogram</span>(no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points, <span class="dt">cloud=</span><span class="ot">FALSE</span>, <span class="dt">width=</span><span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb243-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb243-4" data-line-number="4"><span class="co"># compute the variogram model</span></a>
+<a class="sourceLine" id="cb243-5" data-line-number="5">var.mod &lt;-<span class="st"> </span><span class="kw">fit.variogram</span>(var.pol, <span class="kw">vgm</span>(<span class="dt">psill=</span><span class="dv">100</span>, <span class="dt">model=</span><span class="st">&#39;Exp&#39;</span>,<span class="dt">nugget=</span><span class="dv">160</span>))</a>
+<a class="sourceLine" id="cb243-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb243-7" data-line-number="7"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb243-8" data-line-number="8"><span class="kw">plot</span>(var.pol, var.mod)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-lets-krig-it-1.png" width="672" /></p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="raster-data-and-geostatistics.html#cb244-1" aria-hidden="true"></a><span class="co"># create empty raster grid over which to interpolate the pollution values  </span></span>
-<span id="cb244-2"><a href="raster-data-and-geostatistics.html#cb244-2" aria-hidden="true"></a>grid &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">spsample</span>(pol_points, <span class="dt">type =</span><span class="st">&#39;regular&#39;</span>, <span class="dt">n=</span><span class="dv">100000</span>))</span>
-<span id="cb244-3"><a href="raster-data-and-geostatistics.html#cb244-3" aria-hidden="true"></a><span class="kw">names</span>(grid) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;x&#39;</span>,<span class="st">&#39;y&#39;</span>)</span>
-<span id="cb244-4"><a href="raster-data-and-geostatistics.html#cb244-4" aria-hidden="true"></a><span class="kw">coordinates</span>(grid) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;x&#39;</span>,<span class="st">&#39;y&#39;</span>)</span>
-<span id="cb244-5"><a href="raster-data-and-geostatistics.html#cb244-5" aria-hidden="true"></a><span class="kw">gridded</span>(grid) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb244-6"><a href="raster-data-and-geostatistics.html#cb244-6" aria-hidden="true"></a><span class="kw">fullgrid</span>(grid) &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb244-7"><a href="raster-data-and-geostatistics.html#cb244-7" aria-hidden="true"></a><span class="kw">proj4string</span>(grid) &lt;-<span class="st"> </span><span class="kw">proj4string</span>(pol_points)</span>
-<span id="cb244-8"><a href="raster-data-and-geostatistics.html#cb244-8" aria-hidden="true"></a></span>
-<span id="cb244-9"><a href="raster-data-and-geostatistics.html#cb244-9" aria-hidden="true"></a><span class="co"># execute the kriging interpolation on a regular grid using the variogram as input</span></span>
-<span id="cb244-10"><a href="raster-data-and-geostatistics.html#cb244-10" aria-hidden="true"></a>dat.krg &lt;-<span class="st"> </span><span class="kw">krige</span>(no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points, grid, var.mod)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1"><span class="co"># create empty raster grid over which to interpolate the pollution values  </span></a>
+<a class="sourceLine" id="cb244-2" data-line-number="2">grid &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">spsample</span>(pol_points, <span class="dt">type =</span><span class="st">&#39;regular&#39;</span>, <span class="dt">n=</span><span class="dv">100000</span>))</a>
+<a class="sourceLine" id="cb244-3" data-line-number="3"><span class="kw">names</span>(grid) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;x&#39;</span>,<span class="st">&#39;y&#39;</span>)</a>
+<a class="sourceLine" id="cb244-4" data-line-number="4"><span class="kw">coordinates</span>(grid) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;x&#39;</span>,<span class="st">&#39;y&#39;</span>)</a>
+<a class="sourceLine" id="cb244-5" data-line-number="5"><span class="kw">gridded</span>(grid) &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb244-6" data-line-number="6"><span class="kw">fullgrid</span>(grid) &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb244-7" data-line-number="7"><span class="kw">proj4string</span>(grid) &lt;-<span class="st"> </span><span class="kw">proj4string</span>(pol_points)</a>
+<a class="sourceLine" id="cb244-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb244-9" data-line-number="9"><span class="co"># execute the kriging interpolation on a regular grid using the variogram as input</span></a>
+<a class="sourceLine" id="cb244-10" data-line-number="10">dat.krg &lt;-<span class="st"> </span><span class="kw">krige</span>(no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points, grid, var.mod)</a></code></pre></div>
 <pre><code>## [using ordinary kriging]</code></pre>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="raster-data-and-geostatistics.html#cb246-1" aria-hidden="true"></a><span class="co"># convert to raster and mask</span></span>
-<span id="cb246-2"><a href="raster-data-and-geostatistics.html#cb246-2" aria-hidden="true"></a>rst.krg &lt;-<span class="st"> </span><span class="kw">raster</span>(dat.krg)</span>
-<span id="cb246-3"><a href="raster-data-and-geostatistics.html#cb246-3" aria-hidden="true"></a></span>
-<span id="cb246-4"><a href="raster-data-and-geostatistics.html#cb246-4" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb246-5"><a href="raster-data-and-geostatistics.html#cb246-5" aria-hidden="true"></a><span class="kw">plot</span>(rst.krg)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1"><span class="co"># convert to raster and mask</span></a>
+<a class="sourceLine" id="cb246-2" data-line-number="2">rst.krg &lt;-<span class="st"> </span><span class="kw">raster</span>(dat.krg)</a>
+<a class="sourceLine" id="cb246-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb246-4" data-line-number="4"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb246-5" data-line-number="5"><span class="kw">plot</span>(rst.krg)</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-lets-krig-it-2.png" width="672" /></p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="raster-data-and-geostatistics.html#cb247-1" aria-hidden="true"></a><span class="co"># plot prettyish</span></span>
-<span id="cb247-2"><a href="raster-data-and-geostatistics.html#cb247-2" aria-hidden="true"></a><span class="kw">tm_shape</span>(<span class="kw">mask</span>(rst.krg,lad)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb247-3"><a href="raster-data-and-geostatistics.html#cb247-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_raster</span>(<span class="st">&#39;var1.pred&#39;</span>, <span class="dt">style=</span><span class="st">&#39;quantile&#39;</span>, <span class="dt">n=</span><span class="dv">50</span>, <span class="dt">palette=</span><span class="st">&#39;Reds&#39;</span>, <span class="dt">legend.show=</span><span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb247-4"><a href="raster-data-and-geostatistics.html#cb247-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(pol_points) <span class="op">+</span></span>
-<span id="cb247-5"><a href="raster-data-and-geostatistics.html#cb247-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_dots</span>() <span class="op">+</span></span>
-<span id="cb247-6"><a href="raster-data-and-geostatistics.html#cb247-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_shape</span>(lad) <span class="op">+</span></span>
-<span id="cb247-7"><a href="raster-data-and-geostatistics.html#cb247-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_borders</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1"><span class="co"># plot prettyish</span></a>
+<a class="sourceLine" id="cb247-2" data-line-number="2"><span class="kw">tm_shape</span>(<span class="kw">mask</span>(rst.krg,lad)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb247-3" data-line-number="3"><span class="st">  </span><span class="kw">tm_raster</span>(<span class="st">&#39;var1.pred&#39;</span>, <span class="dt">style=</span><span class="st">&#39;quantile&#39;</span>, <span class="dt">n=</span><span class="dv">50</span>, <span class="dt">palette=</span><span class="st">&#39;Reds&#39;</span>, <span class="dt">legend.show=</span><span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb247-4" data-line-number="4"><span class="st">  </span><span class="kw">tm_shape</span>(pol_points) <span class="op">+</span></a>
+<a class="sourceLine" id="cb247-5" data-line-number="5"><span class="st">  </span><span class="kw">tm_dots</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb247-6" data-line-number="6"><span class="st">  </span><span class="kw">tm_shape</span>(lad) <span class="op">+</span></a>
+<a class="sourceLine" id="cb247-7" data-line-number="7"><span class="st">  </span><span class="kw">tm_borders</span>()</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-lets-krig-it-3.png" width="672" /></p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="raster-data-and-geostatistics.html#cb248-1" aria-hidden="true"></a><span class="co"># create an empty vector of the same length as our pollution monitoring sites</span></span>
-<span id="cb248-2"><a href="raster-data-and-geostatistics.html#cb248-2" aria-hidden="true"></a>krg.pred &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">length =</span> <span class="kw">length</span>(pol_points))</span>
-<span id="cb248-3"><a href="raster-data-and-geostatistics.html#cb248-3" aria-hidden="true"></a></span>
-<span id="cb248-4"><a href="raster-data-and-geostatistics.html#cb248-4" aria-hidden="true"></a><span class="co"># loop through all points every time leaving one of our pollution monitoring sites out</span></span>
-<span id="cb248-5"><a href="raster-data-and-geostatistics.html#cb248-5" aria-hidden="true"></a><span class="co"># assign the predicted result to the empty vector we created</span></span>
-<span id="cb248-6"><a href="raster-data-and-geostatistics.html#cb248-6" aria-hidden="true"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(pol_points)) {</span>
-<span id="cb248-7"><a href="raster-data-and-geostatistics.html#cb248-7" aria-hidden="true"></a>  krg.pred[i] &lt;-<span class="st"> </span><span class="kw">krige</span>(no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points[<span class="op">-</span>i,], pol_points[i,], var.mod)<span class="op">$</span>var1.pred</span>
-<span id="cb248-8"><a href="raster-data-and-geostatistics.html#cb248-8" aria-hidden="true"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="raster-data-and-geostatistics.html#cb249-1" aria-hidden="true"></a><span class="co"># inspect</span></span>
-<span id="cb249-2"><a href="raster-data-and-geostatistics.html#cb249-2" aria-hidden="true"></a>krg.pred</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1"><span class="co"># create an empty vector of the same length as our pollution monitoring sites</span></a>
+<a class="sourceLine" id="cb248-2" data-line-number="2">krg.pred &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="dt">length =</span> <span class="kw">length</span>(pol_points))</a>
+<a class="sourceLine" id="cb248-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb248-4" data-line-number="4"><span class="co"># loop through all points every time leaving one of our pollution monitoring sites out</span></a>
+<a class="sourceLine" id="cb248-5" data-line-number="5"><span class="co"># assign the predicted result to the empty vector we created</span></a>
+<a class="sourceLine" id="cb248-6" data-line-number="6"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(pol_points)) {</a>
+<a class="sourceLine" id="cb248-7" data-line-number="7">  krg.pred[i] &lt;-<span class="st"> </span><span class="kw">krige</span>(no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points[<span class="op">-</span>i,], pol_points[i,], var.mod)<span class="op">$</span>var1.pred</a>
+<a class="sourceLine" id="cb248-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="co"># inspect</span></a>
+<a class="sourceLine" id="cb249-2" data-line-number="2">krg.pred</a></code></pre></div>
 <pre><code>##  [1] 40.24832 42.14059 42.06944 38.71840 38.76867 38.72003 38.10100 38.21305
 ##  [9] 38.02985 39.31455 38.28428 41.70758 38.74461 43.84781 46.25688 39.03628
 ## [17] 41.00983 38.69278 38.78804 38.25703 38.33284 38.77227 40.04993 39.29443
 ## [25] 38.50121 38.50156 38.53598 38.75134 38.75178 38.20019
 ##  [ reached getOption(&quot;max.print&quot;) -- omitted 66 entries ]</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="raster-data-and-geostatistics.html#cb251-1" aria-hidden="true"></a><span class="co"># combine predicted values with observed values</span></span>
-<span id="cb251-2"><a href="raster-data-and-geostatistics.html#cb251-2" aria-hidden="true"></a>krg.com &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(<span class="st">&#39;predicted&#39;</span>=krg.pred,<span class="st">&#39;observed&#39;</span>=pol_points<span class="op">$</span>no2))</span>
-<span id="cb251-3"><a href="raster-data-and-geostatistics.html#cb251-3" aria-hidden="true"></a></span>
-<span id="cb251-4"><a href="raster-data-and-geostatistics.html#cb251-4" aria-hidden="true"></a><span class="co"># plot the predicted values against the observed values</span></span>
-<span id="cb251-5"><a href="raster-data-and-geostatistics.html#cb251-5" aria-hidden="true"></a><span class="co"># black line: if all points are on this line the predicted values are identical to the observed values</span></span>
-<span id="cb251-6"><a href="raster-data-and-geostatistics.html#cb251-6" aria-hidden="true"></a><span class="co"># blue line: shows the basic linear model of the scatter plot </span></span>
-<span id="cb251-7"><a href="raster-data-and-geostatistics.html#cb251-7" aria-hidden="true"></a><span class="kw">ggplot</span>(krg.com) <span class="op">+</span></span>
-<span id="cb251-8"><a href="raster-data-and-geostatistics.html#cb251-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_abline</span>() <span class="op">+</span></span>
-<span id="cb251-9"><a href="raster-data-and-geostatistics.html#cb251-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&#39;lm&#39;</span>,<span class="kw">aes</span>(<span class="dt">x=</span>observed,<span class="dt">y=</span>predicted),<span class="dt">se=</span><span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb251-10"><a href="raster-data-and-geostatistics.html#cb251-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>observed,<span class="dt">y=</span>predicted),<span class="dt">colour=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.5</span>)) <span class="op">+</span></span>
-<span id="cb251-11"><a href="raster-data-and-geostatistics.html#cb251-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>)) <span class="op">+</span></span>
-<span id="cb251-12"><a href="raster-data-and-geostatistics.html#cb251-12" aria-hidden="true"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1"><span class="co"># combine predicted values with observed values</span></a>
+<a class="sourceLine" id="cb251-2" data-line-number="2">krg.com &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(<span class="st">&#39;predicted&#39;</span>=krg.pred,<span class="st">&#39;observed&#39;</span>=pol_points<span class="op">$</span>no2))</a>
+<a class="sourceLine" id="cb251-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb251-4" data-line-number="4"><span class="co"># plot the predicted values against the observed values</span></a>
+<a class="sourceLine" id="cb251-5" data-line-number="5"><span class="co"># black line: if all points are on this line the predicted values are identical to the observed values</span></a>
+<a class="sourceLine" id="cb251-6" data-line-number="6"><span class="co"># blue line: shows the basic linear model of the scatter plot </span></a>
+<a class="sourceLine" id="cb251-7" data-line-number="7"><span class="kw">ggplot</span>(krg.com) <span class="op">+</span></a>
+<a class="sourceLine" id="cb251-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_abline</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb251-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&#39;lm&#39;</span>,<span class="kw">aes</span>(<span class="dt">x=</span>observed,<span class="dt">y=</span>predicted),<span class="dt">se=</span><span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb251-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>observed,<span class="dt">y=</span>predicted),<span class="dt">colour=</span><span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.5</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb251-11" data-line-number="11"><span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb251-12" data-line-number="12"><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">80</span>))</a></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-leave-one-out-krg-validation-with-tha-plots-1.png" width="672" /></p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="raster-data-and-geostatistics.html#cb252-1" aria-hidden="true"></a><span class="co"># calculate the RMSE</span></span>
-<span id="cb252-2"><a href="raster-data-and-geostatistics.html#cb252-2" aria-hidden="true"></a><span class="kw">sqrt</span>(<span class="kw">sum</span>((krg.pred <span class="op">-</span><span class="st"> </span>pol_points<span class="op">$</span>no2)<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(pol_points))</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1"><span class="co"># calculate the RMSE</span></a>
+<a class="sourceLine" id="cb252-2" data-line-number="2"><span class="kw">sqrt</span>(<span class="kw">sum</span>((krg.pred <span class="op">-</span><span class="st"> </span>pol_points<span class="op">$</span>no2)<span class="op">^</span><span class="dv">2</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(pol_points))</a></code></pre></div>
 <pre><code>## [1] 12.91622</code></pre>
 <div id="question-6" class="section level4 unnumbered">
 <h4>Question</h4>
@@ -835,11 +815,11 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
 </div>
 </div>
 </div>
-<div id="take-home-message" class="section level2" number="7.4">
+<div id="take-home-message" class="section level2">
 <h2><span class="header-section-number">7.4</span> Take home message</h2>
 <p>Although in many instances you will be working with vector data, especially where government statistics and administrative boundaries are involved, there are also plenty of use cases in which you will be working with raster data. You now know the basics of working with raster datasets as well as that you can create your own raster datasets by using interpolation and geostatistical methods such as kriging to predict a given phenomenon in unmeasured locations. <a href="https://www.youtube.com/watch?v=C7dPqrmDWxs">That it is for this week</a>!</p>
 </div>
-<div id="attributions_w07" class="section level2" number="7.5">
+<div id="attributions_w07" class="section level2">
 <h2><span class="header-section-number">7.5</span> Attributions</h2>
 <p>This week’s content and practical uses content and inspiration from:</p>
 <ul>
@@ -847,7 +827,7 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
 <li>Lansley, G., Cheshire, J. 2020. An Introduction to Spatial Data Analysis and Visualisation in R. <a href="https://data.cdrc.ac.uk/dataset/introduction-spatial-data-analysis-and-visualisation-r" class="uri">https://data.cdrc.ac.uk/dataset/introduction-spatial-data-analysis-and-visualisation-r</a></li>
 </ul>
 </div>
-<div id="feedback_w07" class="section level2" number="7.6">
+<div id="feedback_w07" class="section level2">
 <h2><span class="header-section-number">7.6</span> Feedback</h2>
 <p>Please take a moment to give us some <a href="https://forms.gle/BYbZySVSHeoUEkJh9">feedback on this week’s content</a>.</p>
 
