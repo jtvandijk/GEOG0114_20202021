@@ -1,3 +1,114 @@
 # Geodemographics
 
-<center>**This week's content will be made available on 07/12.**</center>
+## Introduction {#introduction_w09}
+After our focus on issues of data scarcity and sparsity within low- and middle-income countries and automated extraction of building footprints from satellite imagery using machine learning, this week we looking at data rich environments and how we can use socio-demographic and socio-economic data to characterise neighbourhoods using geodemographics. We will do this by analysing and subsequently recreating a geodemographic classification known as the [Internet User Classification](https://data.cdrc.ac.uk/dataset/internet-user-classification).
+
+> Geodemographics is the ‘analysis of people by where they live’ (Harris et al. 2005) and as such entails representing the individual and collective identities that are manifest in observable neighbourhood structure ([Longley 2012](https://www.tandfonline.com/doi/pdf/10.1080/13658816.2012.719623?needAccess=true))
+
+This week is structured around **two** short lecture videos, **one** [assignments](#assignment_w09) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
+
+### Video: Overview {#overview_w09}
+```{r 09-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+#embed_msstream('64e6a9e8-4a05-42ad-bfc2-a67008dd9c5f') %>% use_align('left')
+```
+[Lecture slides] [[Watch on MS stream]]()
+
+## Geodemographics and the Internet User Classification
+The [CDRC Internet User Classification](https://data.cdrc.ac.uk/dataset/internet-user-classification) (IUC) is a bespoke geodemographic classification that describes how people residing in different parts of Great Britain interact with the Internet. For every Lower Super Output Area (LSOA) in England and Wales and Data Zone (DZ) ([2011 Census Geographies](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography)), the IUC provides aggregate population estimates of Internet use ([Singleton *et al.* 2020](https://www.sciencedirect.com/science/article/pii/S0198971519307963)).
+
+### Video: Geodemographics and the Internet User Classification
+```{r 09-geodemographics-iuc, warnings=FALSE, message=FALSE, echo=FALSE}
+library(vembedr)
+#embed_msstream('7854a8dc-f24f-4a3d-908c-9a10adb4b085') %>% use_align('left')
+```
+[[Lecture slides]]() [[Watch on MS stream]]()
+
+### Example: Geodemographics and the Internet User Classification
+For the first part of this week's practical material, we will be looking at the Internet User Classification for Great Britain in more detail. Our first step is to download the IUC dataset:
+
+- Open a web browser and go to the [data portal of the CDRC](https://data.cdrc.ac.uk).
+- Register if you need to, or if you are already registered, make sure you are logged in.
+- Search for **Internet User Classification**.
+- Scroll down and choose the download option for the *IUC 2018 (CSV)*.
+- Save the `iuc_gb_2018.csv` file in an appropriate folder.
+
+```{r 09-iuc-download, echo=FALSE, fig.align='center', fig.cap='Download the GB IUC 2018.'}
+knitr::include_graphics('images/week09/09_iuc_download.png')
+```
+
+We will start by inspecting the dataset in MS Excel, or any other spreadsheet software such as [Apache OpenOffice Calc ](https://www.openoffice.org/product/calc.html) or [Numbers](https://www.apple.com/uk/numbers/). Also, have a look at the [IUC 2018 User Guide](https://data.cdrc.ac.uk/system/files/iuc2018userguide.pdf) that provides the **pen portraits** of every cluster, including plots of cluster centres and a brief summary of the methodology.
+
+<div class="note">
+It is always a good idea to inspect your data prior to analysis to find out how your data look like. Of course, depending on the type of data, you can choose any tool you like to do this inspection ([ArcGIS](https://www.arcgis.com/index.html), [R](https://www.r-project.org/), [QGIS](https://qgis.org/en/site/), [Microsoft Excel](https://www.office.com/), etc.).
+</div>
+
+```{r 09-iuc-in-excel, echo=FALSE, fig.align='center', fig.cap='GB IUC 2018 in Excel.'}
+knitr::include_graphics('images/week09/09_iuc_excel.png')
+```
+
+```{r 09-load-libraries-and data, warnings=FALSE, message=FALSE}
+# load libraries
+library(tidyverse)
+library(tmap)
+
+# load data
+iuc <- read_csv('raw/index/iuc_gb_2018.csv')
+
+# inspect
+iuc
+
+# inspect data types
+str(iuc)
+```
+
+#### Questions {-}
+1. Create a histogram to inspect the distribution of the data?
+2. Looking at the histogram: is this what you expected? Why (not)?
+
+Now are data are loaded we can move to acquiring our spatial data. As the IUC is at created at the level of the Lower super Layer Output Area Census geography, we need to download borders for this.
+
+1. Go to [UK Data Service Census support portal](https://borders.ukdataservice.ac.uk/) and select **Boundary Data Selector**.
+2. Set Country to *England*, Geography to *Statistical Building Block*, dates to *2011 and later*, and click **Find**.
+3. Select *English Lower Layer Super Output Areas, 2011* and click **List Areas**.
+4. Select *Liverpool* from the list and click **Extract Boundary Data**.
+5. Wait until loaded and download the `BoundaryData.zip` file.
+6. Unzip and save the file in the usual fashion.
+
+<div class="note">
+You could also have downloaded the shapefile with the data already joined to the LSOA boundaries directly from the CDRC data portal, but this is the national data set and is quite large (75MB) and as a consequence it may be a little slow. Also, we will be looking at [Liverpool](https://en.wikipedia.org/wiki/Liverpool) today so we do not need all LSOAs in Great Britain.
+</div>
+
+Now we can prepare the IUC map by joining our `csv` file with the IUC classification to the shapefile.
+
+```{r 09-load-those-spatial-data, warnings=FALSE, message=FALSE}
+# load libraries
+library(sf)
+library(tmap)
+
+# load spatial data
+liverpool <- st_read('raw/boundaries/liverpool_lsoa_2011/england_lsoa_2011.shp')
+
+# inspect
+plot(liverpool$geometry)
+
+# join data
+liv_iuc <- merge(liverpool, iuc, by.x='code', by.y='LSOA11_CD')
+
+#check output
+head(liv_iuc)
+```
+
+## K-means clustering
+
+### Video: K-means clustering
+
+### Example: K-means clustering
+
+## Take home message
+
+## Attributions {#attributions_w09}
+This week's content and practical uses content and inspiration from:
+
+## Feedback {#feedback_w09}
+Please take a moment to give us some [feedback on this week's content](https://forms.gle/BYbZySVSHeoUEkJh9).

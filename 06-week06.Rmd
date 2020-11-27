@@ -164,7 +164,7 @@ Rather than to look at the average distances of different orders neighbours, we 
 
 We can conduct a Ripley’s K test on our data very simply with the spatstat package using the `Kest()` function. 
 
-<div class="note">
+<div class="warning">
 Be careful with running Ripley's K on large datasets as the function is essentially a series of nested loops, meaning that calculation time will increase exponentially with an increasing number of points.
 </div>
 
@@ -266,7 +266,7 @@ Try to execute some surname searches and see if you can find any interesting pat
 #### Assignment 1 {}
 Now you have seen the GBNames website and you know how to execute a Kernel Density Estimation, it is time you try it yourself. Below are three datasets with the locations of the bearers of three different surnames (Longley, Wilkins, Van Dijk). Each dataset contains a surname, a x-coordinate and a y-coordinate (both already projected in [EPSG 27700](https://epsg.io/27700)). Your task for Friday is to analyse these three surname distributions using Kernel Density Estimation. 
 
-<div class="note">
+<div class="warning">
 **For privacy reasons the surname data you will be using are not actual data but are made to closely represent the actual data!**
 </div>
 
@@ -289,7 +289,7 @@ During Friday's seminar we will be having a guest talk by [Nombuyiselo Murage](h
 
 Use this opportunity to also ask questions about her experience with the [CDRC Master's Dissertation Programme](https://www.cdrc.ac.uk/education-and-training/masters-dissertation-scheme/) in which she participated, what issues she encountered during her research, what tools she would advise you to get comfortable with quickly, etc. 
 
-<div class="note">
+<div class="warning">
 **Keep in mind that in several months time you will be writing a Master's Dissertation yourself and this is an excellent opportunity to gain some invaluable insights from someone who has seen it through!**
 </div>
 

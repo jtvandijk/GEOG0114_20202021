@@ -31,9 +31,9 @@ embed_msstream('7854a8dc-f24f-4a3d-908c-9a10adb4b085') %>% use_align('left')
 [[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w07/w07_01_raster_data.pdf) [[Watch on MS stream]](https://web.microsoftstream.com/video/7854a8dc-f24f-4a3d-908c-9a10adb4b085?list=studio)
 
 ### Example: Raster data and map algebra
-For the first part of this week practical material we will be using raster datasets from the [Population Change and Geographic Inequalities in the UK, 1971-2011 (PopChange)](https://www.liverpool.ac.uk/geography-and-planning/research/popchange/introduction/) project. In this [ESRC-funded project](https://esrc.ukri.org/research/our-research/secondary-data-analysis-initiative/), researchers from the University of Liverpool created raster population surfaces from publicly available Census data (1971, 1981, 1991, 2001, 2011). Population surfaces are estimates of counts of people for regular grids, for example, population in a certain subgroup over 1km by 1km grid cells. In the example below, we will be using the 2001 and 2011 Age 30-44 years population surfaces but feel free to choose and download two different datasets through to https://popchange-data.liverpool.ac.uk/.
+For the first part of this week's practical material we will be using raster datasets from the [Population Change and Geographic Inequalities in the UK, 1971-2011 (PopChange)](https://www.liverpool.ac.uk/geography-and-planning/research/popchange/introduction/) project. In this [ESRC-funded project](https://esrc.ukri.org/research/our-research/secondary-data-analysis-initiative/), researchers from the University of Liverpool created raster population surfaces from publicly available Census data (1971, 1981, 1991, 2001, 2011). Population surfaces are estimates of counts of people for regular grids, for example, population in a certain subgroup over 1km by 1km grid cells. In the example below, we will be using the 2001 and 2011 Age 30-44 years population surfaces but feel free to choose and download two different datasets through to https://popchange-data.liverpool.ac.uk/.
 
-#### Question {-}
+#### Questions {-}
 1. Small-area counts of people in a variety of population subgroups are publicly released for each Census, so why was it necessary to create these raster population surfaces?
 
 #### File download {-}
@@ -50,7 +50,7 @@ Before we open up the data in R, try to have a 'non-spatial sneak peak' at the `
 ```{r 07-raster-vector, echo=FALSE, fig.align='center', fig.cap='Raster or plain text?'}
 knitr::include_graphics('images/week07/07_raster_as_text.png')
 ```
-#### Question {-}
+#### Questions {-}
 1. Any idea on what the first few lines of the `asc` file, when opened with a texteditor, mean?
 
 ```{r 07-settings-and-options, warnings=FALSE, message=FALSE, echo=FALSE}
@@ -81,7 +81,7 @@ plot(pop01_3044,col=brewer.pal(6,'Blues'),main='Popolation surface age 30 - 44 i
 plot(pop11_3044,col=brewer.pal(6,'Blues'),main='Popolation surface age 30 - 44 in 2011',axes=FALSE)
 ```
 
-#### Question {-}
+#### Questions {-}
 1. The `plot()` function automatically adds a legend to our raster dataset. What do these numbers represent?
 
 Now all data are loaded, we have been able to quickly make a halfway decent map, we are ready to look a bit better at our raster dataset. In a way a raster dataset (or any raster image for that matter), can be thought of as a big matrix of *n_rows* by *n_columns*. Every cell in the matrix holds a value - because of this many standard descriptive techniques can be applied onto raster data. In very fact, we can do some algebra with these datasets! 
@@ -199,7 +199,7 @@ Spatial interpolation is the prediction of a given phenomenon in unmeasured loca
 knitr::include_graphics('images/week07/07_london_air.png')
 ```
 
-#### Question {-}
+#### Questions {-}
 1. Although we will use the air pollution data captured at the continuous monitoring sites in London, why may using air pollution not be the perfect type of data to use here?
 
 We could manually download `csv` files from the Londonair website for all the monitoring sites we are interested in, however, there is also a [R package](https://davidcarslaw.github.io/openair/) that makes things much easier. Have a look at the [documentation of the openair package](https://cloud.r-project.org/web/packages/openair/openair.pdf) so that you get an idea why we use the `importMeta()` and `importKCL()` functions below!
@@ -325,7 +325,7 @@ tm_shape(lon_th.clp) +
 That's it. Every borough in Greater London now got assigned the average value of Nitrogen Dioxide (in $\mu$g/m^3^) for 2019 provided by the closest monitoring site.
 
 ### Inverse Distance Weighting
-<div class="note">
+<div class="warning">
 It has come to light that in some cases the below code does not work when you are running a more recent version of `rgdal` which migrated to using `gdal 3` and `proj 6`. It looks like the `gstat` package has not yet accommodated this change. If you run into errors, just read through the assignments and results. In case you want to use **IDW** at some point in the future, other packages, such as the `spatstat` package, also offers IDW functionality!
 </div>
 
@@ -360,7 +360,7 @@ tm_shape(mask(raster_idw,lad)) +
   tm_borders()
 ```
 
-#### Question {-}
+#### Questions {-}
 1. Do you got any idea where the *var1.pred* variable in the `tm_raster()` function is coming from that we use to plot the results of the IDW?
 
 The main parameter in the IDW is the power function. How do you know whether you interpolation results are accurate? You can choose the power function based on literature, but you can also perform a *leave one out cross validation* (LOOCV). The idea is simple: you remove one data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. Then you remove another data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. And so on for all points in the dataset. You then can compare the interpolated point values with the actual values from the omitted points. The performance of the interpolation can be summarised using the [root-mean-square error](https://en.wikipedia.org/wiki/Root-mean-square_deviation) (RMSE) which you in effect try to minimise!
@@ -397,14 +397,14 @@ ggplot(idw.com) +
 sqrt(sum((idw.pred - pol_points$no2)^2) / length(pol_points))
 ```
 
-#### Question {-}
+#### Questions {-}
 1. What happens to the RMSE when you repeat the LOOCV procedure by changing the power function to a value of **1.5**? 
 2. What happens to the RMSE when you repeat the LOOCV procedure by changing the power function to a value of **3**?
 3. What happens when you re-do the IDW map but this time using a power function with a value of **15**? Why does your map look like this?
 4. Do you think it is possible to reduce the RMSE value to 0 in this example? Why (not)?
 
 ### Kriging
-<div class="note">
+<div class="warning">
 It has come to light that in some cases the below code does not work when you are running a more recent version of `rgdal` which migrated to using `gdal 3` and `proj 6`. It looks like the `gstat` package has not yet accommodated this change. If you run into errors, just read through the assignments and results. In case you want to use **kriging** at some point in the future, other packages, such as the `kriging` package, also offers this functionality!
 </div>
 
@@ -482,7 +482,7 @@ ggplot(krg.com) +
 sqrt(sum((krg.pred - pol_points$no2)^2) / length(pol_points))
 ```
 
-#### Question {-}
+#### Questions {-}
 1. Which method gives a better performance: IDW or our quick attempt to kriging? Why do you say so?
 
 That's it. Using ordinary kriging we predicted the average value of Nitrogen Dioxide (in $\mu$g/m^3^) in 2019 for every location in Greater London.
