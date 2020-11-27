@@ -177,7 +177,6 @@ No further instructions are provided and you will have to figure out on your own
 - If you need to specify a coordinate system use the British National Grid.
 
 #### File download {-}
-
 | File                                                 | Type           | Link |
 | :------                                              | :------        | :------ |
 | Elevation cost surface                               | `asc`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/elevation_cost_surface.zip) |
