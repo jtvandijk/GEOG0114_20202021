@@ -5,7 +5,7 @@ After our focus on issues of data scarcity and sparsity within low- and middle-i
 
 > Geodemographics is the ‘analysis of people by where they live’ (Harris et al. 2005) and as such entails representing the individual and collective identities that are manifest in observable neighbourhood structure ([Longley 2012](https://www.tandfonline.com/doi/pdf/10.1080/13658816.2012.719623?needAccess=true))
 
-This week is structured around **two** short lecture videos, **one** [assignments](#assignment_w09) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
+This week is structured around **two** short lecture videos, **two** assignments ([one on data visualisation](#assignment_w09_1) and [one on automation](#assignment_w09_2) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
 
 ### Video: Overview {#overview_w09}
 ```{r 09-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
@@ -121,7 +121,7 @@ tm_shape(liv_iuc) +
 1. Looking at the interactive map of the 2018 IUC in Liverpool: are their any obvious patterns?
 2. How does the 2018 IUC pattern in Liverpool relate to a 'typical' organisation of a city? Why? 
 
-### Assignment {#assignment_w09}
+### Assignment {#assignment_w09_1}
 Now we have these cluster classifications, how can we link them to people? Try using the **Mid-Year Population Estimates 2019** that you can download below to:
 
 - calculate the total number of people in each cluster group **for Great Britain as a whole** (not just Liverpool!); and
@@ -132,7 +132,8 @@ No further instructions are provided and you will have to figure out on your own
 #### File download {-}
 | File                                                 | Type           | Link |
 | :------                                              | :------        | :------ |
-| Mid-Year Population Estimates 2019                   | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/mye_pop_2019.zip) |
+| Mid-Year Population Estimates 2019                   | `csv`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/mye_pop_2019.zip) |
+| Lower-layer Super Output Areas Great Britain 2011    | `shp`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/gb_msoa11_sim.zip)
 
 ## K-means clustering
 Often, not always, a technique called **k-means clustering** is used in the creation of a geodemographic classification. K-means clustering aims to partition your input observations into a number of clusters (*k*) in which each observation will be assigned to the cluster with the neareast mean. A cluster refers to a collection of data points aggregated together because of certain similarities (i.e. standardised scores of your input data). You first define a target number *k* of clusters that you want and then the k-means algorithmn parititions the data by minimising the within-cluster variance.
@@ -155,9 +156,6 @@ The dataset contains the following variables:
 | `age_total`, `age0to4pc`, `age5to14pc`, `age16to24pc`, `age25to44pc`, `age45to64pc`, `age75pluspc`| Percentage of people in various age groups |
 | `nssec_total`, `1_higher_managerial`, `2_lower_managerial`, `3_intermediate_occupations`, `4_employers_small_org`, `5_lower_supervisory`, `6_semi_routine`, `7_routine`, `8_unemployed` | Percentage of people in selected operational categories and sub-categories classes drawn from the National Statistics Socio-economic Classification ([NS-SEC](https://www.ons.gov.uk/methodology/classificationsandstandards/otherclassifications/thenationalstatisticssocioeconomicclassificationnssecrebasedonsoc2010)) |
 | `avg_dwn_speed`, `avb_superfast`, `no_decent_bband`, `bband_speed_under2mbs`, `bband_speed_under10mbs`, `bband_speed_over30mbs` | Measures of broadband use and availability |
-
-Percentage of people in selected operational categories and sub-categories classes drawn from the National Statistics Socio-economic Classification ([NS-SEC](https://www.ons.gov.uk/methodology/classificationsandstandards/otherclassifications/thenationalstatisticssocioeconomicclassificationnssecrebasedonsoc2010))
-
 
 #### File download {-}
 | File                                                 | Type           | Link |
@@ -281,7 +279,10 @@ fit
 1. Do you understand what is happening in each step of this code, especially within the loop?
 2. Do you understand what the different parameters in the `kmeans()` function mean and what they do?
 
+### Assignment {#assignment_w09_2}
 
+Data automation: 
+You could automate the script in R to produce a table of means and a map each time you change the number of clusters - this would allow you to compare the outputs more details and see the impact of changing the number of clusters or variables.
 
 ## Take home message
 
