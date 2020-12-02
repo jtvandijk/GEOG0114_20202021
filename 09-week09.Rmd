@@ -130,15 +130,15 @@ tm_shape(liv_iuc) +
 Now we have these cluster classifications, how can we link them to people? Try using the **Mid-Year Population Estimates 2019** that you can download below to:
 
 - calculate the total number of people associated with each cluster group **for Great Britain as a whole** (not just Liverpool!); and
-- create a **pretty** data visualisation of the results.
+- create a **pretty** data visualisation showing the results (no map!).
 
 No further instructions are provided and you will have to figure out on your own how to do this! We will discuss your choices and results in **Friday's seminar**, so make sure to 'bring' your results along.
 
 #### File download {-}
 | File                                                 | Type           | Link |
 | :------                                              | :------        | :------ |
-| Mid-Year Population Estimates 2019                   | `csv`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/mye_pop_2019.zip) |
-| Lower-layer Super Output Areas Great Britain 2011    | `shp`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/gb_msoa11_sim.zip)
+| LSOA-level Mid-Year Population Estimates 2019        | `csv`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/mye_pop_2019_lsoa.zip) |
+| Lower-layer Super Output Areas Great Britain 2011    | `shp`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/gb_lsoa11_sim.zip)
 
 ## K-means clustering
 In several cases, including the [2011 residential-based area classifications](http://josis.org/index.php/josis/article/view/232/150) and the Internet User Classification, a technique called **k-means clustering** is used in the creation of a geodemographic classification. K-means clustering aims to partition a set of observations into a number of clusters (*k*), in which each observation will be assigned to the cluster with the neareast mean. As such, a cluster refers to a collection of data points aggregated together because of certain similarities (i.e. standardised scores of your input data). In order to run a **k-means clustering**, you first define a target number *k* of clusters that you want. The k-means algorithm subsequently assigns every observation to one of the clusters by finding the solution that minimises the total within-cluster variance.
@@ -148,7 +148,7 @@ In several cases, including the [2011 residential-based area classifications](ht
 library(vembedr)
 #embed_msstream('7854a8dc-f24f-4a3d-908c-9a10adb4b085') %>% use_align('left')
 ```
-[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w09/w09_kmeans.pdf) [[Watch on MS stream]]()
+[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w09/w09_02_kmeans.pdf) [[Watch on MS stream]]()
 
 ### Example: K-means clustering
 For the second part of this week's practical material, we will be replicating the Internet User Classification for Great Britain. For this we will be using an MSOA-level input dataset containing various socio-demographic and socio-economic variables that you can download below together with the MSOA administrative boundaries.
