@@ -19,10 +19,18 @@
   font-size: 110% !important;
 }
 
-/*--- notes ---*/
-.note {
+/*--- warning ---*/
+.warning {
   padding-left: 5px;
   padding-right: 5px;
   background-color: #FEE;
   color: #722;
+}
+
+/*--- note ---*/
+.note {
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #f7f7f7;
+  color: #525252;
 }
