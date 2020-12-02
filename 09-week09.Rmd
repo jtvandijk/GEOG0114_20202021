@@ -26,7 +26,7 @@ The [CDRC Internet User Classification](https://data.cdrc.ac.uk/dataset/internet
 library(vembedr)
 #embed_msstream('7854a8dc-f24f-4a3d-908c-9a10adb4b085') %>% use_align('left')
 ```
-[[Lecture slides]]() [[Watch on MS stream]]()
+[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w09/w09_01_geodemographics.pdf) [[Watch on MS stream]]()
 
 ### Example: Geodemographics and the Internet User Classification
 For the first part of this week's practical material, we will be looking at the Internet User Classification (IUC) for Great Britain in more detail and see how it looks like on a map.
@@ -148,7 +148,7 @@ In several cases, including the [2011 residential-based area classifications](ht
 library(vembedr)
 #embed_msstream('7854a8dc-f24f-4a3d-908c-9a10adb4b085') %>% use_align('left')
 ```
-[[Lecture slides]]() [[Watch on MS stream]]()
+[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w09/w09_kmeans.pdf) [[Watch on MS stream]]()
 
 ### Example: K-means clustering
 For the second part of this week's practical material, we will be replicating the Internet User Classification for Great Britain. For this we will be using an MSOA-level input dataset containing various socio-demographic and socio-economic variables that you can download below together with the MSOA administrative boundaries.
@@ -362,7 +362,7 @@ Try to create a **R function** that:
 - Your function should look something like: `automate_k_means(dataframe,number_of_clusters,input_variables)`
 - Feel free to add optional variables that you need to specify if that makes it easier.
 
-#### Extra challenges {-}
+#### Optional challenges {-}
 - Include *maps* or *graphs* in the code that get automatically saved.
 - Ensure that the `csv` outcome does **not** get overwritten every time you run you function.
 - Include optional arguments in your function with **default values** if not specified.
