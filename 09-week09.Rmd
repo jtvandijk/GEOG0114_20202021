@@ -1,16 +1,16 @@
 # Geodemographics
 
 ## Introduction {#introduction_w09}
-After our focus on issues of data scarcity and sparsity within low- and middle-income countries and automated extraction of building footprints from satellite imagery using machine learning, this week we looking at data rich environments and how we can use socio-demographic and socio-economic data to characterise neighbourhoods using geodemographics. We will do this by analysing and subsequently recreating a geodemographic classification known as the [Internet User Classification](https://data.cdrc.ac.uk/dataset/internet-user-classification).
+After last week's focus on using spatial analysis for the creation and analysis of novel datasets within data scarce environments, this week we will look at data rich environments and how we can use socio-demographic and socio-economic data to characterise neighbourhoods using **geodemographics**.
 
 > Geodemographics is the ‘analysis of people by where they live’ (Harris et al. 2005) and as such entails representing the individual and collective identities that are manifest in observable neighbourhood structure ([Longley 2012](https://www.tandfonline.com/doi/pdf/10.1080/13658816.2012.719623?needAccess=true))
 
-This week is structured around **two** short lecture videos, **two** assignments ([one on data visualisation](#assignment_w09_1) and [one on automation](#assignment_w09_2) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
+We will look at geodemographics by focusing on a geodemographic classification known as the [Internet User Classification](https://data.cdrc.ac.uk/dataset/internet-user-classification).
 
-<div style="text-align:center">
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Following a coding tutorial<a href="https://t.co/dXUfp0WWv7">pic.twitter.com/dXUfp0WWv7</a></p>&mdash; Tawanda Nyahuye👨
+This week is structured around **two** short lecture videos, **two** assignments ([one on data visualisation](#assignment_w09_1) and [one on automation](#assignment_w09_2) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course. Good luck!
+
+<blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">Following a coding tutorial<a href="https://t.co/dXUfp0WWv7">pic.twitter.com/dXUfp0WWv7</a></p>&mdash; Tawanda Nyahuye👨
 💻 (@towernter) <a href="https://twitter.com/towernter/status/1332692092863340544?ref_src=twsrc%5Etfw">November 28, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
 
 ### Video: Overview {#overview_w09}
 ```{r 09-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
@@ -20,7 +20,9 @@ library(vembedr)
 [Lecture slides] [[Watch on MS stream]]()
 
 ## Geodemographics and the Internet User Classification
-The [CDRC Internet User Classification](https://data.cdrc.ac.uk/dataset/internet-user-classification) (IUC) is a bespoke geodemographic classification that describes how people residing in different parts of Great Britain interact with the Internet. For every Lower Super Output Area (LSOA) in England and Wales and Data Zone (DZ) ([2011 Census Geographies](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography)), the IUC provides aggregate population estimates of Internet use ([Singleton *et al.* 2020](https://www.sciencedirect.com/science/article/pii/S0198971519307963)).
+The [CDRC Internet User Classification](https://data.cdrc.ac.uk/dataset/internet-user-classification) (IUC) is a bespoke geodemographic classification that describes how people residing in different parts of Great Britain interact with the Internet. For every Lower Super Output Area (LSOA) in England and Wales and Data Zone (DZ) ([2011 Census Geographies](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography)), the IUC provides aggregate population estimates of Internet use ([Singleton *et al.* 2020](https://www.sciencedirect.com/science/article/pii/S0198971519307963)) and provides insights into the geography of the digital divide in the United Kingdom. 
+
+> "Digital inequality is observable where access to online resources and those opportunities that these create are non-egalitarian. As a result of variable rates of access and use of the Internet between social and spatial groups (..), this leads to digital differentiation, which entrenches difference and reciprocates digital inequality over time ([Singleton *et al.* 2020](https://www.sciencedirect.com/science/article/pii/S0198971519307963))."
 
 ### Video: Geodemographics and the Internet User Classification
 ```{r 09-geodemographics-iuc, warnings=FALSE, message=FALSE, echo=FALSE}
@@ -30,7 +32,9 @@ library(vembedr)
 [[Lecture slides]]() [[Watch on MS stream]]()
 
 ### Example: Geodemographics and the Internet User Classification
-For the first part of this week's practical material, we will be looking at the Internet User Classification for Great Britain in more detail. Our first step is to download the IUC dataset:
+For the first part of this week's practical material, we will be looking at the Internet User Classification (IUC) for Great Britain in more detail and see how it looks like on a map.
+
+Our first step is to download the IUC dataset:
 
 - Open a web browser and go to the [data portal of the CDRC](https://data.cdrc.ac.uk).
 - Register if you need to, or if you are already registered, make sure you are logged in.
@@ -42,7 +46,7 @@ For the first part of this week's practical material, we will be looking at the 
 knitr::include_graphics('images/week09/09_iuc_download.png')
 ```
 
-We will start by inspecting the dataset in MS Excel, or any other spreadsheet software such as [Apache OpenOffice Calc ](https://www.openoffice.org/product/calc.html) or [Numbers](https://www.apple.com/uk/numbers/). Also, have a look at the [IUC 2018 User Guide](https://data.cdrc.ac.uk/system/files/iuc2018userguide.pdf) that provides the **pen portraits** of every cluster, including plots of cluster centres and a brief summary of the methodology.
+Start by inspecting the dataset in MS Excel, or any other spreadsheet software such as [Apache OpenOffice Calc ](https://www.openoffice.org/product/calc.html) or [Numbers](https://www.apple.com/uk/numbers/). Also, have a look at the [IUC 2018 User Guide](https://data.cdrc.ac.uk/system/files/iuc2018userguide.pdf) that provides the **pen portraits** of every cluster, including plots of cluster centres and a brief summary of the methodology.
 
 <div class="note">
 It is always a good idea to inspect your data prior to analysis to find out how your data look like. Of course, depending on the type of data, you can choose any tool you like to do this inspection ([ArcGIS](https://www.arcgis.com/index.html), [R](https://www.r-project.org/), [QGIS](https://qgis.org/en/site/), [Microsoft Excel](https://www.office.com/), etc.).
@@ -68,12 +72,11 @@ str(iuc)
 ```
 
 #### Questions {-}
-1. Create a histogram to inspect the distribution of the data?
-2. Looking at the histogram: is this what you expected? Why (not)?
+1. Create a histogram to inspect the distribution of the data. Looking at the histogram: is this what you expected? Why (not)?
 
-Now are data are loaded we can move to acquiring our spatial data. As the IUC is at created at the level of the Lower super Layer Output Area Census geography, we need to download borders for this.
+Now the data are loaded we can move to acquiring our spatial data. As the IUC is created at the level of the Lower super Layer Output Area [Census geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography), we need to download its administrative borders. As the dataset for the entire country is quite large, we will focus on [Liverpool](https://en.wikipedia.org/wiki/Liverpool) for a change.
 
-1. Go to [UK Data Service Census support portal](https://borders.ukdataservice.ac.uk/) and select **Boundary Data Selector**.
+1. Go to the [UK Data Service Census support portal](https://borders.ukdataservice.ac.uk/) and select **Boundary Data Selector**.
 2. Set Country to *England*, Geography to *Statistical Building Block*, dates to *2011 and later*, and click **Find**.
 3. Select *English Lower Layer Super Output Areas, 2011* and click **List Areas**.
 4. Select *Liverpool* from the list and click **Extract Boundary Data**.
@@ -81,10 +84,10 @@ Now are data are loaded we can move to acquiring our spatial data. As the IUC is
 6. Unzip and save the file in the usual fashion.
 
 <div class="note">
-You could also have downloaded the shapefile with the data already joined to the LSOA boundaries directly from the CDRC data portal, but this is the national data set and is quite large (75MB) and as a consequence it may be a little slow to work with. Also, we will be looking at [Liverpool](https://en.wikipedia.org/wiki/Liverpool) today so we do not need all LSOAs in Great Britain.
+You could also have downloaded the shapefile with the data already joined to the LSOA boundaries directly from the CDRC data portal, but this is the national data set and is quite large (75MB). Also, as we will be looking at [Liverpool](https://en.wikipedia.org/wiki/Liverpool) today we do not need all LSOAs in Great Britain. Of course, if you prefer filtering Liverpool's LSOAs out of the GB dataset please go ahead!
 </div>
 
-Now we can prepare the IUC map by joining our `csv` file with the IUC classification to the shapefile.
+Now we got the administrative boundary data, we can prepare the IUC map by joining our `csv` file with the IUC classification to the shapefile.
 
 ```{r 09-load-those-spatial-data, warnings=FALSE, message=FALSE}
 # load libraries
@@ -110,7 +113,7 @@ tm_shape(liv_iuc) +
   tm_layout(legend.outside=TRUE)
 ```
 
-Let's use the same colours as used on [CDRC mapmaker](https://mapmaker.cdrc.ac.uk/#/internet-user-classification?lon=-2.81187&lat=53.31045&zoom=9.58) by specifying the **hex** colour codes for each of our groups. Note the order of the colours is important. Colour for group 1 is first, group 2 second and so on. 
+Let's use the same colours as used on [CDRC mapmaker](https://mapmaker.cdrc.ac.uk/#/internet-user-classification?lon=-2.81187&lat=53.31045&zoom=9.58) by specifying the **hex** colour codes for each of our groups. Note the order of the colours is important: the colour for group 1 is first, group 2 second and so on. 
 
 ```{r 09-pretty-colours, warnings=FALSE, message=FALSE}
 # define palette
@@ -129,7 +132,7 @@ tm_shape(liv_iuc) +
 ### Assignment {#assignment_w09_1}
 Now we have these cluster classifications, how can we link them to people? Try using the **Mid-Year Population Estimates 2019** that you can download below to:
 
-- calculate the total number of people in each cluster group **for Great Britain as a whole** (not just Liverpool!); and
+- calculate the total number of people associated with each cluster group **for Great Britain as a whole** (not just Liverpool!); and
 - create a **pretty** data visualisation of the results.
 
 No further instructions are provided and you will have to figure out on your own how to do this! We will discuss your choices and results in **Friday's seminar**, so make sure to 'bring' your results along.
@@ -141,7 +144,7 @@ No further instructions are provided and you will have to figure out on your own
 | Lower-layer Super Output Areas Great Britain 2011    | `shp`          | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/gb_msoa11_sim.zip)
 
 ## K-means clustering
-Often, not always, a technique called **k-means clustering** is used in the creation of a geodemographic classification. K-means clustering aims to partition your input observations into a number of clusters (*k*) in which each observation will be assigned to the cluster with the neareast mean. A cluster refers to a collection of data points aggregated together because of certain similarities (i.e. standardised scores of your input data). You first define a target number *k* of clusters that you want and then the k-means algorithmn parititions the data by minimising the within-cluster variance.
+In several cases, including the [2011 residential-based area classifications](http://josis.org/index.php/josis/article/view/232/150) and the Internet User Classification, a technique called **k-means clustering** is used in the creation of a geodemographic classification. K-means clustering aims to partition a set of observations into a number of clusters (*k*), in which each observation will be assigned to the cluster with the neareast mean. As such, a cluster refers to a collection of data points aggregated together because of certain similarities (i.e. standardised scores of your input data). In order to run a **k-means clustering**, you first define a target number *k* of clusters that you want. The k-means algorithm subsequently assigns every observation to one of the clusters by finding the solution that minimises the total within-cluster variance.
 
 ### Video: K-means clustering
 ```{r 09-k-means-clustering-iuc, warnings=FALSE, message=FALSE, echo=FALSE}
@@ -151,7 +154,7 @@ library(vembedr)
 [[Lecture slides]]() [[Watch on MS stream]]()
 
 ### Example: K-means clustering
-For the second part of this week's practical material, we will be replicating the Internet User Classification for Great Britain. For this we will be using an MSOA-level input dataset containing various socio-demographic and socio-economic variables that you can download below. 
+For the second part of this week's practical material, we will be replicating the Internet User Classification for Great Britain. For this we will be using an MSOA-level input dataset containing various socio-demographic and socio-economic variables that you can download below together with the MSOA administrative boundaries.
 
 The dataset contains the following variables:
 
@@ -160,12 +163,13 @@ The dataset contains the following variables:
 | `msoa11cd` | MSOA Code |
 | `age_total`, `age0to4pc`, `age5to14pc`, `age16to24pc`, `age25to44pc`, `age45to64pc`, `age75pluspc`| Percentage of people in various age groups |
 | `nssec_total`, `1_higher_managerial`, `2_lower_managerial`, `3_intermediate_occupations`, `4_employers_small_org`, `5_lower_supervisory`, `6_semi_routine`, `7_routine`, `8_unemployed` | Percentage of people in selected operational categories and sub-categories classes drawn from the National Statistics Socio-economic Classification ([NS-SEC](https://www.ons.gov.uk/methodology/classificationsandstandards/otherclassifications/thenationalstatisticssocioeconomicclassificationnssecrebasedonsoc2010)) |
-| `avg_dwn_speed`, `avb_superfast`, `no_decent_bband`, `bband_speed_under2mbs`, `bband_speed_under10mbs`, `bband_speed_over30mbs` | Measures of broadband use and availability |
+| `avg_dwn_speed`, `avb_superfast`, `no_decent_bband`, `bband_speed_under2mbs`, `bband_speed_under10mbs`, `bband_speed_over30mbs` | Measures of broadband use and internet availability |
 
 #### File download {-}
 | File                                                 | Type           | Link |
 | :------                                              | :------        | :------ |
-| MSOA variables IUC input                             | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/msoa_iuc_input.csv) |
+| MSOA-level input variables for IUC                   | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/msoa_iuc_input.csv) |
+| Middle-layer Super Output Areas Great Britain 2011   | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/gb_msoa11_sim.zip) |
 
 ```{r 09-load-date-for-those-mean-ks, warnings=FALSE, message=FALSE}
 # load data
@@ -175,24 +179,24 @@ iuc_input <- read_csv('raw/index/msoa_iuc_input.csv')
 head(iuc_input)
 ```
 
-Before running our **k-means** clustering algorithmn, we need to extract the data which we want to use; i.e. we need to remove all the columns with data that we do not want to include in the clustering process.
+Before running our **k-means** clustering algorithm, we need to extract the data which we want to use; i.e. we need to remove all the columns with data that we do not want to include in the clustering process.
 
 ```{r 09-select-the-columns, warnings=FALSE, message=FALSE}
 # column names
 names(iuc_input)
 
-# extract columns
+# extract columns by index
 cluster_data <- iuc_input[,c(3:8,10:17,18:20)]
 
 # inspect
 head(cluster_data)
 ```
 
-We also need to rescale the data so everything is on a similar scale, as the average download speed data (e.g. `avg_dwn_speed`) is very different to the other data.
+We also need to rescale the data so all input data are presented on a comparable scale: the average download speed data (i.e. `avg_dwn_speed`) is very different to the other data that, for instance, represent the percentage of the population by different age groups.
 
 ```{r 09-rescale-those-values, warnings=FALSE, message=FALSE}
 # rescale
-cluster.data <- scale(cluster_data) 
+cluster_data <- scale(cluster_data) 
 
 # inspect
 head(cluster_data)
@@ -201,13 +205,13 @@ head(cluster_data)
 #### Questions {-}
 1. What does the function `scale()` do exactly?
 
-Now our data are all on the same scale, we will start by creating an elbow plot. The [elbow method](https://en.wikipedia.org/wiki/Elbow_method_(clustering)#:~:text=In%20cluster%20analysis%2C%20the%20elbow,number%20of%20clusters%20to%20use`) is a visual aid that can help in determining the number of clusters in a dataset. Remember: this is important because with a **k-means** clustering you need to specify the numbers of clusters *a priori*! 
+Now our data are all on the same scale, we will start by creating an elbow plot. The **[elbow method](https://en.wikipedia.org/wiki/Elbow_method_(clustering)#:~:text=In%20cluster%20analysis%2C%20the%20elbow,number%20of%20clusters%20to%20use`)** is a visual aid that can help in determining the number of clusters in a dataset. Remember: this is important because with a **k-means** clustering you need to specify the numbers of clusters *a priori*! 
 
-The elbow method can help as it plots the explained variation ('Within Sum of Squares') in your data as a function of the number of cluster. The idea is that you pick the number of clusters at the 'elbow' of the curve as this is the point in which the additional variation that would be explained by an additional cluster is decreasing. Effectively this means you are actually running the **k-means** clustering multiple times before running the actual **k-means** clustering algorithmn.
+The elbow method can help as it plots the total explained variation ('Within Sum of Squares') in your data as a function of the number of cluster. The idea is that you pick the number of clusters at the 'elbow' of the curve as this is the point in which the additional variation that would be explained by an additional cluster is decreasing. Effectively this means you are actually running the **k-means** clustering multiple times before running the actual **k-means** clustering algorithm.
 
 ```{r 09-settings-and-options, warnings=FALSE, message=FALSE, echo=FALSE}
 # settings
-options(max.print = 30)
+options(max.print = 15)
 ```
 ```{r 09-elbow-and-plots, warnings=FALSE, message=FALSE}
 # create empty list to store the within sum of square values 
@@ -240,13 +244,13 @@ ggplot(data=wss_values, aes(x=cluster,y=wss)) +
   ylab('within sum of squares')
 ```
 
-Based on the elbow plot, we can now choose the number of clusters. Based on this example above, we are going to use **7** clusters.
+Based on the elbow plot, we can now choose the number of clusters and it looks like **7** clusters would be a reasonable choice.
 
 <div class="note">
-The interpretation of an elbow plot can be quite subjective and often mutliple options would be justified. You would need to try the different options and see what output you get to determine the 'optimal' solution. However, at very least, the elbow plot does give you an idea of what would potentially be a adequate number of clusters. 
+The interpretation of an elbow plot can be quite subjective and often mutlltle options would be justified: **6**, **8**, and perhaps **9** clusters also do not look unreasonable. You would need to try the different options and see what output you get to determine the 'optimal' solution. However, at very least, the elbow plot does give you an idea of what would potentially be an adequate number of clusters. 
 </div>
 
-Now we have decided on the number of clusters (i.e. 7 clusters), we can now run our cluster analysis. We will be running this analysis 10 times because there is an element ofrandomness within the clustering, and we want to make sure we get the best clustering output.
+Now we have decided on the number of clusters (i.e. **7** clusters), we can now run our cluster analysis. We will be running this analysis 10 times because there is an element of randomness within the clustering, and we want to make sure we get the best clustering output.
 
 ```{r 09-run-that-cluster, warnings=FALSE, message=FALSE}
 # create empty list to store the results of the clustering
@@ -261,8 +265,8 @@ for (i in 1:10){
   # keep track of the runs
   print(paste0('starting run: ', i))
   
-  # run the k-means clustering algorithmn to extract 7 clusters
-  clust7 <- kmeans(x=cluster.data, centers=7, iter.max=1000000, nstart=1)
+  # run the k-means clustering algorithm to extract 7 clusters
+  clust7 <- kmeans(x=cluster_data, centers=7, iter.max=1000000, nstart=1)
   
   # get the total within sum of squares for the run and 
   fit[i] <- clust7$tot.withinss
@@ -284,13 +288,87 @@ fit
 1. Do you understand what is happening in each step of this code, especially within the loop?
 2. Do you understand what the different parameters in the `kmeans()` function mean and what they do?
 
-- Load MSOA file, simplify, map clustering results
+We now have to execute a bit of post-processing to extract some useful summary data for each cluster: the cluster size (`size`) and mean values for each cluster.
+
+```{r 09-post-process-some-cluster-stuff, warnings=FALSE, message=FALSE}
+# assign to new variable for clarity
+kfit <- clusters
+
+# cluster sizes
+kfit_size <- kfit$size
+
+# inspect
+kfit_size
+
+# mean values for each variable in each cluster
+kfit_mean<- as_tibble(aggregate(cluster_data,by=list(kfit$cluster),FUN=mean))
+names(kfit_mean)[1] <- 'cluster'
+
+# inspect
+kfit_mean
+
+# transform shape to tidy format
+kfit_mean_long <- pivot_longer(kfit_mean, cols=(-cluster))
+
+# plot data  
+ggplot(kfit_mean_long, aes(x=cluster, y=value, colour=name)) + 
+  geom_line () +
+  scale_x_continuous(breaks=seq(1,7,by=1)) +
+  theme_minimal()
+```
+
+Looking at the table with the mean values for each cluster and the graph, we can see, for instance, that only **cluster 2** shows a clear pattern with Internet usage. *Your values may be slightly different because there is this element of randomness within the clustering.* The graph is a little busy, so you might want to look at the cluster groups or variables individually to get a better picture of each cluster. 
+
+#### Questions {-}
+1. Which clusters are primarily driven by age?
+2. Which clusters are primarily driven by the National Statistics Socio-economic Classification?
+
+```{r 09-map-our-iuc, warnings=FALSE, message=FALSE}
+# read shape
+msoa <- st_read('raw/boundaries/gb_msoa_2011/gb_msoa11_sim.shp')
+
+# set projection
+st_crs(msoa) = 27700
+
+# simplify for speedier plotting
+msoa <- st_simplify(msoa, dTolerance = 100) 
+
+# join
+cluster_data <- cbind(iuc_input,kfit$cluster)
+msoa <- left_join(msoa,cluster_data,by=c('geo_code'='msoa11cd'))
+
+# plot
+tmap_mode('view')
+tm_shape(msoa) +
+  tm_polygons(col='kfit$cluster')
+```
+
+#### Questions {-}
+1. Why can we just do a `cbind` to join the cluster solution to the cluster data?
 
 ### Assignment {#assignment_w09_2}
+The creation of a geodemographic classification is an **iterative process** of trial and error that involves the addition and removal of variables as well as experimentation with different numbers of clusters. It also might be, for instances, that some clusters are very focused on one group of data (e.g. age) and it could be an idea to group some ages together. If you want to make changes to the clustering solution, you can simply re-run the analysis with a different set of variables or with a different number of clusters by updating the code. However, it would be even simpler if you could automate some of the processs. 
 
-- Data automation: You could automate the script in R to produce a table of means and a map each time you change the number of clusters this would allow you to compare the outputs more details and see the impact of changing the number of clusters or variables.
+Try to create a **R function** that: 
+
+- takes three input variables: **a data frame that contains your input data**, **the number of clusters that you want**, and **a list of input variables**, i.e. `automate_k_means(dataframe,number_of_clusters,input_variables)`
+- executes a **k-means** clustering on the input variables and the specified number of clusters; and,
+- produces a `csv` file that contains the **table of means** of the solution.
+
+#### Tips {-}
+- The list of input variables does not have to be a list of *names*, but can also be a list containing the index values of the columns.
+- Google is still your friend.
+- Feel free to add optional variables that you need to specify if that makes it easier.
+
+#### Extra challenges {-}
+- Include *maps* or *graphs* in the code that get automatically saved.
+- Ensure that the `csv` outcome does **not** get overwritten every time you run you function.
+- Inclue doptional arguments in your function with **default values** if not specified.
+
+No further instructions are provided and you will have to figure out on your own how to do this! We will discuss your automation solution in **Friday's seminar**, so make sure to 'bring' your results along.
 
 ## Take home message
+
 
 ## Attributions {#attributions_w09}
 This week's content and practical uses content and inspiration from:
