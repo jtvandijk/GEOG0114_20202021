@@ -7,6 +7,11 @@ After our focus on issues of data scarcity and sparsity within low- and middle-i
 
 This week is structured around **two** short lecture videos, **two** assignments ([one on data visualisation](#assignment_w09_1) and [one on automation](#assignment_w09_2) that you need to do in preparation for Friday's seminar, and the practical material. As always, this [week's reading list](https://rl.talis.com/3/ucl/lists/3FB0C66A-F603-A402-A31C-28F2DA091AB6.html?lang=en-gb&login=1) is available on the UCL library reading list page for the course.
 
+<div style="text-align:center">
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Following a coding tutorial<a href="https://t.co/dXUfp0WWv7">pic.twitter.com/dXUfp0WWv7</a></p>&mdash; Tawanda Nyahuye👨
+💻 (@towernter) <a href="https://twitter.com/towernter/status/1332692092863340544?ref_src=twsrc%5Etfw">November 28, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
 ### Video: Overview {#overview_w09}
 ```{r 09-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
@@ -279,10 +284,11 @@ fit
 1. Do you understand what is happening in each step of this code, especially within the loop?
 2. Do you understand what the different parameters in the `kmeans()` function mean and what they do?
 
+- Load MSOA file, simplify, map clustering results
+
 ### Assignment {#assignment_w09_2}
 
-Data automation: 
-You could automate the script in R to produce a table of means and a map each time you change the number of clusters - this would allow you to compare the outputs more details and see the impact of changing the number of clusters or variables.
+- Data automation: You could automate the script in R to produce a table of means and a map each time you change the number of clusters this would allow you to compare the outputs more details and see the impact of changing the number of clusters or variables.
 
 ## Take home message
 
