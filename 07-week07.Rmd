@@ -487,7 +487,7 @@ sqrt(sum((krg.pred - pol_points$no2)^2) / length(pol_points))
 That's it. Using ordinary kriging we predicted the average value of Nitrogen Dioxide (in $\mu$g/m^3^) in 2019 for every location in Greater London.
 
 ## Take home message
-Although in many instances you will be working with vector data, especially where government statistics and administrative boundaries are involved, there are also plenty of use cases in which you will be working with raster data. You now know the basics of working with raster datasets as well as that you can create your own raster datasets by using interpolation and geostatistical methods such as kriging to predict a given phenomenon in unmeasured locations. [That it is for this week](https://www.youtube.com/watch?v=C7dPqrmDWxs)!
+Although in many instances you will be working with vector data, especially where government statistics and administrative boundaries are involved, there are also plenty of use cases in which you will be working with raster data. You now know the basics of working with raster datasets as well as that you can create your own raster datasets by using interpolation and geostatistical methods such as kriging to predict a given phenomenon in unmeasured locations. [That is it for this week](https://www.youtube.com/watch?v=C7dPqrmDWxs)!
 
 ## Attributions {#attributions_w07}
 This week's content and practical uses content and inspiration from:

@@ -294,7 +294,7 @@ Use this opportunity to also ask questions about her experience with the [CDRC M
 </div>
 
 ## Take home message
-Point pattern analysis comes in many shapes and forms. You now have been introduced to some of the most well-known techniques such as **Ripley's K** and **Kernel Density Estimation** to analyse point patterns as well as a variety of implementations. Keep in mind that there is not really 'one method', which methods are suitable for your research problem depend on the questions you want answered as much as they depend on the underlying point distribution. That it is for this week! Next week we will be moving on with our [exploration of space](https://www.youtube.com/watch?v=NE2AvbROl5k) by looking at geostatistics.
+Point pattern analysis comes in many shapes and forms. You now have been introduced to some of the most well-known techniques such as **Ripley's K** and **Kernel Density Estimation** to analyse point patterns as well as a variety of implementations. Keep in mind that there is not really 'one method', which methods are suitable for your research problem depend on the questions you want answered as much as they depend on the underlying point distribution. That is it for this week! Next week we will be moving on with our [exploration of space](https://www.youtube.com/watch?v=NE2AvbROl5k) by looking at geostatistics.
 
 ## Attributions {#attributions_w06}
 This week's content and practical uses content and inspiration from:
