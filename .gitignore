@@ -7,4 +7,5 @@ _book
 _bookdown_files
 _bookdown_files/*
 packrat/lib*/
+/docs
 *.geojson
