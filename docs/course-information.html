@@ -24,7 +24,7 @@
 <meta name="author" content="Justin van Dijk and Joanna Wilkin" />
 
 
-<meta name="date" content="2020-12-02" />
+<meta name="date" content="2020-12-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -62,6 +62,12 @@
 <script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -251,29 +257,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#attributions_w07"><i class="fa fa-check"></i><b>7.5</b> Attributions</a></li>
 <li class="chapter" data-level="7.6" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#feedback_w07"><i class="fa fa-check"></i><b>7.6</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="dbscan-and-cluster-analysis.html"><a href="dbscan-and-cluster-analysis.html"><i class="fa fa-check"></i><b>8</b> DBScan and cluster analysis</a></li>
-<li class="chapter" data-level="9" data-path="geodemographics.html"><a href="geodemographics.html"><i class="fa fa-check"></i><b>9</b> Geodemographics</a>
+<li class="chapter" data-level="8" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html"><i class="fa fa-check"></i><b>8</b> Spatial analysis for urban (mapping) applications</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="geodemographics.html"><a href="geodemographics.html#introduction_w09"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
+<li class="chapter" data-level="8.1" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#introduction_w08"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="geodemographics.html"><a href="geodemographics.html#overview_w09"><i class="fa fa-check"></i><b>9.1.1</b> Video: Overview</a></li>
+<li class="chapter" data-level="8.1.1" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#overview_w08"><i class="fa fa-check"></i><b>8.1.1</b> Video: Overview</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="geodemographics.html"><a href="geodemographics.html#geodemographics-and-the-internet-user-classification"><i class="fa fa-check"></i><b>9.2</b> Geodemographics and the Internet User Classification</a>
+<li class="chapter" data-level="8.2" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#data-for-good-the-need-for-data-within-sustainable-development-and-humanitarian-applications"><i class="fa fa-check"></i><b>8.2</b> Data for good: the need for data within sustainable development and humanitarian applications</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="geodemographics.html"><a href="geodemographics.html#video-geodemographics-and-the-internet-user-classification"><i class="fa fa-check"></i><b>9.2.1</b> Video: Geodemographics and the Internet User Classification</a></li>
-<li class="chapter" data-level="9.2.2" data-path="geodemographics.html"><a href="geodemographics.html#example-geodemographics-and-the-internet-user-classification"><i class="fa fa-check"></i><b>9.2.2</b> Example: Geodemographics and the Internet User Classification</a></li>
-<li class="chapter" data-level="9.2.3" data-path="geodemographics.html"><a href="geodemographics.html#assignment_w09_1"><i class="fa fa-check"></i><b>9.2.3</b> Assignment</a></li>
+<li class="chapter" data-level="8.2.1" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#video-what-are-the-sustainable-development-goals-and-why-are-they-important-to-us-as-spatial-data-scientists"><i class="fa fa-check"></i><b>8.2.1</b> Video: What are the Sustainable Development Goals and why are they important to us as Spatial Data Scientists?</a></li>
+<li class="chapter" data-level="8.2.2" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#data-for-good-sector-and-resulting-datasets"><i class="fa fa-check"></i><b>8.2.2</b> Data For Good sector and resulting datasets</a></li>
+<li class="chapter" data-level="8.2.3" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#video-what-is-the-data-for-good-sector"><i class="fa fa-check"></i><b>8.2.3</b> Video: What is the Data for Good sector?</a></li>
+<li class="chapter" data-level="8.2.4" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#video-exploring-and-explaining-different-data-for-good-datasets"><i class="fa fa-check"></i><b>8.2.4</b> Video: Exploring and explaining different ‘Data For Good’ datasets</a></li>
+<li class="chapter" data-level="8.2.5" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#video-extracting-building-footprints-using-esris-deep-learning-model"><i class="fa fa-check"></i><b>8.2.5</b> Video: Extracting Building Footprints using Esri’s Deep Learning Model</a></li>
+<li class="chapter" data-level="8.2.6" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#where-can-i-find-these-datasets"><i class="fa fa-check"></i><b>8.2.6</b> Where can I find these datasets?</a></li>
+<li class="chapter" data-level="8.2.7" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#using-spatial-analysis-in-data-for-good"><i class="fa fa-check"></i><b>8.2.7</b> Using spatial analysis in Data For Good</a></li>
+<li class="chapter" data-level="8.2.8" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#whats-next-for-the-data-for-good-sector-and-spatial-analysis"><i class="fa fa-check"></i><b>8.2.8</b> What’s next for the Data For Good sector and spatial analysis?</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="geodemographics.html"><a href="geodemographics.html#k-means-clustering"><i class="fa fa-check"></i><b>9.3</b> K-means clustering</a>
+<li class="chapter" data-level="8.3" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#using-spatial-analysis-for-urban-mapping-applications-creating-our-own-spatial-data"><i class="fa fa-check"></i><b>8.3</b> Using spatial analysis for urban mapping applications: creating our own spatial data</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="geodemographics.html"><a href="geodemographics.html#video-k-means-clustering"><i class="fa fa-check"></i><b>9.3.1</b> Video: K-means clustering</a></li>
-<li class="chapter" data-level="9.3.2" data-path="geodemographics.html"><a href="geodemographics.html#example-k-means-clustering"><i class="fa fa-check"></i><b>9.3.2</b> Example: K-means clustering</a></li>
-<li class="chapter" data-level="9.3.3" data-path="geodemographics.html"><a href="geodemographics.html#assignment_w09_2"><i class="fa fa-check"></i><b>9.3.3</b> Assignment</a></li>
+<li class="chapter" data-level="8.3.1" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#current-availability-of-spatial-data-in-tanzania"><i class="fa fa-check"></i><b>8.3.1</b> Current availability of spatial data in Tanzania</a></li>
+<li class="chapter" data-level="8.3.2" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#previous-related-research-our-mini-literature-review"><i class="fa fa-check"></i><b>8.3.2</b> Previous related research (our mini-literature review)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#revising-cluster-analysis-using-db-scan"><i class="fa fa-check"></i><b>8.3.3</b> Revising cluster analysis using DB-Scan</a></li>
+<li class="chapter" data-level="8.3.4" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#practical-instructions-deriving-settlement-outlines-from-building-footprints-and-db-scan"><i class="fa fa-check"></i><b>8.3.4</b> Practical Instructions: Deriving settlement outlines from building footprints and DB-Scan</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="exploratory-spatial-data-analysis.html"><a href="exploratory-spatial-data-analysis.html#take-home-message"><i class="fa fa-check"></i><b>9.4</b> Take home message</a></li>
-<li class="chapter" data-level="9.5" data-path="geodemographics.html"><a href="geodemographics.html#attributions_w09"><i class="fa fa-check"></i><b>9.5</b> Attributions</a></li>
-<li class="chapter" data-level="9.6" data-path="geodemographics.html"><a href="geodemographics.html#feedback_w09"><i class="fa fa-check"></i><b>9.6</b> Feedback</a></li>
+<li class="chapter" data-level="8.4" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#take-home-message-moving-cluster-analysis-and-building-footprint-analysis-forward"><i class="fa fa-check"></i><b>8.4</b> Take home message &amp; moving cluster analysis and building footprint analysis forward</a></li>
+<li class="chapter" data-level="8.5" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#attributions_w08"><i class="fa fa-check"></i><b>8.5</b> Attributions</a></li>
+<li class="chapter" data-level="8.6" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#feedback_w08"><i class="fa fa-check"></i><b>8.6</b> Feedback</a></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="geodemographics.html"><a href="geodemographics.html"><i class="fa fa-check"></i><b>9</b> Geodemographics</a></li>
 <li class="chapter" data-level="10" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>10</b> Reproducible research</a></li>
 </ul>
 
@@ -358,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td align="left">8</td>
 <td align="left">30/11/2020</td>
-<td align="left">DBScan and cluster analysis</td>
+<td align="left">Spatial analysis for urban (mapping) applications</td>
 </tr>
 <tr class="even">
 <td align="left">9</td>

@@ -16,7 +16,7 @@ In addition, each week will have its own reading list or additional 'recommended
 | *reading week*  | *reading week*  | *reading week* |
 | 6             | 16/11/2020    | Point pattern analysis |
 | 7             | 23/11/2020    | Raster data and geostatistics |
-| 8             | 30/11/2020    | DBScan and cluster analysis |
+| 8             | 30/11/2020    | Spatial analysis for urban (mapping) applications |
 | 9             | 07/12/2020    | Geodemographics |
 | 10            | 14/12/2020    | Reproducible research |
 

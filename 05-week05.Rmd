@@ -144,7 +144,7 @@ You can also try using `View(df)` or use any other form of spreadsheet software 
 
 Although the data is messy and we will need to reorganise our data set, it does look there is some form of structure present that we can exploit: the various columns with population counts for each ethnic group are repeated for each of the different age groups. This means that we can go through the data frame in steps of equal size to select the data we want: starting from column 2 (column 1 only contains the reference to the adminsitrative geography) we want to select all 24 columns of data for that particular age group. We can create a `for` loop that does exactly that:
 
-```{r 05-creating-loop, warnings=FALSE, message=FALSE}
+```{r 05-creating-loop, warnings=FALSE, message=FALSE, cache=TRUE}
 # loop through the columns of our data set
 for (column in seq(2,ncol(df),24)) {
     
@@ -200,7 +200,7 @@ columns_to_rows(df,2,25)
 
 This looks much better. Now let's combine our loop with our newly created function to apply this to all of our data.
 
-```{r 05-reformat-dataframe, warnings=FALSE, message=FALSE}
+```{r 05-reformat-dataframe, warnings=FALSE, message=FALSE, cache=TRUE}
 # create an empty list to store our result from the loop
 df_lst <- list()
 
@@ -227,7 +227,7 @@ df_reformatted
 
 Now the data is in a much more manageable format, we can move on with preparing the data further. We will start by filtering out the columns (now rows!) that contain *all categories* and the *within group totals*. We will do this by cleverly filtering our data set on only a part of the text string that is contained in the *age_group* column of our dataframe using a [regular expression](https://en.wikipedia.org/wiki/Regular_expression). We further truncate the information that is contained in the *age_group* column to make all a little more readable.
 
-```{r 05-further-clean-dataframe, warnings=FALSE, message=FALSE}
+```{r 05-further-clean-dataframe, warnings=FALSE, message=FALSE, cache=TRUE}
 # filter rows
 # this can be a little slow because of the regular expression!
 df_reformatted <- filter(df_reformatted,!grepl('*All categories*',age_group))
@@ -247,7 +247,7 @@ df_reformatted <- select(df_reformatted, -age_group, -g)
 
 We are now really getting somewhere, although in order for our data to be tidy each variable must have its own column. We also want, within each ethnic group, to aggregate the individual values within each age group.
 
-```{r 05-pivot-table-aggregate, warnings=FALSE, message=FALSE}
+```{r 05-pivot-table-aggregate, warnings=FALSE, message=FALSE, cache=TRUE}
 # pivot table and aggregate values
 df_clean <- pivot_wider(df_reformatted,names_from=group,values_from=count,values_fn=sum)
 
@@ -369,7 +369,7 @@ head(lsoa_join)
 
 This is all looking fine. Let's now turn our turn our bike theft location dataset into a spatial dataset using the longitude and latitude values and get total bike theft counts within each of our available LSOAs.
 
-```{r 05-points-to-lsoa, warnings=FALSE, message=FALSE}
+```{r 05-points-to-lsoa, warnings=FALSE, message=FALSE, cache=TRUE}
 # filter out points without a longitude and/or latitude value
 crime <- filter(crime,!is.na(long) | !is.na(lat))
 crime_points <- st_as_sf(crime, coords=c('long','lat'),crs=4326)
@@ -387,7 +387,7 @@ tm_shape(lsoa_join) +
 
 This all looks good. We can see, however, that the the number of times bike theft was reported are highly skewed by Central London. It is now a good idea to explore the bike theft data a bit further to see how the data are distributed non-spatially by plotting them.
 
-```{r 05-inspect-the-crime-data, warnings=FALSE, message=FALSE}
+```{r 05-inspect-the-crime-data, warnings=FALSE, message=FALSE, cache=TRUE}
 # summary
 summary(lsoa_join$n_crime)
 
@@ -421,7 +421,7 @@ tm_shape(lsoa_join) +
 
 This does look much better, although there are clearly several outliers in our data set with some areas that have a higher number of cases of bike theft. Let's now also inspect our input data before we start to see whether there is a relationship between our independent variables and our dependent variable (i.e. the number of cases of bike theft).
 
-```{r 05-inspect-the-input-data, warnings=FALSE, message=FALSE}
+```{r 05-inspect-the-input-data, warnings=FALSE, message=FALSE, cache=TRUE}
 # summary imd deciles
 summary(lsoa_join[,4])
 
@@ -451,7 +451,7 @@ The input data look good. There are no real strange and unexpected outliers or m
 The following operation requires some computing power as for all of our selected LSOAs in London we are going to calculate the euclidean distance from its centroid to all tube stations and create a **distance matrix**. In case the calculation takes too much time on your computer, you can download the [distance matrix](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/dist_matrix.zip) instead and use `dist_matrix <- data.matrix(read_csv('path_to_file'))` to continue with the practical.
 </div>
 
-```{r 05-add-those-tube-locactions, warnings=FALSE, message=FALSE}
+```{r 05-add-those-tube-locactions, warnings=FALSE, message=FALSE, cache=TRUE}
 # create a point dataset from the tube csv file
 tube_points <- st_as_sf(tube, coords=c('long','lat'),crs=4326)
 
@@ -467,7 +467,7 @@ lsoa_join$tube_dist <- rowMins(dist_matrix,value=TRUE)
 
 Great. So, now we can continue. Let's start by seeing if there is any visual relationship between our input (independent) variables and our output (dependent) variable by plotting them against each other.
 
-```{r 05-lets-scatterplot, warnings=FALSE, message=FALSE}
+```{r 05-lets-scatterplot, warnings=FALSE, message=FALSE, cache=TRUE}
 # imd decile vs bike theft 
 ggplot(lsoa_join,aes(x=imd_dec, y=n_crime_cube)) +
   geom_point()
@@ -582,7 +582,7 @@ tm_shape(lsoa_join) +
 
 You can see the spatial patterning of areas of over-prediction in the centre of Greater London with areas of under-prediction concentrating on the edges of the study area. We could be dealing with some spatial autocorrelation, so we need to test for it again. We will be using a Global Moran's I for this. Remember with a global Moran’s I we can test how 'random' the spatial distribution of these values is. Global Moran’s I is a metric between -1 and 1. -1 is a completely even spatial distribution of values, 0 is a 'random' distribution, and 1 is a 'non-random' distribution of clearly defined clusters.
 
-```{r 05-moran-preparation, message=FALSE, warnings=FALSE}
+```{r 05-moran-preparation, message=FALSE, warnings=FALSE, cache=TRUE}
 # force sf to sp
 lsoa_join_sp <- as_Spatial(lsoa_join, IDs=lsoa_join$lsoa11cd)
 
@@ -599,7 +599,7 @@ rwm <- nb2listw(lsoa_nb, style='W')
 
 Now we can execute a Moran's test **for the regression residuals**. We use `lm.morantest()` for this. This is important because this function takes into account that the input data are residuals, something which the 'normal' Moran's I test does not do.
 
-```{r 05-moran-execution, warnings=FALSE, message=FALSE}
+```{r 05-moran-execution, warnings=FALSE, message=FALSE, cache=TRUE}
 # Moran's I
 lm.morantest(crime_model, rwm, alternative='two.sided')
 ```
@@ -609,7 +609,7 @@ Not surprisingly, the test is significant: we are indeed dealing with spatial au
 
 How do we now decide which model to use? Well, first, as with any model, the relationship between independent and dependent variables must make sense. So, for instance, if you think that the spatial dependence is just an artefact of the data distribution rather than a truly spatial process, you should go with a spatial error model. Vice versa, if you think that the spatial dependence is the result of a spatial process, you should consider the spatially lagged model. In less clear cut cases, we can also get a little help by making use of the **Lagrange Multiplier test statistics**. We can these run these tests as follows:
 
-```{r 05-lagrange-multiplier, warnings=FALSE, message=FALSE}
+```{r 05-lagrange-multiplier, warnings=FALSE, message=FALSE, cache=TRUE}
 # lagrange mulitplier
 lm.LMtests(crime_model, rwm, test = c('LMerr','LMlag','RLMerr','RLMlag'))
 ```
@@ -618,7 +618,7 @@ How dow we use this information? The output of the test is split into two groups
 
 The robust version should be used only if both of the standard tests are significant (i.e. below the .05 level). If only one of the standard tests comes back significant, but the other one is not, then it becomes very easy to decide between the spatial error and the spatially lagged model: choose the one that is significant! In case both the standard tests are significant we would need to look at the outcomes of the robust tests and make a decision. In such a situation, the best suggestion is to compare the *p-values* of both tests and select the model that is 'more significant' than the other. In our case the situation is very clear and we should go with a spatially lagged model rather than a spatial error model. Let's do that using the `lagsarlm()` function. Also, let's remove the distance to the neareast off license as that variable was not significant to begin with.
 
-```{r 05-spatially-lagged-model, warnings=FALSE, message=FALSE}
+```{r 05-spatially-lagged-model, warnings=FALSE, message=FALSE, cache=TRUE}
 # execute the spatially lagged model
 # this can take a little bit of time, be patient!
 crime_model_lag <- lagsarlm(n_crime_cube ~ imd_dec + pubs_dist + gamb_dist + tube_dist, data=lsoa_join, listw=rwm)
@@ -635,7 +635,7 @@ Be careful **not** to compare the regression coefficients of the spatially lagge
 
 Although we probably should not, let's also run a spatial error model. Just for the sake of running it and see how it looks.
 
-```{r 05-spatial-error-model, warnings=FALSE, message=FALSE}
+```{r 05-spatial-error-model, warnings=FALSE, message=FALSE, cache=TRUE}
 # execute the spatially lagged model
 # this can take a little bit of time, be patient!
 crime_model_err <- errorsarlm(n_crime_cube ~ imd_dec + pubs_dist + gamb_dist + tube_dist, data=lsoa_join, listw=rwm)

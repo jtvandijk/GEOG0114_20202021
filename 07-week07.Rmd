@@ -75,10 +75,10 @@ plot(pop01_3044)
 plot(pop11_3044)
 
 # plot pretty 2001 // this can be a little slow, especially for large rasters
-plot(pop01_3044,col=brewer.pal(6,'Blues'),main='Popolation surface age 30 - 44 in 2011',axes=FALSE)
+plot(pop01_3044,col=brewer.pal(6,'Blues'),main='Population surface age 30 - 44 in 2011',axes=FALSE)
 
 # plot pretty 2011 // this can be a little slow, especially for large rasters
-plot(pop11_3044,col=brewer.pal(6,'Blues'),main='Popolation surface age 30 - 44 in 2011',axes=FALSE)
+plot(pop11_3044,col=brewer.pal(6,'Blues'),main='Population surface age 30 - 44 in 2011',axes=FALSE)
 ```
 
 #### Questions {-}
@@ -88,7 +88,7 @@ Now all data are loaded, we have been able to quickly make a halfway decent map,
 
 **Map algebra** is a set-based algebra for manipulating geographic data, coined by [Dana Tomlin](https://en.wikipedia.org/wiki/Dana_Tomlin) in the early 1980s. Map algebra operations and functions are typically broken down into four groups: local, focal, zonal and global. We will explore them briefly in the remainder of this section. Let's start, however, by confining our area to Greater London rather than using the whole of Great Britain.
 
-```{r 07-confine-that-area-yall, warnings=FALSE, message=FALSE}
+```{r 07-confine-that-area-yall, warnings=FALSE, message=FALSE, cache=TRUE}
 # load data
 lad <- readOGR(dsn='raw/boundaries/london_lad_2020/london_lad_2020.shp')
 
@@ -264,7 +264,7 @@ avg_pol
 
 Spatial interpolation models of point data can be roughly divided into two categories: **deterministic models** and **geostatistical models**. We will start by trying two deterministic models: Thiessen Polygons and Inverse Distance Weighting (IDW). Before we can continue, however, there is still a little bit of work to do to get our data right: we need to make sure that we only have monitoring sites in Greater London. We can do this in the same way as we did last week for our [crime location data](point-pattern-analysis.html#example-point-pattern-analysis).
 
-``` {r 07-prepare-air-pol-data-further, warnings=FALSE, message=FALSE}
+``` {r 07-prepare-air-pol-data-further, warnings=FALSE, message=FALSE, cache=TRUE}
 # load libraries
 library(sf)
 
@@ -289,7 +289,7 @@ tm_shape(lad) +
 ### Thiessen Polygons
 The first step we can take to interpolate the data across space is to create Thiessen polygons. Thiessen polygons are formed to assign boundaries of the areas closest to each unique point. Therefore, for every point in a dataset, it has a corresponding Thiessen polygon. The `spatstat` package provides the functionality to produce Thiessen polygons via its dirichlet tesselation of spatial point patterns function (`dirichlet()`). As we are using `spatstat` again, we also need to first convert the data to a `ppp` object. [Let's tesselate](https://www.youtube.com/watch?v=Qg6BwvDcANg).
 
-```{r 07-thiessen-pols, warnings=FALSE, message=FALSE}
+```{r 07-thiessen-pols, warnings=FALSE, message=FALSE, cache=TRUE}
 # load libraries
 library(spatstat)  
 library(maptools) 
@@ -330,7 +330,7 @@ It has come to light that in some cases the below code does not work when you ar
 
 A second deterministic method to interpolate point data is **Inverse Distance Weighting** (IDW). An IDW is a means of converting point data of numerical values into a continuous surface to visualise how the data may be distributed across space. The technique interpolates point data by using a weighted average of a variable from nearby points to predict the value of that variable for each location. The weighting of the points is determined by their inverse distances drawing on [Tobler’s first law of geography](https://en.wikipedia.org/wiki/Tobler%27s_first_law_of_geography#:~:text=The%20First%20Law%20of%20Geography,specifically%20for%20the%20inverse%20distance) that "everything is related to everything else, but near things are more related than distant thing". The distance weighting is done by a power function: the larger the power coefficient, the stronger the weight of nearby point. The output is most commonly represented as a raster surface.
 
-```{r 07-inverse-distance-weights, warnings=FALSE, message=FALSE}
+```{r 07-inverse-distance-weights, warnings=FALSE, message=FALSE, cache=TRUE}
 # load libraries
 library(gstat)  
 library(xts) 
@@ -364,7 +364,7 @@ tm_shape(mask(raster_idw,lad)) +
 
 The main parameter in the IDW is the power function. How do you know whether you interpolation results are accurate? You can choose the power function based on literature, but you can also perform a *leave one out cross validation* (LOOCV). The idea is simple: you remove one data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. Then you remove another data point from the dataset and then try to interpolate (predict) the value of this point using all other points in the dataset. And so on for all points in the dataset. You then can compare the interpolated point values with the actual values from the omitted points. The performance of the interpolation can be summarised using the [root-mean-square error](https://en.wikipedia.org/wiki/Root-mean-square_deviation) (RMSE) which you in effect try to minimise!
 
-```{r 07-leave-one-out-idw-validation, warnings=FALSE, message=FALSE, results=FALSE}
+```{r 07-leave-one-out-idw-validation, warnings=FALSE, message=FALSE, results=FALSE, cache=TRUE}
 # create an empty vector of the same length as our pollution monitoring sites
 idw.pred <- vector(length = length(pol_points))
 
@@ -375,7 +375,7 @@ for (i in 1:length(pol_points)) {
 }
 ```
 
-```{r 07-leave-one-out-idw-validation-with-tha-plots, warnings=FALSE, message=FALSE}
+```{r 07-leave-one-out-idw-validation-with-tha-plots, warnings=FALSE, message=FALSE, cache=TRUE}
 # inspect
 idw.pred
 
@@ -413,7 +413,7 @@ An IDW is not the only means of interpolating point data across space. A range o
 There are various different ways of running a kriging, some are quite complex given that the method requires an experimental variogram of the data in order to run. If you want to know more, there is some excellent material [available here](https://mgimond.github.io/Spatial/spatial-interpolation.html) but it is out of the scope of this course to go into much further detail.
 </div>
 
-```{r 07-lets-krig-it, warnings=FALSE, message=FALSE}
+```{r 07-lets-krig-it, warnings=FALSE, message=FALSE, cache=TRUE}
 # create a variogram
 var.pol <- variogram(no2 ~ 1, pol_points, cloud=FALSE, width=1000)
 
@@ -449,7 +449,7 @@ tm_shape(mask(rst.krg,lad)) +
   tm_borders()
 ```
 
-```{r 07-leave-one-out-krg-validation, warnings=FALSE, message=FALSE, results=FALSE}
+```{r 07-leave-one-out-krg-validation, warnings=FALSE, message=FALSE, results=FALSE, cache=TRUE}
 # create an empty vector of the same length as our pollution monitoring sites
 krg.pred <- vector(length = length(pol_points))
 
@@ -460,7 +460,7 @@ for (i in 1:length(pol_points)) {
 }
 ```
 
-```{r 07-leave-one-out-krg-validation-with-tha-plots, warnings=FALSE, message=FALSE}
+```{r 07-leave-one-out-krg-validation-with-tha-plots, warnings=FALSE, message=FALSE, cache=TRUE}
 # inspect
 krg.pred
 

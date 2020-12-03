@@ -75,7 +75,7 @@ Now we know the data is there we can load and plot the shape data.
 
 Plot the output areas of the borough Camden.
 
-``` {r 04-b-plotting-camden-OAs}
+``` {r 04-b-plotting-camden-OAs, cache=TRUE}
 
 # first read in the data
 camden_oas <- st_read(paste0(shapefile_dir_path, shapefile_name), 
@@ -96,7 +96,7 @@ Output areas are designed to convey and contain census information, so they are 
 
 Let's explore how to find different kinds of neighbours using the example of one randomly selected output area.
 
-``` {r 04-c-highlighting-one-oa}
+``` {r 04-c-highlighting-one-oa, cache=TRUE}
 
 # we have randomly selected one OA "E00004174", the OA containing the UCL main campus 
 # and coincidentally also the birthplace of Alfie Long (statue forthcoming)
@@ -115,7 +115,7 @@ The first way we are going to call something a neighbour is by using Euclidean d
 
 Let's call every output area with a centroid 500m or less away from the centroid of our chosen OA a neighbour.
 
-``` {r 04-d-euclidean-distance-neighbour, warning=FALSE}
+``` {r 04-d-euclidean-distance-neighbour, warning=FALSE, cache=TRUE}
 
 # make a variable for our chosen output area so that we could change 
 # it and all the other code could remain the same
@@ -174,7 +174,7 @@ We create functions that check whether any polygons share boundaries or overlap 
 
 The different cases of these are known as queen, and rook. These describe the relations in a similar way to the possible chess board movements of these pieces. 
 
-``` {r 04-e-shared-boundary-neighbour-function-creation}
+``` {r 04-e-shared-boundary-neighbour-function-creation, cache=TRUE}
 
 # for rook case
 st_rook = function(a, b = a) st_relate(a, b, pattern = "F***1****")
@@ -189,7 +189,7 @@ st_queen <- function(a, b = a) st_relate(a, b, pattern = "F***T****")
 
 Now that we've created the functions lets try them out.
 
-``` {r 04-f-shared-boundary-neighbour-example}
+``` {r 04-f-shared-boundary-neighbour-example, cache=TRUE}
 
 # let's use the same example oa as previously
 # you can check that it exists and if not assign the variable again
@@ -254,7 +254,7 @@ But before we start that let's get into the data we are going to use!
 
 We'll be using personal theft data from around camden. Our neighbourhood analysis of spatial autocorrelation should allow us to quantify the pattern of distribution of reported theft from persons in Camden in 2019.
 
-``` {r 04-g-loading-in-crime-data}
+``` {r 04-g-loading-in-crime-data, cache=TRUE}
 
 # read in the data
 camden_theft <- fread("raw/crime/2019_camden_theft_from_person.csv")
@@ -273,7 +273,7 @@ This is point data, but we are interested in the polygons and how this data rela
 
 Let's count the number of thefts in each OA. This is a spatial operation that is often called "point in polygon". As we are just counting the number of occurences in each polygon it is quite easy. In the future you may often want to aggregate over points for an area, or in reverse assign values from the polygon to the points.
 
-``` {r 04-h-point-in-polygon}
+``` {r 04-h-point-in-polygon, cache=TRUE}
 
 # this code counts the lengths (number) of points that intersect each polygon
 # let's add a new column to our OA sf object called n_thefts to store this
@@ -307,7 +307,7 @@ To calculate the global Moran's I you need an adjacency matrix that contains the
 
 I will revisit the neighbourhood calculation used earlier then develop it from a one to all to an all to all computation. 
 
-``` {r 04-i-global-autocorrelation-single-comparison, warning=FALSE}
+``` {r 04-i-global-autocorrelation-single-comparison, warning=FALSE, cache=TRUE}
 # here is the previous way of calculating neighbourhoodness for our chosen OA
 # but now we will add an extra argument that states we want a non-sparse adjacency matrix returned
 
@@ -336,7 +336,7 @@ Because of the way Moran's I functions in R it is necessary to use `sp()` and `s
 So load them in.
 
 
-``` {r 04-j-load-sp-spdep, warning=FALSE}
+``` {r 04-j-load-sp-spdep, warning=FALSE, cache=TRUE}
 
 # for doing spatial operations (now mostly superseded by sf)
 library(sp)
@@ -350,7 +350,7 @@ As you will see these methods and functions have quite esoteric and complicated 
 
 Some of the operations they will do will be similar to the examples shown earlier, but the way they assign and store variables makes it much quicker to run complex spatial operations.
 
-``` {r 04-k-converting-to-sp}
+``` {r 04-k-converting-to-sp, cache=TRUE}
 
 # check the current class
 class(camden_oas)
@@ -365,7 +365,7 @@ class(camden_oas_sp)
 
 Now we can make the esoteric and timesaving "nb" object!
 
-``` {r 04-l-nb-time}
+``` {r 04-l-nb-time, cache=TRUE}
 
 # make the nb
 camden_oas_nb <- poly2nb(camden_oas_sp, row.names=camden_oas_sp$OA11CD)
@@ -382,7 +382,7 @@ It's basically the same as the sparse list of neighbours that we created before 
 
 If you look at the output you can see that it automatically uses "queen" case.
 
-``` {r 04-m-nb-to-matrix}
+``` {r 04-m-nb-to-matrix, cache=TRUE}
 
 # further into the sp rabbit hole we can now create a matrix from this (like the non-sparse output of the st_nn/st_rook processes)
 camden_oas_nb_mat <- nb2mat(camden_oas_nb, style='B')
@@ -402,7 +402,7 @@ Now the sum of one row instead of being the total number of neighbours for that 
 
 Now we need to calculate a separate weights list object to use for the Moran's I calculation.
 
-``` {r 04-n-list-weights-object}
+``` {r 04-n-list-weights-object, cache=TRUE}
 
 # create the list weights object
 nb_weights_list <- nb2listw(camden_oas_nb, style='B')
@@ -425,7 +425,7 @@ This is just a quick way to check the score. To do so properly you need to check
 
 To do so you need to use the MonteCarlo method where you actually carry this out. You can specify how many times it does this to increase precision.
 
-``` {r 04-o-monte-carlo-moran}
+``` {r 04-o-monte-carlo-moran, cache=TRUE}
 
 # run it 599 times
 mc_model <- moran.mc(camden_oas_sp$n_thefts, nb_weights_list, nsim=599)
@@ -443,7 +443,7 @@ With a measurement of local spatial autocorrelation we could find hotspots of th
 
 These could be areas that contain very specific locations, where interventions could be made that drastically reduce the rate of crime rather than other areas where there is a high level of ambient crime.
 
-``` {r 04-p-local-spatial-autocorrelation}
+``` {r 04-p-local-spatial-autocorrelation, cache=TRUE}
 
 # you need the nb object and the nb and weights list
 # make the nb
@@ -462,7 +462,7 @@ To properly utilise these local statistics and make in intuitively useful map we
 
 Because of the way the new variable will be calculated we need to rescale our variable so that the mean is 0. this means that the lowest values will be -ve and the highest +ve. The distribution and the relationship between the will be preserved though.
 
-``` {r 04-q-rescale}
+``` {r 04-q-rescale, cache=TRUE}
 
 # rescale that variable!
 camden_oas_sp$scale_n_thefts <- scale(camden_oas_sp$n_thefts)
@@ -475,7 +475,7 @@ This is called a spatial lag function! What fun!
 
 The "lag" just refers to the fact you are comparing one observation against another, this can be used between timed observations. In this case, the "lag" we are looking at is between neighbours.
 
-``` {r 04-r-spatial-lag}
+``` {r 04-r-spatial-lag, cache=TRUE}
 
 # create a spatial lag variable and save it to a new column
 camden_oas_sp$lag_scale_n_thefts <- lag.listw(nb_weights_list, camden_oas_sp$scale_n_thefts)
@@ -484,7 +484,7 @@ camden_oas_sp$lag_scale_n_thefts <- lag.listw(nb_weights_list, camden_oas_sp$sca
 
 Now we have used sp for all it is worth it's time to head back to the safety of `sf()`!
 
-``` {r 04-s-back-to-sf}
+``` {r 04-s-back-to-sf, cache=TRUE}
 
 # convert to sf
 camden_oas_moran_stats <- st_as_sf(camden_oas_sp)
@@ -497,7 +497,7 @@ This process calculates what the value of each polygon is compared to its neighb
 
 I the text label, the first term describes the area being focused on and the second represents that areas neighbours.
 
-``` {r 04-t-conditional-labelling}
+``` {r 04-t-conditional-labelling, cache=TRUE}
 
 # run all of these through to assign variables
 
@@ -556,7 +556,7 @@ library(ggplot2)
 
 Let's make the scatterplot using the scaled number of thefts for the areas in the x axis and their spatially lagged results in the y axis.
 
-``` {r 04-v-plotting-quadrants-scatter}
+``` {r 04-v-plotting-quadrants-scatter, cache=TRUE}
 
 # plot the results without the satistical significance
 ggplot(camden_oas_moran_stats, aes(x = scale_n_thefts, 
@@ -584,7 +584,7 @@ ggplot(camden_oas_moran_stats, aes(x = scale_n_thefts,
 
 Now let's see how they are arranged spatially.
 
-``` {r 04-s-mapping-local-moran}
+``` {r 04-s-mapping-local-moran, cache=TRUE}
 
 # map all of the results here
 tm_shape(camden_oas_moran_stats) +
