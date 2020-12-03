@@ -52,7 +52,7 @@ The first lecture this week provides an introduction to the Sustainable Developm
 library(vembedr)
 embed_msstream('e3e47127-726b-448e-80e4-f13f3ca5bbaf') %>% use_align('left')
 ```
-[[Lecture slides](https://liveuclac-my.sharepoint.com/:b:/g/personal/ucfailk_ucl_ac_uk/EZ3yaPmBE3dHrIOj3rhne0MB9jtr0RB7trQ6RKUQJL_reQ?e=DRD5mL)] [[Watch on MS stream]('e3e47127-726b-448e-80e4-f13f3ca5bbaf')]
+[[Lecture slides](https://liveuclac-my.sharepoint.com/:b:/g/personal/ucfailk_ucl_ac_uk/EZ3yaPmBE3dHrIOj3rhne0MB9jtr0RB7trQ6RKUQJL_reQ?e=DRD5mL)] [[Watch on MS stream](https://web.microsoftstream.com/video/e3e47127-726b-448e-80e4-f13f3ca5bbaf)]
 
 ### Data For Good sector and resulting datasets
 Addressing data scarcity and sparsity across our world is therefore essential to help with the implementation,  monitoring and tracking of the SDGs. As part of this drive for data for the SDGs and the UN's 'data revolution', the Data for Good sector has emerged as an area of research, development and application for many different types of stakeholders and contributors to solve these challenges.
@@ -64,7 +64,7 @@ As explained in the following lecture, at the core of this sector are many of th
 library(vembedr)
 embed_msstream('44073536-4026-423b-b3bb-26a060a2efed') %>% use_align('left')
 ```
-[[Lecture slides](https://liveuclac-my.sharepoint.com/:b:/g/personal/ucfailk_ucl_ac_uk/EQTD6gfo3LhIqYfksk6XjHYBKPgwv_DOG0PINzFogrcVjg?e=vRbujA)] [[Watch on MS stream]('https://web.microsoftstream.com/video/44073536-4026-423b-b3bb-26a060a2efed')]
+[[Lecture slides](https://liveuclac-my.sharepoint.com/:b:/g/personal/ucfailk_ucl_ac_uk/EQTD6gfo3LhIqYfksk6XjHYBKPgwv_DOG0PINzFogrcVjg?e=vRbujA)] [[Watch on MS stream](https://web.microsoftstream.com/video/44073536-4026-423b-b3bb-26a060a2efed)]
 
 As you can see from the last slide of the lecture, the Data For Good (or 'Data For Development') sector has garnered a significant amount of interest from a range of stakeholders and contributors. From the UN and its respective agencies, such as the UN's Global Pulse and World Food Programme (WFP), to academic research projects, such as the University of Southampton's WorldPop and MIT's Solve, to privately funded organisations such as the Clinton Health Access Initiative and the Gates Foundation, as well as technology companies, such as Facebook and Microsoft and collaborative initiatives such as the Data-Pop Alliance, there are many actors involved in working towards creating these datasets to enable more efficient and effective programming. *(These are just a few we've come across and can write down here, but if you're looking for a career in DFG, there are plenty more than this short list!)*
 
