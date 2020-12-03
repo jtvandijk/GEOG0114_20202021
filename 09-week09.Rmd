@@ -86,7 +86,7 @@ You could also have downloaded the shapefile with the data already joined to the
 
 Now we got the administrative boundary data, we can prepare the IUC map by joining our `csv` file with the IUC classification to the shapefile.
 
-```{r 09-load-those-spatial-data, warnings=FALSE, message=FALSE}
+```{r 09-load-those-spatial-data, warnings=FALSE, message=FALSE, cache=TRUE}
 # load libraries
 library(sf)
 library(tmap)
@@ -112,7 +112,7 @@ tm_shape(liv_iuc) +
 
 Let's use the same colours as used on [CDRC mapmaker](https://mapmaker.cdrc.ac.uk/#/internet-user-classification?lon=-2.81187&lat=53.31045&zoom=9.58) by specifying the **hex** colour codes for each of our groups. Note the order of the colours is important: the colour for group 1 is first, group 2 second and so on. 
 
-```{r 09-pretty-colours, warnings=FALSE, message=FALSE}
+```{r 09-pretty-colours, warnings=FALSE, message=FALSE, cache=TRUE}
 # define palette
 iuc_colours <- c('#dd7cdc','#ea4d78','#d2d1ab','#f36d5a','#a5cfbc','#e4a5d0','#8470ff','#79cdcd','#808fee','#ffd39b')
 
@@ -206,7 +206,7 @@ Now our data are all on the same scale, we will start by creating an elbow plot.
 
 The elbow method can help as it plots the total explained variation ('Within Sum of Squares') in your data as a function of the number of cluster. The idea is that you pick the number of clusters at the 'elbow' of the curve as this is the point in which the additional variation that would be explained by an additional cluster is decreasing. Effectively this means you are actually running the **k-means** clustering multiple times before running the actual **k-means** clustering algorithm.
 
-```{r 09-settings-and-options, warnings=FALSE, message=FALSE, echo=FALSE}
+```{r 09-settings-and-options, warnings=FALSE, message=FALSE, echo=FALSE, cache=TRUE}
 # settings
 options(max.print = 15)
 ```
@@ -249,7 +249,7 @@ The interpretation of an elbow plot can be quite subjective and often mutlltle o
 
 Now we have decided on the number of clusters (i.e. **7** clusters), we can now run our cluster analysis. We will be running this analysis 10 times because there is an element of randomness within the clustering, and we want to make sure we get the best clustering output.
 
-```{r 09-run-that-cluster, warnings=FALSE, message=FALSE}
+```{r 09-run-that-cluster, warnings=FALSE, message=FALSE, cache=TRUE}
 # create empty list to store the results of the clustering
 clusters <- list()
 
@@ -287,7 +287,7 @@ fit
 
 We now have to execute a bit of post-processing to extract some useful summary data for each cluster: the cluster size (`size`) and mean values for each cluster.
 
-```{r 09-post-process-some-cluster-stuff, warnings=FALSE, message=FALSE}
+```{r 09-post-process-some-cluster-stuff, warnings=FALSE, message=FALSE, cache=TRUE}
 # assign to new variable for clarity
 kfit <- clusters
 
@@ -321,7 +321,7 @@ Looking at the table with the mean values for each cluster and the graph, we can
 1. Which clusters are primarily driven by age?
 2. Which clusters are primarily driven by the National Statistics Socio-economic Classification?
 
-```{r 09-map-our-iuc, warnings=FALSE, message=FALSE}
+```{r 09-map-our-iuc, warnings=FALSE, message=FALSE, cache=TRUE}
 # read shape
 msoa <- st_read('raw/boundaries/gb_msoa_2011/gb_msoa11_sim.shp')
 
