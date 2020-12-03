@@ -235,7 +235,7 @@ pollution <- importKCL(site=c(sites$code),year=2019,pollutant='no2',meta=TRUE)
 pollution <- filter(pollution,!is.na(no2))
 ```
 
-```{r 07-get-data-from-zip, warnings=FALSE, message=FALSE}
+```{r 07-get-data-from-zip, warnings=FALSE, message=FALSE, cache=TRUE}
 # option 2: using downloaded csv file
 
 # libraries
