@@ -263,7 +263,7 @@ Try to execute some surname searches and see if you can find any interesting pat
 
 ### Assignments {#assignment_w06}
 
-#### Assignment 1 {}
+#### Assignment 1 {-}
 Now you have seen the GBNames website and you know how to execute a Kernel Density Estimation, it is time you try it yourself. Below are three datasets with the locations of the bearers of three different surnames (Longley, Wilkins, Van Dijk). Each dataset contains a surname, a x-coordinate and a y-coordinate (both already projected in [EPSG 27700](https://epsg.io/27700)). Your task for Friday is to analyse these three surname distributions using Kernel Density Estimation. 
 
 <div class="warning">
