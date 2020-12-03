@@ -182,7 +182,7 @@ The maximum radius of four kilometres is, in this case, simply to zoom the plot 
 Although distance-based methods can give us an idea of the distribution of the underlying point pattern and suggest that some of the data are clustered, it does not tell us **where** the clustering is happening. Density-based methods can help us out here.
 We will start with a simple quadrat count by dividing the observation window into section and counting the number of bicycle thefts within each quadrant.
 
-```{r 06-quadrat-count, warnings=FALSE, message=FALSE}
+```{r 06-quadrat-count, warnings=FALSE, message=FALSE, cache=TRUE}
 # quadratcount in a 15 x 15 grid across the observational window
 crime_quadrat <- quadratcount(crime_ppp_jitter,nx=15,ny=15)
 
@@ -199,7 +199,7 @@ plot(rpoispp(1254))
 
 The first thing you will see is that the points are not uniformly distributed. Furthermore, every time you run the function the outcome will be slightly different than the previous time because the points are sampled from a Poisson distribution. To check whether our bicycle theft points differ from complete spatial randomness (i.e. there is no clustering or dispersal of points) we can run a [Chi-Squared test] with the null hypotheses that our point data have been generated under complete spatial randomness.
 
-```{r 06-chi-square-it, warnings=FALSE, message=FALSE}
+```{r 06-chi-square-it, warnings=FALSE, message=FALSE, cache=TRUE}
 # chi-square between observed pattern and Poisson sampled points
 quadrat.test(crime_ppp_jitter,nx=15,ny=15)
 ```
@@ -208,7 +208,7 @@ The p value is well below 0.05 (or 0.01 for that matter), and we can reject the 
 
 Instead of looking at the distribution of our bicycle theft with the boundaries of our quadrats (or any other tessellation we could pick), we can also analyse our points using a **Kernel Density Estimation** (KDE). As was explained in the short lecture video, a KDE is a statistical technique to generate a smooth continuous surface representing the density of the underlying pattern. The resulting surface is created by placing a search window (kernel) over each point and attributing the sum of kernel values to a grid.
 
-```{r 06-kernel-density-estimation, warnings=FALSE, message=FALSE}
+```{r 06-kernel-density-estimation, warnings=FALSE, message=FALSE, cache=TRUE}
 # kernel density estimation with a 100 metre bandwidth
 plot(density.ppp(crime_ppp_jitter,sigma=100))
 
@@ -223,7 +223,7 @@ Notice the importance of the bandwidth that is selected. Larger bandwidths lead 
 
 Although bandwidth typically has a more pronounced effect upon the density estimation than the type of kernel used, kernel types can affect the result too. Also here applies: the selection of the kernel depends on how much you want to weigh near points relative to far points (even though this is **also** influenced by the bandwidth!).
 
-```{r 06-kernel-density-estimation-kernels, warnings=FALSE, message=FALSE}
+```{r 06-kernel-density-estimation-kernels, warnings=FALSE, message=FALSE, cache=TRUE}
 # kernel density estimation with a Gaussian Kernel
 plot(density.ppp(crime_ppp_jitter,sigma=500,kernel='gaussian'))
 

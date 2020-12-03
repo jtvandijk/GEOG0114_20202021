@@ -248,7 +248,7 @@ Whilst you should have already come across DB-Scan in your CASA0005 module, in t
 library(vembedr)
 embed_youtube('_A9Tq6mGtLI') %>% use_align('left')
 ```
-[Original Video](https://youtu.be/_A9Tq6mGtLI)
+[[Original Video](https://youtu.be/_A9Tq6mGtLI)]
 
 In summary, DBScan is a density-based clustering algorithm that is used in data mining and machine learning. Across a set of points, DBSCAN will group together points that are close to each other based on a distance measurement and a minimum number of points. It also marks as outliers the points that are in low-density regions. The algorithm can be used to find associations and structures in data that are hard to find through visual observation alone, but that can be relevant and useful to find patterns and predict trends. Whilst the algorithm is nearly 25 years old, it still is incredibly relevant to many applications within data science today, including within spatial analysis. 
 

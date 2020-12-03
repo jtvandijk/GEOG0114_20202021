@@ -24,7 +24,7 @@
 <meta name="author" content="Justin van Dijk and Joanna Wilkin" />
 
 
-<meta name="date" content="2020-12-02" />
+<meta name="date" content="2020-12-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="point-pattern-analysis.html"/>
-<link rel="next" href="dbscan-and-cluster-analysis.html"/>
+<link rel="next" href="spatial-analysis-for-urban-mapping-applications.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,6 +52,22 @@
 
 
 <link href="libs/vembedr-0.1.4/css/vembedr.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.3/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.3/leaflet-providers-plugin.js"></script>
+<link href="libs/HomeButton-0.0.1/home-button.css" rel="stylesheet" />
+<script src="libs/HomeButton-0.0.1/home-button.js"></script>
+<script src="libs/HomeButton-0.0.1/easy-button-src.min.js"></script>
+<script src="libs/clipboard-0.0.1/setClipboardText.js"></script>
+<link href="libs/mapviewCSS-0.0.1/mapview-popup.css" rel="stylesheet" />
+<link href="libs/mapviewCSS-0.0.1/mapview.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -241,7 +257,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#attributions_w07"><i class="fa fa-check"></i><b>7.5</b> Attributions</a></li>
 <li class="chapter" data-level="7.6" data-path="raster-data-and-geostatistics.html"><a href="raster-data-and-geostatistics.html#feedback_w07"><i class="fa fa-check"></i><b>7.6</b> Feedback</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="dbscan-and-cluster-analysis.html"><a href="dbscan-and-cluster-analysis.html"><i class="fa fa-check"></i><b>8</b> DBScan and cluster analysis</a></li>
+<li class="chapter" data-level="8" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html"><i class="fa fa-check"></i><b>8</b> Spatial analysis for urban (mapping) applications</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#introduction_w08"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#overview_w08"><i class="fa fa-check"></i><b>8.1.1</b> Video: Overview</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#data-for-good-the-need-for-data-within-sustainable-development-and-humanitarian-applications"><i class="fa fa-check"></i><b>8.2</b> Data for good: the need for data within sustainable development and humanitarian applications</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#video-what-are-the-sustainable-development-goals-and-why-are-they-important-to-us-as-spatial-data-scientists"><i class="fa fa-check"></i><b>8.2.1</b> Video: What are the Sustainable Development Goals and why are they important to us as Spatial Data Scientists?</a></li>
+<li class="chapter" data-level="8.2.2" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#data-for-good-sector-and-resulting-datasets"><i class="fa fa-check"></i><b>8.2.2</b> Data For Good sector and resulting datasets</a></li>
+<li class="chapter" data-level="8.2.3" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#video-what-is-the-data-for-good-sector"><i class="fa fa-check"></i><b>8.2.3</b> Video: What is the Data for Good sector?</a></li>
+<li class="chapter" data-level="8.2.4" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#video-exploring-and-explaining-different-data-for-good-datasets"><i class="fa fa-check"></i><b>8.2.4</b> Video: Exploring and explaining different ‘Data For Good’ datasets</a></li>
+<li class="chapter" data-level="8.2.5" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#video-extracting-building-footprints-using-esris-deep-learning-model"><i class="fa fa-check"></i><b>8.2.5</b> Video: Extracting Building Footprints using Esri’s Deep Learning Model</a></li>
+<li class="chapter" data-level="8.2.6" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#where-can-i-find-these-datasets"><i class="fa fa-check"></i><b>8.2.6</b> Where can I find these datasets?</a></li>
+<li class="chapter" data-level="8.2.7" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#using-spatial-analysis-in-data-for-good"><i class="fa fa-check"></i><b>8.2.7</b> Using spatial analysis in Data For Good</a></li>
+<li class="chapter" data-level="8.2.8" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#whats-next-for-the-data-for-good-sector-and-spatial-analysis"><i class="fa fa-check"></i><b>8.2.8</b> What’s next for the Data For Good sector and spatial analysis?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#using-spatial-analysis-for-urban-mapping-applications-creating-our-own-spatial-data"><i class="fa fa-check"></i><b>8.3</b> Using spatial analysis for urban mapping applications: creating our own spatial data</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#current-availability-of-spatial-data-in-tanzania"><i class="fa fa-check"></i><b>8.3.1</b> Current availability of spatial data in Tanzania</a></li>
+<li class="chapter" data-level="8.3.2" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#previous-related-research-our-mini-literature-review"><i class="fa fa-check"></i><b>8.3.2</b> Previous related research (our mini-literature review)</a></li>
+<li class="chapter" data-level="8.3.3" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#revising-cluster-analysis-using-db-scan"><i class="fa fa-check"></i><b>8.3.3</b> Revising cluster analysis using DB-Scan</a></li>
+<li class="chapter" data-level="8.3.4" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#practical-instructions-deriving-settlement-outlines-from-building-footprints-and-db-scan"><i class="fa fa-check"></i><b>8.3.4</b> Practical Instructions: Deriving settlement outlines from building footprints and DB-Scan</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#take-home-message-moving-cluster-analysis-and-building-footprint-analysis-forward"><i class="fa fa-check"></i><b>8.4</b> Take home message &amp; moving cluster analysis and building footprint analysis forward</a></li>
+<li class="chapter" data-level="8.5" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#attributions_w08"><i class="fa fa-check"></i><b>8.5</b> Attributions</a></li>
+<li class="chapter" data-level="8.6" data-path="spatial-analysis-for-urban-mapping-applications.html"><a href="spatial-analysis-for-urban-mapping-applications.html#feedback_w08"><i class="fa fa-check"></i><b>8.6</b> Feedback</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="geodemographics.html"><a href="geodemographics.html"><i class="fa fa-check"></i><b>9</b> Geodemographics</a></li>
 <li class="chapter" data-level="10" data-path="reproducible-research.html"><a href="reproducible-research.html"><i class="fa fa-check"></i><b>10</b> Reproducible research</a></li>
 </ul>
@@ -365,10 +408,10 @@ Figure 7.2: Raster or plain text?
 <span id="cb206-2"><a href="raster-data-and-geostatistics.html#cb206-2" aria-hidden="true"></a><span class="kw">plot</span>(pop11_<span class="dv">3044</span>)</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-load-libraries-and%20data-2.png" width="672" /></p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="raster-data-and-geostatistics.html#cb207-1" aria-hidden="true"></a><span class="co"># plot pretty 2001 // this can be a little slow, especially for large rasters</span></span>
-<span id="cb207-2"><a href="raster-data-and-geostatistics.html#cb207-2" aria-hidden="true"></a><span class="kw">plot</span>(pop01_<span class="dv">3044</span>,<span class="dt">col=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>,<span class="st">&#39;Blues&#39;</span>),<span class="dt">main=</span><span class="st">&#39;Popolation surface age 30 - 44 in 2011&#39;</span>,<span class="dt">axes=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<span id="cb207-2"><a href="raster-data-and-geostatistics.html#cb207-2" aria-hidden="true"></a><span class="kw">plot</span>(pop01_<span class="dv">3044</span>,<span class="dt">col=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>,<span class="st">&#39;Blues&#39;</span>),<span class="dt">main=</span><span class="st">&#39;Population surface age 30 - 44 in 2011&#39;</span>,<span class="dt">axes=</span><span class="ot">FALSE</span>)</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-load-libraries-and%20data-3.png" width="672" /></p>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="raster-data-and-geostatistics.html#cb208-1" aria-hidden="true"></a><span class="co"># plot pretty 2011 // this can be a little slow, especially for large rasters</span></span>
-<span id="cb208-2"><a href="raster-data-and-geostatistics.html#cb208-2" aria-hidden="true"></a><span class="kw">plot</span>(pop11_<span class="dv">3044</span>,<span class="dt">col=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>,<span class="st">&#39;Blues&#39;</span>),<span class="dt">main=</span><span class="st">&#39;Popolation surface age 30 - 44 in 2011&#39;</span>,<span class="dt">axes=</span><span class="ot">FALSE</span>)</span></code></pre></div>
+<span id="cb208-2"><a href="raster-data-and-geostatistics.html#cb208-2" aria-hidden="true"></a><span class="kw">plot</span>(pop11_<span class="dv">3044</span>,<span class="dt">col=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>,<span class="st">&#39;Blues&#39;</span>),<span class="dt">main=</span><span class="st">&#39;Population surface age 30 - 44 in 2011&#39;</span>,<span class="dt">axes=</span><span class="ot">FALSE</span>)</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-load-libraries-and%20data-4.png" width="672" /></p>
 </div>
 <div id="questions-2" class="section level4 unnumbered">
@@ -859,7 +902,7 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
         </div>
       </div>
 <a href="point-pattern-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dbscan-and-cluster-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="spatial-analysis-for-urban-mapping-applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
