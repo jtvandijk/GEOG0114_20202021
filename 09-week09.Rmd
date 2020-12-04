@@ -165,7 +165,7 @@ The dataset contains the following variables:
 #### File download {-}
 | File                                                 | Type           | Link |
 | :------                                              | :------        | :------ |
-| MSOA-level input variables for IUC                   | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/msoa_iuc_input.csv) |
+| MSOA-level input variables for IUC                   | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/msoa_iuc_input.zip) |
 | Middle-layer Super Output Areas Great Britain 2011   | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/gb_msoa11_sim.zip) |
 
 ```{r 09-load-date-for-those-mean-ks, warnings=FALSE, message=FALSE, cache=TRUE}
