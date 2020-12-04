@@ -12,9 +12,9 @@ This week is structured around **two** short lecture videos, **two** assignments
 ### Video: Overview {#overview_w09}
 ```{r 09-short-lecture-welcome, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-#embed_msstream('64e6a9e8-4a05-42ad-bfc2-a67008dd9c5f') %>% use_align('left')
+embed_msstream('023539da-23a7-4154-950c-480b87052ff7') %>% use_align('left')
 ```
-[Lecture slides] [[Watch on MS stream]]()
+[Lecture slides] [[Watch on MS stream]](https://web.microsoftstream.com/video/023539da-23a7-4154-950c-480b87052ff7?list=studio)
 
 ## Geodemographics and the Internet User Classification
 The [CDRC Internet User Classification](https://data.cdrc.ac.uk/dataset/internet-user-classification) (IUC) is a bespoke geodemographic classification that describes how people residing in different parts of Great Britain interact with the Internet. For every Lower Super Output Area (LSOA) in England and Wales and Data Zone (DZ) ([2011 Census Geographies](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography)), the IUC provides aggregate population estimates of Internet use ([Singleton *et al.* 2020](https://www.sciencedirect.com/science/article/pii/S0198971519307963)) and provides insights into the geography of the digital divide in the United Kingdom. 
@@ -24,12 +24,12 @@ The [CDRC Internet User Classification](https://data.cdrc.ac.uk/dataset/internet
 ### Video: Geodemographics and the Internet User Classification
 ```{r 09-geodemographics-iuc, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-#embed_msstream('7854a8dc-f24f-4a3d-908c-9a10adb4b085') %>% use_align('left')
+embed_msstream('1d631109-9c11-457e-9b7e-642be2e97ed9') %>% use_align('left')
 ```
-[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w09/w09_01_geodemographics.pdf) [[Watch on MS stream]]()
+[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w09/w09_01_geodemographics.pdf) [[Watch on MS stream]](https://web.microsoftstream.com/video/1d631109-9c11-457e-9b7e-642be2e97ed9?list=studio)
 
 ### Example: Geodemographics and the Internet User Classification
-For the first part of this week's practical material, we will be looking at the Internet User Classification (IUC) for Great Britain in more detail and see how it looks like on a map.
+For the first part of this week's practical material, we will be looking at the Internet User Classification (IUC) for Great Britain in more detail by mapping it.
 
 Our first step is to download the IUC dataset:
 
@@ -43,7 +43,7 @@ Our first step is to download the IUC dataset:
 knitr::include_graphics('images/week09/09_iuc_download.png')
 ```
 
-Start by inspecting the dataset in MS Excel, or any other spreadsheet software such as [Apache OpenOffice Calc ](https://www.openoffice.org/product/calc.html) or [Numbers](https://www.apple.com/uk/numbers/). Also, have a look at the [IUC 2018 User Guide](https://data.cdrc.ac.uk/system/files/iuc2018userguide.pdf) that provides the **pen portraits** of every cluster, including plots of cluster centres and a brief summary of the methodology.
+Start by inspecting the dataset in MS Excel, or any other spreadsheet software such as [Apache OpenOffice Calc](https://www.openoffice.org/product/calc.html) or [Numbers](https://www.apple.com/uk/numbers/). Also, have a look at the [IUC 2018 User Guide](https://data.cdrc.ac.uk/system/files/iuc2018userguide.pdf) that provides the **pen portraits** of every cluster, including plots of cluster centres and a brief summary of the methodology.
 
 <div class="note">
 It is always a good idea to inspect your data prior to analysis to find out how your data look like. Of course, depending on the type of data, you can choose any tool you like to do this inspection ([ArcGIS](https://www.arcgis.com/index.html), [R](https://www.r-project.org/), [QGIS](https://qgis.org/en/site/), [Microsoft Excel](https://www.office.com/), etc.).
@@ -53,7 +53,7 @@ It is always a good idea to inspect your data prior to analysis to find out how 
 knitr::include_graphics('images/week09/09_iuc_excel.png')
 ```
 
-```{r 09-load-libraries-and data, warnings=FALSE, message=FALSE}
+```{r 09-load-libraries-and data, warnings=FALSE, message=FALSE, cache=TRUE}
 # load libraries
 library(tidyverse)
 library(tmap)
@@ -71,7 +71,7 @@ str(iuc)
 #### Questions {-}
 1. Create a histogram to inspect the distribution of the data. Looking at the histogram: is this what you expected? Why (not)?
 
-Now the data are loaded we can move to acquiring our spatial data. As the IUC is created at the level of the Lower super Layer Output Area [Census geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography), we need to download its administrative borders. As the dataset for the entire country is quite large, we will focus on [Liverpool](https://en.wikipedia.org/wiki/Liverpool) for a change.
+Now the data are loaded we can move to acquiring our spatial data. As the IUC is created at the level of the Lower layer Super Output Area [Census geography](https://www.ons.gov.uk/methodology/geography/ukgeographies/censusgeography), we need to download its administrative borders. As the dataset for the entire country is quite large, we will focus on [Liverpool](https://en.wikipedia.org/wiki/Liverpool) for a change.
 
 1. Go to the [UK Data Service Census support portal](https://borders.ukdataservice.ac.uk/) and select **Boundary Data Selector**.
 2. Set Country to *England*, Geography to *Statistical Building Block*, dates to *2011 and later*, and click **Find**.
@@ -86,7 +86,7 @@ You could also have downloaded the shapefile with the data already joined to the
 
 Now we got the administrative boundary data, we can prepare the IUC map by joining our `csv` file with the IUC classification to the shapefile.
 
-```{r 09-load-those-spatial-data, warnings=FALSE, message=FALSE, cache=TRUE}
+```{r 09-load-those-spatial-data, warnings=FALSE, message=FALSE}
 # load libraries
 library(sf)
 library(tmap)
@@ -112,7 +112,7 @@ tm_shape(liv_iuc) +
 
 Let's use the same colours as used on [CDRC mapmaker](https://mapmaker.cdrc.ac.uk/#/internet-user-classification?lon=-2.81187&lat=53.31045&zoom=9.58) by specifying the **hex** colour codes for each of our groups. Note the order of the colours is important: the colour for group 1 is first, group 2 second and so on. 
 
-```{r 09-pretty-colours, warnings=FALSE, message=FALSE, cache=TRUE}
+```{r 09-pretty-colours, warnings=FALSE, message=FALSE}
 # define palette
 iuc_colours <- c('#dd7cdc','#ea4d78','#d2d1ab','#f36d5a','#a5cfbc','#e4a5d0','#8470ff','#79cdcd','#808fee','#ffd39b')
 
@@ -146,12 +146,12 @@ In several cases, including the [2011 residential-based area classifications](ht
 ### Video: K-means clustering
 ```{r 09-k-means-clustering-iuc, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
-#embed_msstream('7854a8dc-f24f-4a3d-908c-9a10adb4b085') %>% use_align('left')
+embed_msstream('296d7ae0-0fd0-4c9a-b302-53684c119ab7') %>% use_align('left')
 ```
-[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w09/w09_02_kmeans.pdf) [[Watch on MS stream]]()
+[[Lecture slides]](https://github.com/jtvandijk/GEOG0114/tree/master/slides/w09/w09_02_kmeans.pdf) [[Watch on MS stream]](https://web.microsoftstream.com/video/296d7ae0-0fd0-4c9a-b302-53684c119ab7?list=studio)
 
 ### Example: K-means clustering
-For the second part of this week's practical material, we will be replicating the Internet User Classification for Great Britain. For this we will be using an MSOA-level input dataset containing various socio-demographic and socio-economic variables that you can download below together with the MSOA administrative boundaries.
+For the second part of this week's practical material, we will be replicating part of the Internet User Classification for Great Britain. For this we will be using an MSOA-level input dataset containing various socio-demographic and socio-economic variables that you can download below together with the MSOA administrative boundaries.
 
 The dataset contains the following variables:
 
@@ -168,7 +168,7 @@ The dataset contains the following variables:
 | MSOA-level input variables for IUC                   | `csv`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/msoa_iuc_input.csv) |
 | Middle-layer Super Output Areas Great Britain 2011   | `shp`        | [Download](https://github.com/jtvandijk/GEOG0114/tree/master/raw/zip/gb_msoa11_sim.zip) |
 
-```{r 09-load-date-for-those-mean-ks, warnings=FALSE, message=FALSE}
+```{r 09-load-date-for-those-mean-ks, warnings=FALSE, message=FALSE, cache=TRUE}
 # load data
 iuc_input <- read_csv('raw/index/msoa_iuc_input.csv')
 
@@ -178,7 +178,7 @@ head(iuc_input)
 
 Before running our **k-means** clustering algorithm, we need to extract the data which we want to use; i.e. we need to remove all the columns with data that we do not want to include in the clustering process.
 
-```{r 09-select-the-columns, warnings=FALSE, message=FALSE}
+```{r 09-select-the-columns, warnings=FALSE, message=FALSE, cache=TRUE}
 # column names
 names(iuc_input)
 
@@ -191,7 +191,7 @@ head(cluster_data)
 
 We also need to rescale the data so all input data are presented on a comparable scale: the average download speed data (i.e. `avg_dwn_speed`) is very different to the other data that, for instance, represent the percentage of the population by different age groups.
 
-```{r 09-rescale-those-values, warnings=FALSE, message=FALSE}
+```{r 09-rescale-those-values, warnings=FALSE, message=FALSE, cache=TRUE}
 # rescale
 cluster_data <- scale(cluster_data) 
 
@@ -321,7 +321,7 @@ Looking at the table with the mean values for each cluster and the graph, we can
 1. Which clusters are primarily driven by age?
 2. Which clusters are primarily driven by the National Statistics Socio-economic Classification?
 
-```{r 09-map-our-iuc, warnings=FALSE, message=FALSE, cache=TRUE}
+```{r 09-map-our-iuc, warnings=FALSE, message=FALSE}
 # read shape
 msoa <- st_read('raw/boundaries/gb_msoa_2011/gb_msoa11_sim.shp')
 
@@ -353,14 +353,16 @@ Try to create a **R function** that:
 - executes a **k-means** clustering on the input variables and the specified number of clusters; and,
 - produces a `csv` file that contains the **table of means** of the solution.
 
-<blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">Following a coding tutorial<a href="https://t.co/dXUfp0WWv7">pic.twitter.com/dXUfp0WWv7</a></p>&mdash; Tawanda Nyahuye👨
-💻 (@towernter) <a href="https://twitter.com/towernter/status/1332692092863340544?ref_src=twsrc%5Etfw">November 28, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 #### Tips {-}
 - The list of input variables does not have to be a list of *names*, but can also be a list containing the index values of the columns.
 - Google is still your friend.
 - Your function should look something like: `automate_k_means(dataframe,number_of_clusters,input_variables)`
 - Feel free to add optional variables that you need to specify if that makes it easier.
+- Have a look at [Hadley Wickhams explanation of functions](https://r4ds.had.co.nz/functions.html) in R.
+
+#### Coding tutorial vs trying it yourself {-}
+<blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">Following a coding tutorial<a href="https://t.co/dXUfp0WWv7">pic.twitter.com/dXUfp0WWv7</a></p>&mdash; Tawanda Nyahuye👨
+💻 (@towernter) <a href="https://twitter.com/towernter/status/1332692092863340544?ref_src=twsrc%5Etfw">November 28, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 #### Optional challenges {-}
 - Include *maps* or *graphs* in the code that get automatically saved.
