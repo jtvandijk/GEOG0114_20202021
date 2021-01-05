@@ -184,7 +184,7 @@ columns_to_rows <- function(df, start, stop) {
   col_sub <- c(1,start:stop)
   
   # subset the dataframe 
-  df_sub <- select(df,col_sub)
+  df_sub <- dplyr::select(df,col_sub)
   
   # pivot the columns in the dataframe, exclude the MSOA code column 
   df_piv <- pivot_longer(df_sub,-msoa11cd)
@@ -242,7 +242,7 @@ df_reformatted <- mutate(df_reformatted,group = ifelse(g==0,substr(as.character(
                                                             substr(as.character(age_group),41,500))) 
 
 # remove unnecessary columns
-df_reformatted <- select(df_reformatted, -age_group, -g)
+df_reformatted <- dplyr::select(df_reformatted, -age_group, -g)
 ```
 
 We are now really getting somewhere, although in order for our data to be tidy each variable must have its own column. We also want, within each ethnic group, to aggregate the individual values within each age group.
