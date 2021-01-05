@@ -96,12 +96,10 @@ For this tutorial, we'll be using Portsmouth in the U.K. as our area of interest
 ```{r ports_map, include=FALSE, cache=TRUE}
 library(sf)
 library(mapview)
-# Create portsmouth map
-cities <- st_read("raw/w10/data/raw/admin_boundaries/Major_Towns_and_Cities__December_2015__Boundaries.shp", stringsAsFactors=FALSE)
 
+# create portsmouth map
+cities <- st_read("raw/boundaries/major_towns/Major_Towns_and_Cities__December_2015__Boundaries.shp", stringsAsFactors=FALSE)
 portsmouth_city = cities[74,]
-#plot(portsmouth_city)
-
 ```
 <center>
 ```{r pmap, echo=FALSE, cache=TRUE}

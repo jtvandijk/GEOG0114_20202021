@@ -9,7 +9,3 @@ _bookdown_files/*
 packrat/lib*/
 *.geojson
 .DS_Store
-raw
-docs
-*_cache
-libs
