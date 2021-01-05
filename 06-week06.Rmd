@@ -18,6 +18,7 @@ embed_msstream('0c605bb0-59f2-44ec-aaa1-d09c2d22bc2e') %>% use_align('left')
 In the previous weeks, we have aggregated our event data into areal units. In R we could do this very easily by identifying all points that fall within a polygon using the `st_intersects()` function from the `sf` package. We used this method to 
 [aggregate 'theft from persons' in Camden in 2019](spatial-autocorrelation.html#our-property-is-theft.) as well as to [aggregate 'bicycle theft' in four of London's boroughs](exploratory-spatial-data-analysis.html#exploratory-spatial-data-analysis-in-r). However, depending on your research problem and aim, points do not necessarily have to be aggregated and there are many applications in which you want to work with the point locations directly. In fact, the R package `spatstat` for spatial statistics is predominantly designed for analysing spatial point patterns. The mere fact that the [`spatstat` documentation](https://cran.r-project.org/web/packages/spatstat/spatstat.pdf) has almost 1,800 pages should give you a good idea about the general importance of point pattern analysis within the domain of Social and Geographic Data Science.
 
+
 ### Video: Point pattern analysis
 ```{r 06-point-pattern-analysis, warnings=FALSE, message=FALSE, echo=FALSE}
 library(vembedr)
