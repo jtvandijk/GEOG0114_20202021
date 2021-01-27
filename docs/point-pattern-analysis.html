@@ -24,7 +24,7 @@
 <meta name="author" content="Justin van Dijk and Joanna Wilkin" />
 
 
-<meta name="date" content="2021-01-05" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -447,7 +447,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="GEOG0114_files/figure-html/06-load-libraries-and%20data-1.png" width="672" /></p>
 <p>Where we are now somehow familiar with the <code>sf</code> and <code>sp</code> packages, the <code>spatstat</code> package expects point data to be in yet another format: <code>ppp</code>. An object of the class <code>ppp</code> represents a two-dimensional point dataset within a pre-defined area, the window of observation. Because <code>spatstat</code> predates <code>sf</code> we do need to take several steps to transform our simple features object to a <code>ppp</code> object.</p>
 <div class="note">
-<p>As we are looking at a <em>point pattern</em>, a <code>ppp</code> object does not necessarily have to have attributes associated with the <strong>events</strong> (as point data are called within <code>spatstat</code>). Within the <code>spatstat</code> environment, attributes are referred to as <strong>marks</strong>. Be aware that some functions do require these marks to be present.</p>
+<p><strong>Note</strong><br/>
+As we are looking at a <em>point pattern</em>, a <code>ppp</code> object does not necessarily have to have attributes associated with the <strong>events</strong> (as point data are called within <code>spatstat</code>). Within the <code>spatstat</code> environment, attributes are referred to as <strong>marks</strong>. Be aware that some functions do require these marks to be present.</p>
 </div>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="point-pattern-analysis.html#cb170-1" aria-hidden="true"></a><span class="co"># transform sf to sp</span></span>
 <span id="cb170-2"><a href="point-pattern-analysis.html#cb170-2" aria-hidden="true"></a>lad_sp &lt;-<span class="st"> </span><span class="kw">as</span>(lad,<span class="st">&#39;Spatial&#39;</span>)</span>
@@ -500,7 +501,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 291</code></pre>
 <p>This means we have 291 duplicated points. This seems a lot to simply remove. As these are crime data the exact locations are not revealed for privacy and safety reasons, meaning that all crimes get <a href="https://data.police.uk/about/#anonymisation">‘snapped’ to a predefined point location</a>! Let’s shift all our coordinates slighlty to ‘remove’ our duplicates and enforce all points to be unique.</p>
 <div class="note">
-<p>Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through <code>?name_of_function</code>, e.g. <code>?multiplicity</code> or <code>rjitter</code>. For almost any R package, the documentation contains a list of arguments that the function takes, what these arguments mean / do, in which format the functions expects these arguments, as well as a set of usage examples.</p>
+<p><strong>Note</strong><br/>
+Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through <code>?name_of_function</code>, e.g. <code>?multiplicity</code> or <code>rjitter</code>. For almost any R package, the documentation contains a list of arguments that the function takes, what these arguments mean / do, in which format the functions expects these arguments, as well as a set of usage examples.</p>
 </div>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="point-pattern-analysis.html#cb181-1" aria-hidden="true"></a><span class="co"># add some jitter to our points</span></span>
 <span id="cb181-2"><a href="point-pattern-analysis.html#cb181-2" aria-hidden="true"></a>crime_ppp_jitter &lt;-<span class="st"> </span><span class="kw">rjitter</span>(crime_ppp,<span class="dt">retry=</span><span class="ot">TRUE</span>,<span class="dt">nsim=</span><span class="dv">1</span>,<span class="dt">drop=</span><span class="ot">TRUE</span>)</span>
@@ -636,7 +638,8 @@ A great example of a company having to deal with massive spatial point datasets 
 </div>
 <p>This will involve you having to make some decisions: Which <strong>kernel</strong> to use? Which <strong>bandwidth</strong> to use? Why? Do you differ the bandwidth <em>between</em> different surname searches or do you keep them the same?</p>
 <div class="note">
-<p>Whilst we have been using <code>spatstat</code> for creating our KDE, there are also other packages available (such as <code>sparr</code>). If you are up for a challenge, feel free to see if you can create your KDE maps using a different package!</p>
+<p><strong>Note</strong><br/>
+Whilst we have been using <code>spatstat</code> for creating our KDE, there are also other packages available (such as <code>sparr</code>). If you are up for a challenge, feel free to see if you can create your KDE maps using a different package!</p>
 </div>
 <p>We will discuss your choices and results in <strong>Friday’s seminar</strong>, so make sure to ‘bring’ your maps along.</p>
 </div>

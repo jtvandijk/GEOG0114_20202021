@@ -77,6 +77,7 @@ tm_shape(lad) +
 Where we are now somehow familiar with the `sf` and `sp` packages, the `spatstat` package expects point data to be in yet another format: `ppp`. An object of the class `ppp` represents a two-dimensional point dataset within a pre-defined area, the window of observation. Because `spatstat` predates `sf` we do need to take several steps to transform our simple features object to a `ppp` object.
 
 <div class="note">
+**Note**<br/>
 As we are looking at a *point pattern*, a `ppp` object does not necessarily have to have attributes associated with the **events** (as point data are called within `spatstat`). Within the `spatstat` environment, attributes are referred to as **marks**. Be aware that some functions do require these marks to be present.
 </div>
 
@@ -119,6 +120,7 @@ sum(multiplicity(crime_ppp) > 1)
 This means we have 291 duplicated points. This seems a lot to simply remove. As these are crime data the exact locations are not revealed for privacy and safety reasons, meaning that all crimes get ['snapped' to a predefined point location](https://data.police.uk/about/#anonymisation)! Let's shift all our coordinates slighlty to 'remove' our duplicates and enforce all points to be unique.
 
 <div class="note">
+**Note**<br/>
 Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through `?name_of_function`, e.g. `?multiplicity` or `rjitter`. For almost any R package, the documentation contains a list of arguments that the function takes, what these arguments mean / do, in which format the functions expects these arguments, as well as a set of usage examples. 
 </div>
 
@@ -274,6 +276,7 @@ Now you have seen the GBNames website and you know how to execute a Kernel Densi
 This will involve you having to make some decisions: Which **kernel** to use? Which **bandwidth** to use? Why? Do you differ the bandwidth *between* different surname searches or do you keep them the same? 
 
 <div class ="note">
+**Note**<br/>
 Whilst we have been using `spatstat` for creating our KDE, there are also other packages available (such as `sparr`). If you are up for a challenge, feel free to see if you can create your KDE maps using a different package! 
 </div>
 

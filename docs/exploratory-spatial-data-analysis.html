@@ -24,7 +24,7 @@
 <meta name="author" content="Justin van Dijk and Joanna Wilkin" />
 
 
-<meta name="date" content="2021-01-05" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -501,14 +501,16 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 </tbody>
 </table>
 <div class="note">
-<p>Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through <code>?name_of_function</code>, e.g. <code>?pivot_longer</code>. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.</p>
+<p><strong>Note</strong><br/>
+Remember that when you encounter a function in a piece of R code that you have not seen before and you are wondering what it does that you can get access the documentation through <code>?name_of_function</code>, e.g. <code>?pivot_longer</code>. For almost any R package, the documentation contains a list of arguments that the function takes, in which format the functions expects these arguments, as well as a set of usage examples.</p>
 </div>
 </div>
 <div id="example-creating-tidy-data" class="section level3" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Example: Creating tidy data</h3>
 <p>Now we know what constitute <strong>tidy data</strong>, we can put this into practice with an example using some data from the <a href="https://www.ons.gov.uk/">Office for National Statistics</a>. Let’s say we are asked by our bosses to analyse some data on the ethnic background of the UK population, for instance, because we want to get some insights into the relationship between <a href="https://www.theguardian.com/world/2020/oct/09/bame-groups-hit-hard-again-covid-second-wave-grips-uk-nations">COVID-19 and ethnic background</a>. Our assignment is to calculate the relative proportions of each ethnic group within the administrative geography of the <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/middlesuperoutputareamidyearpopulationestimates">Middle layer Super Output Area (MSOA)</a>. In order to do this, we have been given a file that contains data on ethnicity by age group at the MSOA-level of every person in the 2011 UK Census who is 16 year or older. Download the file to your own computer and <a href="spatial-autocorrelation.html#setting-up-the-environment">set up your data directory</a> in the same fashion as you did last week. You can also decide on setting up your own folder structure, no problem, just make sure that you update the file paths in the practical to match the file paths on your own computer.</p>
 <div class="note">
-<p>Make sure that after downloading you first unzip the data, for instance, using <a href="https://www.7-zip.org/">7-Zip</a> on Windows or using <a href="https://theunarchiver.com/">The Unarchiver</a> on Mac OS.</p>
+<p><strong>Note</strong><br/>
+Make sure that after downloading you first unzip the data, for instance, using <a href="https://www.7-zip.org/">7-Zip</a> on Windows or using <a href="https://theunarchiver.com/">The Unarchiver</a> on Mac OS.</p>
 </div>
 <div id="file-download" class="section level4 unnumbered">
 <h4>File download</h4>
@@ -596,7 +598,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ##  [ reached getOption(&quot;max.print&quot;) -- omitted 355 entries ]</code></pre>
 <p>The column names are all awfully long and it looks like the data have been split out into age groups. Further to this, the data contain within group total counts: <em>all categories</em>, <em>white total</em>, <em>mixed/multiple ethnic group total</em>, and so on.</p>
 <div class="note">
-<p>You can also try using <code>View(df)</code> or use any other form of spreadsheet software (e.g. Microsoft Excel) to <strong>browse</strong> through the dataset to get a better idea of what is happening and get a better idea of the structure of the data. You first will need to understand the structure of your dataset before you can start reorganising your dataset.</p>
+<p><strong>Note</strong><br/>
+You can also try using <code>View(df)</code> or use any other form of spreadsheet software (e.g. Microsoft Excel) to <strong>browse</strong> through the dataset to get a better idea of what is happening and get a better idea of the structure of the data. You first will need to understand the structure of your dataset before you can start reorganising your dataset.</p>
 </div>
 <p>Although the data is messy and we will need to reorganise our data set, it does look there is some form of structure present that we can exploit: the various columns with population counts for each ethnic group are repeated for each of the different age groups. This means that we can go through the data frame in steps of equal size to select the data we want: starting from column 2 (column 1 only contains the reference to the adminsitrative geography) we want to select all 24 columns of data for that particular age group. We can create a <code>for</code> loop that does exactly that:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="exploratory-spatial-data-analysis.html#cb83-1" aria-hidden="true"></a><span class="co"># loop through the columns of our data set</span></span>
@@ -1392,7 +1395,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## test value: 8.1292, p-value: 0.0043559</code></pre>
 <p>To interpret these results, we have to look at the Akaike Information Criterion (AIC). The AIC of our spatially lagged model is 2212.6, whereas the model without taking spatial dependence into account has an AIC of 2455.5 This means that the spatially lagged model is a better fit to the data then the standard OLS model. We also have a new term <strong>Rho</strong>, which is the spatial autoregressive parameter. In our case it is both positive and statistically significant, suggesting that when bike theft in the neighbours of area <strong>X</strong><em>i</em> increase, bike theft will also be higher in area <strong>X</strong><em>i</em>. At the same time, the IMD decile, the distance to the nearest pub, and the distance to the nearest tube stations are all still significant. Next time you know where not to park your bike.</p>
 <div class="note">
-<p>Be careful <strong>not</strong> to compare the regression coefficients of the spatially lagged model to the regression coefficients of the original OLS model because their meaning now has changed. Whilst in the OLS model the coefficient of any of the independent variables measures the overall impact of these variables, this is not the case in the spatially lagged model: by including the spatial lag, the effect that X has on Y depends also (indirectly) on the effect that X has on Y in its neighbours.</p>
+<p><strong>Note</strong><br/>
+Be careful <strong>not</strong> to compare the regression coefficients of the spatially lagged model to the regression coefficients of the original OLS model because their meaning now has changed. Whilst in the OLS model the coefficient of any of the independent variables measures the overall impact of these variables, this is not the case in the spatially lagged model: by including the spatial lag, the effect that X has on Y depends also (indirectly) on the effect that X has on Y in its neighbours.</p>
 </div>
 <p>Although we probably should not, let’s also run a spatial error model. Just for the sake of running it and see how it looks.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="exploratory-spatial-data-analysis.html#cb163-1" aria-hidden="true"></a><span class="co"># execute the spatially lagged model</span></span>
@@ -1430,7 +1434,8 @@ Figure 5.1: A visual representation of tidy data by <a href="https://r4ds.had.co
 ## AIC: 2215.5, (AIC for lm: 2455.5)</code></pre>
 <p>If we have good reasons to believe that we need to run a spatial error model rather than an OLS regression model, we actually notice that the model fit improves: the AIC of the spatial error model is 2215.5, whilst the AIC of the OLS model is still 2455.5 Keep in mind: whereas the spatially lagged model takes spatial dependence into account, the spatial error model simply tries to remove the influence of space and we in fact estimate a model that relaxes one of the standard regression model assumptions that the errors need to be independent.</p>
 <div class="note">
-<p>This time you could actually compare the regression coefficients from the spatial error model with those from the OLS model!</p>
+<p><strong>Note</strong><br/>
+This time you could actually compare the regression coefficients from the spatial error model with those from the OLS model!</p>
 </div>
 </div>
 <div id="geographically-weighted-regression" class="section level3" number="5.4.3">

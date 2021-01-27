@@ -46,6 +46,7 @@ knitr::include_graphics('images/week09/09_iuc_download.png')
 Start by inspecting the dataset in MS Excel, or any other spreadsheet software such as [Apache OpenOffice Calc](https://www.openoffice.org/product/calc.html) or [Numbers](https://www.apple.com/uk/numbers/). Also, have a look at the [IUC 2018 User Guide](https://data.cdrc.ac.uk/system/files/iuc2018userguide.pdf) that provides the **pen portraits** of every cluster, including plots of cluster centres and a brief summary of the methodology.
 
 <div class="note">
+**Note**<br/>
 It is always a good idea to inspect your data prior to analysis to find out how your data look like. Of course, depending on the type of data, you can choose any tool you like to do this inspection ([ArcGIS](https://www.arcgis.com/index.html), [R](https://www.r-project.org/), [QGIS](https://qgis.org/en/site/), [Microsoft Excel](https://www.office.com/), etc.).
 </div>
 
@@ -81,6 +82,7 @@ Now the data are loaded we can move to acquiring our spatial data. As the IUC is
 6. Unzip and save the file in the usual fashion.
 
 <div class="note">
+**Note**<br/>
 You could also have downloaded the shapefile with the data already joined to the LSOA boundaries directly from the CDRC data portal, but this is the national data set and is quite large (75MB). Also, as we will be looking at [Liverpool](https://en.wikipedia.org/wiki/Liverpool) today we do not need all LSOAs in Great Britain. Of course, if you prefer filtering Liverpool's LSOAs out of the GB dataset please go ahead!
 </div>
 
@@ -244,6 +246,7 @@ ggplot(data=wss_values, aes(x=cluster,y=wss)) +
 Based on the elbow plot, we can now choose the number of clusters and it looks like **7** clusters would be a reasonable choice.
 
 <div class="note">
+**Note**<br/>
 The interpretation of an elbow plot can be quite subjective and often mutlltle options would be justified: **6**, **8**, and perhaps **9** clusters also do not look unreasonable. You would need to try the different options and see what output you get to determine the 'optimal' solution. However, at very least, the elbow plot does give you an idea of what would potentially be an adequate number of clusters. 
 </div>
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Justin van Dijk and Joanna Wilkin" />
 
 
-<meta name="date" content="2021-01-05" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -533,7 +533,8 @@ Figure 7.2: Raster or plain text?
 <span id="cb218-7"><a href="raster-data-and-geostatistics.html#cb218-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">tm_polygons</span>(<span class="dt">col=</span><span class="st">&#39;layer&#39;</span>)</span></code></pre></div>
 <p><img src="GEOG0114_files/figure-html/07-I-am-in-the-zone-2.png" width="672" /></p>
 <div class="note">
-<p>Many packages share the same function names. This can be a problem when these packages are loaded in a same R session. For instance <code>extract</code> is not only the name of a function in the <code>raster</code> package, but also the name of functions in the <code>magrittr</code> and <code>tidyr</code> packages. To ensure you are using the function that you think you are using, you can specify the package: <code>tidyr::extract</code> or <code>raster::extract</code>.</p>
+<p><strong>Note</strong><br/>
+Many packages share the same function names. This can be a problem when these packages are loaded in a same R session. For instance <code>extract</code> is not only the name of a function in the <code>raster</code> package, but also the name of functions in the <code>magrittr</code> and <code>tidyr</code> packages. To ensure you are using the function that you think you are using, you can specify the package: <code>tidyr::extract</code> or <code>raster::extract</code>.</p>
 </div>
 </div>
 </div>
@@ -607,7 +608,8 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
 </ol>
 <p>We could manually download <code>csv</code> files from the Londonair website for all the monitoring sites we are interested in, however, there is also a <a href="https://davidcarslaw.github.io/openair/">R package</a> that makes things much easier. Have a look at the <a href="https://cloud.r-project.org/web/packages/openair/openair.pdf">documentation of the openair package</a> so that you get an idea why we use the <code>importMeta()</code> and <code>importKCL()</code> functions below!</p>
 <div class="note">
-<p>Because <code>openair</code> contains <strong>C++</strong> code, a compiler is needed. For Windows, for example, <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> is needed. Depending on your system and configuration this can sometimes be a hassle. Fortunately, even though packed with functionality, we will only use <code>openair</code> to download all the air pollution data we are interested in: in case you cannot get <code>openair</code> to work on your computer you can download a copy of the dataset instead.</p>
+<p><strong>Note</strong><br/>
+Because <code>openair</code> contains <strong>C++</strong> code, a compiler is needed. For Windows, for example, <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> is needed. Depending on your system and configuration this can sometimes be a hassle. Fortunately, even though packed with functionality, we will only use <code>openair</code> to download all the air pollution data we are interested in: in case you cannot get <code>openair</code> to work on your computer you can download a copy of the dataset instead.</p>
 </div>
 </div>
 <div id="file-download-2" class="section level4 unnumbered">
@@ -842,7 +844,8 @@ Figure 7.3: Continuous monitoring sites in London (<a href="https://www.londonai
 </div>
 <p>An IDW is not the only means of interpolating point data across space. A range of geostatistical techniques have also been devised. One of the most commonly used is kriging. Whilst an IDW is created by looking at just known values and their linear distances, a kriging also considers spatial autocorrelation. The approach is therefore more appropriate is there is a known spatial or directional bias in the data. Kriging is a statistical model which uses variograms to calculate the autocorrelation between points and distance. Like an IDW the the values across space are estimated from weighted averages formed by the nearest points and considers the influence of distance.</p>
 <div class="note">
-<p>There are various different ways of running a kriging, some are quite complex given that the method requires an experimental variogram of the data in order to run. If you want to know more, there is some excellent material <a href="https://mgimond.github.io/Spatial/spatial-interpolation.html">available here</a> but it is out of the scope of this course to go into much further detail.</p>
+<p><strong>Note</strong><br/>
+There are various different ways of running a kriging, some are quite complex given that the method requires an experimental variogram of the data in order to run. If you want to know more, there is some excellent material <a href="https://mgimond.github.io/Spatial/spatial-interpolation.html">available here</a> but it is out of the scope of this course to go into much further detail.</p>
 </div>
 <div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="raster-data-and-geostatistics.html#cb241-1" aria-hidden="true"></a><span class="co"># create a variogram</span></span>
 <span id="cb241-2"><a href="raster-data-and-geostatistics.html#cb241-2" aria-hidden="true"></a>var.pol &lt;-<span class="st"> </span><span class="kw">variogram</span>(no2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, pol_points, <span class="dt">cloud=</span><span class="ot">FALSE</span>, <span class="dt">width=</span><span class="dv">1000</span>)</span>
