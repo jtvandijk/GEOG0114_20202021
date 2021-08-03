@@ -1,6 +1,6 @@
 # GEOG0114 Principles of Spatial Analysis
 
-This GitHub repository generates the GEOG0114 Principles of Spatial Analysis handbook which can be found at: https://jtvandijk.github.io/GEOG0114/
+This GitHub repository generates the GEOG0114 Principles of Spatial Analysis handbook for the 2020-2021 academic year which can be found at: https://jtvandijk.github.io/GEOG0114_20202021/
 
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
